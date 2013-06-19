@@ -12,11 +12,16 @@ namespace StageManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tempemailsets
+    public partial class studentadress
     {
-        public string Email { get; set; }
-        public Nullable<int> Web_id { get; set; }
-    
-        public virtual webkeysets webkeysets { get; set; }
+        public int user_id { get; set; }
+        public int studentnumber { get; set; }
+        public int education_id { get; set; }
+        public Nullable<int> addresss_id { get; set; }
+        public int id { get; set; }
+        public string place { get; set; }
+        public string street { get; set; }
+        public string housenumber { get; set; }
+        public string zipcode { get; set; }
     }
 }

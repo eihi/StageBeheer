@@ -12,9 +12,9 @@ namespace StageManager.ViewModels
     class BedrijfsbegeleiderViewModel : PropertyChanged, IExcelAlgorithm
     {
         private static Random random = new Random();
-        private WBedrijfsBegeleider begeleider = new WStored().SearchBedrijfsBegeleiderSet()[random.Next(new WStored().SearchBedrijfsBegeleiderSet().Count)];//temp
+        private supervisor begeleider = new WStored().SearchBedrijfsBegeleiderSet()[random.Next(new WStored().SearchBedrijfsBegeleiderSet().Count)];//temp
 
-        internal WBedrijfsBegeleider Begeleider
+        internal supervisor Begeleider
         {
             get { return begeleider; }
             set
@@ -59,7 +59,7 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return begeleider.Functie;
+                return begeleider.function;
             }
         }
 
@@ -80,11 +80,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return begeleider.Opleidingsniveau;
+                return begeleider.education;
             }
             set
             {
-                begeleider.Opleidingsniveau = value;
+                begeleider.education = value;
                 NotifyOfPropertyChange(() => Opleiding);
             }
         }
@@ -93,11 +93,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return begeleider.Minimale_begeleidingstijd_gegarandeerd;
+                return true;//TODO!!!!!
             }
             set
             {
-                begeleider.Minimale_begeleidingstijd_gegarandeerd = value;
+                //begeleider.Minimale_begeleidingstijd_gegarandeerd = value;
                 NotifyOfPropertyChange(() => BegeleidingUren);
             }
         }
@@ -105,7 +105,7 @@ namespace StageManager.ViewModels
         public BedrijfsbegeleiderViewModel(MainViewModel main)
             : base(main)
         { }
-        public BedrijfsbegeleiderViewModel(MainViewModel main, WBedrijfsBegeleider bedrijfsbegeleider)
+        public BedrijfsbegeleiderViewModel(MainViewModel main, supervisor bedrijfsbegeleider)
             : this(main)
         {
             Begeleider = bedrijfsbegeleider;
@@ -115,7 +115,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Begeleider = (WBedrijfsBegeleider)o[1];
+                Begeleider = (supervisor)o[1];
             }
             catch (Exception)
             {

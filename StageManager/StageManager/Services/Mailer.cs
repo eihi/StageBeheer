@@ -101,10 +101,11 @@ namespace StageManager.Services
             {
                 replacements.Remove("%webkey%");
             }
-            String webkey;
-            webkey = stored.NewWebkey(to);
-            WWebkey key = new WWebkey(new webkeysets() { ConnectionKey = webkey, Status="actief" });
-            key.add(key.getSet());
+            String key;
+            key = stored.NewWebkey(to);
+            webkeys webkey = new webkeys() { webkey = key };
+            //TODO ADDING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
             System.Reflection.Assembly thisExe = System.Reflection.Assembly.GetExecutingAssembly();
             string path = thisExe.Location;
@@ -115,8 +116,8 @@ namespace StageManager.Services
             String s = File.ReadAllText(uri.AbsolutePath);
             String[] split = { "server: " };
             String[] server = s.Split(split, StringSplitOptions.RemoveEmptyEntries);
-            webkey = server[0] + webkey;
-            replacements.Add("%webkey%", "<a href='" + webkey + "'>" + webkey + "</a>");
+            key = server[0] + webkey.webkey;
+            replacements.Add("%webkey%", "<a href='" + key + "'>" + key + "</a>");
             Send(to, body, Subject, replacements);
         }
     }

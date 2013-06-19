@@ -11,45 +11,45 @@ namespace StageManager.Models
     {
         private Random r = new Random();
 
-        public List<WStudent> SearchStudentSet(String searchString, String searchOpleiding)
+        public List<students> SearchStudentSet(String searchString, String searchOpleiding)
         {
             if (searchString == null && searchOpleiding == null)
             {
 
                 return (from student
-                        in StageManagerEntities.studentsets.ToList()
-                        select new WStudent(student)).ToList();
+                        in StageManagerEntities.students.ToList()
+                        select student).ToList();
             }
             if (searchString != null && searchOpleiding == null)
             {
                 return (from student
-                       in StageManagerEntities.studentsets.ToList()
-                        where student.persoonsets.Voornaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.persoonsets.Achternaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.Studentnummer.ToString().ToLower().Contains(searchString.ToLower())
-                        select new WStudent(student)).ToList();
+                       in StageManagerEntities.students.ToList()
+                        where student.users.name.ToLower().Contains(searchString.ToLower()) ||
+                        student.users.surname.ToLower().Contains(searchString.ToLower()) ||
+                        student.studentnumber.ToString().ToLower().Contains(searchString.ToLower())
+                        select student).ToList();
             }
             else if (searchOpleiding != null && searchString == null)
             {
                 return (from student
-                        in StageManagerEntities.studentsets.ToList()
-                        where student.opleidingsets.Naam.ToLower().Contains(searchOpleiding.ToLower())
-                        select new WStudent(student)).ToList();
+                        in StageManagerEntities.students.ToList()
+                        where student.education.name.ToLower().Contains(searchOpleiding.ToLower())
+                        select student).ToList();
 
             }
             else
             {
                 return (from student
-                        in StageManagerEntities.studentsets.ToList()
-                        where (student.persoonsets.Voornaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.persoonsets.Achternaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.Studentnummer.ToString().ToLower().Contains(searchString.ToLower())) &&
-                        student.opleidingsets.Naam.ToLower().Contains(searchOpleiding.ToLower())
-                        select new WStudent(student)).ToList();
+                        in StageManagerEntities.students.ToList()
+                        where (student.users.name.ToLower().Contains(searchString.ToLower()) ||
+                        student.users.surname.ToLower().Contains(searchString.ToLower()) ||
+                        student.studentnumber.ToString().ToLower().Contains(searchString.ToLower())) &&
+                        student.education.name.ToLower().Contains(searchOpleiding.ToLower())
+                        select student).ToList();
             }
         }
 
-        public List<WStudent> SearchStudentSetWithStage(String searchString, String searchOpleiding)
+        public List<students> SearchStudentSetWithStage(String searchString, String searchOpleiding)
         {
 
             if (searchString == null && searchOpleiding == null)
@@ -59,69 +59,47 @@ namespace StageManager.Models
             if (searchString != null && searchOpleiding == null)
             {
                 return (from student
-                        in StageManagerEntities.studentsets.ToList()
-                        where student.persoonsets.Voornaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.persoonsets.Achternaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.Studentnummer.ToString().ToLower().Contains(searchString.ToLower()) && (
-                        student.stagesets.First().docentset_Id == null || student.stagesets1.First().docentset_Id == null)
-                        select new WStudent(student)).ToList();
+                        in StageManagerEntities.students.ToList()
+                        where student.users.name.ToLower().Contains(searchString.ToLower()) ||
+                        student.users.surname.ToLower().Contains(searchString.ToLower()) ||
+                        student.studentnumber.ToString().ToLower().Contains(searchString.ToLower())// && (
+                        //student.st.First().docentset_Id == null || student.stagesets1.First().docentset_Id == null)
+                        select student).ToList();//TODO
             }
             else if (searchOpleiding != null && searchString == null)
             {
                 return (from student
-                        in StageManagerEntities.studentsets.ToList()
-                        where (student.opleidingsets.Naam.ToLower().Contains(searchOpleiding.ToLower())) && (
-                        student.stagesets.First().docentset_Id == null || student.stagesets1.First().docentset_Id == null)
-                        select new WStudent(student)).ToList();
+                        in StageManagerEntities.students.ToList()
+                        where (student.education.name.ToLower().Contains(searchOpleiding.ToLower()))// && (
+                        //student.stagesets.First().docentset_Id == null || student.stagesets1.First().docentset_Id == null)
+                        select student).ToList();//TODO
             }
             else
             {
                 return (from student
-                        in StageManagerEntities.studentsets.ToList()
-                        where (student.persoonsets.Voornaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.persoonsets.Achternaam.ToLower().Contains(searchString.ToLower()) ||
-                        student.Studentnummer.ToString().ToLower().Contains(searchString.ToLower())) &&
-                        (student.opleidingsets.Naam.ToLower().Contains(searchOpleiding.ToLower())) && (
-                        student.stagesets.First().docentset_Id == null || student.stagesets1.First().docentset_Id == null)
-                        select new WStudent(student)).ToList();
+                        in StageManagerEntities.students.ToList()
+                        where (student.users.name.ToLower().Contains(searchString.ToLower()) ||
+                        student.users.surname.ToLower().Contains(searchString.ToLower()) ||
+                        student.studentnumber.ToString().ToLower().Contains(searchString.ToLower())) &&
+                        (student.education.name.ToLower().Contains(searchOpleiding.ToLower())) //&& (
+                        //student.stagesets.First().docentset_Id == null || student.stagesets1.First().docentset_Id == null)
+                        select student).ToList();//TODO
             }
         }
 
-        public List<WStage> SearchStage(String searchString, String searchOpleiding, bool All)
+        public List<internships> SearchStage(String searchString, String searchOpleiding, bool All)
         {
-            List<stagesets> listStage = StageManagerEntities.stagesets.ToList();
-            List<eindstagesets> listEindStage = StageManagerEntities.eindstagesets.ToList();
-            List<WStage> returnList = new List<WStage>();
-
-            for (int i = 0; i < listEindStage.Count; i++)
-            {
-                WEindStage stage = new WEindStage(listEindStage[i]);
-                if (stage.docentsets == null || stage.TweedeLezer == null || All)
-                {
-                    bool contains = false;
-                    for (int j = 0; j < returnList.Count; j++)
-                    {
-                        if (returnList[j].getSet() == stage.set)
-                        {
-                            contains = true;
-                            break;
-                        }
-                    }
-                    if (!contains)
-                    {
-                        returnList.Add(stage);
-                    }
-                }
-            }
+            List<internships> listStage = StageManagerEntities.internships.ToList();
+            List<internships> returnList = new List<internships>();
 
             for (int i = 0; i < listStage.Count; i++)
             {
-                WStage stage = new WStage(listStage[i]);
+                internships stage = listStage[i];
 
                 bool contains = false;
                 for (int j = 0; j < returnList.Count; j++)
                 {
-                    if (returnList[j].getSet() == stage.set)
+                    if (returnList[j] == stage)
                     {
                         contains = true;
                         break;
@@ -136,86 +114,107 @@ namespace StageManager.Models
             return returnList;
         }
 
-        public List<WDocent> SearchDocentSet(String searchString)
+        public List<teachers> SearchDocentSet(String searchString)
         {
             if (searchString == null)
             {
-                return (from docent in StageManagerEntities.docentsets.ToList() select new WDocent(docent)).ToList();
+                return (from docent in StageManagerEntities.teachers.ToList() select docent).ToList();
             }
             else
             {
                 return (from docent
-                            in StageManagerEntities.docentsets.ToList()
-                        where (docent.persoonsets.Voornaam.ToLower().Contains(searchString.ToLower()) ||
-                        docent.persoonsets.Achternaam.ToLower().Contains(searchString.ToLower()))
-                        select new WDocent(docent)).ToList();
+                            in StageManagerEntities.teachers.ToList()
+                        where (docent.users.name.ToLower().Contains(searchString.ToLower()) ||
+                        docent.users.surname.ToLower().Contains(searchString.ToLower()))
+                        select docent).ToList();
             }
         }
 
-        public List<WBedrijfsBegeleider> SearchBedrijfsBegeleiderSet()
+        public List<supervisor> SearchBedrijfsBegeleiderSet()
         {
-            return (from begeleider in StageManagerEntities.bedrijfsbegeleidersets.ToList() select new WBedrijfsBegeleider(begeleider)).ToList();
+            return (from begeleider in StageManagerEntities.supervisor.ToList() select begeleider).ToList();
         }
 
-        public List<WOpleiding> SearchOpleidingSet()
+        public List<education> SearchOpleidingSet()
         {
-            return (from opleiding in StageManagerEntities.opleidingsets.ToList().OrderBy(o => o.Naam) select new WOpleiding(opleiding)).ToList();
+            return (from opleiding in StageManagerEntities.education.ToList().OrderBy(o => o.name) select opleiding).ToList();
         }
 
-        public List<WBedrijf> SearchBedrijfSet()
+        public List<companies> SearchBedrijfSet()
         {
-            return (from bedrijf in StageManagerEntities.bedrijfsets.ToList() select new WBedrijf(bedrijf)).ToList();
+            return (from bedrijf in StageManagerEntities.companies.ToList() select bedrijf).ToList();
         }
 
-        public List<WStage> SearchStageSet()
+        public List<internships> SearchStageSet()
         {
-            return (from stage in StageManagerEntities.stagesets.ToList() select new WStage(stage)).ToList();
+            return (from stage in StageManagerEntities.internships.ToList() select stage).ToList();
         }
 
-        public List<WStage> SearchKoppelingSet()
+        public List<internships> SearchKoppelingSet()
         {
-            return (from stage in StageManagerEntities.stagesets.ToList()
-                    where stage.docentsets != null && stage.Student2 != null
-                    select new WStage(stage)).ToList();
+            return (from stage in StageManagerEntities.internships.ToList()
+                    //where stage.docentsets != null && stage.Student2 != null
+                    select stage).ToList();//TODO
         }
 
-        public List<WStage> SearchKoppelingSet2()
+        public List<internships> SearchKoppelingSet2()
         {
-            return (from stage in StageManagerEntities.stagesets.ToList()
-                    where stage.docentsets != null && stage.Student2 == null
-                    select new WStage(stage)).ToList();
+            return (from stage in StageManagerEntities.internships.ToList()
+                    //where stage.docentsets != null && stage.Student2 == null
+                    select stage).ToList();//TODO
         }
 
 
-        public WStage SearchStageSet(int StudentId)
+        public internships SearchStageSet(int StudentId)
         {
-            return (from stage in StageManagerEntities.stagesets.ToList()
-                    where stage.Student1 == StudentId
-                    select new WStage(stage)).First();
+            return (from stage in StageManagerEntities.internships.ToList()
+                    //where stage.Student1 == StudentId
+                    select stage).First();//TODO
         }
 
         public bool containsMail(String mailadres)
         {
-            return (from mail in StageManagerEntities.tempemailsets.ToList()
-                    where mail.Email == mailadres
-                    select new WTempmail(mail)).Count() != 0;
+            return (from user in StageManagerEntities.users.ToList()
+                    where user.email == mailadres
+                    select user).Count() != 0;
         }
 
-        public WWebkey mailWebkey(String mailadres)
+        public webkeys mailWebkey(String mailadres)
         {
-            return (from mail in StageManagerEntities.tempemailsets.ToList()
-                    where mail.Email == mailadres
-                    select new WWebkey(mail.webkeysets)).First();
+            List<users> list = StageManagerEntities.users.ToList();
+            users user = null;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].email == mailadres)
+                {
+                    user = list[i];
+                    break;
+                }
+            }
+
+            if (user != null)
+            {
+                List<webkeys> keyList = StageManagerEntities.webkeys.ToList();
+                for (int i = 0; i < keyList.Count; i++)
+                {
+                    if (keyList[i].users == user)
+                    {
+                        return keyList[i];
+                    }
+                }
+            }
+
+            return null;//TODO: CHECK!!
         }
 
         public string NewWebkey(string to)
         {
             String key = "";
-            List<WWebkey> list = new List<WWebkey>();
+            List<webkeys> list = new List<webkeys>();
             do
             {
                 key = randomSting(10);
-                list = (from webkey in StageManagerEntities.webkeysets.ToList() where webkey.ConnectionKey == key select new WWebkey(webkey)).ToList();
+                list = (from webkey in StageManagerEntities.webkeys.ToList() where webkey.webkey == key select webkey).ToList();
             }
             while (list.Count > 0);
             return key;

@@ -14,9 +14,9 @@ namespace StageManager.ViewModels
     class BedrijfViewModel : PropertyChanged, IExcelAlgorithm
     {
         private static Random random = new Random();
-        private WBedrijf bedrijf = new WStored().SearchBedrijfSet()[random.Next(new WStored().SearchBedrijfSet().Count)];//temp
+        private companies bedrijf = new WStored().SearchBedrijfSet()[random.Next(new WStored().SearchBedrijfSet().Count)];//temp
 
-        internal WBedrijf Bedrijf
+        internal companies Bedrijf
         {
             get { return bedrijf; }
             set
@@ -33,11 +33,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return bedrijf.Naam;
+                return bedrijf.name;
             }
             set
             {
-                bedrijf.Naam = value;
+                bedrijf.name = value;
                 NotifyOfPropertyChange(() => Naam);
             }
         }
@@ -46,11 +46,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return bedrijf.AdresSets.Straat;
+                return bedrijf.adresses.street;
             }
             set
             {
-                bedrijf.AdresSets.Straat = value;
+                bedrijf.adresses.street = value;
                 NotifyOfPropertyChange(() => Straat);
             }
         }
@@ -59,11 +59,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return bedrijf.AdresSets.Huisnummer;
+                return bedrijf.adresses.housenumber;
             }
             set
             {
-                bedrijf.AdresSets.Huisnummer = value;
+                bedrijf.adresses.housenumber = value;
                 NotifyOfPropertyChange(() => Huisnummer);
             }
         }
@@ -72,11 +72,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return bedrijf.AdresSets.Postcode;
+                return bedrijf.adresses.zipcode;
             }
             set
             {
-                bedrijf.AdresSets.Postcode = value;
+                bedrijf.adresses.zipcode = value;
                 NotifyOfPropertyChange(() => Postcode);
             }
         }
@@ -85,11 +85,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return bedrijf.AdresSets.Plaats;
+                return bedrijf.adresses.place;
             }
             set
             {
-                bedrijf.AdresSets.Plaats = value;
+                bedrijf.adresses.place = value;
                 NotifyOfPropertyChange(() => Plaats);
             }
         }
@@ -99,7 +99,7 @@ namespace StageManager.ViewModels
         {
         }
 
-        public BedrijfViewModel(MainViewModel main, WBedrijf bedrijf)
+        public BedrijfViewModel(MainViewModel main, companies bedrijf)
             : this(main)
         {
             Bedrijf = bedrijf;
@@ -109,7 +109,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Bedrijf = (WBedrijf)o[1];
+                Bedrijf = (companies)o[1];
             }
             catch (Exception)
             {

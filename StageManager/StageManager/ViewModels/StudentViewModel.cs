@@ -12,9 +12,9 @@ namespace StageManager.ViewModels
     class StudentViewModel : PropertyChanged, IExcelAlgorithm
     {
         private static Random random = new Random();
-        private WStudent student;
+        private students student;
 
-        internal WStudent Student
+        internal students Student
         {
             get { return student; }
             set
@@ -31,10 +31,10 @@ namespace StageManager.ViewModels
 
         public string Voornaam
         {
-            get { return student.Voornaam; }
+            get { return student.users.name; }
             set
             {
-                student.Voornaam = value;
+                student.users.name = value;
                 NotifyOfPropertyChange(() => Voornaam);
             }
         }
@@ -43,49 +43,48 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return student.Achternaam;
+                return student.users.surname;
             }
             set
             {
-                student.Achternaam = value;
+                student.users.surname = value;
                 NotifyOfPropertyChange(() => Achternaam);
             }
         }
 
         public int Studentnummer
         {
-            get { return student.Studentnummer; }
+            get { return student.studentnumber; }
             set
             {
-                student.Studentnummer = value;
+                student.studentnumber = value;
                 NotifyOfPropertyChange(() => Studentnummer);
             }
         }
         public string Opleiding
         {
-            get { return student.Opleidingset.Naam; }
+            get { return student.education.name; }
             set
             {
-                student.Opleidingset.Naam = value;
                 NotifyOfPropertyChange(() => Opleiding);
             }
         }
 
         public string Emailadres
         {
-            get { return student.Email; }
+            get { return student.users.email; }
             set
             {
-                student.Email = value;
+                student.users.email = value;
                 NotifyOfPropertyChange(() => Emailadres);
             }
         }
         public string Telefoonnummer
         {
-            get { return student.Telefoonnummer; }
+            get { return student.users.phonenumber; }
             set
             {
-                student.Telefoonnummer = value;
+                student.users.phonenumber = value;
                 NotifyOfPropertyChange(() => Telefoonnummer);
             }
         }
@@ -95,7 +94,7 @@ namespace StageManager.ViewModels
         {
         }
 
-        public StudentViewModel(MainViewModel main, WStudent student)
+        public StudentViewModel(MainViewModel main, students student)
             : this(main)
         {
             Student = student;
@@ -105,7 +104,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Student = (WStudent)o[1];
+                Student = (students)o[1];
             }
             catch (Exception)
             {                

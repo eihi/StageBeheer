@@ -10,22 +10,22 @@ namespace StageManager.Services
     public class Service : IService
     {
         private readonly IFactory factory;
-        private readonly List<studentsets> studenten;
-        private readonly List<docentsets> docenten;
-        private readonly List<bedrijfsets> bedrijven;
-        private readonly List<bedrijfsbegeleidersets> bedrijfsbegeleiders;
+        private readonly List<students> studenten;
+        private readonly List<teachers> docenten;
+        private readonly List<companies> bedrijven;
+        private readonly List<supervisor> bedrijfsbegeleiders;
 
         public Service(IFactory factory)
         {
             this.factory = factory;
 
-            this.studenten = new List<studentsets>();
-            this.docenten = new List<docentsets>();
-            this.bedrijven = new List<bedrijfsets>();
-            this.bedrijfsbegeleiders = new List<bedrijfsbegeleidersets>();
+            this.studenten = new List<students>();
+            this.docenten = new List<teachers>();
+            this.bedrijven = new List<companies>();
+            this.bedrijfsbegeleiders = new List<supervisor>();
         }
 
-        public IEnumerable<studentsets> Studenten
+        public IEnumerable<students> Studenten
         {
             get { return studenten; }
         }
@@ -41,7 +41,7 @@ namespace StageManager.Services
             }
         }
 
-        public IEnumerable<docentsets> Docenten
+        public IEnumerable<teachers> Docenten
         {
             get { return docenten; }
         }
@@ -58,7 +58,7 @@ namespace StageManager.Services
             }
         }
 
-        public IEnumerable<bedrijfsets> Bedrijven
+        public IEnumerable<companies> Bedrijven
         {
             get { return bedrijven; }
         }
@@ -75,7 +75,7 @@ namespace StageManager.Services
             }
         }
 
-        public IEnumerable<bedrijfsbegeleidersets> Bedrijfsbegeleiders
+        public IEnumerable<supervisor> Bedrijfsbegeleiders
         {
             get { return bedrijfsbegeleiders; }
         }

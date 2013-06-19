@@ -100,37 +100,25 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Exceptions\CantBeNullException.cs" />
-    <Compile Include="Models\academiesets.cs">
+    <Compile Include="Models\academics.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\adressets.cs">
+    <Compile Include="Models\administrators.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\algemeensets.cs">
+    <Compile Include="Models\adresses.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\bedrijfsbegeleidersets.cs">
+    <Compile Include="Models\companies.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\bedrijfsets.cs">
+    <Compile Include="Models\education.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\coordinator.cs">
+    <Compile Include="Models\internships.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\docentsets.cs">
-      <DependentUpon>StagemanagerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\eindstagesets.cs">
-      <DependentUpon>StagemanagerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\kennisgebiedset.cs">
-      <DependentUpon>StagemanagerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\opleidingsets.cs">
-      <DependentUpon>StagemanagerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\persoonsets.cs">
+    <Compile Include="Models\knowledge.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StagemanagerModel.Context.cs">
@@ -148,33 +136,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StagemanagerModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\stagesets.cs">
+    <Compile Include="Models\studentadress.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\studentsets.cs">
+    <Compile Include="Models\students.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tempemailsets.cs">
+    <Compile Include="Models\students_internships.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WAcademie.cs" />
-    <Compile Include="Models\WAdres.cs" />
-    <Compile Include="Models\WAlgemeen.cs" />
-    <Compile Include="Models\WBedrijfsBegeleider.cs" />
-    <Compile Include="Models\WBedrijf.cs" />
-    <Compile Include="Models\WDocent.cs" />
-    <Compile Include="Models\webkeysets.cs">
+    <Compile Include="Models\supervisor.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WEindStage.cs" />
-    <Compile Include="Models\WOpleiding.cs" />
-    <Compile Include="Models\WPersoon.cs" />
-    <Compile Include="Models\WStage.cs" />
+    <Compile Include="Models\teachers.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\transport.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\users.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\volumehours.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\webkeys.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WStored.cs" />
-    <Compile Include="Models\WStudent.cs" />
-    <Compile Include="Models\WKennisgebied.cs" />
-    <Compile Include="Models\WTempmail.cs" />
-    <Compile Include="Models\WWebkey.cs" />
     <Compile Include="Services\Clear.cs" />
     <Compile Include="Services\DefaultFactory.cs" />
     <Compile Include="Services\EntityService.cs" />
@@ -326,6 +315,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="Models\StagemanagerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

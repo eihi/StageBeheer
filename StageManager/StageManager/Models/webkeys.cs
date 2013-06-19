@@ -12,16 +12,13 @@ namespace StageManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class persoonsets
+    public partial class webkeys
     {
-        public int Id { get; set; }
-        public string Voornaam { get; set; }
-        public string Achternaam { get; set; }
-        public string Email { get; set; }
-        public string Telefoonnummer { get; set; }
+        public string webkey { get; set; }
+        public Nullable<int> user_id { get; set; }
+        public string type { get; set; }
+        public string email { get; set; }
     
-        public virtual coordinator coordinator { get; set; }
-        public virtual docentsets docentsets { get; set; }
-        public virtual studentsets studentsets { get; set; }
+        public virtual users users { get; set; }
     }
 }

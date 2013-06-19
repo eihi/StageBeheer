@@ -12,9 +12,9 @@ namespace StageManager.ViewModels
     class DocentViewModel : PropertyChanged, IExcelAlgorithm
     {
         private static Random random = new Random();
-        private WDocent docent = new WStored().SearchDocentSet(null)[random.Next(new WStored().SearchDocentSet(null).Count)];
+        private teachers docent = new WStored().SearchDocentSet(null)[random.Next(new WStored().SearchDocentSet(null).Count)];
 
-        internal WDocent Docent
+        internal teachers Docent
         {
             get { return docent; }
             set
@@ -35,11 +35,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.Voornaam;
+                return docent.users.name;
             }
             set
             {
-                docent.Voornaam = value;
+                docent.users.name = value;
                 NotifyOfPropertyChange(() => Voornaam);
             }
         }
@@ -47,11 +47,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.Achternaam;
+                return docent.users.surname;
             }
             set
             {
-                docent.Achternaam = value;
+                docent.users.surname = value;
                 NotifyOfPropertyChange(() => Achternaam);
             }
         }
@@ -59,11 +59,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.adressets.Straat;
+                return docent.adresses.street;
             }
             set
             {
-                docent.adressets.Straat = value;
+                docent.adresses.street = value;
                 NotifyOfPropertyChange(() => Straat);
             }
         }
@@ -71,11 +71,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.adressets.Huisnummer;
+                return docent.adresses.housenumber;
             }
             set
             {
-                docent.adressets.Huisnummer = value;
+                docent.adresses.housenumber = value;
                 NotifyOfPropertyChange(() => Huisnummer);
             }
         }
@@ -84,11 +84,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.adressets.Postcode;
+                return docent.adresses.zipcode;
             }
             set
             {
-                docent.adressets.Postcode = value;
+                docent.adresses.zipcode = value;
                 NotifyOfPropertyChange(() => Postcode);
             }
         }
@@ -96,11 +96,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.adressets.Plaats;
+                return docent.adresses.place;
             }
             set
             {
-                docent.adressets.Plaats = value;
+                docent.adresses.place = value;
                 NotifyOfPropertyChange(() => Woonplaats);
             }
         }
@@ -108,11 +108,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.Telefoonnummer;
+                return docent.users.phonenumber;
             }
             set
             {
-                docent.Telefoonnummer = value;
+                docent.users.phonenumber = value;
                 NotifyOfPropertyChange(() => Telefoon);
             }
         }
@@ -120,11 +120,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return docent.Email;
+                return docent.users.email;
             }
             set
             {
-                docent.Email = value;
+                docent.users.email = value;
                 NotifyOfPropertyChange(() => EMail);
             }
         }
@@ -132,7 +132,7 @@ namespace StageManager.ViewModels
         public DocentViewModel(MainViewModel main)
             : base(main)
         { }
-        public DocentViewModel(MainViewModel main, WDocent docent)
+        public DocentViewModel(MainViewModel main, teachers docent)
             : this(main)
         {
             Docent = docent;
@@ -142,7 +142,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Docent = (WDocent)o[1];
+                Docent = (teachers)o[1];
             }
             catch (Exception)
             {

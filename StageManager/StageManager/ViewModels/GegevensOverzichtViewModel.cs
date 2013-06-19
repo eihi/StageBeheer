@@ -11,8 +11,8 @@ namespace StageManager.ViewModels
 {
     public class GegevensOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
-        private Dictionary<Object, WStudent> list;
-        Dictionary<Object, WStudent> List
+        private Dictionary<Object, students> list;
+        Dictionary<Object, students> List
         {
             get
             {
@@ -52,7 +52,7 @@ namespace StageManager.ViewModels
                 if (value != null)
                 {
                     selectedStudent = value;
-                    WStudent s = null;
+                    students s = null;
                     list.TryGetValue(value, out s);
                     Type t = value.GetType();
                     System.Reflection.PropertyInfo p = t.GetProperty("MailTo");
@@ -103,7 +103,7 @@ namespace StageManager.ViewModels
             :base(main)
         {
             selectedStudent = new Object();
-            List = new Dictionary<object, WStudent>();
+            List = new Dictionary<object, students>();
             List = new WStored().SearchStudentSet("", "").ToDictionary(t => (Object)new
             {
                 Studentnummer = t.Studentnummer,
@@ -187,15 +187,15 @@ Bedrijf + Bedrijfsbegeleider
             worksheet.Cells[i, 4] = "E-mailadres";
             worksheet.Cells[i, 5] = "Telefoonnummer";
 
-            foreach (KeyValuePair<Object, WStudent> s in List)
+            foreach (KeyValuePair<Object, students> s in List)
             {
                 i++;
 
-                worksheet.Cells[i, 1] = s.Value.Studentnummer;
-                worksheet.Cells[i, 2] = s.Value.Voornaam;
-                worksheet.Cells[i, 3] = s.Value.Achternaam;
-                worksheet.Cells[i, 4] = s.Value.Email;
-                worksheet.Cells[i, 5] = s.Value.Telefoonnummer;
+                worksheet.Cells[i, 1] = s.Value.studentnumber;
+                worksheet.Cells[i, 2] = s.Value.users.name;
+                worksheet.Cells[i, 3] = s.Value.users.surname;
+                worksheet.Cells[i, 4] = s.Value.users.email;
+                worksheet.Cells[i, 5] = s.Value.users.phonenumber;
             }
         }
     }

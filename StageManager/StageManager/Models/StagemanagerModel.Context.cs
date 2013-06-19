@@ -25,20 +25,21 @@ namespace StageManager.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<academiesets> academiesets { get; set; }
-        public DbSet<adressets> adressets { get; set; }
-        public DbSet<algemeensets> algemeensets { get; set; }
-        public DbSet<bedrijfsbegeleidersets> bedrijfsbegeleidersets { get; set; }
-        public DbSet<bedrijfsets> bedrijfsets { get; set; }
-        public DbSet<coordinator> coordinator { get; set; }
-        public DbSet<docentsets> docentsets { get; set; }
-        public DbSet<eindstagesets> eindstagesets { get; set; }
-        public DbSet<kennisgebiedset> kennisgebiedset { get; set; }
-        public DbSet<opleidingsets> opleidingsets { get; set; }
-        public DbSet<persoonsets> persoonsets { get; set; }
-        public DbSet<stagesets> stagesets { get; set; }
-        public DbSet<studentsets> studentsets { get; set; }
-        public DbSet<tempemailsets> tempemailsets { get; set; }
-        public DbSet<webkeysets> webkeysets { get; set; }
+        public DbSet<academics> academics { get; set; }
+        public DbSet<administrators> administrators { get; set; }
+        public DbSet<adresses> adresses { get; set; }
+        public DbSet<companies> companies { get; set; }
+        public DbSet<education> education { get; set; }
+        public DbSet<internships> internships { get; set; }
+        public DbSet<knowledge> knowledge { get; set; }
+        public DbSet<students_internships> students_internships { get; set; }
+        public DbSet<supervisor> supervisor { get; set; }
+        public DbSet<teachers> teachers { get; set; }
+        public DbSet<transport> transport { get; set; }
+        public DbSet<users> users { get; set; }
+        public DbSet<volumehours> volumehours { get; set; }
+        public DbSet<webkeys> webkeys { get; set; }
+        public DbSet<students> students { get; set; }
+        public DbSet<studentadress> studentadress { get; set; }
     }
 }

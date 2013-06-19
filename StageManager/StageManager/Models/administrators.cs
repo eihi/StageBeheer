@@ -12,12 +12,17 @@ namespace StageManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class eindstagesets
+    public partial class administrators
     {
-        public int Stage_Id { get; set; }
-        public Nullable<int> TweedeLezer { get; set; }
+        public administrators()
+        {
+            this.education = new HashSet<education>();
+        }
     
-        public virtual docentsets docentsets { get; set; }
-        public virtual stagesets stagesets { get; set; }
+        public int user_id { get; set; }
+        public string password { get; set; }
+    
+        public virtual users users { get; set; }
+        public virtual ICollection<education> education { get; set; }
     }
 }

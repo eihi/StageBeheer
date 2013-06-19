@@ -15,8 +15,8 @@ namespace StageManager.ViewModels
          * ("", "m.aydin4@student.avans.nl", "Aydin, Murat", "Hyacinthenstraat 15", "Ingeleverd", "In orde", "Bob Bus"))
          */
 
-        private Dictionary<Object, WStudent> list;
-        Dictionary<Object, WStudent> List
+        private Dictionary<Object, students> list;
+        Dictionary<Object, students> List
         {
             get
             {
@@ -56,7 +56,7 @@ namespace StageManager.ViewModels
                 if (value != null)
                 {
                     selectedStudent = value;
-                    WStudent s = null;
+                    students s = null;
                     list.TryGetValue(value, out s);
                     Type t = value.GetType();
                     System.Reflection.PropertyInfo p = t.GetProperty("MailTo");
@@ -91,9 +91,9 @@ namespace StageManager.ViewModels
             {
                 if ((bool)List.Keys.ElementAt(i).GetType().GetProperty("MailTo").GetMethod.Invoke(List.Keys.ElementAt(i), null))
                 {
-                    WStudent s;
+                    students s;
                     List.TryGetValue(List.Keys.ElementAt(i), out s);
-                    mails.Add(s.Email);
+                    mails.Add(s.users.email);
                 }
             }
             Main.ChangeButton("Mail", new List<object>() { mails }, Clear.No);
@@ -102,12 +102,12 @@ namespace StageManager.ViewModels
 
         public ProcesOverzichtViewModel(MainViewModel main)
             : base(main)
-        {
+        {/*
             selectedStudent = new Object();
-            List = new Dictionary<object, WStudent>();
-            List<WStage> stages = new WStored().SearchStage("", "", false);
+            List = new Dictionary<object, students>();
+            List<students> stages = new WStored().SearchStage("", "", false);
 
-            List<WStudent> studenten = new List<WStudent>();
+            List<students> studenten = new List<students>();
 
             for (int i = 0; i < stages.Count; i++)
             {
@@ -142,7 +142,7 @@ namespace StageManager.ViewModels
 
                     if (!contains)
                     {
-                        studenten.Add(stages[i].studentset2);
+                        //studenten.Add(stages[i].studentset2); TODO!!!!!!
                     }
                 }
             }
@@ -151,14 +151,15 @@ namespace StageManager.ViewModels
             List = studenten.ToDictionary(t => (Object)new
                           {
                               MailTo = false,
-                              Email = t.Email,
-                              EmailURL = "mailto:" + t.Email,
-                              StudentNaam = t.Achternaam + ", " + t.Voornaam,
+                              Email = t.users.email,
+                              EmailURL = "mailto:" + t.users.email,
+                              StudentNaam = t.users.surname+ ", " + t.users.name,
                               Gegevens = "Adres komt hier",
                               Stageopdracht = true,
                               Feedback = "Geen",
                               Docent = "Docent"
                           }, t => t);
+          */
         }
     }
 }

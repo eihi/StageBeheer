@@ -47,8 +47,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        private Dictionary<Object,WStage> list;
-        public Dictionary<Object, WStage> List
+        private Dictionary<Object,internships> list;
+        public Dictionary<Object, internships> List
         {
             get
             {
@@ -76,8 +76,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WStage selectedStage;
-        public WStage SelectedStage
+        private internships selectedStage;
+        public internships SelectedStage
         {
             get { return selectedStage; }
             set { selectedStage = value; }
@@ -97,7 +97,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        public void Test(WStudent student)
+        public void Test(students student)
         {
             Main.ChangeButton("Student", new List<object>() { student }, Clear.After, this);
         }
@@ -117,7 +117,7 @@ namespace StageManager.ViewModels
 
         public void searchStage()
         {
-            list = new Dictionary<object, WStage>();
+            list = new Dictionary<object, internships>();
             list = (new WStored().SearchStage(searchString, searchOpleiding,false).ToDictionary(t=>(Object)new
                     {
                             Stage = t.Stageopdracht_omschijving,

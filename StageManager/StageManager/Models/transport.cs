@@ -12,18 +12,16 @@ namespace StageManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class kennisgebiedset
+    public partial class transport
     {
-        public kennisgebiedset()
+        public transport()
         {
-            this.docentsets = new HashSet<docentsets>();
-            this.stagesets = new HashSet<stagesets>();
+            this.teachers = new HashSet<teachers>();
         }
     
-        public int Id { get; set; }
-        public string Naam { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     
-        public virtual ICollection<docentsets> docentsets { get; set; }
-        public virtual ICollection<stagesets> stagesets { get; set; }
+        public virtual ICollection<teachers> teachers { get; set; }
     }
 }

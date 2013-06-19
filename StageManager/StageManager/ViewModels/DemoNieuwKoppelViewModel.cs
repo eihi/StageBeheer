@@ -22,8 +22,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        private List<WDocent> docentGridContents;
-        public List<WDocent> DocentGridContents
+        private List<teachers> docentGridContents;
+        public List<teachers> DocentGridContents
         {
             get { return docentGridContents; }
             set
@@ -33,8 +33,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        private List<WDocent> lezerGridContents;
-        public List<WDocent> LezerGridContents
+        private List<teachers> lezerGridContents;
+        public List<teachers> LezerGridContents
         {
             get { return lezerGridContents; }
             set
@@ -79,7 +79,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WStudent selectedStudent;
+        private students selectedStudent;
         public Object SelectedStudent
         {
 
@@ -99,15 +99,15 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WStudent koppelStudent;
-        public WStudent KoppelStudent
+        private students koppelStudent;
+        public students KoppelStudent
         {
 
             get { return koppelStudent; }
             set
             {
                 koppelStudent = value;
-                KoppelStudentNaam = koppelStudent.Achternaam + ", " + koppelStudent.Voornaam;
+                KoppelStudentNaam = koppelStudent.users.surname + ", " + koppelStudent.users.name;
                 NotifyOfPropertyChange(() => KoppelStudent);
             }
         }
@@ -124,7 +124,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WDocent selectedDocent;
+        private teachers selectedDocent;
         public Object SelectedDocent
         {
 
@@ -137,15 +137,15 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WDocent koppelDocent;
-        public WDocent KoppelDocent
+        private teachers koppelDocent;
+        public teachers KoppelDocent
         {
 
             get { return koppelDocent; }
             set
             {
                 koppelDocent = value;
-                KoppelDocentNaam = koppelDocent.Achternaam + ", " + koppelDocent.Voornaam;
+                KoppelDocentNaam = koppelDocent.users.surname + ", " + koppelDocent.users.name;
                 NotifyOfPropertyChange(() => KoppelDocent);
             }
         }
@@ -187,8 +187,8 @@ namespace StageManager.ViewModels
 
         public void Koppelen()
         {
-            WStage myStage = new WStored().SearchStageSet(KoppelStudent.Id);
-            myStage.docentsets = KoppelDocent;
+            internships myStage = new WStored().SearchStageSet(KoppelStudent.Id);
+            myStage.teachers = KoppelDocent;
 
             SearchString = "";
             SearchOpleiding = "";

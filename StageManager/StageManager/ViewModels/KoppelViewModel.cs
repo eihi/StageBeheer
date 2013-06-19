@@ -12,16 +12,16 @@ namespace StageManager.ViewModels
 {
     class KoppelViewModel : PropertyChanged
     {
-        private WStage stage;
+        private internships stage;
 
-        public WStage Stage
+        public internships Stage
         {
             get { return stage; }
             set { stage = value;
-            KoppelStudentNaam = stage.studentset.Voornaam + " " + stage.studentset.Achternaam;
+            //KoppelStudentNaam = stage.studentset.Voornaam + " " + stage.studentset.Achternaam;        TODO!!!!!!!!!!
             NotifyOfPropertyChange(()=>CanTweedeLezer);
             NotifyOfPropertyChange(() => KoppelStudentNaam);
-            }//TODO Notify
+            }
         }
 
         private String koppelStudentNaam = "<geselecteerde student>";
@@ -36,7 +36,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WDocent selectedDocent;
+        private teachers selectedDocent;
         public Object SelectedDocent
         {
 
@@ -49,15 +49,15 @@ namespace StageManager.ViewModels
             }
         }
 
-        private WDocent koppelDocent;
-        public WDocent KoppelDocent
+        private teachers koppelDocent;
+        public teachers KoppelDocent
         {
 
             get { return koppelDocent; }
             set
             {
                 koppelDocent = value;
-                KoppelDocentNaam = koppelDocent.Achternaam + ", " + koppelDocent.Voornaam;
+                KoppelDocentNaam = koppelDocent.users.surname + ", " + koppelDocent.users.name;
                 NotifyOfPropertyChange(() => KoppelDocent);
             }
         }
@@ -76,12 +76,12 @@ namespace StageManager.ViewModels
 
         public Boolean CanTweedeLezer
         {
-            get { return Stage!=null? Stage.GetType()== typeof(WEindStage):false;
+            get { return Stage!=null? Stage.GetType()== typeof(internships):false;
             }
         }
 
-        private Dictionary<Object, WDocent> list;
-        public Dictionary<Object, WDocent> List
+        private Dictionary<Object, teachers> list;
+        public Dictionary<Object, teachers> List
         {
             get
             {
@@ -119,7 +119,7 @@ namespace StageManager.ViewModels
             : base(main)
         {
             Main = main;
-            list = new Dictionary<object, WDocent>();
+            list = new Dictionary<object, teachers>();
             list = (new WStored().SearchDocentSet("").ToDictionary(t => (Object)new
                     {
                         Voornaam = t.Voornaam,
@@ -133,7 +133,7 @@ namespace StageManager.ViewModels
             GridContents = list.Keys.ToList();
         }
 
-        public KoppelViewModel(MainViewModel main, WStage stage)
+        public KoppelViewModel(MainViewModel main, internships stage)
             :this(main)
         {
             Stage = stage;
@@ -143,7 +143,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Stage = (WStage)o[1];
+                Stage = (internships)o[1];
             }
             catch (Exception)
             {   
@@ -152,7 +152,7 @@ namespace StageManager.ViewModels
 
         public void Koppelen()
         {
-            Stage.docentsets = KoppelDocent;            
+            Stage.teachers = KoppelDocent;            
             Wrapper myWrapper = new Wrapper();
             myWrapper.forceSync();
             Main.ChangeButton("Zoek", new List<Object>(), Services.Clear.All);
