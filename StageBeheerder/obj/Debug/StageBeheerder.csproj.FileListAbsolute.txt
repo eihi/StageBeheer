@@ -1,2 +1,25 @@
 c:\users\esté\documents\visual studio 2012\Projects\StageBeheerder\StageBeheerder\bin\Debug\StageBeheerder.exe.config
 C:\Users\Sjors\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\StageBeheerder.exe.config
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\StageBeheerder.exe.config
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\StageBeheerder.exe
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\StageBeheerder.pdb
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\Caliburn.Micro.dll
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\EntityFramework.dll
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\Caliburn.Micro.pdb
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\Caliburn.Micro.xml
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\EntityFramework.xml
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder.csprojResolveAssemblyReference.cache
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\Views\MainView.baml
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\Views\MainView.g.cs
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\App.g.cs
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder_MarkupCompile.cache
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder.g.resources
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder.Properties.Resources.resources
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder.csproj.GenerateResource.Cache
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder.exe
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder.pdb
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\StageBeheerder_MarkupCompile.lref
+C:\Users\Esté\Documents\GitHub\StageBeheerder\StageBeheerder\obj\Debug\App.baml

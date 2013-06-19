@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StageBeheerder.ViewModels
+namespace StageBeheerder.Models
 {
-    public class MainViewModel
+    public class Stage
     {
-        public event EventHandler SomethingHappened;
     }
 }
