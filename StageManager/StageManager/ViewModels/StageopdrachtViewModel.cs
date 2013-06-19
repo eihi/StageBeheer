@@ -30,7 +30,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        public DateTime? StartDatum
+        public DateTime StartDatum
         {
             get { return stage.start_date; }
             set
@@ -40,7 +40,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        public DateTime? EindDatum
+        public DateTime EindDatum
         {
             get { return stage.end_date; }
             set

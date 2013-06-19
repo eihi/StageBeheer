@@ -105,7 +105,7 @@ namespace StageManager.ViewModels
         public ZoekViewModel(MainViewModel main)
             :base(main)
         {
-            OpleidingStack = (from opleiding in new WStored().SearchOpleidingSet() select opleiding.Naam).ToList();
+            OpleidingStack = (from opleiding in new WStored().SearchOpleidingSet() select opleiding.name).ToList();
             searchStage();
         }
 
@@ -117,25 +117,25 @@ namespace StageManager.ViewModels
 
         public void searchStage()
         {
-            list = new Dictionary<object, internships>();
-            list = (new WStored().SearchStage(searchString, searchOpleiding,false).ToDictionary(t=>(Object)new
-                    {
-                            Stage = t.Stageopdracht_omschijving,
-                            Studentnummer = t.studentset.Studentnummer,
-                            Voornaam = t.studentset.Voornaam,
-                            Achternaam = t.studentset.Achternaam,
-                            Opleiding = t.studentset.Opleidingset.Naam,
-                            EC_Norm_Behaald = t.studentset.EC_norm_behaald
-                    },t=>t));
-            if (list.Count == 0)
-            {
-                list.Add((Object)new
-                {
-                    Error = "No occurrences found!"
-                },null);
+            //list = new Dictionary<object, internships>();
+            //list = (new WStored().SearchStage(searchString, searchOpleiding,false).ToDictionary(t=>(Object)new
+            //        {
+            //                Stage = t.description,
+            //                Studentnummer = t.student.Studentnummer,
+            //                Voornaam = t.studentset.Voornaam,
+            //                Achternaam = t.studentset.Achternaam,
+            //                Opleiding = t.studentset.Opleidingset.Naam,
+            //                EC_Norm_Behaald = t.studentset.EC_norm_behaald
+            //        },t=>t));
+            //if (list.Count == 0)
+            //{
+            //    list.Add((Object)new
+            //    {
+            //        Error = "No occurrences found!"
+            //    },null);
 
-            }
-                GridContents = list.Keys.ToList();
+            //}
+            //    GridContents = list.Keys.ToList();
         }
 
         public override void update(object[] o)

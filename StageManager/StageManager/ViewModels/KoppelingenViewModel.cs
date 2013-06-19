@@ -36,11 +36,11 @@ namespace StageManager.ViewModels
 
         public void searchKoppelingen()
         {
-            KoppelGridContents = (from stage in new WStored().SearchKoppelingSet()
-                                  select (object)new { Student1 = stage.studentset.Voornaam + " " + stage.studentset.Achternaam, Student2 = stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam, Stageopdracht = stage.Stageopdracht_omschijving, Docent = stage.docentsets.Voornaam + " " + stage.docentsets.Achternaam }).ToList();
+            //KoppelGridContents = (from stage in new WStored().SearchKoppelingSet()
+            //                      select (object)new { Student1 = stage.students.users.name + " " + stage.studentset.Achternaam, Student2 = stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam, Stageopdracht = stage.description, Docent = stage.teachers.users.name + " " + stage.teachers.users.surname }).ToList();
            
-            KoppelGridContents = (from stage in new WStored().SearchKoppelingSet2()
-                                  select (object)new { Student1 = stage.studentset.Voornaam + " " + stage.studentset.Achternaam, Student2 = "", Stageopdracht = stage.Stageopdracht_omschijving, Docent = stage.docentsets.Voornaam + " " + stage.docentsets.Achternaam }).ToList();
+            //KoppelGridContents = (from stage in new WStored().SearchKoppelingSet2()
+            //                      select (object)new { Student1 = stage.studentset.Voornaam + " " + stage.studentset.Achternaam, Student2 = "", Stageopdracht = stage.Stageopdracht_omschijving, Docent = stage.docentsets.Voornaam + " " + stage.docentsets.Achternaam }).ToList();
 
 
         }

@@ -32,7 +32,7 @@
 
             // Observer observable
             MainViewModel mainViewModel = new MainViewModel();
-            //mainViewModel.SomethingHappened += viewController.HandleEvent;
+            mainViewModel.SomethingHappened += viewController.HandleEvent;
 
             // Show Window
             windowManager.ShowWindow(mainViewModel);

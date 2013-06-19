@@ -122,10 +122,10 @@ namespace StageManager.ViewModels
             list = new Dictionary<object, teachers>();
             list = (new WStored().SearchDocentSet("").ToDictionary(t => (Object)new
                     {
-                        Voornaam = t.Voornaam,
-                        Achternaam = t.Achternaam,
-                        Uren = t.Rest(),
-                        Kennisgebied = t.tool_vaardigheidset.First().Naam,
+                        Voornaam = t.users.name,
+                        Achternaam = t.users.surname,
+                        Uren = 10, // TODO: uren rest
+                        Kennisgebied = t.knowledge.First().name,
                         Afstand = 500
                     }, t => t));
 

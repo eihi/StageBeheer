@@ -106,21 +106,21 @@ namespace StageManager.ViewModels
             List = new Dictionary<object, students>();
             List = new WStored().SearchStudentSet("", "").ToDictionary(t => (Object)new
             {
-                Studentnummer = t.Studentnummer,
-                Achternaam = t.Achternaam,
+                Studentnummer = t.studentnumber,
+                Achternaam = t.users.surname,
                 Voorvoegsels = "",
-                Roepnaam = t.Voornaam,                
-                Email = t.Email,
-                EmailURL = t.Email,
+                Roepnaam = t.users.name,                
+                Email = t.users.email,
+                EmailURL = t.users.email,
                 Straatnaam = "",
                 Nummer = 0,
                 Toevoeging = "",
                 Postcode = "",
                 Plaats = "",
-                Telefoonnummer = t.Telefoonnummer,
+                Telefoonnummer = t.users.phonenumber,
 
                 // Zoeken naar Extra info
-                ECs = t.EC_norm_behaald,
+                //ECs = t., // TODO: DB EC's
             }, t => t);
 
             /*
