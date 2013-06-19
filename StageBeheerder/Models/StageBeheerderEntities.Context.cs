@@ -40,5 +40,6 @@ namespace StageBeheerder.Models
         public DbSet<users> users { get; set; }
         public DbSet<volumehours> volumehours { get; set; }
         public DbSet<webkeys> webkeys { get; set; }
+        public DbSet<studentadress> studentadress { get; set; }
     }
 }

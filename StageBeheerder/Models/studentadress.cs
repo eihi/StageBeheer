@@ -12,21 +12,16 @@ namespace StageBeheerder.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class students
+    public partial class studentadress
     {
-        public students()
-        {
-            this.students_internships = new HashSet<students_internships>();
-        }
-    
         public int user_id { get; set; }
         public System.TimeSpan studentnumber { get; set; }
         public int education_id { get; set; }
         public Nullable<int> addresss_id { get; set; }
-    
-        public virtual adresses adresses { get; set; }
-        public virtual education education { get; set; }
-        public virtual ICollection<students_internships> students_internships { get; set; }
-        public virtual users users { get; set; }
+        public int id { get; set; }
+        public string place { get; set; }
+        public string street { get; set; }
+        public string housenumber { get; set; }
+        public string zipcode { get; set; }
     }
 }

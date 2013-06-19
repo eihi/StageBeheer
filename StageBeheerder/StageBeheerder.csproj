@@ -44,6 +44,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.1.5.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -66,26 +68,69 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Controllers\ViewController.cs" />
-    <Compile Include="Models\academics.cs" />
-    <Compile Include="Models\administrators.cs" />
-    <Compile Include="Models\adresses.cs" />
-    <Compile Include="Models\companies.cs" />
-    <Compile Include="Models\education.cs" />
-    <Compile Include="Models\internships.cs" />
-    <Compile Include="Models\knowledge.cs" />
-    <Compile Include="Models\StageBeheerderEntities.Context.cs" />
-    <Compile Include="Models\StageBeheerderEntities.cs" />
-    <Compile Include="Models\StageBeheerderEntities.Designer.cs">
-      <DependentUpon>StageBeheerderEntities.cs</DependentUpon>
+    <Compile Include="Models\academics.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\students.cs" />
-    <Compile Include="Models\students_internships.cs" />
-    <Compile Include="Models\supervisor.cs" />
-    <Compile Include="Models\teachers.cs" />
-    <Compile Include="Models\transport.cs" />
-    <Compile Include="Models\users.cs" />
-    <Compile Include="Models\volumehours.cs" />
-    <Compile Include="Models\webkeys.cs" />
+    <Compile Include="Models\administrators.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\adresses.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\companies.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\education.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\internships.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\knowledge.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StageBeheerderEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StageBeheerderEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StageBeheerderEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StageBeheerderEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StageBeheerderEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\studentadress.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\students.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\students_internships.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\supervisor.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\teachers.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\transport.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\users.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\volumehours.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\webkeys.cs">
+      <DependentUpon>StageBeheerderEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -117,6 +162,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Models\StageBeheerderEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StageBeheerderEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\StageBeheerderEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StageBeheerderEntities.edmx</DependentUpon>
+      <LastGenOutput>StageBeheerderEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\StageBeheerderEntities.edmx.diagram">
+      <DependentUpon>StageBeheerderEntities.edmx</DependentUpon>
+    </None>
+    <None Include="Models\StageBeheerderEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StageBeheerderEntities.edmx</DependentUpon>
+      <LastGenOutput>StageBeheerderEntities.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -129,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
