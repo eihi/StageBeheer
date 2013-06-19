@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="StageManager.Views.GegevensOverzichtView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="700">
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Close">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="Close"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </MenuItem>
+            <MenuItem Header="Close All">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="CloseAll"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </MenuItem>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+    <Expander Background="White" IsExpanded="True" ExpandDirection="Right">
+        <Expander.Header>
+            <TextBlock Text="GEGEVENSOVERZICHT" FontWeight="Bold" Visibility="Visible">
+                <TextBlock.LayoutTransform>
+                    <TransformGroup>
+                        <RotateTransform CenterX="25" CenterY="25" Angle="90" />
+                    </TransformGroup>
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+        </Expander.Header>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Button Name="Close" Height="20" Width="16" Content="x" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Background="#FFDE2C2C" Foreground="White" BorderBrush="#00707070"/>
+            </StackPanel>
+            <ScrollViewer Padding="20,0,20,20" DockPanel.Dock="Top">
+                <DockPanel>
+                    <Label Content="Gegevensoverzicht" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontWeight="Thin" FontSize="24"/>
+                    <ListView DockPanel.Dock="Top" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedStudent}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Studentnummer" DisplayMemberBinding="{Binding StudentNummer}" />
+                                <GridViewColumn Header="Achternaam" DisplayMemberBinding="{Binding Achternaam}" />
+                                <GridViewColumn Header="Voorvoegsels" DisplayMemberBinding="{Binding Voorvoegsels}" />
+                                <GridViewColumn Header="Roepnaam" DisplayMemberBinding="{Binding Roepnaam}" />
+                                <GridViewColumn Header="E-mail" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                        <Hyperlink NavigateUri="{Binding Path=EmailURL}">
+                                            <TextBlock Text="{Binding Path=Email}" />
+                                        </Hyperlink>    
+                                    </TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Straatnaam" DisplayMemberBinding="{Binding Straatnaam}" />
+                                <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
+                                <GridViewColumn Header="Toevoeging" DisplayMemberBinding="{Binding Toevoeging}" />
+                                <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
+                                <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding Plaats}" />
+                                <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
+                                <GridViewColumn Header="SLB6-1" DisplayMemberBinding="{Binding SLB61}" />
+                                <GridViewColumn Header="SLB6-2" DisplayMemberBinding="{Binding SLB62}" />
+                                <GridViewColumn Header="SLB6-3" DisplayMemberBinding="{Binding SLB63}" />
+                                <GridViewColumn Header="SLB6-T" DisplayMemberBinding="{Binding SLB6T}" />
+                                <GridViewColumn Header="SLB7-1" DisplayMemberBinding="{Binding SLB71}" />
+                                <GridViewColumn Header="SLB7-2" DisplayMemberBinding="{Binding SLB72}" />
+                                <GridViewColumn Header="SLB7-T" DisplayMemberBinding="{Binding SLB7T}" />
+                                <GridViewColumn Header="EC's" DisplayMemberBinding="{Binding EC}" />
+                                <GridViewColumn Header="P" DisplayMemberBinding="{Binding P}" />
+                                <GridViewColumn Header="EPS" DisplayMemberBinding="{Binding EPS}" />
+                                <GridViewColumn Header="Form. Goedkeuring" DisplayMemberBinding="{Binding FormGoed}" />
+                                <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
+                                <GridViewColumn Header="Stagecontract" DisplayMemberBinding="{Binding Stagecontract}" />
+                                <GridViewColumn Header="Begeleidend Docent" DisplayMemberBinding="{Binding Docent}" />
+                                <GridViewColumn Header="Bijzonderheden" DisplayMemberBinding="{Binding Bijzonderheden}" />
+                                <GridViewColumn Header="Bedrijf" DisplayMemberBinding="{Binding Bedrijf}" />
+                                <GridViewColumn Header="Branche" DisplayMemberBinding="{Binding Branche}" />
+                                <GridViewColumn Header="Straat" DisplayMemberBinding="{Binding BStraat}" />
+                                <GridViewColumn Header="Nr." DisplayMemberBinding="{Binding BNummer}" />
+                                <GridViewColumn Header="Toevoeging" DisplayMemberBinding="{Binding BToevoeging}" />
+                                <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding BPostcode}" />
+                                <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding BPlaats}" />
+                                <GridViewColumn Header="Land" DisplayMemberBinding="{Binding BLand}" />
+                                <GridViewColumn Header="Bedrijfsbegeleider" DisplayMemberBinding="{Binding Bedrijfsbegeleider}" />
+                                <GridViewColumn Header="E-mail" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                        <Hyperlink NavigateUri="{Binding Path=BEmailURL}">
+                                            <TextBlock Text="{Binding Path=BEmail}" />
+                                        </Hyperlink>    
+                                    </TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tel. nr Bedrijf" DisplayMemberBinding="{Binding BTelefoon}" />
+                                <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
+                                <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Export" cal:Message.Attach="btnExport_Click" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20"/>
+                </DockPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Expander>
+</UserControl>

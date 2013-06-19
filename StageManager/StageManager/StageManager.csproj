@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCDF9F13-B56D-4D57-AA02-4B3CE480A2AA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StageManager</RootNamespace>
+    <AssemblyName>StageManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\packages\Caliburn.Micro.1.5.1\lib\net45\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.1.5.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Exceptions\CantBeNullException.cs" />
+    <Compile Include="Models\academiesets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\adressets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\algemeensets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bedrijfsbegeleidersets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bedrijfsets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\coordinator.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\docentsets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eindstagesets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\kennisgebiedset.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\opleidingsets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\persoonsets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StagemanagerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StagemanagerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StagemanagerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StagemanagerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StagemanagerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stagesets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\studentsets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tempemailsets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WAcademie.cs" />
+    <Compile Include="Models\WAdres.cs" />
+    <Compile Include="Models\WAlgemeen.cs" />
+    <Compile Include="Models\WBedrijfsBegeleider.cs" />
+    <Compile Include="Models\WBedrijf.cs" />
+    <Compile Include="Models\WDocent.cs" />
+    <Compile Include="Models\webkeysets.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEindStage.cs" />
+    <Compile Include="Models\WOpleiding.cs" />
+    <Compile Include="Models\WPersoon.cs" />
+    <Compile Include="Models\WStage.cs" />
+    <Compile Include="Models\WStored.cs" />
+    <Compile Include="Models\WStudent.cs" />
+    <Compile Include="Models\WKennisgebied.cs" />
+    <Compile Include="Models\WTempmail.cs" />
+    <Compile Include="Models\WWebkey.cs" />
+    <Compile Include="Services\Clear.cs" />
+    <Compile Include="Services\DefaultFactory.cs" />
+    <Compile Include="Services\EntityService.cs" />
+    <Compile Include="Services\ExportExcel.cs" />
+    <Compile Include="Services\IExcelAlgorithm.cs" />
+    <Compile Include="Services\IFactory.cs" />
+    <Compile Include="Services\ImportExcel.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ISetEntity.cs" />
+    <Compile Include="Services\IUpdate.cs" />
+    <Compile Include="Services\IWrapper.cs" />
+    <Compile Include="Services\Mailer.cs" />
+    <Compile Include="Services\MainArgs.cs" />
+    <Compile Include="Services\PropertyChanged.cs" />
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\Wrapper.cs" />
+    <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="ViewModels\BedrijfsbegeleiderViewModel.cs" />
+    <Compile Include="ViewModels\BedrijfViewModel.cs" />
+    <Compile Include="ViewModels\DocentViewModel.cs" />
+    <Compile Include="ViewModels\ErrorViewModel.cs" />
+    <Compile Include="ViewModels\GegevensOverzichtViewModel.cs" />
+    <Compile Include="ViewModels\KoppelingenViewModel.cs" />
+    <Compile Include="ViewModels\KoppelViewModel.cs" />
+    <Compile Include="ViewModels\MailViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ProcesOverzichtViewModel.cs" />
+    <Compile Include="ViewModels\DemoNieuwKoppelViewModel.cs" />
+    <Compile Include="ViewModels\StageopdrachtViewModel.cs" />
+    <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="ViewModels\ZoekViewModel.cs" />
+    <Compile Include="Views\BedrijfsbegeleiderView.xaml.cs">
+      <DependentUpon>BedrijfsbegeleiderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BedrijfView.xaml.cs">
+      <DependentUpon>BedrijfView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DocentView.xaml.cs">
+      <DependentUpon>DocentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ErrorView.xaml.cs">
+      <DependentUpon>ErrorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GegevensOverzichtView.xaml.cs">
+      <DependentUpon>GegevensOverzichtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KoppelingenView.xaml.cs">
+      <DependentUpon>KoppelingenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KoppelView.xaml.cs">
+      <DependentUpon>KoppelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MailView.xaml.cs">
+      <DependentUpon>MailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcesOverzichtView.xaml.cs">
+      <DependentUpon>ProcesOverzichtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DemoNieuwKoppelView.xaml.cs">
+      <DependentUpon>DemoNieuwKoppelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StageopdrachtView.xaml.cs">
+      <DependentUpon>StageopdrachtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentView.xaml.cs">
+      <DependentUpon>StudentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ZoekView.xaml.cs">
+      <DependentUpon>ZoekView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\ErrorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GegevensOverzichtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KoppelingenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KoppelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\BedrijfsbegeleiderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BedrijfView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DocentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProcesOverzichtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DemoNieuwKoppelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StageopdrachtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ZoekView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\StagemanagerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StagemanagerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\StagemanagerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StagemanagerModel.edmx</DependentUpon>
+      <LastGenOutput>StagemanagerModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\StagemanagerModel.edmx.diagram">
+      <DependentUpon>StagemanagerModel.edmx</DependentUpon>
+    </None>
+    <None Include="Models\StagemanagerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StagemanagerModel.edmx</DependentUpon>
+      <LastGenOutput>StagemanagerModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
