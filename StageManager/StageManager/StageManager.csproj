@@ -191,7 +191,6 @@
     <Compile Include="ViewModels\MailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProcesOverzichtViewModel.cs" />
-    <Compile Include="ViewModels\DemoNieuwKoppelViewModel.cs" />
     <Compile Include="ViewModels\StageopdrachtViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\ZoekViewModel.cs" />
@@ -224,9 +223,6 @@
     </Compile>
     <Compile Include="Views\ProcesOverzichtView.xaml.cs">
       <DependentUpon>ProcesOverzichtView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DemoNieuwKoppelView.xaml.cs">
-      <DependentUpon>DemoNieuwKoppelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StageopdrachtView.xaml.cs">
       <DependentUpon>StageopdrachtView.xaml</DependentUpon>
@@ -278,10 +274,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProcesOverzichtView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DemoNieuwKoppelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
