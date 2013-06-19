@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eeda8f05f8e2477288d21026df41c9dc" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="StageBeheerderModel.academics" Width="1.5" PointX="18.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.administrators" Width="1.5" PointX="13.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.adresses" Width="1.5" PointX="12.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.companies" Width="1.5" PointX="14" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.education" Width="1.5" PointX="15.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.internships" Width="1.5" PointX="3.125" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.knowledge" Width="1.5" PointX="5.375" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.students" Width="1.5" PointX="10.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.students_internships" Width="1.5" PointX="2.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.supervisor" Width="1.5" PointX="16.125" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.teachers" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.transport" Width="1.5" PointX="8.125" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.users" Width="1.5" PointX="16" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.volumehours" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StageBeheerderModel.webkeys" Width="1.5" PointX="18.75" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="StageBeheerderModel.FK_education_academics" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_administrators_users" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_companies_adresses" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_students_adresses" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_teachers_adresses" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_supervisor_companies" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_students_education" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_internships_supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_internships_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_students_internships_internships" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_students_internships_students" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_students_users" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_supervisor_users" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_teachers_transport" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_teachers_users" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_volumehours_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.FK_webkeys_users" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.administrators_education" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.internships_knowledge" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.second_readers" ManuallyRouted="false" />
+        <AssociationConnector Association="StageBeheerderModel.teachers_knowledge" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
