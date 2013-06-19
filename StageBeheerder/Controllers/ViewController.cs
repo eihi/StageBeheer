@@ -8,5 +8,6 @@ namespace StageBeheerder.Controllers
 {
     public class ViewController
     {
+
     }
 }

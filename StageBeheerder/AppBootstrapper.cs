@@ -13,9 +13,9 @@ namespace StageBeheerder
 {
     public class AppBootstrapper : Bootstrapper
     {
-        private WindowManager windowManager = new WindowManager();
-        private ViewController viewController = new ViewController();
-        // TODO private StageBeheerderEntities smEntities = new stagemanagerEntities();
+        private WindowManager _windowManager = new WindowManager();
+        private ViewController _viewController = new ViewController();
+        private StageBeheerderEntities _smEntities = new StageBeheerderEntities();
 
         public AppBootstrapper()
             : base()
@@ -25,7 +25,7 @@ namespace StageBeheerder
             // TODO mainViewModel.SomethingHappened += viewController.HandleEvent;
 
             // Show Window
-            windowManager.ShowWindow(mainViewModel);
+            _windowManager.ShowWindow(mainViewModel);
         }
     }
 }
