@@ -33,7 +33,7 @@ namespace StageManager.ViewModels
         {
             this.user = user;
 
-            UserName = "Logged in as " + user.users.name + " " + user.users.surname;
+            UserName = "Ingelogd als, " + user.users.name + " " + user.users.surname;
             content = new ObservableCollection<PropertyChanged>();
             Error = new ErrorViewModel();
         }

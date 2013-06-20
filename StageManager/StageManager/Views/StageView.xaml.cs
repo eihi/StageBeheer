@@ -18,9 +18,9 @@ namespace StageManager.Views
     /// <summary>
     /// Interaction logic for Stage.xaml
     /// </summary>
-    public partial class Stage : UserControl
+    public partial class StageView : UserControl
     {
-        public Stage()
+        public StageView()
         {
             InitializeComponent();
         }
