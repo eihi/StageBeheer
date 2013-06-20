@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace StageManager.ViewModels
 {
-    class StageViewModel : PropertyChangedBase
+    class StageViewModel : PropertyChanged
     {
         public StageViewModel(MainViewModel main)
-            //:base(main)
+            :base(main)
         {
         }
 
