@@ -113,7 +113,7 @@
                 </Button>
 
             </StackPanel>
-            <!-- LoginButton -->
+            <!-- LoginButton 
             <StackPanel DockPanel.Dock="Right" Width="Auto" HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBox Text="E-mailadres" VerticalContentAlignment="Center" Width="80" Margin="0,0,10,0" Height="24" />
                 <PasswordBox VerticalContentAlignment="Center" Width="80" Height="24" />
@@ -125,7 +125,7 @@
                         <Rectangle Canvas.Left="13" Canvas.Top="25" Height="2" Width="14" Fill="White"/>
                     </Canvas>
                 </Button>
-            </StackPanel>
+            </StackPanel>-->
         </DockPanel>
         <!-- MenuPanel -->
         <Expander DockPanel.Dock="Left" Margin="0" IsExpanded="True" ExpandDirection="Right" Background="#FFF0F0F0">
