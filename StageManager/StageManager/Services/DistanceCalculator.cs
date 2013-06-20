@@ -18,7 +18,9 @@ namespace StageManager.Services
          *Voer de postcode strings in, deze worden naar een website gestuurd en daar word de afstand berekend in kilometers.
          *syntax: 1342AA aan elkaar
          *Returnt een double met de kilometer waarde.
+         *Snelheid is gemiddeld 0.037 seconde per result.
          */
+
         public double getDistance(string p1, string p2)
         {
             //TODO : error handling bij error returnt die nu null
@@ -31,7 +33,6 @@ namespace StageManager.Services
                 double value;
                 double.TryParse(downloadedString, out value);
                 return value;
-
             }
         }
 
