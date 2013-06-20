@@ -17,9 +17,9 @@ namespace StageManager.Views
     /// <summary>
     /// Interaction logic for Studentenview.xaml
     /// </summary>
-    public partial class StudentenView : UserControl
+    public partial class StudentenOverzichtView : UserControl
     {
-        public StudentenView()
+        public StudentenOverzichtView()
         {
             InitializeComponent();
         }

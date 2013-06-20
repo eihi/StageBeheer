@@ -5,9 +5,9 @@ namespace StageManager.Views
     /// <summary>
     /// Interaction logic for DocentenView.xaml
     /// </summary>
-    public partial class DocentenView : UserControl
+    public partial class DocentenOverzichtView : UserControl
     {
-        public DocentenView()
+        public DocentenOverzichtView()
         {
             InitializeComponent();
         }
