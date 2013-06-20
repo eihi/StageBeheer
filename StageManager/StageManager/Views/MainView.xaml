@@ -80,17 +80,17 @@
                             <Rectangle Canvas.Left="19" Canvas.Top="13" Height="14" Width="2" Fill="White"/>
                             <Rectangle Canvas.Left="13" Canvas.Top="19" Height="2" Width="14" Fill="White"/>
                         </Canvas>
-                        <TextBlock>Nieuwe Koppeling</TextBlock>
+                        <TextBlock>Nieuwe stage</TextBlock>
                     </StackPanel>
 
 
-                    <!--<i:Interaction.Triggers>
+                    <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <cal:ActionMessage MethodName="ChangeButton">
                                 <cal:Parameter Value="Zoek" />
                             </cal:ActionMessage>
                         </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
+                    </i:Interaction.Triggers>
                 </Button>
 
                 <Button Height="Auto" Foreground="White" VerticalAlignment="Stretch" Margin="0" BorderThickness="0" Background="Transparent">
@@ -101,15 +101,15 @@
                             <Rectangle Canvas.Left="19" Canvas.Top="13" Height="14" Width="2" Fill="White"/>
                             <Rectangle Canvas.Left="13" Canvas.Top="19" Height="2" Width="14" Fill="White"/>
                         </Canvas>
-                        <TextBlock>Leerlingen toevoegen</TextBlock>
+                        <TextBlock>Studenten toevoegen</TextBlock>
                     </StackPanel>
-                    <!--<i:Interaction.Triggers>
+                    <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <cal:ActionMessage MethodName="ChangeButton">
                                 <cal:Parameter Value="Mail" />
                             </cal:ActionMessage>
                         </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
+                    </i:Interaction.Triggers>
                 </Button>
 
             </StackPanel>

@@ -27,7 +27,7 @@ namespace StageManager.Controllers
 
         public ViewController()
         {
-            //CurrentViewModel = null; // On Startup View
+            CurrentViewModel = null; // On Startup View
         }
 
         public void HandleEvent(object sender, EventArgs eventArgs)
