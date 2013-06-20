@@ -25,7 +25,7 @@
             </MenuItem>
         </ContextMenu>
     </UserControl.ContextMenu>
-    <Expander Background="White" BorderBrush="#FFA0A0A0" BorderThickness="1" Padding="0" IsExpanded="True" ExpandDirection="Right">
+    <Expander Background="White" Padding="0" IsExpanded="True" ExpandDirection="Right">
         <Expander.Header>
                 <TextBlock Text="BEDRIJFSGEGEVENS" FontWeight="Bold" Visibility="Visible">
                     <TextBlock.LayoutTransform>
