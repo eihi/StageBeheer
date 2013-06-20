@@ -37,7 +37,7 @@
             <Setter Property="Width" Value="Auto"/>
             <Setter Property="Background" Value="#FFF7F7F7"/>
             <Setter Property="Padding" Value="5"/>
-        </Style> 
+        </Style>
         <!-- TopNavstijl -->
         <Style x:Key="TopNavStyle" TargetType="DockPanel">
             <Setter Property="Background" Value="#FF2197F9"/>
@@ -113,10 +113,12 @@
                 </Button>
 
             </StackPanel>
-            <!-- LoginButton 
+            <!-- LoginButton -->
             <StackPanel DockPanel.Dock="Right" Width="Auto" HorizontalAlignment="Right" Orientation="Horizontal">
-                <TextBox Text="E-mailadres" VerticalContentAlignment="Center" Width="80" Margin="0,0,10,0" Height="24" />
-                <PasswordBox VerticalContentAlignment="Center" Width="80" Height="24" />
+                <!--<TextBox Text="E-mailadres" VerticalContentAlignment="Center" Width="80" Margin="0,0,10,0" Height="24" />
+                <PasswordBox VerticalContentAlignment="Center" Width="80" Height="24" />-->
+
+                <Label Name="UserName" VerticalContentAlignment="Center" Width="150" Height="24" Margin="0,8" />
 
                 <Button Height="Auto" VerticalAlignment="Top" BorderThickness="0" Padding="0" Foreground="White" Background="#FF34BFB9">
                     <Canvas Width="40">
@@ -125,143 +127,144 @@
                         <Rectangle Canvas.Left="13" Canvas.Top="25" Height="2" Width="14" Fill="White"/>
                     </Canvas>
                 </Button>
-            </StackPanel>-->
+            </StackPanel>
+            <!---->
         </DockPanel>
         <!-- MenuPanel -->
-        <Expander DockPanel.Dock="Left" Margin="0" IsExpanded="True" ExpandDirection="Right" Background="#FFF0F0F0">
-            <!-- ExpanderHeader -->
-            <Expander.Header>
-                        <TextBlock x:Name="Exp" Text="MENU" FontWeight="Bold" Visibility="Visible">
-                            <TextBlock.LayoutTransform>
-                                <TransformGroup>
-                                    <RotateTransform CenterX="25" CenterY="25" Angle="90" />
-                                </TransformGroup>
-                            </TextBlock.LayoutTransform>
-                        </TextBlock>
-                    </Expander.Header>
-            <!-- ExpanderContent -->
-            <StackPanel MinWidth="200">
-                <!-- MenuHeader 
+            <Expander DockPanel.Dock="Left" Margin="0" IsExpanded="True" ExpandDirection="Right" Background="#FFF0F0F0">
+                <!-- ExpanderHeader -->
+                <Expander.Header>
+                    <TextBlock x:Name="Exp" Text="MENU" FontWeight="Bold" Visibility="Visible">
+                        <TextBlock.LayoutTransform>
+                            <TransformGroup>
+                                <RotateTransform CenterX="25" CenterY="25" Angle="90" />
+                            </TransformGroup>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Expander.Header>
+                <!-- ExpanderContent -->
+                <StackPanel MinWidth="200">
+                    <!-- MenuHeader 
                 <Border Grid.Row="0" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto" Margin="0,10,20,10">
                     <Label Content="MENU" Margin="0" HorizontalAlignment="Center" FontWeight="Bold"/>
                 </Border>-->
-                <!-- MenuContent -->
-                <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" Width="auto" Margin="0" VerticalScrollBarVisibility="Auto">
-                    <StackPanel>
-                        <TextBox Name="Search" Text="Zoek" Style="{StaticResource SearchStyle}" />
-                        <Expander IsExpanded="true">
-                            <Expander.Header>
-                                <TextBlock Text="Overzichten" FontSize="20" Foreground="Black" FontWeight="Light"/>
-                            </Expander.Header>
-                            <StackPanel>
-                                <Button Content="Proces" Style="{StaticResource MenuButton}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <cal:ActionMessage MethodName="ChangeButton">
-                                                <cal:Parameter Value="ProcesOverzicht" />
-                                            </cal:ActionMessage>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button Content="Gegevens" Style="{StaticResource MenuButton}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <cal:ActionMessage MethodName="ChangeButton">
-                                                <cal:Parameter Value="GegevensOverzicht" />
-                                            </cal:ActionMessage>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button Content="Stages" Style="{StaticResource MenuButton}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <cal:ActionMessage MethodName="ChangeButton">
-                                                <cal:Parameter Value="Koppelingen" />
-                                            </cal:ActionMessage>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button Content="Studenten" Style="{StaticResource MenuButton}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <cal:ActionMessage MethodName="ChangeButton">
-                                                <cal:Parameter Value="Koppelingen" />
-                                            </cal:ActionMessage>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button Content="Docenten" Style="{StaticResource MenuButton}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <cal:ActionMessage MethodName="ChangeButton">
-                                                <cal:Parameter Value="Koppelingen" />
-                                            </cal:ActionMessage>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                            </StackPanel>
-                        </Expander>
-                        <Expander IsExpanded="true">
-                            <Expander.Header>
-                                <TextBlock Text="Documenten" FontSize="20" Foreground="Black" FontWeight="Light"/>
-                            </Expander.Header>
-                            <StackPanel>
-                                <Button Content="Contracten" Style="{StaticResource MenuButton}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <cal:ActionMessage MethodName="ChangeButton">
-                                                <cal:Parameter Value="ProcesOverzicht" />
-                                            </cal:ActionMessage>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                            </StackPanel>
-                        </Expander>
-                    </StackPanel>
-                </ScrollViewer>
-            </StackPanel>
-        </Expander>
-        <!-- MainContent -->
-        <ScrollViewer Name="ScrollBar" DockPanel.Dock="Left"  Height="auto" Width="auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0">
-            <ItemsControl ItemsSource="{Binding Contents}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            
+                    <!-- MenuContent -->
+                    <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" Width="auto" Margin="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBox Name="Search" Text="Zoek" Style="{StaticResource SearchStyle}" />
+                            <Expander IsExpanded="true">
+                                <Expander.Header>
+                                    <TextBlock Text="Overzichten" FontSize="20" Foreground="Black" FontWeight="Light"/>
+                                </Expander.Header>
+                                <StackPanel>
+                                    <Button Content="Proces" Style="{StaticResource MenuButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:Parameter Value="ProcesOverzicht" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Gegevens" Style="{StaticResource MenuButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:Parameter Value="GegevensOverzicht" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Stages" Style="{StaticResource MenuButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:Parameter Value="Koppelingen" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Studenten" Style="{StaticResource MenuButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:Parameter Value="Koppelingen" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Docenten" Style="{StaticResource MenuButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:Parameter Value="Koppelingen" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </StackPanel>
+                            </Expander>
+                            <Expander IsExpanded="true">
+                                <Expander.Header>
+                                    <TextBlock Text="Documenten" FontSize="20" Foreground="Black" FontWeight="Light"/>
+                                </Expander.Header>
+                                <StackPanel>
+                                    <Button Content="Contracten" Style="{StaticResource MenuButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:Parameter Value="ProcesOverzicht" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </StackPanel>
+                            </Expander>
                         </StackPanel>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                
-                <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="ContentPresenter">
-                        <Setter Property="LayoutTransform">
-                            <Setter.Value>
-                                <ScaleTransform x:Name="transform"/>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <EventTrigger RoutedEvent="Loaded">
-                                <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:.5"/>
-                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" From="0" Duration="0:0:.5"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger.Actions>
-                            </EventTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <ContentControl>
-                            <ContentControl cal:View.Model="{Binding}"/>
-                        </ContentControl>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-        <ContentControl cal:View.Model="{Binding Error}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </DockPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </Expander>
+            <!-- MainContent -->
+            <ScrollViewer Name="ScrollBar" DockPanel.Dock="Left"  Height="auto" Width="auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0">
+                <ItemsControl ItemsSource="{Binding Contents}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                            </StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="LayoutTransform">
+                                <Setter.Value>
+                                    <ScaleTransform x:Name="transform"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:.5"/>
+                                                <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" From="0" Duration="0:0:.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl>
+                                <ContentControl cal:View.Model="{Binding}"/>
+                            </ContentControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <ContentControl cal:View.Model="{Binding Error}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </DockPanel>
 </Window>

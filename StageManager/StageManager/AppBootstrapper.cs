@@ -18,24 +18,20 @@
     public class AppBootstrapper : Bootstrapper
     {
         private WindowManager windowManager;
-        private ViewController viewController;
         private stagemanagerEntities smEntities;
 
         public AppBootstrapper()
             :base()
         {
             windowManager = new WindowManager();
-            viewController = new ViewController();
             
             smEntities = new stagemanagerEntities();
 
+            LoginViewModel loginViewModel = new LoginViewModel();
 
-            // Observer observable
-            MainViewModel mainViewModel = new MainViewModel();
-            mainViewModel.SomethingHappened += viewController.HandleEvent;
 
             // Show Window
-            windowManager.ShowWindow(mainViewModel);
+            windowManager.ShowWindow(loginViewModel);
         }
     }
 }

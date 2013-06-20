@@ -14,11 +14,26 @@ namespace StageManager.ViewModels
 {
     public class MainViewModel : PropertyChangedBase
     {
+        private administrators user;
+
+        private String userName;
+        public String UserName
+        {
+            get { return userName; }
+            set
+            {
+                userName = value;
+                NotifyOfPropertyChange(() => UserName);
+            }
+        }
         public event EventHandler SomethingHappened;
         public string currentButton { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(administrators user)
         {
+            this.user = user;
+
+            UserName = "Logged in as " + user.users.name + " " + user.users.surname;
             content = new ObservableCollection<PropertyChanged>();
             Error = new ErrorViewModel();
         }

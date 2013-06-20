@@ -176,6 +176,7 @@
     <Compile Include="Services\ISetEntity.cs" />
     <Compile Include="Services\IUpdate.cs" />
     <Compile Include="Services\IWrapper.cs" />
+    <Compile Include="Services\Login.cs" />
     <Compile Include="Services\Mailer.cs" />
     <Compile Include="Services\MainArgs.cs" />
     <Compile Include="Services\PropertyChanged.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="ViewModels\GegevensOverzichtViewModel.cs" />
     <Compile Include="ViewModels\KoppelingenViewModel.cs" />
     <Compile Include="ViewModels\KoppelViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProcesOverzichtViewModel.cs" />
@@ -215,6 +217,9 @@
     </Compile>
     <Compile Include="Views\KoppelView.xaml.cs">
       <DependentUpon>KoppelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MailView.xaml.cs">
       <DependentUpon>MailView.xaml</DependentUpon>
@@ -247,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\KoppelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
