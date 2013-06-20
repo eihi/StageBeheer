@@ -204,6 +204,9 @@
     <Compile Include="Views\BedrijfView.xaml.cs">
       <DependentUpon>BedrijfView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DocentenView.xaml.cs">
+      <DependentUpon>DocentenView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DocentView.xaml.cs">
       <DependentUpon>DocentView.xaml</DependentUpon>
     </Compile>
@@ -237,12 +240,19 @@
     <Compile Include="Views\StageopdrachtView.xaml.cs">
       <DependentUpon>StageopdrachtView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\StudentenView.xaml.cs">
+      <DependentUpon>StudentenView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ZoekView.xaml.cs">
       <DependentUpon>ZoekView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\DocentenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ErrorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -296,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StageopdrachtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
