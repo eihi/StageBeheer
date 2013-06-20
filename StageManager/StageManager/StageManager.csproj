@@ -195,6 +195,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProcesOverzichtViewModel.cs" />
     <Compile Include="ViewModels\StageopdrachtViewModel.cs" />
+    <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\ZoekViewModel.cs" />
     <Compile Include="Views\BedrijfsbegeleiderView.xaml.cs">
@@ -229,6 +230,9 @@
     </Compile>
     <Compile Include="Views\ProcesOverzichtView.xaml.cs">
       <DependentUpon>ProcesOverzichtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StageView.xaml.cs">
+      <DependentUpon>StageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StageopdrachtView.xaml.cs">
       <DependentUpon>StageopdrachtView.xaml</DependentUpon>
@@ -284,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProcesOverzichtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
