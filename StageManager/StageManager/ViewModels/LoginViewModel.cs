@@ -77,6 +77,7 @@ namespace StageManager.ViewModels
                 mainViewModel.SomethingHappened += viewController.HandleEvent;
                 WindowManager windowManager = new WindowManager();
                 windowManager.ShowWindow(mainViewModel);
+                mainViewModel.ChangeButton(decideWindowState());
             }
             else
             {
@@ -87,6 +88,26 @@ namespace StageManager.ViewModels
         public void Quit()
         {
             Environment.Exit(0);
+        }
+
+        private String decideWindowState()
+        {
+            String windowToOpen = "Mail";
+
+            stagemanagerEntities smE = new stagemanagerEntities();
+            List<students> students = smE.students.ToList();
+
+            for (int i = 0; i < students.Count; i++)
+            {
+                if (students[i].students_internships.ToList().Count == 0)
+                {
+                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " Heeft Geen Stage");
+                    windowToOpen = "ProcesOverzicht";
+                }
+            }
+
+
+            return windowToOpen;
         }
     }
 }
