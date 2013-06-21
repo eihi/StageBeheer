@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="StageManager.Views.LoginView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:my="clr-namespace:StageManager.Services"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -40,7 +41,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Name="Password" Margin="10,10,20,10" Grid.Column="0" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                        <PasswordBox x:Name="Password" Margin="10,10,20,10" Grid.Column="0" Width="auto" Height="auto" VerticalContentAlignment="Center" my:PasswordHelper.Attach="True" 
+                        my:PasswordHelper.Password="{Binding Text, ElementName=plain, Mode=TwoWay}"/>
                     </Grid>
                     <Button Content="Login" Name="Connect" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,20,10" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
                     <Button Content="Quit"  Name="Quit" HorizontalAlignment="Left" Margin="00,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>

@@ -179,6 +179,7 @@
     <Compile Include="Services\Login.cs" />
     <Compile Include="Services\Mailer.cs" />
     <Compile Include="Services\MainArgs.cs" />
+    <Compile Include="Services\PasswordHelper.cs" />
     <Compile Include="Services\PropertyChanged.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\Wrapper.cs" />
