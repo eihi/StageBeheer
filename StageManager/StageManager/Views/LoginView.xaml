@@ -44,7 +44,7 @@
                         <PasswordBox Margin="10,10,20,10" Grid.Column="0" Width="auto" Height="auto"  VerticalContentAlignment="Center" 
                                      my:PasswordHelper.Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
-                    <Button Content="Login" Name="Connect" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,20,10" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Login" Name="Connect" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,20,10" Grid.Row="2" VerticalAlignment="Top" Width="75" IsDefault="True"/>
                     <Button Content="Quit"  Name="Quit" HorizontalAlignment="Left" Margin="00,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
                     <Label Background="Red" Grid.Row="3" Grid.Column="1"  Content="Username or password is invalid" Foreground="White" HorizontalContentAlignment="Center" Margin="5" Focusable="{Binding Visible}" Height="0" MaxHeight="26">
                         <Label.Style>
