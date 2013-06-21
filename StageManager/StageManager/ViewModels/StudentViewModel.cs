@@ -120,18 +120,29 @@ namespace StageManager.ViewModels
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
-            worksheet.Cells[1, 1] = "Voornaam";
-            worksheet.Cells[2, 1] = Voornaam;
-            worksheet.Cells[1, 2] = "Achternaam";
-            worksheet.Cells[2, 2] = Achternaam;
-            worksheet.Cells[1, 3] = "Studentnummer";
-            worksheet.Cells[2, 3] = Studentnummer;
-            worksheet.Cells[1, 4] = "Opleiding";
-            worksheet.Cells[2, 4] = Opleiding;
-            worksheet.Cells[1, 5] = "E-mailadres";
-            worksheet.Cells[2, 5] = Emailadres;
-            worksheet.Cells[1, 6] = "Telefoonnummer";
-            worksheet.Cells[2, 6] = Telefoonnummer;
+            LinkedList<object[]> rows = new LinkedList<object[]>();
+
+            string[] columns = { 
+                "Studentnummer", 
+                "Voornaam",
+                "Achternaam",
+                "Opleiding",
+                "E-mailadres",
+                "Telefoonnummer"
+            };
+
+            object[] row = {
+                Studentnummer,
+                Voornaam,
+                Achternaam,
+                Opleiding,
+                Emailadres,
+                Telefoonnummer
+            };
+
+            rows.AddLast(row);
+
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
         }
     }
 }

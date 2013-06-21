@@ -82,7 +82,7 @@
                             </ListView.View>
                         </ListView>
 
-                        <Button Content="Export" Margin="20,10,20,10" Grid.Column="0" Grid.Row="3" Height="30" Width="80" HorizontalAlignment="Left"/>
+                        <Button Content="Export" cal:Message.Attach="btnExport_Click" Margin="20,10,20,10" Grid.Column="0" Grid.Row="3" Height="30" Width="80" HorizontalAlignment="Left"/>
                     </Grid>
                 </DockPanel>
             </ScrollViewer>

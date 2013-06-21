@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StageManager.ViewModels
 {
-    public class ProcesOverzichtViewModel : PropertyChanged
+    public class ProcesOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
         /*
          * ("", "m.aydin4@student.avans.nl", "Aydin, Murat", "Hyacinthenstraat 15", "Ingeleverd", "In orde", "Bob Bus"))
@@ -239,6 +239,37 @@ namespace StageManager.ViewModels
                           }, t => t);
           */
         }
+    
+        public void btnExport_Click()
+        {
+            ExportExcel ee = new ExportExcel(this);
+            ee.Export();
+        }
+
+        public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
+            LinkedList<object[]> rows = new LinkedList<object[]>();
+
+            string[] columns = { 
+                "Student",
+                "E-mailadres",
+                "Stageopdracht",
+                "Goedgekeurd"
+            };
+
+            foreach (KeyValuePair<Object, students> s in List)
+            {
+                object[] row = {
+                    s.Value.users.name + " " + s.Value.users.surname,
+                    s.Value.users.email,
+                    s.Value.students_internships.First().internships.description,
+                    s.Value.students_internships.First().internships.approved
+                };
+
+                rows.AddLast(row); 
+            }
+
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
+        }
     }
 }
-
