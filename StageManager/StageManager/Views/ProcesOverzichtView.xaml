@@ -64,24 +64,20 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
+                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student}" />
                                     <GridViewColumn Header="E-mail" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock>
-                                            <Hyperlink NavigateUri="{Binding Path=EmailURL}" RequestNavigate="Email_RequestNavigate">
-                                                <TextBlock Text="{Binding Path=Email}" />
-                                            </Hyperlink>    
-                                        </TextBlock>
+                                        <Hyperlink NavigateUri="{Binding Path=EmailURL}">
+                                            <TextBlock Text="{Binding Path=Email}" />
+                                        </Hyperlink>    
+                                    </TextBlock>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                
-                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding EersteStudent}"  />
-                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding TweedeStudent}"  />
-                                    <GridViewColumn Header="Docent" DisplayMemberBinding="{Binding Docent}" />
-                                    <GridViewColumn Header="Tweede lezer" DisplayMemberBinding="{Binding TweedeLezer}" />
-                                    <GridViewColumn Header="Stageopdracht" DisplayMemberBinding="{Binding Stageopdracht}"  />
-                                    <GridViewColumn Header="Feedback" DisplayMemberBinding="{Binding Feedback}" />
+                                    <GridViewColumn Header="Stage Opdracht" DisplayMemberBinding="{Binding Stageopdracht}" />
+                                    <GridViewColumn Header="Goedgekeurd" DisplayMemberBinding="{Binding Goedgekeurd}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>

@@ -102,7 +102,85 @@ namespace StageManager.ViewModels
 
         public ProcesOverzichtViewModel(MainViewModel main)
             : base(main)
-        {/*
+        {
+            stagemanagerEntities smE = new stagemanagerEntities();
+            List<students> students = smE.students.ToList();
+            List = new Dictionary<object, students>();
+            List<students> studenten = new List<students>();
+
+            for (int i = 0; i < students.Count; i++)
+            {
+                if (students[i].students_internships.ToList().Count == 0)
+                {
+                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " Heeft Geen Stage");
+                    List<students_internships> myList = new List<students_internships>();
+                    myList.Add(new students_internships
+                    {
+                        internships = new internships
+                                       {
+                                        description = "Geen Stage",
+                                        approved = "Nee"
+                                        }
+                    });
+
+                    studenten.Add(new students
+                    {
+                        users = students[i].users,
+                        students_internships = myList
+                    });
+                }
+                else if (students[i].students_internships.First().internships.approved == "0")
+                {
+                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " heeft geen stage feedback");
+                    List<students_internships> myList = new List<students_internships>();
+                    myList.Add(new students_internships
+                    {
+                        internships = new internships
+                        {
+                            description = "Aanwezig",
+                            approved = "Nee"
+                        }
+                    });
+
+                    studenten.Add(new students
+                    {
+                        users = students[i].users,
+                        students_internships = myList
+                    });
+                }
+                else if (students[i].students_internships.First().internships.approved == "1")
+                {
+                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " heeft geen stage feedback");
+                    List<students_internships> myList = new List<students_internships>();
+                    myList.Add(new students_internships
+                    {
+                        internships = new internships
+                        {
+                            description = "Aanwezig",
+                            approved = "Ja"
+                        }
+                    });
+
+                    studenten.Add(new students
+                    {
+                        users = students[i].users,
+                        students_internships = myList
+                    });
+                }
+            }
+
+            List = studenten.ToDictionary(t => (Object)new
+            {
+                Email = t.users.email,
+                Student = t.users.name + " " + t.users.surname,
+                Stageopdracht = t.students_internships.First().internships.description,
+                Goedgekeurd = t.students_internships.First().internships.approved
+            }, t => t);
+
+
+            
+            
+            /*
             selectedStudent = new Object();
             List = new Dictionary<object, students>();
             List<students> stages = new WStored().SearchStage("", "", false);

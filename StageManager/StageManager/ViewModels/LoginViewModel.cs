@@ -99,13 +99,11 @@ namespace StageManager.ViewModels
 
             for (int i = 0; i < students.Count; i++)
             {
-                if (students[i].students_internships.ToList().Count == 0)
+                if (students[i].students_internships.ToList().Count == 0 || students[i].students_internships.First().internships == null || students[i].students_internships.First().internships.teachers == null)
                 {
-                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " Heeft Geen Stage");
                     windowToOpen = "ProcesOverzicht";
                 }
             }
-
 
             return windowToOpen;
         }
