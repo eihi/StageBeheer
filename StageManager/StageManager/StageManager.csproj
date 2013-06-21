@@ -168,6 +168,7 @@
     <Compile Include="Services\DefaultFactory.cs" />
     <Compile Include="Services\DistanceCalculator.cs" />
     <Compile Include="Services\EntityService.cs" />
+    <Compile Include="Services\ExcelHelper.cs" />
     <Compile Include="Services\ExportExcel.cs" />
     <Compile Include="Services\IExcelAlgorithm.cs" />
     <Compile Include="Services\IFactory.cs" />

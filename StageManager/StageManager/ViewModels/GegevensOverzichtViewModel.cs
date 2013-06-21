@@ -109,6 +109,7 @@ namespace StageManager.ViewModels
                 Studentnummer = t.studentnumber,
                 Achternaam = t.users.surname,
                 Voorvoegsels = "",
+            
                 Roepnaam = t.users.name,                
                 Email = t.users.email,
                 EmailURL = t.users.email,
@@ -179,24 +180,30 @@ Bedrijf + Bedrijfsbegeleider
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
-            int i = 1;
+            LinkedList<object[]> rows = new LinkedList<object[]>();
 
-            worksheet.Cells[i, 1] = "Studentnummer";
-            worksheet.Cells[i, 2] = "Voornaam";
-            worksheet.Cells[i, 3] = "Achternaam";
-            worksheet.Cells[i, 4] = "E-mailadres";
-            worksheet.Cells[i, 5] = "Telefoonnummer";
+            string[] columns = { 
+                "Studentnummer", 
+                "Voornaam",
+                "Achternaam",
+                "E-mailadres",
+                "Telefoonnummer"
+            };
 
             foreach (KeyValuePair<Object, students> s in List)
             {
-                i++;
+                object[] row = {
+                    s.Value.studentnumber,
+                    s.Value.users.name,
+                    s.Value.users.surname,
+                    s.Value.users.email,
+                    s.Value.users.phonenumber
+                };
 
-                worksheet.Cells[i, 1] = s.Value.studentnumber;
-                worksheet.Cells[i, 2] = s.Value.users.name;
-                worksheet.Cells[i, 3] = s.Value.users.surname;
-                worksheet.Cells[i, 4] = s.Value.users.email;
-                worksheet.Cells[i, 5] = s.Value.users.phonenumber;
+                rows.AddLast(row); 
             }
+
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
         }
     }
 }
