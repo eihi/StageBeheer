@@ -99,8 +99,11 @@
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <TextBox Name="Message" Grid.Row="3"  AcceptsReturn="True" TextWrapping="Wrap" Margin="5"/>
-                        <Button Name="Send" Content="Stuur" Grid.Row="4" Margin="5"/>
+                        <TextBox Name="Message" Grid.Row="3"  AcceptsReturn="True" Padding="10" TextWrapping="Wrap" Margin="5"/>
+                        <StackPanel Grid.Row="4" Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Name="Send" Padding="5,0,5,0" Margin="0,0,5,0" Content="Mail versturen"/>
+                            <Button Name="SendAndGo" Padding="5,0,5,0" Content="Mail versturen &amp; naar Procesoverzicht"/>
+                        </StackPanel>
                     </Grid>
                 </DockPanel>
             </ScrollViewer>

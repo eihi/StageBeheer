@@ -27,14 +27,14 @@
     </UserControl.ContextMenu>
     <Expander Background="White" Padding="0" IsExpanded="True" ExpandDirection="Right">
         <Expander.Header>
-                <TextBlock Text="BEDRIJFSGEGEVENS" FontWeight="Bold" Visibility="Visible">
-                    <TextBlock.LayoutTransform>
-                        <TransformGroup>
-                            <RotateTransform CenterX="25" CenterY="25" Angle="90" />
-                        </TransformGroup>
-                    </TextBlock.LayoutTransform>
-                </TextBlock>
-            </Expander.Header>
+            <TextBlock Text="BEDRIJFSGEGEVENS" FontWeight="Bold" Visibility="Visible">
+                <TextBlock.LayoutTransform>
+                    <TransformGroup>
+                        <RotateTransform CenterX="25" CenterY="25" Angle="90" />
+                    </TransformGroup>
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+        </Expander.Header>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
                 <Button Name="Close" Height="20" Width="16" Content="x" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Background="#FFDE2C2C" Foreground="White" BorderBrush="#00707070"/>
@@ -70,13 +70,13 @@
                         </Grid>
                         <Label Content="Postcode" Margin="0,10,10,10" Grid.Column="0" Grid.Row="2" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
                         <TextBox Text="{Binding Postcode}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="2" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
-                        <Label Content="Postcode" Margin="0,10,10,10" Grid.Column="0" Grid.Row="3" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
-                        <TextBox Text="{Binding Plaats}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="3" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
-                        <Label Content="Plaats" Margin="0,10,10,10" Grid.Column="0" Grid.Row="4" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
-                        <TextBox Text="{Binding Woonplaats}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="4" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
-                        <Label Content="Telefoonnummer" Margin="0,10,10,10" Grid.Column="0" Grid.Row="5" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
-                        <TextBox Text="{Binding Telefoonnummer}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="5" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
-                        <Label Content="E-mailadres" Margin="0,10,10,10" Grid.Column="0" Grid.Row="6" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
+                        <Label Content="Plaats" Margin="0,10,10,10" Grid.Column="0" Grid.Row="3" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
+                        <TextBox Text="{Binding Woonplaats}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="3" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                        <Label Content="Telefoonnummer" Margin="0,10,10,10" Grid.Column="0" Grid.Row="4" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
+                        <TextBox Text="{Binding Telefoonnummer}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="4" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                        <Label Content="E-mailadres" Margin="0,10,10,10" Grid.Column="0" Grid.Row="5" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
+                        <TextBox Text="{Binding Emailadres}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="5" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                        <Label Content="Website" Margin="0,10,10,10" Grid.Column="0" Grid.Row="6" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
                         <TextBox Text="{Binding Emailadres}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="6" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         <Button cal:Message.Attach="btnExport_Click" Content="Export" Margin="20,10,20,10" Width="80" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right"/>
                     </Grid>
@@ -84,4 +84,4 @@
             </ScrollViewer>
         </DockPanel>
     </Expander>
-    </UserControl>
+</UserControl>
