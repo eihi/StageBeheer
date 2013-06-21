@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="ViewModels\BedrijfsbegeleiderViewModel.cs" />
     <Compile Include="ViewModels\BedrijfViewModel.cs" />
+    <Compile Include="ViewModels\DocentenOverzichtViewModel.cs" />
     <Compile Include="ViewModels\DocentViewModel.cs" />
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\GegevensOverzichtViewModel.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="ViewModels\ProcesOverzichtViewModel.cs" />
     <Compile Include="ViewModels\StageopdrachtViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
+    <Compile Include="ViewModels\StudentenOverzichtViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\ZoekViewModel.cs" />
     <Compile Include="Views\BedrijfsbegeleiderView.xaml.cs">

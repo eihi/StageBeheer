@@ -179,7 +179,7 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <cal:ActionMessage MethodName="ChangeButton">
-                                                    <cal:Parameter Value="Koppelingen" />
+                                                    <cal:Parameter Value="StagesOverzicht" />
                                                 </cal:ActionMessage>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
@@ -188,7 +188,7 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <cal:ActionMessage MethodName="ChangeButton">
-                                                    <cal:Parameter Value="Studenten" />
+                                                    <cal:Parameter Value="StudentenOverzicht" />
                                                 </cal:ActionMessage>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
@@ -197,7 +197,7 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <cal:ActionMessage MethodName="ChangeButton">
-                                                    <cal:Parameter Value="Docenten" />
+                                                    <cal:Parameter Value="DocentenOverzicht" />
                                                 </cal:ActionMessage>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
