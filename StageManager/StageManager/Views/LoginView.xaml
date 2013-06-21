@@ -41,8 +41,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <PasswordBox x:Name="Password" Margin="10,10,20,10" Grid.Column="0" Width="auto" Height="auto" VerticalContentAlignment="Center" my:PasswordHelper.Attach="True" 
-                        my:PasswordHelper.Password="{Binding Text, ElementName=plain, Mode=TwoWay}"/>
+                        <PasswordBox Margin="10,10,20,10" Grid.Column="0" Width="auto" Height="auto"  VerticalContentAlignment="Center" 
+                                     my:PasswordHelper.Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                     <Button Content="Login" Name="Connect" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,20,10" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
                     <Button Content="Quit"  Name="Quit" HorizontalAlignment="Left" Margin="00,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>

@@ -31,7 +31,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private String password = "Password";
+        private String password;
         public String Password
         {
             get { return password; }
@@ -43,6 +43,7 @@ namespace StageManager.ViewModels
                 }
                 else
                 {
+
                     password = value;
                 }
                 NotifyOfPropertyChange(() => Password);
