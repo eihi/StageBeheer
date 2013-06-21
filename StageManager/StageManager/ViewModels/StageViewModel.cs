@@ -34,7 +34,7 @@ namespace StageManager.ViewModels
         {
         }
 
-        public StageViewModel(MainViewModel main, internships stage)
+        public StageViewModel(MainViewModel main, students student)
             : this(main)
         {
             Stage = stage;

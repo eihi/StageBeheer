@@ -61,14 +61,13 @@
                         <ListView Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedProcess}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="">
+                                    <GridViewColumn>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <CheckBox IsChecked="{Binding Path=MailTo, Mode=OneWay}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student}" />
                                     <GridViewColumn Header="E-mail" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -80,7 +79,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
+                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student}" />
+                                    <GridViewColumn Header="Gegevens" DisplayMemberBinding="{Binding Gegevens}" />
                                     <GridViewColumn Header="Stage Opdracht" DisplayMemberBinding="{Binding Stageopdracht}" />
+                                    <GridViewColumn Header="Docent" DisplayMemberBinding="{Binding Docent}" />
                                     <GridViewColumn Header="Goedgekeurd" DisplayMemberBinding="{Binding Goedgekeurd}" />
                                 </GridView>
                             </ListView.View>

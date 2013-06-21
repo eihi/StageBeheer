@@ -11,10 +11,6 @@ namespace StageManager.ViewModels
 {
     public class ProcesOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
-        /*
-         * ("", "m.aydin4@student.avans.nl", "Aydin, Murat", "Hyacinthenstraat 15", "Ingeleverd", "In orde", "Bob Bus"))
-         */
-
         private Dictionary<Object, students> list;
         Dictionary<Object, students> List
         {
@@ -118,7 +114,7 @@ namespace StageManager.ViewModels
                     {
                         internships = new internships
                                        {
-                                        description = "Geen Stage",
+                                        description = "Geen stage",
                                         approved = "Nee"
                                         }
                     });

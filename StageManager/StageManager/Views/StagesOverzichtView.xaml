@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StageManager.Views.StudentenOverzichtView"
+﻿<UserControl x:Class="StageManager.Views.StagesOverzichtView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -27,7 +27,7 @@
     </UserControl.ContextMenu>
     <Expander Background="White" Padding="0" IsExpanded="True" ExpandDirection="Right">
         <Expander.Header>
-            <TextBlock Text="STUDENTENOVERZICHT" FontWeight="Bold" Visibility="Visible">
+            <TextBlock Text="STAGESOVERZICHT" FontWeight="Bold" Visibility="Visible">
                 <TextBlock.LayoutTransform>
                     <TransformGroup>
                         <RotateTransform CenterX="25" CenterY="25" Angle="90" />
@@ -41,7 +41,7 @@
             </StackPanel>
             <ScrollViewer Padding="20,0,20,20" DockPanel.Dock="Top">
                 <DockPanel>
-                    <Label Content="Studentenoverzicht" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="24" FontWeight="Light"/>
+                    <Label Content="Stagesoverzicht" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="24" FontWeight="Light"/>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -50,9 +50,9 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition MinWidth="200"/>
                         </Grid.ColumnDefinitions>
-                 
-                        <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
-                            <DataGrid Background="White" Name="StudentenGridContents"
+
+                        <ScrollViewer Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
+                            <DataGrid Background="White" Name="StagesGridContents"
                                           HorizontalAlignment="Stretch" 
                                           VerticalAlignment="Stretch" 
                                           Height="auto" Width="auto" 
@@ -61,17 +61,16 @@
                                           CanUserAddRows="False"
                                           CanUserDeleteRows="False"
                                           CanUserResizeRows="False"
-                                          SelectedItem="{Binding Path=SelectedStudenten}">
+                                          SelectedItem="{Binding Path=SelectedStages}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Binding="{Binding Studentnummer}" Header="Studentnummer" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Achternaam}" Header="Achternaam" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Opleiding}" Header="Opleiding" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Straatnaam}" Header="Straatnaam" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Huisnummer}" Header="Huisnummer" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Woonplaats" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding StageType}" Header="Stage type" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding EersteStudent}" Header="Student 1" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding TweedeStudent}" Header="Student 2" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding StageBegeleider}" Header="Stagebegeleider" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding TweedeLezer}" Header="Tweede lezer" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Bedrijf}" Header="Bedrijf" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Bedrijfsbegeleider}" Header="Bedrijfsbegeleider" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding StagePeriode}" Header="Stageperiode" Width="auto" IsReadOnly="True"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>

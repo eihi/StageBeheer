@@ -28,7 +28,7 @@
     <Expander Background="White" Padding="0" IsExpanded="True" ExpandDirection="Right">
         <!-- DocentHeader -->
         <Expander.Header>
-            <TextBlock Text="DOCENTGEGEVENS" FontWeight="Bold" Visibility="Visible">
+            <TextBlock Text="DOCENT" FontWeight="Bold" Visibility="Visible">
                 <TextBlock.LayoutTransform>
                     <TransformGroup>
                         <RotateTransform CenterX="25" CenterY="25" Angle="90" />
@@ -42,13 +42,15 @@
             </StackPanel>
             <ScrollViewer Padding="20,0,20,20" DockPanel.Dock="Top">
                 <StackPanel>
-                    <Label Content="Docentgegevens" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="24" FontWeight="Light"/>
+                    <Label Content="Docent" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="24" FontWeight="Light"/>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -68,11 +70,11 @@
                             <TextBox Name="Voornaam" Margin="20,10,2,10" Grid.Column="0" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                             <TextBox Name="Achternaam" Margin="2,10,0,10" Grid.Column="1" Grid.Row="0" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         </Grid>
-                        <Label Content="Kennisgebied" Margin="0,10,10,10" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Right"/>
-                        <TextBox Name="Opleiding" Margin="20,10,0,10" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center"/>
+                        <Label Content="Kennisgebied" Margin="0,10,10,10" Grid.Column="0" Grid.Row="9" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="Opleiding" Margin="20,10,0,10" Grid.Column="1" Grid.Row="9" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Adres" Margin="0,10,10,10" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Right"/>
-                        <Grid Grid.Column="1" Grid.Row="2">
+                        <Label Content="Adres" Margin="0,10,10,10" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Right"/>
+                        <Grid Grid.Column="1" Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="40"/>
@@ -80,21 +82,21 @@
                             <TextBox Name="Straat" Margin="20,10,2,10" Grid.Column="0" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                             <TextBox Name="Huisnummer" Margin="2,10,0,10" Grid.Column="1" Grid.Row="0" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         </Grid>
-                        <Label Content="Postcode" Margin="0,10,10,10" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Right"/>
-                        <TextBox Name="Postcode" Margin="20,10,0,10" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center"/>
+                        <Label Content="Postcode" Margin="0,10,10,10" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="Postcode" Margin="20,10,0,10" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Woonplaats" Margin="0,10,10,10" Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Right"/>
-                        <TextBox Name="Woonplaats" Margin="20,10,0,10" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center"/>
+                        <Label Content="Woonplaats" Margin="0,10,10,10" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="Woonplaats" Margin="20,10,0,10" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center"/>
 
-                        <Label Content="Telefoonnummer" Margin="0,10,10,10" Grid.Column="0" Grid.Row="5" HorizontalContentAlignment="Right"/>
-                        <TextBox Name="Telefoonnummer" Margin="20,10,0,10" Grid.Column="1" Grid.Row="5" VerticalContentAlignment="Center"/>
+                        <Label Content="Telefoonnummer" Margin="0,10,10,10" Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Right" Grid.RowSpan="2"/>
+                        <TextBox Name="Telefoonnummer" Margin="20,10,0,10" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center" Grid.RowSpan="2"/>
 
                         <Label Content="E-mailadres" Margin="0,10,10,10" Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Right"/>
                         <TextBox Name="EMail" Margin="20,10,0,10" Grid.Column="1" Grid.Row="6" VerticalContentAlignment="Center"/>
 
                         <Label Content="Website" Margin="0,10,10,10" Grid.Column="0" Grid.Row="7" HorizontalContentAlignment="Right"/>
                         <TextBox Name="Website" Margin="20,10,0,10" Grid.Column="1" Grid.Row="7" VerticalContentAlignment="Center"/>
-                        <Button cal:Message.Attach="btnExport_Click" Content="Export" Margin="20,10,20,10" Width="80" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Right"/>
+                        <Button cal:Message.Attach="btnExport_Click" Content="Export" Margin="0,10,20,10" Width="80" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right"/>
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
