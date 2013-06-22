@@ -87,7 +87,7 @@ namespace StageManager.ViewModels
         public StudentenOverzichtViewModel(MainViewModel main)
             : base(main)
         {
-        List = new Dictionary<object, students>();
+            List = new Dictionary<object, students>();
             List = new WStored().SearchStudentSet("", "").ToDictionary(t => (Object)new
             {
                 Studentnummer = t.studentnumber,
@@ -95,7 +95,7 @@ namespace StageManager.ViewModels
                 Achternaam = t.users.surname,
                 Opleiding = t.users.students.education.name,
                 Telefoonnummer = t.users.phonenumber,
-                //Voldoet = t.users.students.meets, // TODO voldoet aan norm examencommissie
+                Voldoet = t.users.students.meets,
                 Email = t.users.email,
                 EmailURL = t.users.email,
                 Straatnaam = t.users.students.adresses.street,
