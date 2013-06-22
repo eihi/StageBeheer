@@ -46,8 +46,8 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return "Sjors Boom";
-                    //return null;// stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.students_internships.First().students.users.name; //TODO juiste student
+                    
                 }
                 catch (NullReferenceException)
                 {              
@@ -83,7 +83,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return "Leon van Tuyl"; // stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.students_internships.ElementAtOrDefault(1).students.users.name; //TODO juiste student?
                 }
                 catch (NullReferenceException)
                 {
@@ -131,8 +131,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return "Bob Polis";
-                    //return null;// stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.supervisor.users.name + " " + stage.supervisor.users.surname;
                 }
                 catch (NullReferenceException)
                 {
@@ -179,8 +178,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return "Microsoft";
-                    //return null;// stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.supervisor.companies.name;
                 }
                 catch (NullReferenceException)
                 {
@@ -227,8 +225,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return "";
-                    //return null;// stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.teachers.users.name + " " + stage.teachers.users.surname;
                 }
                 catch (NullReferenceException)
                 {
@@ -275,8 +272,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return "Bill Gates";
-                    //return null;// stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.supervisor.users.name + " " + stage.supervisor.users.surname;
                 }
                 catch (NullReferenceException)
                 {
@@ -316,10 +312,41 @@ namespace StageManager.ViewModels
                 }
             }
         }
+        
+        // TODO public string StageType
+        
+        public string StartDatum
+        {
+            get
+            {
+                try
+                {
+                    return stage.start_date.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    return "";
+                }
+            }
+        }
+        public string EindDatum
+        {
+            get
+            {
+                try
+                {
+                    return stage.end_date.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    return "";
+                }
+            }
+        }
 
         public void showStageopdracht()
         {
-            Main.ChangeButton("Stage");
+            Main.ChangeButton("Stageopdracht");
         }
     }
 }

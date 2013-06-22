@@ -24,12 +24,45 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Achternaam);
                 NotifyOfPropertyChange(() => Studentnummer);
                 NotifyOfPropertyChange(() => Opleiding);
+                NotifyOfPropertyChange(() => Postcode);
+                NotifyOfPropertyChange(() => Plaats);
+                NotifyOfPropertyChange(() => Voldoet);
                 NotifyOfPropertyChange(() => Emailadres);
                 NotifyOfPropertyChange(() => Telefoonnummer);
             }
         }
 
         public string Voornaam
+        {
+            get { return student.users.name; }
+            set
+            {
+                student.users.name = value;
+                NotifyOfPropertyChange(() => Voornaam);
+            }
+        }
+
+        public string Postcode
+        {
+            get { return student.adresses.zipcode; }
+            set
+            {
+                student.adresses.zipcode = value;
+                NotifyOfPropertyChange(() => Postcode);
+            }
+        }
+
+        public string Plaats
+        {
+            get { return student.adresses.place; }
+            set
+            {
+                student.adresses.place = value;
+                NotifyOfPropertyChange(() => Plaats);
+            }
+        }
+
+        public string Voldoet
         {
             get { return student.users.name; }
             set

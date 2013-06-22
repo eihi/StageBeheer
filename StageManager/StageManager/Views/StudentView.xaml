@@ -74,7 +74,7 @@
                         <Label Content="Postcode" Margin="0,10,10,10" Grid.Column="0" Grid.Row="3" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
                         <TextBox Text="{Binding Postcode}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="3" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         <Label Content="Woonplaats" Margin="0,10,10,10" Grid.Column="0" Grid.Row="4" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
-                        <TextBox Text="{Binding Woonplaats}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="4" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                        <TextBox Text="{Binding Plaats}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="4" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         <Label Content="Telefoonnummer" Margin="0,10,10,10" Grid.Column="0" Grid.Row="5" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
                         <TextBox Text="{Binding Telefoonnummer}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="5" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         <Label Content="E-mailadres" Margin="0,10,10,10" Grid.Column="0" Grid.Row="6" Width="auto" Height="auto" HorizontalContentAlignment="Right"/>
