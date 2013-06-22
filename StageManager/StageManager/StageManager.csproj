@@ -115,6 +115,9 @@
     <Compile Include="Models\dbstageview.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\dbstageviewcomplete.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\education.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
@@ -148,10 +151,16 @@
     <Compile Include="Models\students_internships.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\students_userview.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\supervisor.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\teachers.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\teacher_userview.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\transport.cs">

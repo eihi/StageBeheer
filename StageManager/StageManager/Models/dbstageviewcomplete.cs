@@ -12,7 +12,7 @@ namespace StageManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dbstageview
+    public partial class dbstageviewcomplete
     {
         public long internshipID { get; set; }
         public string description { get; set; }
@@ -44,5 +44,9 @@ namespace StageManager.Models
         public int address_id { get; set; }
         public string company_phonenumber { get; set; }
         public string website { get; set; }
+        public string sr_name { get; set; }
+        public string sr_surname { get; set; }
+        public string sr_email { get; set; }
+        public string sr_phonenumber { get; set; }
     }
 }

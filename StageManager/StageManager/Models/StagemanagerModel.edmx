@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="stagemanagerModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="stagemanagerModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="stagemanagerModelStoreContainer">
           <EntitySet Name="academics" EntityType="stagemanagerModel.Store.academics" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="administrators" EntityType="stagemanagerModel.Store.administrators" store:Type="Tables" Schema="stagemanager" />
@@ -28,6 +28,7 @@
           <EntitySet Name="webkeys" EntityType="stagemanagerModel.Store.webkeys" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.Store.dbstageview" store:Type="Views" store:Schema="stagemanager" store:Name="dbstageview">
             <DefiningQuery>SELECT
+      `dbstageview`.`internshipID`, 
       `dbstageview`.`description`, 
       `dbstageview`.`start_date`, 
       `dbstageview`.`end_date`, 
@@ -59,6 +60,44 @@
       `dbstageview`.`website`
       FROM `dbstageview` AS `dbstageview`</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="dbstageviewcomplete" EntityType="stagemanagerModel.Store.dbstageviewcomplete" store:Type="Views" store:Schema="stagemanager" store:Name="dbstageviewcomplete">
+            <DefiningQuery>SELECT
+      `dbstageviewcomplete`.`internshipID`, 
+      `dbstageviewcomplete`.`description`, 
+      `dbstageviewcomplete`.`start_date`, 
+      `dbstageviewcomplete`.`end_date`, 
+      `dbstageviewcomplete`.`creation_date`, 
+      `dbstageviewcomplete`.`type`, 
+      `dbstageviewcomplete`.`feedback`, 
+      `dbstageviewcomplete`.`approved`, 
+      `dbstageviewcomplete`.`achieved`, 
+      `dbstageviewcomplete`.`name`, 
+      `dbstageviewcomplete`.`surname`, 
+      `dbstageviewcomplete`.`email`, 
+      `dbstageviewcomplete`.`phonenumber`, 
+      `dbstageviewcomplete`.`teachID`, 
+      `dbstageviewcomplete`.`teachernumber`, 
+      `dbstageviewcomplete`.`teacher_name`, 
+      `dbstageviewcomplete`.`teacher_surname`, 
+      `dbstageviewcomplete`.`teacher_email`, 
+      `dbstageviewcomplete`.`teacher_phonenumber`, 
+      `dbstageviewcomplete`.`sv_name`, 
+      `dbstageviewcomplete`.`sv_surname`, 
+      `dbstageviewcomplete`.`sv_email`, 
+      `dbstageviewcomplete`.`sv_phonenumber`, 
+      `dbstageviewcomplete`.`education`, 
+      `dbstageviewcomplete`.`function`, 
+      `dbstageviewcomplete`.`minimal_time`, 
+      `dbstageviewcomplete`.`company_name`, 
+      `dbstageviewcomplete`.`address_id`, 
+      `dbstageviewcomplete`.`company_phonenumber`, 
+      `dbstageviewcomplete`.`website`, 
+      `dbstageviewcomplete`.`sr_name`, 
+      `dbstageviewcomplete`.`sr_surname`, 
+      `dbstageviewcomplete`.`sr_email`, 
+      `dbstageviewcomplete`.`sr_phonenumber`
+      FROM `dbstageviewcomplete` AS `dbstageviewcomplete`</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="studentadress" EntityType="stagemanagerModel.Store.studentadress" store:Type="Views" store:Schema="stagemanager" store:Name="studentadress">
             <DefiningQuery>SELECT
       `studentadress`.`user_id`, 
@@ -71,6 +110,33 @@
       `studentadress`.`housenumber`, 
       `studentadress`.`zipcode`
       FROM `studentadress` AS `studentadress`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="students_userview" EntityType="stagemanagerModel.Store.students_userview" store:Type="Views" store:Schema="stagemanager" store:Name="students_userview">
+            <DefiningQuery>SELECT
+      `students_userview`.`user_id`, 
+      `students_userview`.`studentnumber`, 
+      `students_userview`.`education_id`, 
+      `students_userview`.`addresss_id`, 
+      `students_userview`.`meets`, 
+      `students_userview`.`id`, 
+      `students_userview`.`name`, 
+      `students_userview`.`surname`, 
+      `students_userview`.`email`, 
+      `students_userview`.`phonenumber`
+      FROM `students_userview` AS `students_userview`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="teacher_userview" EntityType="stagemanagerModel.Store.teacher_userview" store:Type="Views" store:Schema="stagemanager" store:Name="teacher_userview">
+            <DefiningQuery>SELECT
+      `teacher_userview`.`user_id`, 
+      `teacher_userview`.`teachernumber`, 
+      `teacher_userview`.`transport_id`, 
+      `teacher_userview`.`address_id`, 
+      `teacher_userview`.`id`, 
+      `teacher_userview`.`name`, 
+      `teacher_userview`.`surname`, 
+      `teacher_userview`.`email`, 
+      `teacher_userview`.`phonenumber`
+      FROM `teacher_userview` AS `teacher_userview`</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_administrators_academics_administrators" Association="stagemanagerModel.Store.FK_administrators_academics_administrators">
             <End Role="administrators" EntitySet="administrators" />
@@ -366,6 +432,7 @@
       -->
         <EntityType Name="dbstageview">
           <Key>
+            <PropertyRef Name="internshipID" />
             <PropertyRef Name="description" />
             <PropertyRef Name="start_date" />
             <PropertyRef Name="end_date" />
@@ -382,6 +449,7 @@
             <PropertyRef Name="company_name" />
             <PropertyRef Name="address_id" />
           </Key>
+          <Property Name="internshipID" Type="uint" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="start_date" Type="date" Nullable="false" />
           <Property Name="end_date" Type="date" Nullable="false" />
@@ -413,6 +481,63 @@
           <Property Name="website" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.stagemanager.dbstageviewcomplete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="dbstageviewcomplete">
+          <Key>
+            <PropertyRef Name="internshipID" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="start_date" />
+            <PropertyRef Name="end_date" />
+            <PropertyRef Name="creation_date" />
+            <PropertyRef Name="type" />
+            <PropertyRef Name="achieved" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+            <PropertyRef Name="sv_name" />
+            <PropertyRef Name="sv_surname" />
+            <PropertyRef Name="education" />
+            <PropertyRef Name="function" />
+            <PropertyRef Name="minimal_time" />
+            <PropertyRef Name="company_name" />
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="internshipID" Type="uint" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+          <Property Name="start_date" Type="date" Nullable="false" />
+          <Property Name="end_date" Type="date" Nullable="false" />
+          <Property Name="creation_date" Type="timestamp" Nullable="false" />
+          <Property Name="type" Type="enum" Nullable="false" />
+          <Property Name="feedback" Type="text" />
+          <Property Name="approved" Type="enum" />
+          <Property Name="achieved" Type="enum" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="surname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="15" />
+          <Property Name="teachID" Type="int" />
+          <Property Name="teachernumber" Type="varchar" MaxLength="15" />
+          <Property Name="teacher_name" Type="varchar" MaxLength="50" />
+          <Property Name="teacher_surname" Type="varchar" MaxLength="50" />
+          <Property Name="teacher_email" Type="varchar" MaxLength="50" />
+          <Property Name="teacher_phonenumber" Type="varchar" MaxLength="15" />
+          <Property Name="sv_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="sv_surname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="sv_email" Type="varchar" MaxLength="50" />
+          <Property Name="sv_phonenumber" Type="varchar" MaxLength="15" />
+          <Property Name="education" Type="enum" Nullable="false" />
+          <Property Name="function" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="minimal_time" Type="int" Nullable="false" />
+          <Property Name="company_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="address_id" Type="int" Nullable="false" />
+          <Property Name="company_phonenumber" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="50" />
+          <Property Name="sr_name" Type="varchar" MaxLength="50" />
+          <Property Name="sr_surname" Type="varchar" MaxLength="50" />
+          <Property Name="sr_email" Type="varchar" MaxLength="50" />
+          <Property Name="sr_phonenumber" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'def.stagemanager.studentadress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="studentadress">
@@ -435,6 +560,53 @@
           <Property Name="street" Type="varchar" Nullable="false" MaxLength="75" />
           <Property Name="housenumber" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="zipcode" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.stagemanager.students_userview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="students_userview">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="studentnumber" />
+            <PropertyRef Name="education_id" />
+            <PropertyRef Name="meets" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="studentnumber" Type="int" Nullable="false" />
+          <Property Name="education_id" Type="int" Nullable="false" />
+          <Property Name="addresss_id" Type="int" />
+          <Property Name="meets" Type="enum" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="surname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.stagemanager.teacher_userview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="teacher_userview">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="teachernumber" />
+            <PropertyRef Name="transport_id" />
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="teachernumber" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="transport_id" Type="int" Nullable="false" />
+          <Property Name="address_id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="surname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="15" />
         </EntityType>
         <Association Name="FK_administrators_academics_administrators">
           <End Role="administrators" Type="stagemanagerModel.Store.administrators" Multiplicity="1" />
@@ -760,7 +932,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="stagemanagerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -781,7 +954,10 @@
           <EntitySet Name="volumehours" EntityType="stagemanagerModel.volumehours" />
           <EntitySet Name="webkeys" EntityType="stagemanagerModel.webkeys" />
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.dbstageview" />
+          <EntitySet Name="dbstageviewcomplete" EntityType="stagemanagerModel.dbstageviewcomplete" />
           <EntitySet Name="studentadress" EntityType="stagemanagerModel.studentadress" />
+          <EntitySet Name="students_userview" EntityType="stagemanagerModel.students_userview" />
+          <EntitySet Name="teacher_userview" EntityType="stagemanagerModel.teacher_userview" />
           <AssociationSet Name="FK_education_academics" Association="stagemanagerModel.FK_education_academics">
             <End Role="academics" EntitySet="academics" />
             <End Role="education" EntitySet="education" />
@@ -1057,6 +1233,7 @@
         </EntityType>
         <EntityType Name="dbstageview">
           <Key>
+            <PropertyRef Name="internshipID" />
             <PropertyRef Name="description" />
             <PropertyRef Name="start_date" />
             <PropertyRef Name="end_date" />
@@ -1073,6 +1250,7 @@
             <PropertyRef Name="company_name" />
             <PropertyRef Name="address_id" />
           </Key>
+          <Property Name="internshipID" Type="Int64" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
           <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="end_date" Type="DateTime" Nullable="false" Precision="0" />
@@ -1103,6 +1281,60 @@
           <Property Name="company_phonenumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="website" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
+        <EntityType Name="dbstageviewcomplete">
+          <Key>
+            <PropertyRef Name="internshipID" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="start_date" />
+            <PropertyRef Name="end_date" />
+            <PropertyRef Name="creation_date" />
+            <PropertyRef Name="type" />
+            <PropertyRef Name="achieved" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+            <PropertyRef Name="sv_name" />
+            <PropertyRef Name="sv_surname" />
+            <PropertyRef Name="education" />
+            <PropertyRef Name="function" />
+            <PropertyRef Name="minimal_time" />
+            <PropertyRef Name="company_name" />
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="internshipID" Type="Int64" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="feedback" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="approved" Type="String" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="achieved" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="teachID" Type="Int32" />
+          <Property Name="teachernumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="teacher_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="teacher_surname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="teacher_email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="teacher_phonenumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="sv_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sv_surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sv_email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sv_phonenumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="education" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="function" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="minimal_time" Type="Int32" Nullable="false" />
+          <Property Name="company_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="address_id" Type="Int32" Nullable="false" />
+          <Property Name="company_phonenumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="website" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sr_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sr_surname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sr_email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sr_phonenumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+        </EntityType>
         <EntityType Name="studentadress">
           <Key>
             <PropertyRef Name="user_id" />
@@ -1123,6 +1355,47 @@
           <Property Name="street" Type="String" Nullable="false" MaxLength="75" Unicode="false" FixedLength="false" />
           <Property Name="housenumber" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="zipcode" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="students_userview">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="studentnumber" />
+            <PropertyRef Name="education_id" />
+            <PropertyRef Name="meets" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="studentnumber" Type="Int32" Nullable="false" />
+          <Property Name="education_id" Type="Int32" Nullable="false" />
+          <Property Name="addresss_id" Type="Int32" />
+          <Property Name="meets" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="teacher_userview">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="teachernumber" />
+            <PropertyRef Name="transport_id" />
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="teachernumber" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="transport_id" Type="Int32" Nullable="false" />
+          <Property Name="address_id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
         </EntityType>
         <Association Name="FK_education_academics">
           <End Role="academics" Type="stagemanagerModel.academics" Multiplicity="1" />
@@ -1510,6 +1783,7 @@
           <EntitySetMapping Name="dbstageview">
             <EntityTypeMapping TypeName="stagemanagerModel.dbstageview">
               <MappingFragment StoreEntitySet="dbstageview">
+                <ScalarProperty Name="internshipID" ColumnName="internshipID" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="start_date" ColumnName="start_date" />
                 <ScalarProperty Name="end_date" ColumnName="end_date" />
@@ -1542,6 +1816,46 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="dbstageviewcomplete">
+            <EntityTypeMapping TypeName="stagemanagerModel.dbstageviewcomplete">
+              <MappingFragment StoreEntitySet="dbstageviewcomplete">
+                <ScalarProperty Name="internshipID" ColumnName="internshipID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="feedback" ColumnName="feedback" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="achieved" ColumnName="achieved" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="teachID" ColumnName="teachID" />
+                <ScalarProperty Name="teachernumber" ColumnName="teachernumber" />
+                <ScalarProperty Name="teacher_name" ColumnName="teacher_name" />
+                <ScalarProperty Name="teacher_surname" ColumnName="teacher_surname" />
+                <ScalarProperty Name="teacher_email" ColumnName="teacher_email" />
+                <ScalarProperty Name="teacher_phonenumber" ColumnName="teacher_phonenumber" />
+                <ScalarProperty Name="sv_name" ColumnName="sv_name" />
+                <ScalarProperty Name="sv_surname" ColumnName="sv_surname" />
+                <ScalarProperty Name="sv_email" ColumnName="sv_email" />
+                <ScalarProperty Name="sv_phonenumber" ColumnName="sv_phonenumber" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="function" ColumnName="function" />
+                <ScalarProperty Name="minimal_time" ColumnName="minimal_time" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="company_phonenumber" ColumnName="company_phonenumber" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="sr_name" ColumnName="sr_name" />
+                <ScalarProperty Name="sr_surname" ColumnName="sr_surname" />
+                <ScalarProperty Name="sr_email" ColumnName="sr_email" />
+                <ScalarProperty Name="sr_phonenumber" ColumnName="sr_phonenumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="studentadress">
             <EntityTypeMapping TypeName="stagemanagerModel.studentadress">
               <MappingFragment StoreEntitySet="studentadress">
@@ -1554,6 +1868,37 @@
                 <ScalarProperty Name="street" ColumnName="street" />
                 <ScalarProperty Name="housenumber" ColumnName="housenumber" />
                 <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students_userview">
+            <EntityTypeMapping TypeName="stagemanagerModel.students_userview">
+              <MappingFragment StoreEntitySet="students_userview">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="studentnumber" ColumnName="studentnumber" />
+                <ScalarProperty Name="education_id" ColumnName="education_id" />
+                <ScalarProperty Name="addresss_id" ColumnName="addresss_id" />
+                <ScalarProperty Name="meets" ColumnName="meets" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teacher_userview">
+            <EntityTypeMapping TypeName="stagemanagerModel.teacher_userview">
+              <MappingFragment StoreEntitySet="teacher_userview">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="teachernumber" ColumnName="teachernumber" />
+                <ScalarProperty Name="transport_id" ColumnName="transport_id" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
