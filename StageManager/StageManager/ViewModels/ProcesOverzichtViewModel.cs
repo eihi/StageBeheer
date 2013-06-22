@@ -26,6 +26,27 @@ namespace StageManager.ViewModels
             }
         }
 
+        private internships selectedStage;
+        public internships SelectedStage
+        {
+            get { return selectedStage; }
+            set { selectedStage = value; }
+        }
+
+        public object SelectedObject
+        {
+            get
+            {
+                return selectedStudent;
+            }
+            set
+            {
+                //List.TryGetValue(value, out selectedStudent);
+                Main.ChangeButton("Stage", new List<Object>() { selectedStudent }, Services.Clear.No);
+
+            }
+        }
+
         private List<Object> gridContents;
         public List<object> GridContents
         {

@@ -27,6 +27,8 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Huisnummer);
                 NotifyOfPropertyChange(() => Postcode);
                 NotifyOfPropertyChange(() => Plaats);
+                NotifyOfPropertyChange(() => Telefoon);
+                NotifyOfPropertyChange(() => Website);
             }
         }
         public String Naam
@@ -39,6 +41,30 @@ namespace StageManager.ViewModels
             {
                 bedrijf.name = value;
                 NotifyOfPropertyChange(() => Naam);
+            }
+        }
+        public String Telefoon
+        {
+            get
+            {
+                return bedrijf.phonenumber;
+            }
+            set
+            {
+                bedrijf.phonenumber = value;
+                NotifyOfPropertyChange(() => Telefoon);
+            }
+        }
+        public String Website
+        {
+            get
+            {
+                return bedrijf.website;
+            }
+            set
+            {
+                bedrijf.website = value;
+                NotifyOfPropertyChange(() => Website);
             }
         }
 

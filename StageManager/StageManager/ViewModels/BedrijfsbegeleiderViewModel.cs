@@ -23,22 +23,36 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Functie);
                 NotifyOfPropertyChange(() => Opleiding);
                 NotifyOfPropertyChange(() => BegeleidingUren);
-                /*NotifyOfPropertyChange(()=>Voornaam);
-                NotifyOfPropertyChange(()=>Achternaam);
-                NotifyOfPropertyChange(()=>EMail);*/
+                NotifyOfPropertyChange(()=>Voornaam);
+                NotifyOfPropertyChange(() => Achternaam);
+                NotifyOfPropertyChange(() => EMail);
+                NotifyOfPropertyChange(() => Telefoon);
             }
         }
 
-        /*public String Voornaam
+        public String Voornaam
         {
             get
             {
-                return begeleider.Voornaam;
+                return begeleider.users.name;
             }
             set
             {
-                begeleider.Voornaam = value;
+                begeleider.users.name = value;
                 NotifyOfPropertyChange(() => Voornaam);
+            }
+        }
+
+        public String Telefoon
+        {
+            get
+            {
+                return begeleider.users.phonenumber;
+            }
+            set
+            {
+                begeleider.users.phonenumber = value;
+                NotifyOfPropertyChange(() => Telefoon);
             }
         }
 
@@ -46,15 +60,15 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return begeleider.Achternaam;
+                return begeleider.users.surname;
             }
             set
             {
-                begeleider.Achternaam = value;
+                begeleider.users.surname = value;
                 NotifyOfPropertyChange(() => Achternaam);
             }
         }
-        */
+        
         public String Functie
         {
             get
@@ -63,18 +77,18 @@ namespace StageManager.ViewModels
             }
         }
 
-        /* public String EMail
+        public String EMail
          {
              get
              {
-                 return begeleider.Email;
+                 return begeleider.users.email;
              }
              set
              {
-                 begeleider.Email = value;
+                 begeleider.users.email = value;
                  NotifyOfPropertyChange(() => EMail);
              }
-         }*/
+         }
 
         public String Opleiding
         {
@@ -89,15 +103,15 @@ namespace StageManager.ViewModels
             }
         }
 
-        public bool? BegeleidingUren
+        public int BegeleidingUren
         {
             get
             {
-                return true;//TODO!!!!!
+                return begeleider.minimal_time;
             }
             set
             {
-                //begeleider.Minimale_begeleidingstijd_gegarandeerd = value;
+                begeleider.minimal_time = value;
                 NotifyOfPropertyChange(() => BegeleidingUren);
             }
         }

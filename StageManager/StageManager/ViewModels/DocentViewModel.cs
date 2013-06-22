@@ -27,6 +27,7 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Postcode);
                 NotifyOfPropertyChange(() => Woonplaats);
                 NotifyOfPropertyChange(() => Telefoon);
+                NotifyOfPropertyChange(() => Kennisgebied);
                 NotifyOfPropertyChange(() => EMail);
             }
         }
@@ -41,6 +42,19 @@ namespace StageManager.ViewModels
             {
                 docent.users.name = value;
                 NotifyOfPropertyChange(() => Voornaam);
+            }
+        }
+
+        public String Kennisgebied
+        {
+            get
+            {
+                return null; //TODO docent.knowledge.ToString();
+            }
+            set
+            {
+                // TODO docent.users.teachers.knowledge = value;
+                NotifyOfPropertyChange(() => Kennisgebied);
             }
         }
         public String Achternaam
