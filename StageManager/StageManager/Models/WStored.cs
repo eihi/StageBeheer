@@ -130,6 +130,11 @@ namespace StageManager.Models
             }
         }
 
+        public List<dbstageview> SearchDBStageView()
+        {
+            return (from viewstage in StageManagerEntities.dbstageview.ToList() select viewstage).ToList();
+        }
+
         public List<supervisor> SearchBedrijfsBegeleiderSet()
         {
             return (from begeleider in StageManagerEntities.supervisor.ToList() select begeleider).ToList();

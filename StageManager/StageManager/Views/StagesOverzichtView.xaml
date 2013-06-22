@@ -52,7 +52,7 @@
                         </Grid.ColumnDefinitions>
 
                         <ScrollViewer Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
-                            <DataGrid Background="White" Name="StagesGridContents"
+                            <DataGrid Background="White" Name="GridContents"
                                           HorizontalAlignment="Stretch" 
                                           VerticalAlignment="Stretch" 
                                           Height="auto" Width="auto" 
@@ -63,14 +63,15 @@
                                           CanUserResizeRows="False"
                                           SelectedItem="{Binding Path=SelectedStages}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Binding="{Binding StageType}" Header="Stage type" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding EersteStudent}" Header="Student 1" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding TweedeStudent}" Header="Student 2" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding StageBegeleider}" Header="Stagebegeleider" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding TweedeLezer}" Header="Tweede lezer" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Stagetype}" Header="Stage type" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Eerstestudent}" Header="Student 1" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Tweedestudent}" Header="Student 2" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Stagebegeleider}" Header="Stagebegeleider" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Tweedelezer}" Header="Tweede lezer" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Bedrijf}" Header="Bedrijf" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Bedrijfsbegeleider}" Header="Bedrijfsbegeleider" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding StagePeriode}" Header="Stageperiode" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Begin}" Header="Begin Datum" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Eind}" Header="Eind Datum" Width="auto" IsReadOnly="True"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>

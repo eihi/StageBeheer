@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace StageManager.Views
 {
     /// <summary>
-    /// Interaction logic for Studentenview.xaml
+    /// Interaction logic for StudentenOverzichtView.xaml
     /// </summary>
     public partial class StudentenOverzichtView : UserControl
     {
