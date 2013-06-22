@@ -47,7 +47,6 @@
                             <GridView>
                                 <GridViewColumn Header="Studentnummer" DisplayMemberBinding="{Binding StudentNummer}" />
                                 <GridViewColumn Header="Achternaam" DisplayMemberBinding="{Binding Achternaam}" />
-                                <GridViewColumn Header="Voorvoegsels" DisplayMemberBinding="{Binding Voorvoegsels}" />
                                 <GridViewColumn Header="Roepnaam" DisplayMemberBinding="{Binding Roepnaam}" />
                                 <GridViewColumn Header="E-mail" >
                                     <GridViewColumn.CellTemplate>
@@ -62,11 +61,10 @@
                                 </GridViewColumn>
                                 <GridViewColumn Header="Straatnaam" DisplayMemberBinding="{Binding Straatnaam}" />
                                 <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
-                                <GridViewColumn Header="Toevoeging" DisplayMemberBinding="{Binding Toevoeging}" />
                                 <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
                                 <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding Plaats}" />
                                 <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
-                                <GridViewColumn Header="SLB6-1" DisplayMemberBinding="{Binding SLB61}" />
+                                <!-- <GridViewColumn Header="SLB6-1" DisplayMemberBinding="{Binding SLB61}" />
                                 <GridViewColumn Header="SLB6-2" DisplayMemberBinding="{Binding SLB62}" />
                                 <GridViewColumn Header="SLB6-3" DisplayMemberBinding="{Binding SLB63}" />
                                 <GridViewColumn Header="SLB6-T" DisplayMemberBinding="{Binding SLB6T}" />
@@ -103,7 +101,7 @@
                                 </GridViewColumn>
                                 <GridViewColumn Header="Tel. nr Bedrijf" DisplayMemberBinding="{Binding BTelefoon}" />
                                 <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
-                                <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" />
+                                <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" /> -->
                             </GridView>
                         </ListView.View>
                     </ListView>

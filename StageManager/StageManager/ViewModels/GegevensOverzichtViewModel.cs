@@ -102,18 +102,84 @@ namespace StageManager.ViewModels
         public GegevensOverzichtViewModel(MainViewModel main)
             :base(main)
         {
-            selectedStudent = new Object();
+            stagemanagerEntities smE = new stagemanagerEntities();
+            List<students> students = smE.students.ToList();
             List = new Dictionary<object, students>();
-            List = new WStored().SearchStudentSet("", "").ToDictionary(t => (Object)new
+            List<students> studenten = new List<students>();
+            List<String> missingInfo = new List<String>();
+
+            for (int i = 0; i < students.Count; i++)
             {
-                Studentnummer = t.studentnumber,
+                if (students[i].studentnumber == null)
+                {
+                    missingInfo.Add("StudentNummer");
+                } 
+
+                if (students[i].users == null)
+                {
+                    missingInfo.Add("Achternaam");
+                    missingInfo.Add("Roepnaam");
+                    missingInfo.Add("Email");
+                    missingInfo.Add("Telefoonnummer");
+                }
+                else if (students[i].users.surname == null)
+                {
+                    missingInfo.Add("Achternaam");
+                }
+                else if (students[i].users.name == null)
+                {
+                    missingInfo.Add("Roepnaam");
+                }
+                else if (students[i].users.email == null)
+                {
+                    missingInfo.Add("Email");
+                }
+                else if (students[i].users.phonenumber == null)
+                {
+                    missingInfo.Add("Telefoonnummer");
+                }
+
+                if(students[i].adresses == null )
+                {
+                    missingInfo.Add("Straatnaam");
+                    missingInfo.Add("Nummer");
+                    missingInfo.Add("Postcode");
+                    missingInfo.Add("Plaats");
+                }
+                else if (students[i].adresses.street == null)
+                {
+                    missingInfo.Add("Straatnaam");
+                }
+                else if (students[i].adresses.housenumber == null)
+                {
+                    missingInfo.Add("Nummer");
+                }
+                else if (students[i].adresses.zipcode == null)
+                {
+                    missingInfo.Add("Postcode");
+                }
+                else if (students[i].adresses.place == null)
+                {
+                    missingInfo.Add("Plaats");
+                }
+
+            }
+
+            foreach (String s in missingInfo)
+            {
+                System.Diagnostics.Debug.WriteLine(s);
+            }
+
+            List = studenten.ToDictionary(t => (Object)new
+            {
+                StudentNummer = t.studentnumber,
                 Achternaam = t.users.surname,
                 Voorvoegsels = "",
             
                 Roepnaam = t.users.name,                
                 Email = t.users.email,
                 EmailURL = t.users.email,
-                Straatnaam = "",
+                Straatnaam = t.adresses.street,
                 Nummer = 0,
                 Toevoeging = "",
                 Postcode = "",
