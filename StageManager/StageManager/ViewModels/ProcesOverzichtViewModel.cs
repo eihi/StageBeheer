@@ -169,6 +169,7 @@ namespace StageManager.ViewModels
             {
                 Email = t.users.email,
                 Student = t.users.name + " " + t.users.surname,
+                Gegevens = "Compleet",
                 Stageopdracht = t.students_internships.First().internships.description,
                 Goedgekeurd = t.students_internships.First().internships.approved
             }, t => t);
