@@ -26,9 +26,9 @@ namespace StageManager.Models
         public string phonenumber { get; set; }
     
         public virtual administrators administrators { get; set; }
+        public virtual students students { get; set; }
         public virtual supervisor supervisor { get; set; }
         public virtual teachers teachers { get; set; }
         public virtual ICollection<webkeys> webkeys { get; set; }
-        public virtual students students { get; set; }
     }
 }

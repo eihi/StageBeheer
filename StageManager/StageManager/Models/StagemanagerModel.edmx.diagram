@@ -4,45 +4,46 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="963988d17e654f05bf9d064c3ed614f5" Name="Diagram1" ZoomLevel="10">
-        <EntityTypeShape EntityType="stagemanagerModel.academics" Width="1.5" PointX="39.375" PointY="17.75" />
-        <EntityTypeShape EntityType="stagemanagerModel.administrators" Width="1.5" PointX="34.5" PointY="14.375" />
-        <EntityTypeShape EntityType="stagemanagerModel.adresses" Width="1.5" PointX="16.375" PointY="0.5" />
-        <EntityTypeShape EntityType="stagemanagerModel.companies" Width="1.5" PointX="15.25" PointY="10.125" />
-        <EntityTypeShape EntityType="stagemanagerModel.education" Width="1.5" PointX="39.625" PointY="14.125" />
-        <EntityTypeShape EntityType="stagemanagerModel.internships" Width="1.5" PointX="22.875" PointY="5" />
-        <EntityTypeShape EntityType="stagemanagerModel.knowledge" Width="1.5" PointX="26.75" PointY="8.375" />
-        <EntityTypeShape EntityType="stagemanagerModel.students_internships" Width="1.5" PointX="26.75" PointY="2.5" />
-        <EntityTypeShape EntityType="stagemanagerModel.supervisor" Width="1.5" PointX="21.5" PointY="11" />
-        <EntityTypeShape EntityType="stagemanagerModel.teachers" Width="1.5" PointX="32.25" PointY="5.625" />
-        <EntityTypeShape EntityType="stagemanagerModel.transport" Width="1.5" PointX="36.875" PointY="5.875" />
-        <EntityTypeShape EntityType="stagemanagerModel.users" Width="1.5" PointX="31.375" PointY="10.375" />
-        <EntityTypeShape EntityType="stagemanagerModel.volumehours" Width="1.5" PointX="35.625" PointY="8.75" />
-        <EntityTypeShape EntityType="stagemanagerModel.webkeys" Width="1.5" PointX="26.875" PointY="11.875" />
-        <AssociationConnector Association="stagemanagerModel.FK_education_academics" />
-        <AssociationConnector Association="stagemanagerModel.FK_administrators_users" />
-        <AssociationConnector Association="stagemanagerModel.FK_companies_adresses" />
-        <AssociationConnector Association="stagemanagerModel.FK_teachers_adresses" />
-        <AssociationConnector Association="stagemanagerModel.FK_supervisor_companies" />
-        <AssociationConnector Association="stagemanagerModel.FK_internships_supervisor" />
-        <AssociationConnector Association="stagemanagerModel.FK_internships_teachers" />
-        <AssociationConnector Association="stagemanagerModel.FK_students_internships_internships" />
-        <AssociationConnector Association="stagemanagerModel.FK_supervisor_users" />
-        <AssociationConnector Association="stagemanagerModel.FK_teachers_transport" />
-        <AssociationConnector Association="stagemanagerModel.FK_teachers_users" />
-        <AssociationConnector Association="stagemanagerModel.FK_volumehours_teachers" />
-        <AssociationConnector Association="stagemanagerModel.FK_webkeys_users" />
-        <AssociationConnector Association="stagemanagerModel.administrators_education" />
-        <AssociationConnector Association="stagemanagerModel.internships_knowledge" />
-        <AssociationConnector Association="stagemanagerModel.second_readers" />
-        <AssociationConnector Association="stagemanagerModel.teachers_knowledge" />
-        <EntityTypeShape EntityType="stagemanagerModel.students" Width="1.5" PointX="40.5" PointY="10" />
-        <AssociationConnector Association="stagemanagerModel.FK_students_adresses" />
-        <AssociationConnector Association="stagemanagerModel.FK_students_education" />
-        <AssociationConnector Association="stagemanagerModel.FK_students_internships_students" />
-        <AssociationConnector Association="stagemanagerModel.FK_students_users" />
-        <EntityTypeShape EntityType="stagemanagerModel.studentadress" Width="1.5" PointX="7.125" PointY="4.25" />
-        <EntityTypeShape EntityType="stagemanagerModel.dbstageview" Width="1.5" PointX="11.75" PointY="6.375" />
+      <Diagram DiagramId="94b7275f68994bc7b489bc0a53d39998" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="stagemanagerModel.academics" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.administrators" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.adresses" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.companies" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.education" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.internships" Width="1.5" PointX="10.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.knowledge" Width="1.5" PointX="13" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.students" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.students_internships" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.supervisor" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.teachers" Width="1.5" PointX="8.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.transport" Width="1.5" PointX="6.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.users" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.volumehours" Width="1.5" PointX="10.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.webkeys" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.dbstageview" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.studentadress" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="stagemanagerModel.FK_education_academics" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_administrators_users" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_companies_adresses" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_students_adresses" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_teachers_adresses" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_supervisor_companies" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_students_education" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_internships_supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_internships_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_students_internships_internships" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_students_internships_students" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_students_users" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_supervisor_users" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_teachers_transport" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_teachers_users" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_volumehours_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.FK_webkeys_users" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.administrators_education" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.internships_knowledge" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.second_readers" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.teachers_education" ManuallyRouted="false" />
+        <AssociationConnector Association="stagemanagerModel.teachers_knowledge" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

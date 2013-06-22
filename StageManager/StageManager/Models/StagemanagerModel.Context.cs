@@ -32,6 +32,7 @@ namespace StageManager.Models
         public DbSet<education> education { get; set; }
         public DbSet<internships> internships { get; set; }
         public DbSet<knowledge> knowledge { get; set; }
+        public DbSet<students> students { get; set; }
         public DbSet<students_internships> students_internships { get; set; }
         public DbSet<supervisor> supervisor { get; set; }
         public DbSet<teachers> teachers { get; set; }
@@ -39,7 +40,7 @@ namespace StageManager.Models
         public DbSet<users> users { get; set; }
         public DbSet<volumehours> volumehours { get; set; }
         public DbSet<webkeys> webkeys { get; set; }
-        public DbSet<students> students { get; set; }
+        public DbSet<dbstageview> dbstageview { get; set; }
         public DbSet<studentadress> studentadress { get; set; }
     }
 }

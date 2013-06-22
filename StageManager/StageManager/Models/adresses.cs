@@ -17,8 +17,8 @@ namespace StageManager.Models
         public adresses()
         {
             this.companies = new HashSet<companies>();
-            this.teachers = new HashSet<teachers>();
             this.students = new HashSet<students>();
+            this.teachers = new HashSet<teachers>();
         }
     
         public int id { get; set; }
@@ -28,7 +28,7 @@ namespace StageManager.Models
         public string zipcode { get; set; }
     
         public virtual ICollection<companies> companies { get; set; }
-        public virtual ICollection<teachers> teachers { get; set; }
         public virtual ICollection<students> students { get; set; }
+        public virtual ICollection<teachers> teachers { get; set; }
     }
 }

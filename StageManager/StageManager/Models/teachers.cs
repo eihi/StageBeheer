@@ -19,6 +19,7 @@ namespace StageManager.Models
             this.internships = new HashSet<internships>();
             this.volumehours = new HashSet<volumehours>();
             this.internships1 = new HashSet<internships>();
+            this.education = new HashSet<education>();
             this.knowledge = new HashSet<knowledge>();
         }
     
@@ -33,6 +34,7 @@ namespace StageManager.Models
         public virtual users users { get; set; }
         public virtual ICollection<volumehours> volumehours { get; set; }
         public virtual ICollection<internships> internships1 { get; set; }
+        public virtual ICollection<education> education { get; set; }
         public virtual ICollection<knowledge> knowledge { get; set; }
     }
 }

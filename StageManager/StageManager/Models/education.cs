@@ -16,8 +16,9 @@ namespace StageManager.Models
     {
         public education()
         {
-            this.administrators = new HashSet<administrators>();
             this.students = new HashSet<students>();
+            this.administrators = new HashSet<administrators>();
+            this.teachers = new HashSet<teachers>();
         }
     
         public int id { get; set; }
@@ -25,7 +26,8 @@ namespace StageManager.Models
         public string name { get; set; }
     
         public virtual academics academics { get; set; }
-        public virtual ICollection<administrators> administrators { get; set; }
         public virtual ICollection<students> students { get; set; }
+        public virtual ICollection<administrators> administrators { get; set; }
+        public virtual ICollection<teachers> teachers { get; set; }
     }
 }

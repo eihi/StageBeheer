@@ -23,6 +23,7 @@ namespace StageManager.Models
         public int studentnumber { get; set; }
         public int education_id { get; set; }
         public Nullable<int> addresss_id { get; set; }
+        public string meets { get; set; }
     
         public virtual adresses adresses { get; set; }
         public virtual education education { get; set; }

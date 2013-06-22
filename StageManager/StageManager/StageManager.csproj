@@ -112,6 +112,9 @@
     <Compile Include="Models\companies.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\dbstageview.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\education.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
