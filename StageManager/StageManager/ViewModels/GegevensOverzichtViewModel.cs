@@ -106,85 +106,115 @@ namespace StageManager.ViewModels
             List<students> students = smE.students.ToList();
             List = new Dictionary<object, students>();
             List<students> studenten = new List<students>();
-            List<String> missingInfo = new List<String>();
+
 
             for (int i = 0; i < students.Count; i++)
             {
-                if (students[i].studentnumber == null)
+                users thisUser = new users
                 {
-                    missingInfo.Add("StudentNummer");
-                } 
+                    name = "",
+                    surname = "",
+                    phonenumber = "",
+                    email = "",
+                };
+
+                adresses thisAdresses = new adresses
+                {
+                    street = "",
+                    housenumber = "",
+                    place = "",
+                    zipcode = "",
+                };
+
+                students thisStudent = new students
+                {
+                    users = thisUser,
+                    adresses = thisAdresses,
+                    studentnumber = 0
+                };
+
+                if (students[i].studentnumber != null)
+                {
+                    thisStudent.studentnumber = students[i].studentnumber;
+                }
 
                 if (students[i].users == null)
                 {
-                    missingInfo.Add("Achternaam");
-                    missingInfo.Add("Roepnaam");
-                    missingInfo.Add("Email");
-                    missingInfo.Add("Telefoonnummer");
+                    thisStudent.users.name = "";
+                    thisStudent.users.surname = "";
+                    thisStudent.users.phonenumber = "";
+                    thisStudent.users.email = "";
                 }
-                else if (students[i].users.surname == null)
+                else
                 {
-                    missingInfo.Add("Achternaam");
-                }
-                else if (students[i].users.name == null)
-                {
-                    missingInfo.Add("Roepnaam");
-                }
-                else if (students[i].users.email == null)
-                {
-                    missingInfo.Add("Email");
-                }
-                else if (students[i].users.phonenumber == null)
-                {
-                    missingInfo.Add("Telefoonnummer");
+                    if (students[i].users.name != null)
+                    {
+
+                        thisStudent.users.name = students[i].users.name;
+                    }
+
+                    if (students[i].users.surname != null)
+                    {
+                        thisStudent.users.surname = students[i].users.surname;
+                    }
+
+                    if (students[i].users.email != null)
+                    {
+                        thisStudent.users.email = students[i].users.email;
+                    }
+
+                    if (students[i].users.phonenumber != null)
+                    {
+                        thisStudent.users.phonenumber = students[i].users.phonenumber;
+                    }
                 }
 
-                if(students[i].adresses == null )
+                if (students[i].adresses == null)
                 {
-                    missingInfo.Add("Straatnaam");
-                    missingInfo.Add("Nummer");
-                    missingInfo.Add("Postcode");
-                    missingInfo.Add("Plaats");
+                    thisStudent.adresses.street = "";
+                    thisStudent.adresses.housenumber = "";
+                    thisStudent.adresses.zipcode = "";
+                    thisStudent.adresses.place = "";
                 }
-                else if (students[i].adresses.street == null)
+                else
                 {
-                    missingInfo.Add("Straatnaam");
-                }
-                else if (students[i].adresses.housenumber == null)
-                {
-                    missingInfo.Add("Nummer");
-                }
-                else if (students[i].adresses.zipcode == null)
-                {
-                    missingInfo.Add("Postcode");
-                }
-                else if (students[i].adresses.place == null)
-                {
-                    missingInfo.Add("Plaats");
+                    if (students[i].adresses.street != null)
+                    {
+                        thisStudent.adresses.street = students[i].adresses.street;
+                    }
+
+                    if (students[i].adresses.housenumber != null)
+                    {
+                        thisStudent.adresses.housenumber = students[i].adresses.housenumber;
+                    }
+
+                    if (students[i].adresses.zipcode != null)
+                    {
+                        thisStudent.adresses.zipcode = students[i].adresses.zipcode;
+                    }
+
+                    if (students[i].adresses.place != null)
+                    {
+                        thisStudent.adresses.place = students[i].adresses.place;
+                    }
                 }
 
-            }
+                studenten.Add(thisStudent);
 
-            foreach (String s in missingInfo)
-            {
-                System.Diagnostics.Debug.WriteLine(s);
             }
 
             List = studenten.ToDictionary(t => (Object)new
             {
-                StudentNummer = t.studentnumber,
-                Achternaam = t.users.surname,
-                Voorvoegsels = "",
-            
-                Roepnaam = t.users.name,                
+                Studentnummer = t.studentnumber,
+                Voornaam = t.users.name,
+                Achternaam = t.users.surname,            
                 Email = t.users.email,
                 EmailURL = t.users.email,
-                Straatnaam = t.adresses.street,
-                Nummer = 0,
-                Toevoeging = "",
-                Postcode = "",
-                Plaats = "",
                 Telefoonnummer = t.users.phonenumber,
+                Straatnaam = t.adresses.street,
+                Nummer = t.adresses.housenumber,
+                Postcode = t.adresses.zipcode,
+                Plaats = t.adresses.place,
 
                 // Zoeken naar Extra info
                 //ECs = t., // TODO: DB EC's

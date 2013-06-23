@@ -45,9 +45,9 @@
                     <ListView DockPanel.Dock="Top" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedStudent}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Studentnummer" DisplayMemberBinding="{Binding StudentNummer}" />
+                                <GridViewColumn Header="Studentnummer" DisplayMemberBinding="{Binding Studentnummer}" />
+                                <GridViewColumn Header="Voornaam" DisplayMemberBinding="{Binding Voornaam}" />
                                 <GridViewColumn Header="Achternaam" DisplayMemberBinding="{Binding Achternaam}" />
-                                <GridViewColumn Header="Roepnaam" DisplayMemberBinding="{Binding Roepnaam}" />
                                 <GridViewColumn Header="E-mail" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -59,11 +59,11 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
+                                <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
                                 <GridViewColumn Header="Straatnaam" DisplayMemberBinding="{Binding Straatnaam}" />
                                 <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
                                 <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
                                 <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding Plaats}" />
-                                <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
                                 <!-- <GridViewColumn Header="SLB6-1" DisplayMemberBinding="{Binding SLB61}" />
                                 <GridViewColumn Header="SLB6-2" DisplayMemberBinding="{Binding SLB62}" />
                                 <GridViewColumn Header="SLB6-3" DisplayMemberBinding="{Binding SLB63}" />
