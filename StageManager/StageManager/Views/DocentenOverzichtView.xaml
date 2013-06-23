@@ -51,32 +51,31 @@
                             <ColumnDefinition MinWidth="200"/>
                         </Grid.ColumnDefinitions>
 
-                        <ScrollViewer Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
-                            <DataGrid Background="White" Name="StudentenGridContents"
+                        <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
+                            <DataGrid Background="White" Name="TeacherGridContents"
                                           HorizontalAlignment="Stretch" 
                                           VerticalAlignment="Stretch" 
-                                          Height="auto" Width="auto" 
+                                          Height="auto" Width="auto"
+                                          GridLinesVisibility="None"
                                           AutoGenerateColumns="False"
                                           CanUserResizeColumns="False"
                                           CanUserAddRows="False"
                                           CanUserDeleteRows="False"
                                           CanUserResizeRows="False"
-                                          SelectedItem="{Binding Path=SelectedDocenten}">
+                                          SelectedItem="{Binding Path=SelectedTeachers}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Achternaam}" Header="Achternaam" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Opleiding}" Header="Opleiding" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Straatnaam}" Header="Straatnaam" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Huisnummer}" Header="Huisnummer" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Woonplaats" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Website}" Header="Website" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres" Width="auto" IsReadOnly="True"/>        
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>
 
-                        <Button Content="Export" Margin="20,10,20,10" Grid.Column="0" Grid.Row="1" Height="30" Width="80" HorizontalAlignment="Left"/>
+                        <Button Content="Exporteer naar Excel" cal:Message.Attach="btnExport_Click" Margin="0,10,5,0" Grid.Column="0" Grid.Row="0" Height="30" Width="120" HorizontalAlignment="Left"/>
                     </Grid>
                 </DockPanel>
             </ScrollViewer>

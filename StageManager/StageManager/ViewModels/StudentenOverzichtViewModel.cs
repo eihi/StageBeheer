@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StageManager.ViewModels
 {
-    class StudentenOverzichtViewModel : PropertyChanged
+    class StudentenOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
         private Dictionary<Object, students> list;
         Dictionary<Object, students> List
@@ -103,6 +103,52 @@ namespace StageManager.ViewModels
                 Postcode = t.users.students.adresses.zipcode,
                 Woonplaats = t.users.students.adresses.place,
             }, t => t);
+        }
+
+        public void btnExport_Click()
+        {
+            ExportExcel ee = new ExportExcel(this);
+            ee.Export();
+        }
+
+        public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
+            LinkedList<object[]> rows = new LinkedList<object[]>();
+
+            string[] columns = { 
+                "Studentnummer", 
+                "Voornaam",
+                "Achternaam",
+                "Opleiding",
+                "Telefoonnummer",
+                "Voldoet",
+                "Email",
+                "Straatnaam",
+                "Huisnummer",
+                "Postcode",
+                "Woonplaats"
+            };
+
+            foreach (KeyValuePair<Object, students> t in List)
+            {
+                object[] row = {
+                    t.Value.studentnumber,
+                    t.Value.users.name,
+                    t.Value.users.surname,
+                    t.Value.users.students.education.name,
+                    t.Value.users.phonenumber,
+                    t.Value.users.students.meets,
+                    t.Value.users.email,
+                    t.Value.adresses.street,
+                    t.Value.adresses.housenumber,
+                    t.Value.users.students.adresses.zipcode,
+                    t.Value.adresses.place
+                };
+
+                rows.AddLast(row);
+            }
+
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
         }
     }
 }
