@@ -135,6 +135,11 @@ namespace StageManager.Models
             return (from viewstage in StageManagerEntities.dbstageview.ToList() select viewstage).ToList();
         }
 
+        public List<dbstageviewcomplete> SearchDBStageViewComplete()
+        {
+            return (from viewstage in StageManagerEntities.dbstageviewcomplete.ToList() select viewstage).ToList();
+        }
+
         public List<supervisor> SearchBedrijfsBegeleiderSet()
         {
             return (from begeleider in StageManagerEntities.supervisor.ToList() select begeleider).ToList();

@@ -11,8 +11,8 @@ namespace StageManager.ViewModels
 {
     class StagesOverzichtViewModel : PropertyChanged
     {
-        private Dictionary<Object, students> list;
-        Dictionary<Object, students> List
+        private Dictionary<Object, dbstageviewcomplete> list;
+        Dictionary<Object, dbstageviewcomplete> List
         {
             get
             {
@@ -40,57 +40,15 @@ namespace StageManager.ViewModels
             }
         }
 
-        private Object selectedStudent;
-        public object SelectedStudent
-        {
-            get
-            {
-                return selectedStudent;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    selectedStudent = value;
-                    students s = null;
-                    list.TryGetValue(value, out s);
-                    Type t = value.GetType();
-                    System.Reflection.PropertyInfo p = t.GetProperty("MailTo");
-                    System.Reflection.MethodInfo m = p.GetMethod;
-                    bool ob = !(bool)m.Invoke(value, null);
-                    bool temp = !(bool)value.GetType().GetProperty("MailTo").GetMethod.Invoke(value, null);
-                    if (s != null)
-                    {
-                        Object o = (Object)new
-                        {
-                            Studentnummer = (String)value.GetType().GetProperty("Studentnummer").GetMethod.Invoke(value, null),
-                            Achternaam = (String)value.GetType().GetProperty("Achternaam").GetMethod.Invoke(value, null),
-                            Voorvoegsels = (String)value.GetType().GetProperty("Voorvoegsels").GetMethod.Invoke(value, null),
-                            Roepnaam = (String)value.GetType().GetProperty("Roepnaam").GetMethod.Invoke(value, null),
-                            Email = (String)value.GetType().GetProperty("Email").GetMethod.Invoke(value, null),
-                            EmailURL = (String)value.GetType().GetProperty("EmailURL").GetMethod.Invoke(value, null),
-                            Straatnaam = (String)value.GetType().GetProperty("Straatnaam").GetMethod.Invoke(value, null),
-                            Nummer = (String)value.GetType().GetProperty("Nummer").GetMethod.Invoke(value, null),
-                            Toevoeging = (String)value.GetType().GetProperty("Toevoeging").GetMethod.Invoke(value, null),
-                            Postcode = (String)value.GetType().GetProperty("Postcode").GetMethod.Invoke(value, null),
-                            Plaats = (String)value.GetType().GetProperty("Plaats").GetMethod.Invoke(value, null),
-                            Telefoonnummer = (String)value.GetType().GetProperty("Telefoonnummer").GetMethod.Invoke(value, null),
-                        };
-                        list.Remove(value);
-                        list.Add(o, s);
-                        List = list;
-                    }
-                }
-            }
-        }
+       
 
         
 
         public StagesOverzichtViewModel(MainViewModel main)
             : base(main)
         {
-            List = new Dictionary<object, students>();
-            List = new WStored().SearchStudentSet("", "").ToDictionary(t => (Object)new
+            List = new Dictionary<object, dbstageviewcomplete>();
+            List = new WStored().SearchDBStageViewComplete().ToDictionary(t => (Object)new
             {
 
                 /*
@@ -120,15 +78,15 @@ namespace StageManager.ViewModels
                                 </DataGrid.Columns>
                  */
 
-                Stagetype = t.studentnumber,
-                Eerstestudent = t.users.name,
-                Tweedestudent = t.users.surname,
-                Stagebegeleider = t.users.students.education.name,
-                Tweedelezer = t.users.phonenumber,
-                Bedrijf = t.users.students.meets,
-                Bedrijfsbegeleider = t.users.email,
-                Begin = t.users.email,
-                Eind = t.users.students.adresses.street,
+                Stagetype = t.type,
+                Eerstestudent = t.name,
+                Tweedestudent = " TODO ",
+                Stagebegeleider = t.teacher_name,
+                Tweedelezer = t.sr_name,
+                Bedrijf = t.company_name,
+                Bedrijfsbegeleider = t.sv_name,
+                Begin = t.start_date,
+                Eind = t.end_date,
 
             }, t => t);
 
