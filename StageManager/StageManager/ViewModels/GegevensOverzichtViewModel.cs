@@ -142,11 +142,19 @@ namespace StageManager.ViewModels
                      website = "",
                      phonenumber = "",
                      adresses = companyAdresses
-                };   
+                };
+
+                users superviserUser = new users
+                {
+                    name = "",
+                    surname = "",
+                    phonenumber = "",
+                    email = "",
+                };
                 
                 supervisor thisSupervisor = new supervisor
                 {
-                    users = thisUser,
+                    users = superviserUser,
                     companies = thisCompany
                 };
 
@@ -175,25 +183,7 @@ namespace StageManager.ViewModels
 
                 if (students[i].meets != null)
                 {
-                    System.Diagnostics.Debug.WriteLine(students[i].meets);
-                    switch (students[i].meets)
-                    {
-                        case "0" :
-                            thisStudent.meets = "Yes";
-                            break;
-
-                        case "1":
-                            thisStudent.meets = "No";
-                            break;
-
-                        case "3":
-                            thisStudent.meets = "Not yet";
-                            break;
-
-                        default: 
-                            break;
-
-                    }
+                            thisStudent.meets = students[i].meets;
                 }
 
                 if (students[i].users == null)
