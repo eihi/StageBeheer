@@ -41,43 +41,55 @@
             </StackPanel>
             <ScrollViewer Padding="20,0,20,20" DockPanel.Dock="Top">
                 <DockPanel>
-                    <Label Content="Gegevensoverzicht" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontWeight="Thin" FontSize="24"/>
-                    <ListView DockPanel.Dock="Top" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedStudent}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Studentnummer" DisplayMemberBinding="{Binding Studentnummer}" />
-                                <GridViewColumn Header="Voornaam" DisplayMemberBinding="{Binding Voornaam}" />
-                                <GridViewColumn Header="Achternaam" DisplayMemberBinding="{Binding Achternaam}" />
-                                <GridViewColumn Header="E-mail" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Gegevensoverzicht" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontWeight="Thin" FontSize="24"/>
+                        <ListView Grid.Column="0" Grid.Row="2" DockPanel.Dock="Top" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedStudent}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Studentnummer" DisplayMemberBinding="{Binding Studentnummer}" />
+                                    <GridViewColumn Header="Voornaam" DisplayMemberBinding="{Binding Voornaam}" />
+                                    <GridViewColumn Header="Achternaam" DisplayMemberBinding="{Binding Achternaam}" />
+                                    <GridViewColumn Header="E-mail" >
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>
                                         <Hyperlink NavigateUri="{Binding Path=EmailURL}">
                                             <TextBlock Text="{Binding Path=Email}" />
                                         </Hyperlink>    
                                     </TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
-                                <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
-                                <GridViewColumn Header="Straatnaam" DisplayMemberBinding="{Binding Straatnaam}" />
-                                <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
-                                <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
-                                <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding Plaats}" />
-                                <GridViewColumn Header="Bedrijf" DisplayMemberBinding="{Binding Bedrijf}" />
-                                <GridViewColumn Header="Tel. nr Bedrijf" DisplayMemberBinding="{Binding BTelefoon}" />
-                                <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" />
-                                <GridViewColumn Header="Straat" DisplayMemberBinding="{Binding BStraat}" />
-                                <GridViewColumn Header="Nr." DisplayMemberBinding="{Binding BNummer}" />
-                                <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding BPostcode}" />
-                                <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding BPlaats}" />
-                                <GridViewColumn Header="Bedrijfsbegeleider" DisplayMemberBinding="{Binding Bedrijfsbegeleider}" />
-                                <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <Button Content="Export" cal:Message.Attach="btnExport_Click" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
+                                    <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
+                                    <GridViewColumn Header="Straatnaam" DisplayMemberBinding="{Binding Straatnaam}" />
+                                    <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
+                                    <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
+                                    <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding Plaats}" />
+                                    <GridViewColumn Header="Bedrijf" DisplayMemberBinding="{Binding Bedrijf}" />
+                                    <GridViewColumn Header="Tel. nr Bedrijf" DisplayMemberBinding="{Binding BTelefoon}" />
+                                    <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" />
+                                    <GridViewColumn Header="Straat" DisplayMemberBinding="{Binding BStraat}" />
+                                    <GridViewColumn Header="Nr." DisplayMemberBinding="{Binding BNummer}" />
+                                    <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding BPostcode}" />
+                                    <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding BPlaats}" />
+                                    <GridViewColumn Header="Bedrijfsbegeleider" DisplayMemberBinding="{Binding Bedrijfsbegeleider}" />
+                                    <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <Button Content="Exporteer naar Excel" cal:Message.Attach="btnExport_Click" Margin="0,10,5,0" Grid.Column="0" Grid.Row="1" Height="30" Width="120" HorizontalAlignment="Left"/>
+                    </Grid>
                 </DockPanel>
             </ScrollViewer>
         </DockPanel>

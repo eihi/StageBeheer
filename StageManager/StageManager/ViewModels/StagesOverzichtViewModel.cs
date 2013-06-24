@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StageManager.ViewModels
 {
-    class StagesOverzichtViewModel : PropertyChanged
+    class StagesOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
         private Dictionary<Object, dbstageviewcomplete> list;
         Dictionary<Object, dbstageviewcomplete> List
@@ -71,6 +71,48 @@ namespace StageManager.ViewModels
                 List.Add(o, tempList[i]);
                 List = List;
             }
+        }
+
+        public void btnExport_Click()
+        {
+            ExportExcel ee = new ExportExcel(this);
+            ee.Export();
+        }
+
+        public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
+            LinkedList<object[]> rows = new LinkedList<object[]>();
+
+            string[] columns = { 
+                "Stagetype", 
+                "Eerstestudent",
+                "Tweedestudent",
+                "Stagebegeleider",
+                "Tweedelezer",
+                "Bedrijf",
+                "Bedrijfsbegeleider",
+                "Begin",
+                "Eind"
+            };
+
+            foreach (KeyValuePair<Object, dbstageviewcomplete> t in List)
+            {
+                object[] row = {
+                    t.Value.type == "0" ? "Stage" : "Eindstage",
+                    t.Value.name + " " + t.Value.surname,
+                    "",
+                    t.Value.teacher_name + " " + t.Value.teacher_surname,
+                    t.Value.sr_name + " " + t.Value.sr_surname,
+                    t.Value.sv_name + " " + t.Value.sv_surname,
+                    t.Value.company_name,
+                    t.Value.start_date,
+                    t.Value.end_date,
+                };
+
+                rows.AddLast(row);
+            }
+
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
         }
     }
 }

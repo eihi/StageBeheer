@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StageManager.ViewModels
 {
-    class StageViewModel : PropertyChanged
+    class StageViewModel : PropertyChanged, IExcelAlgorithm
     {
         private static Random random = new Random();
         private internships stage = new WStored().SearchStageSet()[random.Next(new WStored().SearchStageSet().Count)];
@@ -347,6 +347,43 @@ namespace StageManager.ViewModels
         public void showStageopdracht()
         {
             Main.ChangeButton("Stageopdracht");
+        }
+
+        public void btnExport_Click()
+        {
+            ExportExcel ee = new ExportExcel(this);
+            ee.Export();
+        }
+
+        public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
+            LinkedList<object[]> rows = new LinkedList<object[]>();
+
+            string[] columns = { 
+                "EersteStudent", 
+                "TweedeStudent",
+                "Stagebegeleider",
+                "TweedeLezer",
+                "Bedrijf",
+                "Bedrijfsbegeleider",
+                "Start datum",
+                "Eind datum"
+            };
+
+            object[] row = {
+                EersteStudent,
+                TweedeStudent,
+                Stagebegeleider,
+                TweedeLezer,
+                Bedrijf,
+                Bedrijfsbegeleider,
+                StartDatum,
+                EindDatum
+            };
+
+            rows.AddLast(row);
+
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
         }
     }
 }

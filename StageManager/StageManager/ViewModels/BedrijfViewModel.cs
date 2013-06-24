@@ -142,7 +142,7 @@ namespace StageManager.ViewModels
                 throw;
             }
         }
-
+        
         public void btnExport_Click()
         {
             ExportExcel ee = new ExportExcel(this);
@@ -151,16 +151,26 @@ namespace StageManager.ViewModels
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
-            worksheet.Cells[1, 1] = "Naam";
-            worksheet.Cells[2, 1] = Naam;
-            worksheet.Cells[1, 2] = "Straat";
-            worksheet.Cells[2, 2] = Straat;
-            worksheet.Cells[1, 3] = "Huisnummer";
-            worksheet.Cells[2, 3] = Huisnummer;
-            worksheet.Cells[1, 4] = "Postcode";
-            worksheet.Cells[2, 4] = Postcode;
-            worksheet.Cells[1, 5] = "Plaats";
-            worksheet.Cells[2, 5] = Plaats;
+            LinkedList<object[]> rows = new LinkedList<object[]>();
+
+            string[] columns = { 
+                "Naam", 
+                "Straat",
+                "Huisnummer",
+                "Postcode",
+                "Plaats",
+            };
+
+            object[] row = {
+                    Naam,
+                    Straat,
+                    Huisnummer,
+                    Postcode,
+                    Plaats
+            };
+
+            rows.AddLast(row);
+            ExcelHelper.MultipleRows(worksheet, columns, rows);
         }
     }
 }
