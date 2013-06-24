@@ -76,8 +76,8 @@ namespace StageManager.ViewModels
                 MainViewModel mainViewModel = new MainViewModel(user);
                 mainViewModel.SomethingHappened += viewController.HandleEvent;
                 WindowManager windowManager = new WindowManager();
-                windowManager.ShowWindow(mainViewModel);
                 mainViewModel.ChangeButton(decideWindowState());
+                windowManager.ShowWindow(mainViewModel);
             }
             else
             {
