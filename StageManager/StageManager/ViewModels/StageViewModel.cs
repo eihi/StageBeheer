@@ -48,7 +48,7 @@ namespace StageManager.ViewModels
                 {
                     return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.surname; //TODO juiste student
                 }
-                catch (ArgumentNullException)
+                catch (Exception)
                 {              
                     return "";
                 }

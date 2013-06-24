@@ -57,26 +57,20 @@
                             <Button Content="Stageopdracht laten nakijken" Margin="0,10,5,0" Padding="5" />
                             <Button Content="Exporteer naar Excel" cal:Message.Attach="btnExport_Click" Margin="0,10,5,0" Padding="5" />
                         </StackPanel>
-
-                        
-                        <ListView Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedProcess}">
+                        <ListView Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedStudent}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <CheckBox IsChecked="{Binding Path=MailTo, Mode=OneWay}"/>
+                                                <CheckBox  IsEnabled="False" IsChecked="{Binding Path=MailTo, Mode=OneWay}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Header="E-mail" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock>
-                                        <Hyperlink NavigateUri="{Binding Path=EmailURL}">
-                                            <TextBlock Text="{Binding Path=Email}" />
-                                        </Hyperlink>    
-                                    </TextBlock>
+                                                <TextBlock Text="{Binding Path=Email}" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>

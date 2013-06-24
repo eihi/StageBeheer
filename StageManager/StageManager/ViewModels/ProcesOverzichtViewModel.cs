@@ -86,12 +86,10 @@ namespace StageManager.ViewModels
                         {
                             MailTo = !(bool)value.GetType().GetProperty("MailTo").GetMethod.Invoke(value, null),
                             Email = (String)value.GetType().GetProperty("Email").GetMethod.Invoke(value, null),
-                            EmailURL = (String)value.GetType().GetProperty("EmailURL").GetMethod.Invoke(value, null),
-                            StudentNaam = (String)value.GetType().GetProperty("StudentNaam").GetMethod.Invoke(value, null),
+                            Student = (String)value.GetType().GetProperty("Student").GetMethod.Invoke(value, null),
                             Gegevens = (String)value.GetType().GetProperty("Gegevens").GetMethod.Invoke(value, null),
-                            Stageopdracht = (bool)value.GetType().GetProperty("Stageopdracht").GetMethod.Invoke(value, null),
-                            Feedback = (String)value.GetType().GetProperty("Feedback").GetMethod.Invoke(value, null),
-                            Docent = (String)value.GetType().GetProperty("Docent").GetMethod.Invoke(value, null)
+                            Stageopdracht = (String)value.GetType().GetProperty("Stageopdracht").GetMethod.Invoke(value, null),
+                            Goedgekeurd = (String)value.GetType().GetProperty("Goedgekeurd").GetMethod.Invoke(value, null)
                         };
                         list.Remove(value);
                         list.Add(o, s);
@@ -188,6 +186,7 @@ namespace StageManager.ViewModels
 
             List = studenten.ToDictionary(t => (Object)new
             {
+                MailTo = false,
                 Email = t.users.email,
                 Student = t.users.name + " " + t.users.surname,
                 Gegevens = "Compleet",

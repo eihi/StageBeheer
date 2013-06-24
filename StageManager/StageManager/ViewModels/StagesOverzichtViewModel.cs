@@ -53,13 +53,14 @@ namespace StageManager.ViewModels
                 String tweedeStudent = "";
                 if (i < tempList.Count - 1 && tempList[i].internshipID == tempList[i + 1].internshipID)
                 {
-                    tweedeStudent = tempList[i + 1].name + " " + tempList[i + 1].surname;
+                    tweedeStudent = tempList[i].name + " " + tempList[i].surname;
+                    i++;
                 }
                 object o = (Object)new
-                {
-                    Stagetype = tempList[i].type,
+                {                   
+                    Stagetype = tempList[i].type == "0" ? "Stage" : "Eindstage",
                     Eerstestudent = tempList[i].name + " " + tempList[i].surname,
-                    Tweedestudent = " TODO ",
+                    Tweedestudent = tweedeStudent,
                     Stagebegeleider = tempList[i].teacher_name + " " + tempList[i].teacher_surname,
                     Tweedelezer = tempList[i].sr_name + " " + tempList[i].sr_surname,
                     Bedrijf = tempList[i].company_name,
@@ -68,7 +69,7 @@ namespace StageManager.ViewModels
                     Eind = tempList[i].end_date.ToString().Substring(0, tempList[i].end_date.ToString().IndexOf(' ')),
                 };
                 List.Add(o, tempList[i]);
-                NotifyOfPropertyChange(() => List);
+                List = List;
             }
         }
     }
