@@ -40,6 +40,8 @@ namespace StageManager.Models
         public DbSet<users> users { get; set; }
         public DbSet<volumehours> volumehours { get; set; }
         public DbSet<webkeys> webkeys { get; set; }
+        public DbSet<db_internship_knowledge> db_internship_knowledge { get; set; }
+        public DbSet<db_teacher_knowledge> db_teacher_knowledge { get; set; }
         public DbSet<dbstageview> dbstageview { get; set; }
         public DbSet<dbstageviewcomplete> dbstageviewcomplete { get; set; }
         public DbSet<studentadress> studentadress { get; set; }

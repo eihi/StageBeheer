@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="stagemanagerModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="stagemanagerModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="stagemanagerModelStoreContainer">
           <EntitySet Name="academics" EntityType="stagemanagerModel.Store.academics" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="administrators" EntityType="stagemanagerModel.Store.administrators" store:Type="Tables" Schema="stagemanager" />
@@ -26,6 +26,20 @@
           <EntitySet Name="users" EntityType="stagemanagerModel.Store.users" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="volumehours" EntityType="stagemanagerModel.Store.volumehours" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="webkeys" EntityType="stagemanagerModel.Store.webkeys" store:Type="Tables" Schema="stagemanager" />
+          <EntitySet Name="db_internship_knowledge" EntityType="stagemanagerModel.Store.db_internship_knowledge" store:Type="Views" store:Schema="stagemanager" store:Name="db_internship_knowledge">
+            <DefiningQuery>SELECT
+      `db_internship_knowledge`.`internship_id`, 
+      `db_internship_knowledge`.`knowledge_id`, 
+      `db_internship_knowledge`.`name`
+      FROM `db_internship_knowledge` AS `db_internship_knowledge`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="db_teacher_knowledge" EntityType="stagemanagerModel.Store.db_teacher_knowledge" store:Type="Views" store:Schema="stagemanager" store:Name="db_teacher_knowledge">
+            <DefiningQuery>SELECT
+      `db_teacher_knowledge`.`teacher_user_id`, 
+      `db_teacher_knowledge`.`knowledge_id`, 
+      `db_teacher_knowledge`.`name`
+      FROM `db_teacher_knowledge` AS `db_teacher_knowledge`</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.Store.dbstageview" store:Type="Views" store:Schema="stagemanager" store:Name="dbstageview">
             <DefiningQuery>SELECT
       `dbstageview`.`internshipID`, 
@@ -426,6 +440,30 @@
           <Property Name="user_id" Type="int" />
           <Property Name="type" Type="enum" />
           <Property Name="email" Type="varchar" MaxLength="65" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.stagemanager.db_internship_knowledge' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="db_internship_knowledge">
+          <Key>
+            <PropertyRef Name="internship_id" />
+            <PropertyRef Name="knowledge_id" />
+          </Key>
+          <Property Name="internship_id" Type="uint" Nullable="false" />
+          <Property Name="knowledge_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.stagemanager.db_teacher_knowledge' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="db_teacher_knowledge">
+          <Key>
+            <PropertyRef Name="teacher_user_id" />
+            <PropertyRef Name="knowledge_id" />
+          </Key>
+          <Property Name="teacher_user_id" Type="int" Nullable="false" />
+          <Property Name="knowledge_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'def.stagemanager.dbstageview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -932,7 +970,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="stagemanagerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -952,6 +991,8 @@
           <EntitySet Name="users" EntityType="stagemanagerModel.users" />
           <EntitySet Name="volumehours" EntityType="stagemanagerModel.volumehours" />
           <EntitySet Name="webkeys" EntityType="stagemanagerModel.webkeys" />
+          <EntitySet Name="db_internship_knowledge" EntityType="stagemanagerModel.db_internship_knowledge" />
+          <EntitySet Name="db_teacher_knowledge" EntityType="stagemanagerModel.db_teacher_knowledge" />
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.dbstageview" />
           <EntitySet Name="dbstageviewcomplete" EntityType="stagemanagerModel.dbstageviewcomplete" />
           <EntitySet Name="studentadress" EntityType="stagemanagerModel.studentadress" />
@@ -1080,7 +1121,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="phonenumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -1229,6 +1270,24 @@
           <Property Name="type" Type="String" MaxLength="65532" Unicode="true" FixedLength="false" />
           <Property Name="email" Type="String" MaxLength="65" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="users" Relationship="stagemanagerModel.FK_webkeys_users" FromRole="webkeys" ToRole="users" />
+        </EntityType>
+        <EntityType Name="db_internship_knowledge">
+          <Key>
+            <PropertyRef Name="internship_id" />
+            <PropertyRef Name="knowledge_id" />
+          </Key>
+          <Property Name="internship_id" Type="Int64" Nullable="false" />
+          <Property Name="knowledge_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="db_teacher_knowledge">
+          <Key>
+            <PropertyRef Name="teacher_user_id" />
+            <PropertyRef Name="knowledge_id" />
+          </Key>
+          <Property Name="teacher_user_id" Type="Int32" Nullable="false" />
+          <Property Name="knowledge_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="dbstageview">
           <Key>
@@ -1776,6 +1835,24 @@
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_internship_knowledge">
+            <EntityTypeMapping TypeName="stagemanagerModel.db_internship_knowledge">
+              <MappingFragment StoreEntitySet="db_internship_knowledge">
+                <ScalarProperty Name="internship_id" ColumnName="internship_id" />
+                <ScalarProperty Name="knowledge_id" ColumnName="knowledge_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_teacher_knowledge">
+            <EntityTypeMapping TypeName="stagemanagerModel.db_teacher_knowledge">
+              <MappingFragment StoreEntitySet="db_teacher_knowledge">
+                <ScalarProperty Name="teacher_user_id" ColumnName="teacher_user_id" />
+                <ScalarProperty Name="knowledge_id" ColumnName="knowledge_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

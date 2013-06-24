@@ -118,6 +118,12 @@
     <Compile Include="Models\dbstageviewcomplete.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\db_internship_knowledge.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\db_teacher_knowledge.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\education.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
@@ -184,6 +190,7 @@
     <Compile Include="Services\ExportExcel.cs" />
     <Compile Include="Services\IExcelAlgorithm.cs" />
     <Compile Include="Services\IFactory.cs" />
+    <Compile Include="Services\ImportanceChecker.cs" />
     <Compile Include="Services\ImportExcel.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ISetEntity.cs" />

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1d440096d30a4d219cdfd3cd286446d3" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="d9488c51ecd7441fb490296420ec421d" Name="Diagram1">
         <EntityTypeShape EntityType="stagemanagerModel.academics" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="stagemanagerModel.administrators" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="stagemanagerModel.adresses" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
@@ -20,11 +20,13 @@
         <EntityTypeShape EntityType="stagemanagerModel.users" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="stagemanagerModel.volumehours" Width="1.5" PointX="10.75" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="stagemanagerModel.webkeys" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.db_internship_knowledge" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.db_teacher_knowledge" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="stagemanagerModel.dbstageview" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="stagemanagerModel.dbstageviewcomplete" Width="3.375" PointX="13.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="stagemanagerModel.studentadress" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="stagemanagerModel.students_userview" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="stagemanagerModel.teacher_userview" Width="2" PointX="12.875" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.dbstageviewcomplete" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.studentadress" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.students_userview" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="stagemanagerModel.teacher_userview" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
         <AssociationConnector Association="stagemanagerModel.FK_education_academics" ManuallyRouted="false" />
         <AssociationConnector Association="stagemanagerModel.FK_administrators_users" ManuallyRouted="false" />
         <AssociationConnector Association="stagemanagerModel.FK_companies_adresses" ManuallyRouted="false" />
