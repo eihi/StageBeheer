@@ -77,7 +77,7 @@
                                     <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student}" />
                                     <GridViewColumn Header="Gegevens" DisplayMemberBinding="{Binding Gegevens}" />
                                     <GridViewColumn Header="Stage Opdracht" DisplayMemberBinding="{Binding Stageopdracht}" />
-                                    <GridViewColumn Header="Docent" DisplayMemberBinding="{Binding Docent}" />
+                                    <!-- <GridViewColumn Header="Docent" DisplayMemberBinding="{Binding Docent}" /> -->
                                     <GridViewColumn Header="Goedgekeurd" DisplayMemberBinding="{Binding Goedgekeurd}" />
                                 </GridView>
                             </ListView.View>
