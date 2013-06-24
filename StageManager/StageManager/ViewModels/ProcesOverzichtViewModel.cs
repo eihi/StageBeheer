@@ -112,7 +112,34 @@ namespace StageManager.ViewModels
                 }
             }
             Main.ChangeButton("Mail", new List<object>() { mails }, Clear.No);
+        }
 
+        public void MailStageSelectie()
+        {
+            List<String> mails = new List<string>();
+            for (int i = 0; i < List.Keys.Count; i++)
+            {
+                if ((bool)List.Keys.ElementAt(i).GetType().GetProperty("MailTo").GetMethod.Invoke(List.Keys.ElementAt(i), null))
+                {
+                    students s;
+                    List.TryGetValue(List.Keys.ElementAt(i), out s);
+                    mails.Add(s.users.email);
+
+                    stagemanagerEntities smE = new stagemanagerEntities();
+                    List<students> students = smE.students.ToList();
+
+                    foreach(students st in students){
+                        if(s.users.email == st.users.email){
+                            if (st.students_internships.Count > 0)
+                            {
+                                st.students_internships.First().internships.approved = "2";
+                            }
+                        }
+                    }
+                    smE.SaveChanges();
+                }
+            }
+            Main.ChangeButton("Mail", new List<object>() { mails }, Clear.No);
         }
 
         public ProcesOverzichtViewModel(MainViewModel main)
@@ -173,6 +200,25 @@ namespace StageManager.ViewModels
                         {
                             description = "Aanwezig",
                             approved = "Ja"
+                        }
+                    });
+
+                    studenten.Add(new students
+                    {
+                        users = students[i].users,
+                        students_internships = myList
+                    });
+                }
+                else if (students[i].students_internships.First().internships.approved == "2")
+                {
+                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " heeft geen stage feedback");
+                    List<students_internships> myList = new List<students_internships>();
+                    myList.Add(new students_internships
+                    {
+                        internships = new internships
+                        {
+                            description = "Aanwezig",
+                            approved = "Word Behandeld"
                         }
                     });
 
