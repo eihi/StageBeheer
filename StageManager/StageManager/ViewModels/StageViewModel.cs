@@ -46,10 +46,9 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.students_internships.First().students.users.name; //TODO juiste student
-                    
+                    return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.surname; //TODO juiste student
                 }
-                catch (NullReferenceException)
+                catch (ArgumentNullException)
                 {              
                     return "";
                 }
@@ -83,7 +82,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.students_internships.ElementAtOrDefault(1).students.users.name; //TODO juiste student?
+                    return stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname; //TODO juiste student?
                 }
                 catch (NullReferenceException)
                 {
@@ -131,7 +130,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.supervisor.users.name + " " + stage.supervisor.users.surname;
+                    return stage.teachers.users.name + " " + stage.teachers.users.surname;
                 }
                 catch (NullReferenceException)
                 {
@@ -141,7 +140,7 @@ namespace StageManager.ViewModels
             set { }
         }
 
-        public string StageBegeleiderVisibility
+        public string StagebegeleiderVisibility
         {
             get
             {
@@ -225,7 +224,8 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.teachers.users.name + " " + stage.teachers.users.surname;
+                    //return stage.teachers.users.name + " " + stage.teachers.users.surname;
+                    return "";
                 }
                 catch (NullReferenceException)
                 {

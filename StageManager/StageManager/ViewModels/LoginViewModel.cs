@@ -87,7 +87,7 @@ namespace StageManager.ViewModels
 
         public void Quit()
         {
-            Environment.Exit(0);
+            Environment.Exit(1);
         }
 
         private String decideWindowState()

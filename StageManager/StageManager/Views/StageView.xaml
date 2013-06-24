@@ -79,7 +79,6 @@
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met bedrijfsnaam OnClick wordt BedrijfView geopend -->
                                 <Button Content="{Binding Bedrijf}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding BedrijfVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
-                                <Button Content="x" Visibility="{Binding BedrijfVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen bedrijf is gekoppeld -->
                                 <Button VerticalAlignment="Center" Margin="5" Visibility="{Binding AddBedrijfVisibility}" Padding="10,0,10,0">+</Button>
                             </StackPanel>
@@ -89,7 +88,6 @@
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met bedrijfsbegeleider naam OnClick wordt BedrijfsbegeleiderView geopend -->
                                 <Button Content="{Binding Bedrijfsbegeleider}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding BedrijfsbegeleiderVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
-                                <Button Content="x" Visibility="{Binding BedrijfsbegeleiderVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen bedrijfsbegeleider is gekoppeld -->
                                 <Button VerticalAlignment="Center" Margin="5" Visibility="{Binding AddBedrijfsbegeleiderVisibility}" Padding="10,0,10,0">+</Button>
                             </StackPanel>
@@ -114,7 +112,7 @@
                             <Label Content="Stageopdracht" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met stageopdracht OnClick wordt StageopdrachtView geopend -->
-                                <Button Content="Stageopdracht" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="Visible" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}">
+                                <Button Name="Stageopdracht" Content="Stageopdracht" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="Visible" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}">
                                     <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <cal:ActionMessage MethodName="showStageopdracht">

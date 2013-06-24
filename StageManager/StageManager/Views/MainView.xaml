@@ -287,7 +287,7 @@
                     </StackPanel>
                 </Expander>
                 <!-- MainContent -->
-                <ScrollViewer Name="ScrollBar" DockPanel.Dock="Left"  Height="auto" Width="auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0">
+                <ScrollViewer x:Name="ScrollBar" DockPanel.Dock="Left"  Height="auto" Width="auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0">
                     <ItemsControl ItemsSource="{Binding Contents}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
