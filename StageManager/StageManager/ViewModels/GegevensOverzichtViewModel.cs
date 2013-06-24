@@ -162,6 +162,7 @@ namespace StageManager.ViewModels
                 students thisStudent = new students
                 {
                     users = thisUser,
+                    meets = "",
                     adresses = thisAdresses,
                     studentnumber = 0,
                     students_internships = myList
@@ -170,6 +171,29 @@ namespace StageManager.ViewModels
                 if (students[i].studentnumber != null)
                 {
                     thisStudent.studentnumber = students[i].studentnumber;
+                }
+
+                if (students[i].meets != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(students[i].meets);
+                    switch (students[i].meets)
+                    {
+                        case "0" :
+                            thisStudent.meets = "Yes";
+                            break;
+
+                        case "1":
+                            thisStudent.meets = "No";
+                            break;
+
+                        case "3":
+                            thisStudent.meets = "Not yet";
+                            break;
+
+                        default: 
+                            break;
+
+                    }
                 }
 
                 if (students[i].users == null)
@@ -305,6 +329,7 @@ namespace StageManager.ViewModels
                 Email = t.users.email,
                 EmailURL = t.users.email,
                 Telefoonnummer = t.users.phonenumber,
+                ToestEx = t.meets,
                 Straatnaam = t.adresses.street,
                 Nummer = t.adresses.housenumber,
                 Postcode = t.adresses.zipcode,

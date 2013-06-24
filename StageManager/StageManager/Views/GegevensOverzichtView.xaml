@@ -60,6 +60,7 @@
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Telefoonnummer" DisplayMemberBinding="{Binding Telefoonnummer}" />
+                                <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
                                 <GridViewColumn Header="Straatnaam" DisplayMemberBinding="{Binding Straatnaam}" />
                                 <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
                                 <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
@@ -73,22 +74,6 @@
                                 <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding BPlaats}" />
                                 <GridViewColumn Header="Bedrijfsbegeleider" DisplayMemberBinding="{Binding Bedrijfsbegeleider}" />
                                 <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
-                                <!-- 
-                                
-                                <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
-                                
-                                <GridViewColumn Header="Begeleidend Docent" DisplayMemberBinding="{Binding Docent}" />
-                                <GridViewColumn Header="E-mail" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock>
-                                        <Hyperlink NavigateUri="{Binding Path=BEmailURL}">
-                                            <TextBlock Text="{Binding Path=BEmail}" />
-                                        </Hyperlink>    
-                                    </TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn> -->
                             </GridView>
                         </ListView.View>
                     </ListView>
