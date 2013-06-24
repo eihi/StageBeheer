@@ -39,28 +39,37 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => GridContents);
             }
         }
-        
+
 
         public StagesOverzichtViewModel(MainViewModel main)
             : base(main)
         {
-            
+
             List = new Dictionary<object, dbstageviewcomplete>();
-            List = new WStored().SearchDBStageViewComplete().ToDictionary(t => (Object)new
+            List<dbstageviewcomplete> tempList = (from stage in new WStored().SearchDBStageViewComplete() select stage).ToList();
+
+            for (int i = 0; i < tempList.Count; i++)
             {
-                
-                Stagetype = t.type,
-                Eerstestudent = t.name + " " + t.surname,
-                Tweedestudent = " TODO ",
-                Stagebegeleider = t.teacher_name + " " + t.teacher_surname,
-                Tweedelezer = t.sr_name + " " + t.sr_surname,
-                Bedrijf = t.company_name,
-                Bedrijfsbegeleider = t.sv_name + " " + t.sv_surname,
-                Begin = t.start_date.ToString().Substring(0, t.start_date.ToString().IndexOf(' ')),
-                Eind = t.end_date.ToString().Substring(0, t.end_date.ToString().IndexOf(' ')),
-
-            }, t => t);
-
+                String tweedeStudent = "";
+                if (i < tempList.Count - 1 && tempList[i].internshipID == tempList[i + 1].internshipID)
+                {
+                    tweedeStudent = tempList[i + 1].name + " " + tempList[i + 1].surname;
+                }
+                object o = (Object)new
+                {
+                    Stagetype = tempList[i].type,
+                    Eerstestudent = tempList[i].name + " " + tempList[i].surname,
+                    Tweedestudent = " TODO ",
+                    Stagebegeleider = tempList[i].teacher_name + " " + tempList[i].teacher_surname,
+                    Tweedelezer = tempList[i].sr_name + " " + tempList[i].sr_surname,
+                    Bedrijf = tempList[i].company_name,
+                    Bedrijfsbegeleider = tempList[i].sv_name + " " + tempList[i].sv_surname,
+                    Begin = tempList[i].start_date.ToString().Substring(0, tempList[i].start_date.ToString().IndexOf(' ')),
+                    Eind = tempList[i].end_date.ToString().Substring(0, tempList[i].end_date.ToString().IndexOf(' ')),
+                };
+                List.Add(o, tempList[i]);
+                NotifyOfPropertyChange(() => List);
+            }
         }
     }
 }
