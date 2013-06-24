@@ -118,6 +118,8 @@ namespace StageManager.ViewModels
                     email = "",
                 };
 
+
+
                 adresses thisAdresses = new adresses
                 {
                     street = "",
@@ -126,11 +128,43 @@ namespace StageManager.ViewModels
                     zipcode = "",
                 };
 
+                adresses companyAdresses = new adresses
+                {
+                    street = "",
+                    housenumber = "",
+                    place = "",
+                    zipcode = "",
+                };
+
+                companies thisCompany = new companies
+                {
+                     name ="",
+                     website = "",
+                     phonenumber = "",
+                     adresses = companyAdresses
+                };   
+                
+                supervisor thisSupervisor = new supervisor
+                {
+                    users = thisUser,
+                    companies = thisCompany
+                };
+
+                List<students_internships> myList = new List<students_internships>();
+                myList.Add(new students_internships
+                {
+                internships = new internships
+                        {
+                            supervisor = thisSupervisor
+                        }
+                    });
+
                 students thisStudent = new students
                 {
                     users = thisUser,
                     adresses = thisAdresses,
-                    studentnumber = 0
+                    studentnumber = 0,
+                    students_internships = myList
                 };
 
                 if (students[i].studentnumber != null)
@@ -140,10 +174,6 @@ namespace StageManager.ViewModels
 
                 if (students[i].users == null)
                 {
-                    thisStudent.users.name = "";
-                    thisStudent.users.surname = "";
-                    thisStudent.users.phonenumber = "";
-                    thisStudent.users.email = "";
                 }
                 else
                 {
@@ -199,6 +229,70 @@ namespace StageManager.ViewModels
                     }
                 }
 
+                if (students[i].students_internships != null && students[i].students_internships.Count > 0 && students[i].students_internships.First().internships != null)
+                {
+
+                    if (students[i].students_internships.First().internships.supervisor != null)
+                    {
+                        if (students[i].students_internships.First().internships.supervisor.users.name != null)
+                        {
+                            thisStudent.students_internships.First().internships.supervisor.users.name = students[i].students_internships.First().internships.supervisor.users.name;
+                        }
+
+                        if (students[i].students_internships.First().internships.supervisor.users.phonenumber != null)
+                        {
+                            thisStudent.students_internships.First().internships.supervisor.users.phonenumber = students[i].students_internships.First().internships.supervisor.users.phonenumber;
+                        }
+
+
+                        if (students[i].students_internships.First().internships.supervisor.companies != null)
+                        {
+                            if (students[i].students_internships.First().internships.supervisor.companies.name != null)
+                            {
+                                thisStudent.students_internships.First().internships.supervisor.companies.name = students[i].students_internships.First().internships.supervisor.companies.name;
+                            }
+
+                            if (students[i].students_internships.First().internships.supervisor.companies.phonenumber != null)
+                            {
+                                thisStudent.students_internships.First().internships.supervisor.companies.phonenumber = students[i].students_internships.First().internships.supervisor.companies.phonenumber;
+                            }
+
+                            if (thisStudent.students_internships.First().internships.supervisor.companies.adresses != null)
+                            {
+                                if (students[i].students_internships.First().internships.supervisor.companies.adresses.street != null)
+                                {
+                                    thisStudent.students_internships.First().internships.supervisor.companies.adresses.street = students[i].students_internships.First().internships.supervisor.companies.adresses.street;
+                                }
+
+                                if (students[i].students_internships.First().internships.supervisor.companies.adresses.housenumber != null)
+                                {
+                                    thisStudent.students_internships.First().internships.supervisor.companies.adresses.housenumber = students[i].students_internships.First().internships.supervisor.companies.adresses.housenumber;
+                                }
+
+                                if (students[i].students_internships.First().internships.supervisor.companies.adresses.zipcode != null)
+                                {
+                                    thisStudent.students_internships.First().internships.supervisor.companies.adresses.zipcode = students[i].students_internships.First().internships.supervisor.companies.adresses.zipcode;
+                                }
+
+                                if (students[i].students_internships.First().internships.supervisor.companies.adresses.place != null)
+                                {
+                                    thisStudent.students_internships.First().internships.supervisor.companies.adresses.place = students[i].students_internships.First().internships.supervisor.companies.adresses.place;
+                                }
+                            }
+
+                            if (students[i].students_internships.First().internships.supervisor.companies.phonenumber != null)
+                            {
+                                thisStudent.students_internships.First().internships.supervisor.companies.phonenumber = students[i].students_internships.First().internships.supervisor.companies.phonenumber;
+                            }
+
+                            if (students[i].students_internships.First().internships.supervisor.companies.website != null)
+                            {
+                                thisStudent.students_internships.First().internships.supervisor.companies.website = students[i].students_internships.First().internships.supervisor.companies.website;
+                            }
+                        }
+                    }
+                }
+
                 studenten.Add(thisStudent);
 
             }
@@ -215,7 +309,15 @@ namespace StageManager.ViewModels
                 Nummer = t.adresses.housenumber,
                 Postcode = t.adresses.zipcode,
                 Plaats = t.adresses.place,
-
+                Bedrijf = t.students_internships.First().internships.supervisor.companies.name,
+                BTelefoon = t.students_internships.First().internships.supervisor.companies.phonenumber,
+                Website = t.students_internships.First().internships.supervisor.companies.website,
+                BStraat = t.students_internships.First().internships.supervisor.companies.adresses.street,
+                BNummer = t.students_internships.First().internships.supervisor.companies.adresses.housenumber,
+                BPostcode = t.students_internships.First().internships.supervisor.companies.adresses.zipcode,
+                BPlaats = t.students_internships.First().internships.supervisor.companies.adresses.place,
+                Bedrijfsbegeleider = t.students_internships.First().internships.supervisor.users.name + " " + t.students_internships.First().internships.supervisor.users.surname,
+                BegTelefoon = t.students_internships.First().internships.supervisor.users.phonenumber
                 // Zoeken naar Extra info
                 //ECs = t., // TODO: DB EC's
             }, t => t);

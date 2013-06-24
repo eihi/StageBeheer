@@ -64,30 +64,20 @@
                                 <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}" />
                                 <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding Postcode}" />
                                 <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding Plaats}" />
-                                <!-- <GridViewColumn Header="SLB6-1" DisplayMemberBinding="{Binding SLB61}" />
-                                <GridViewColumn Header="SLB6-2" DisplayMemberBinding="{Binding SLB62}" />
-                                <GridViewColumn Header="SLB6-3" DisplayMemberBinding="{Binding SLB63}" />
-                                <GridViewColumn Header="SLB6-T" DisplayMemberBinding="{Binding SLB6T}" />
-                                <GridViewColumn Header="SLB7-1" DisplayMemberBinding="{Binding SLB71}" />
-                                <GridViewColumn Header="SLB7-2" DisplayMemberBinding="{Binding SLB72}" />
-                                <GridViewColumn Header="SLB7-T" DisplayMemberBinding="{Binding SLB7T}" />
-                                <GridViewColumn Header="EC's" DisplayMemberBinding="{Binding EC}" />
-                                <GridViewColumn Header="P" DisplayMemberBinding="{Binding P}" />
-                                <GridViewColumn Header="EPS" DisplayMemberBinding="{Binding EPS}" />
-                                <GridViewColumn Header="Form. Goedkeuring" DisplayMemberBinding="{Binding FormGoed}" />
-                                <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
-                                <GridViewColumn Header="Stagecontract" DisplayMemberBinding="{Binding Stagecontract}" />
-                                <GridViewColumn Header="Begeleidend Docent" DisplayMemberBinding="{Binding Docent}" />
-                                <GridViewColumn Header="Bijzonderheden" DisplayMemberBinding="{Binding Bijzonderheden}" />
                                 <GridViewColumn Header="Bedrijf" DisplayMemberBinding="{Binding Bedrijf}" />
-                                <GridViewColumn Header="Branche" DisplayMemberBinding="{Binding Branche}" />
+                                <GridViewColumn Header="Tel. nr Bedrijf" DisplayMemberBinding="{Binding BTelefoon}" />
+                                <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" />
                                 <GridViewColumn Header="Straat" DisplayMemberBinding="{Binding BStraat}" />
                                 <GridViewColumn Header="Nr." DisplayMemberBinding="{Binding BNummer}" />
-                                <GridViewColumn Header="Toevoeging" DisplayMemberBinding="{Binding BToevoeging}" />
                                 <GridViewColumn Header="Postcode" DisplayMemberBinding="{Binding BPostcode}" />
                                 <GridViewColumn Header="Plaats" DisplayMemberBinding="{Binding BPlaats}" />
-                                <GridViewColumn Header="Land" DisplayMemberBinding="{Binding BLand}" />
                                 <GridViewColumn Header="Bedrijfsbegeleider" DisplayMemberBinding="{Binding Bedrijfsbegeleider}" />
+                                <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
+                                <!-- 
+                                
+                                <GridViewColumn Header="Toestemming Ex. Comm." DisplayMemberBinding="{Binding ToestEx}" />
+                                
+                                <GridViewColumn Header="Begeleidend Docent" DisplayMemberBinding="{Binding Docent}" />
                                 <GridViewColumn Header="E-mail" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -98,10 +88,7 @@
                                     </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Tel. nr Bedrijf" DisplayMemberBinding="{Binding BTelefoon}" />
-                                <GridViewColumn Header="Tel. nr Begeleider" DisplayMemberBinding="{Binding BegTelefoon}" />
-                                <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Website}" /> -->
+                                </GridViewColumn> -->
                             </GridView>
                         </ListView.View>
                     </ListView>
