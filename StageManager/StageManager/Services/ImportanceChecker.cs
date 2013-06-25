@@ -22,12 +22,9 @@ namespace StageManager.Services
             List<internships> stage = (from stages in new WStored().SearchStage("", "", false) where stages.id == internship select stages).ToList();  
             internships Internship = stage[0];
             //get adres
-            String adres = Internship.supervisor.companies.adresses.zipcode;
-            
+            String adres = Internship.supervisor.companies.adresses.zipcode;            
             //get kennis
             List<db_internship_knowledge> kennis = (from kennisgebied in new WStored().SearchDBInternshipKnowledge() where kennisgebied.internship_id == internship select kennisgebied).ToList();
-
-
             //get docenten
             List<teachers> teachers = (from teach in new WStored().SearchDocentSet("") select teach).ToList();
             for(int i = 0; i < teachers.Count; i++)
@@ -53,7 +50,7 @@ namespace StageManager.Services
             //sorteer lijst als er meer dan 1 in zit.
             if (returnlist.Count > 1)
             {
-                //returnlist = SortList(returnlist);
+                returnlist = SortList(returnlist);
             }
 
             for (int i = 0; i < returnlist.Count; i++)
@@ -68,7 +65,8 @@ namespace StageManager.Services
          */
         private List<DocentValue> SortList(List<DocentValue> returnlist)
         {
-            throw new NotImplementedException();
+            List<DocentValue> sortedList = returnlist;
+            return sortedList.OrderByDescending(x => x.value).ToList();             
         }
     }
 }
