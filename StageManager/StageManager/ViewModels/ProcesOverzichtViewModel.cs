@@ -116,6 +116,7 @@ namespace StageManager.ViewModels
 
         public void MailStageSelectie()
         {
+            String stageData = "";
             List<String> mails = new List<string>();
             for (int i = 0; i < List.Keys.Count; i++)
             {
@@ -123,7 +124,7 @@ namespace StageManager.ViewModels
                 {
                     students s;
                     List.TryGetValue(List.Keys.ElementAt(i), out s);
-                    mails.Add(s.users.email);
+                    stageData = s.students_internships.First().internships.description + "\n Van" + s.students_internships.First().internships.start_date + " Tot " + s.students_internships.First().internships.end_date;
 
                     stagemanagerEntities smE = new stagemanagerEntities();
                     List<students> students = smE.students.ToList();
@@ -139,7 +140,7 @@ namespace StageManager.ViewModels
                     smE.SaveChanges();
                 }
             }
-            Main.ChangeButton("Mail", new List<object>() { mails }, Clear.No);
+            Main.ChangeButton("Mail", new List<object>() { mails , MailViewModel.mailType.beoordeling, stageData}, Clear.No);
         }
 
         public ProcesOverzichtViewModel(MainViewModel main)

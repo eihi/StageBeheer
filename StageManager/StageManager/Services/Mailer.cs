@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace StageManager.Services
 {
-    class Mailer
+    public class Mailer
     {
         private static LinkedList<MailMessage> mails;
         private static WStored stored;
@@ -118,6 +118,13 @@ namespace StageManager.Services
             String[] server = s.Split(split, StringSplitOptions.RemoveEmptyEntries);
             key = server[0] + webkey.webkey;
             replacements.Add("%webkey%", "<a href='" + key + "'>" + key + "</a>");
+            Send(to, body, Subject, replacements);
+        }
+
+        public static void SendBeoordeling(String to, String body, String Subject, String stageInfo, IDictionary replacements = null)
+        {
+            init();
+            replacements.Add("%stageData%", stageInfo);
             Send(to, body, Subject, replacements);
         }
     }

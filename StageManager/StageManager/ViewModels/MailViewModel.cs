@@ -12,7 +12,9 @@ namespace StageManager.ViewModels
 {
     class MailViewModel :PropertyChanged
     {
+        public enum mailType { leeg, beoordeling, herinnering, nieuw };
         private String to;
+        private mailType type;
         public String To
         {
             get
@@ -48,7 +50,7 @@ namespace StageManager.ViewModels
             set
             {
                 message = value;
-                if (message.Contains("%webkey%"))
+                if (message.Contains("%webkey%") || message.Contains("%stageData%"))
                 {
                     Visible = false;
                 }
@@ -61,6 +63,7 @@ namespace StageManager.ViewModels
         }
 
         public String Subject { get; set; }
+        public String StageData { get; set; }
         private bool visible;
         public bool Visible
         {
@@ -75,21 +78,39 @@ namespace StageManager.ViewModels
             }
         }
 
-        public MailViewModel(MainViewModel main)
+        public MailViewModel(MainViewModel main, mailType optie, String stageData)
             :base(main)
         {
+            type = optie;
+
             To = "";
-            Message = "Beste student,\n\n" +
-                "Met deze mail vragen wij vriendelijk om je gegevens in te vullen in dit web formulier\n" +
-                "%webkey%\n\n\n" +
-                "Met vriendelijke groeten,\n" +
-                "Katinka Janssen\n" +
-                "Stagecoördinator AI&I\n" +
-                "Avans Hogeschool 's-Hertogenbosch";
+            switch (type)
+            {
+                case mailType.beoordeling:
+                    StageData = stageData;
+                    Message = "Beste docent,\n\n" +
+                    "Met deze mail verplichten wij u vriendelijk om de stage geleverd via deze mail na te kijken.\n" +
+                    "%stageData%\n\n\n" +
+                    "Met vriendelijke groeten,\n" +
+                    "Katinka Janssen\n" +
+                    "Stagecoördinator AI&I\n" +
+                    "Avans Hogeschool 's-Hertogenbosch";
+                    break;
+                case mailType.nieuw :
+                    Message = "Beste student,\n\n" +
+                    "Met deze mail vragen wij vriendelijk om je gegevens in te vullen in dit web formulier\n" +
+                    "%webkey%\n\n\n" +
+                    "Met vriendelijke groeten,\n" +
+                    "Katinka Janssen\n" +
+                    "Stagecoördinator AI&I\n" +
+                    "Avans Hogeschool 's-Hertogenbosch";
+                    break;
+            }
+
         }
 
-        public MailViewModel(MainViewModel main, List<String> emails)
-            :this(main)
+        public MailViewModel(MainViewModel main, List<String> emails, mailType optie, String stageData)
+            :this(main, optie, stageData)
         {
             if (emails != null)
             {
@@ -105,7 +126,15 @@ namespace StageManager.ViewModels
             String[] to = To.Split(c);
             for (int i = 0; i < to.Length; i++)
             {
-                Mailer.SendNew(to[i].Trim(), Message, Subject, new ListDictionary());
+                switch (type)
+                {
+                    case mailType.beoordeling:
+                        Mailer.SendBeoordeling(to[i].Trim(), Message, Subject, StageData,  new ListDictionary());
+                        break;
+                    case mailType.nieuw:
+                        Mailer.SendNew(to[i].Trim(), Message, Subject, new ListDictionary());
+                        break;
+                }
             }
         }
 
