@@ -185,6 +185,7 @@
     <Compile Include="Services\Clear.cs" />
     <Compile Include="Services\DefaultFactory.cs" />
     <Compile Include="Services\DistanceCalculator.cs" />
+    <Compile Include="Services\DocentValue.cs" />
     <Compile Include="Services\EntityService.cs" />
     <Compile Include="Services\ExcelHelper.cs" />
     <Compile Include="Services\ExportExcel.cs" />

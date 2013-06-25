@@ -135,6 +135,21 @@ namespace StageManager.Models
             return (from viewstage in StageManagerEntities.dbstageview.ToList() select viewstage).ToList();
         }
 
+        public List<students_internships> SearchStudents_internships()
+        {
+            return (from student_internships in StageManagerEntities.students_internships.ToList() select student_internships).ToList();
+        }
+
+        public List<db_internship_knowledge> SearchDBInternshipKnowledge()
+        {
+            return (from viewstagekennis in StageManagerEntities.db_internship_knowledge.ToList() select viewstagekennis).ToList();
+        }
+
+        public List<db_teacher_knowledge> SearchDBTeacherKnowledge()
+        {
+            return (from viewleraarkennis in StageManagerEntities.db_teacher_knowledge.ToList() select viewleraarkennis).ToList();
+        }
+
         public List<dbstageviewcomplete> SearchDBStageViewComplete()
         {
             return (from viewstage in StageManagerEntities.dbstageviewcomplete.ToList() select viewstage).ToList();
@@ -148,6 +163,11 @@ namespace StageManager.Models
         public List<education> SearchOpleidingSet()
         {
             return (from opleiding in StageManagerEntities.education.ToList().OrderBy(o => o.name) select opleiding).ToList();
+        }
+
+        public List<volumehours> SearchVolumehours()
+        {
+            return (from hours in StageManagerEntities.volumehours.ToList() select hours).ToList();
         }
 
         public List<companies> SearchBedrijfSet()

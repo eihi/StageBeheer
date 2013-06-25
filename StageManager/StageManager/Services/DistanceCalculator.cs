@@ -28,8 +28,7 @@ namespace StageManager.Services
             {
                 string first = p1;
                 string second = p2;
-                String downloadedString = client.DownloadString("http://www.geenenict.nl/afstand.php?zip1=" + first + "&zip2=" + second);
-                System.Diagnostics.Debug.WriteLine(downloadedString);
+                String downloadedString = client.DownloadString("http://www.geenenict.nl/afstand.php?zip1=" + first + "&zip2=" + second);                
                 double value;
                 double.TryParse(downloadedString, out value);
                 return value;
