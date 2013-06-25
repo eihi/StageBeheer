@@ -23,7 +23,7 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Functie);
                 NotifyOfPropertyChange(() => Opleiding);
                 NotifyOfPropertyChange(() => BegeleidingUren);
-                NotifyOfPropertyChange(()=>Voornaam);
+                NotifyOfPropertyChange(() => Voornaam);
                 NotifyOfPropertyChange(() => Achternaam);
                 NotifyOfPropertyChange(() => EMail);
                 NotifyOfPropertyChange(() => Telefoon);
