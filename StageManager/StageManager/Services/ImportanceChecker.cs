@@ -12,7 +12,7 @@ namespace StageManager.Services
 
         public ImportanceChecker()
         {
-            checkImportance(2);
+            
         }
 
         public List<DocentValue> checkImportance(int internship)
