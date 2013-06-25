@@ -22,7 +22,17 @@ namespace StageManager.ViewModels
             {
                 searchString = value;
                 //searchStage();
-                searchDocent();
+
+                switch (stype)
+                {
+                    case SearchType.Docenten:
+                        searchDocent();
+                        break;
+                    case SearchType.Studenten:
+                        searchStudent();
+                        break;
+                }
+
                 NotifyOfPropertyChange(() => SearchString);
             }
         }
@@ -153,8 +163,8 @@ namespace StageManager.ViewModels
         public ZoekViewModel(MainViewModel main, String zoekString, SearchType type)
             : this(main)
         {
-            SearchString = zoekString;
             stype = type;
+            SearchString = zoekString;
         }
 
         public void searchStage()

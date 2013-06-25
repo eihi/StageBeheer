@@ -382,9 +382,22 @@ namespace StageManager.ViewModels
             }
         }
 
+        public void btnTweedeStudent_Click()
+        {
+            Main.ChangeButton("Zoek", new List<object>() { "", ZoekViewModel.SearchType.Studenten }, Clear.No);
+        }
 
+        public void btnStagebegeleider_Click()
+        {
+            Main.ChangeButton("Zoek", new List<object>() { "", ZoekViewModel.SearchType.Docenten }, Clear.No);
+        }
 
-        public void showStageopdracht()
+        public void btnTweedeLezer_Click()
+        {
+            Main.ChangeButton("Koppelingen", new List<object> { }, Clear.No);
+        }
+
+        public void btnStageopdracht_Click()
         {
             Main.ChangeButton("Stageopdracht");
         }
