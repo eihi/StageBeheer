@@ -24,5 +24,10 @@ namespace StageManager.Views
         {
             InitializeComponent();
         }
+
+        private void GridContents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

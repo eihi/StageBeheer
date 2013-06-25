@@ -16,6 +16,7 @@ namespace StageManager.Services
         public double distance { get; set; }
         public int numberOfKnowledge { get; set; }
         public List<String> sameKnowledge { get; set; }
+        public String sameKnowledgeString { get; set; }
 
         static int stage = 7;
         static int duoStage = 14;
@@ -81,6 +82,11 @@ namespace StageManager.Services
                         numberOfKnowledge++;
                     }
                 }
+            }
+
+            for (int i = 0; i < sameKnowledge.Count; i++)
+            {
+                sameKnowledgeString += sameKnowledge[i] + ", ";
             }
         }
 

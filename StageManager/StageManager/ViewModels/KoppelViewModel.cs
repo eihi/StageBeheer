@@ -19,7 +19,7 @@ namespace StageManager.ViewModels
             get { return stage; }
             set { stage = value;
             //KoppelStudentNaam = stage.studentset.Voornaam + " " + stage.studentset.Achternaam;        TODO!!!!!!!!!!
-            NotifyOfPropertyChange(()=>CanTweedeLezer);
+            NotifyOfPropertyChange(()=>  CanTweedeLezer);
             NotifyOfPropertyChange(() => KoppelStudentNaam);
             }
         }
@@ -80,8 +80,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        private Dictionary<Object, teachers> list;
-        public Dictionary<Object, teachers> List
+        private Dictionary<Object, DocentValue> list;
+        public Dictionary<Object, DocentValue> List
         {
             get
             {
@@ -119,14 +119,19 @@ namespace StageManager.ViewModels
             : base(main)
         {
             Main = main;
-            list = new Dictionary<object, teachers>();
-            list = (new WStored().SearchDocentSet("").ToDictionary(t => (Object)new
+            
+
+            list = new Dictionary<object, DocentValue>();        
+
+            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
                     {
-                        Voornaam = t.users.name,
-                        Achternaam = t.users.surname,
-                        Uren = 10, // TODO: uren rest
-                        Kennisgebied = t.knowledge.First().name,
-                        Afstand = 500
+                        waarde = t.value,
+                        naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname, 
+                        aantalkennis = t.numberOfKnowledge,
+                        kennis = t.sameKnowledgeString,
+                        afstand = t.distance,
+                        tijdover = t.timeleftafter,                        
+
                     }, t => t));
 
 
