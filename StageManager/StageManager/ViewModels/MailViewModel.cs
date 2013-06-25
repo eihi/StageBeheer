@@ -78,7 +78,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        public MailViewModel(MainViewModel main, mailType optie, String stageData)
+        public MailViewModel(MainViewModel main, mailType optie)
             :base(main)
         {
             type = optie;
@@ -87,7 +87,6 @@ namespace StageManager.ViewModels
             switch (type)
             {
                 case mailType.beoordeling:
-                    StageData = stageData;
                     Message = "Beste docent,\n\n" +
                     "Met deze mail verplichten wij u vriendelijk om de stage geleverd via deze mail na te kijken.\n" +
                     "%stageData%\n\n\n" +
@@ -109,8 +108,8 @@ namespace StageManager.ViewModels
 
         }
 
-        public MailViewModel(MainViewModel main, List<String> emails, mailType optie, String stageData)
-            :this(main, optie, stageData)
+        public MailViewModel(MainViewModel main, List<String> emails, mailType optie)
+            :this(main, optie)
         {
             if (emails != null)
             {

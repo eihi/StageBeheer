@@ -133,7 +133,7 @@ namespace StageManager.ViewModels
                     mails.Add(s.users.email);
                 }
             }
-            Main.ChangeButton("Mail", new List<object>() { mails }, Clear.No);
+            Main.ChangeButton("Mail", new List<object>() { mails, MailViewModel.mailType.nieuw }, Clear.No);
         }
 
         public void MailStageSelectie()

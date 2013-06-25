@@ -51,7 +51,7 @@ namespace StageManager.ViewModels
             {
                 search = value;
                 NotifyOfPropertyChange(() => Search);
-                ChangeButton("Zoek", new List<object>() { value }, Clear.All);
+                ChangeButton("Zoek", new List<object>() { value, ZoekViewModel.SearchType.Studenten }, Clear.All);
             }
         }
 
