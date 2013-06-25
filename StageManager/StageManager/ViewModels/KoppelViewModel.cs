@@ -123,7 +123,7 @@ namespace StageManager.ViewModels
 
             list = new Dictionary<object, DocentValue>();        
 
-            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
+            list = (new ImportanceChecker().checkImportance(1).ToDictionary(t => (Object)new
                     {
                         waarde = t.value,
                         naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname, 
