@@ -13,7 +13,7 @@ namespace StageManager.ViewModels
     {
         private String searchString;
         public enum SearchType { Docenten, Studenten }
-        private SearchType stype;
+        private SearchType stype = SearchType.Studenten;
 
         public String SearchString
         {
@@ -21,7 +21,8 @@ namespace StageManager.ViewModels
             set
             {
                 searchString = value;
-                searchStage();
+                //searchStage();
+                searchDocent();
                 NotifyOfPropertyChange(() => SearchString);
             }
         }
@@ -138,13 +139,14 @@ namespace StageManager.ViewModels
             :base(main)
         {
             OpleidingStack = (from opleiding in new WStored().SearchOpleidingSet() select opleiding.name).ToList();
-            if (stype == SearchType.Docenten)
+            switch(stype)
             {
-                searchDocent();
-            }
-            else
-            {
-                searchStudent();
+                case SearchType.Docenten:
+                    searchDocent();
+                    break;
+                case SearchType.Studenten:
+                    searchStudent();
+                    break;
             }
         }
 
@@ -187,6 +189,15 @@ namespace StageManager.ViewModels
                 Achternaam = t.users.surname
 
             }, t => t));
+            if (docentList.Count == 0)
+            {
+                docentList.Add((Object)new
+                {
+                    Error = "No occurrences found!"
+                }, null);
+
+            }
+                GridContents = docentList.Keys.ToList();
         }
 
         public void searchStudent()
@@ -198,6 +209,15 @@ namespace StageManager.ViewModels
                 Voornaam = t.users.name,
                 Achternaam = t.users.surname
             }, t => t));
+            if (studentList.Count == 0)
+            {
+                studentList.Add((Object)new
+                {
+                    Error = "No occurrences found!"
+                }, null);
+
+            }
+            GridContents = studentList.Keys.ToList();
         }
 
         public override void update(object[] o)
