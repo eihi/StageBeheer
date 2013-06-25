@@ -49,20 +49,16 @@ namespace StageManager.Controllers
                     switch (args.clear)
                     {
                         case Clear.All:
-                            try
-                            {
-                                if (currType != mainViewModel.Contents.Last().GetType())
+                                if (mainViewModel.Contents.Count > 0 || currType != mainViewModel.Contents.Last().GetType())
                                 {
                                     mainViewModel.Contents.Clear();
                                 }
-                            }
-                            catch
-                            {
-                                mainViewModel.Contents.Clear();
-                            }
                             break;
                         case Clear.After:
-                            mainViewModel.removeContentAfter(args.Sender);//TODO
+                            if (mainViewModel.Contents.Count == 0 || currType != mainViewModel.Contents.Last().GetType())
+                            {
+                                mainViewModel.removeContentAfter(args.Sender);
+                            }
                             break;
                         case Clear.No:
                             break;

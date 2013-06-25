@@ -11,6 +11,25 @@ namespace StageManager.ViewModels
 {
     public class ProcesOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
+        private int amountselected = 0;
+        public int Amountselected
+        {
+            get { return amountselected; }
+            set
+            {
+                amountselected = value;
+                NotifyOfPropertyChange(() => CanStageVerwerken);
+            }
+        }
+
+        public bool CanStageVerwerken
+        {
+            get
+            {
+                return Amountselected == 1;
+            }
+        }
+
         private Dictionary<Object, students> list;
         Dictionary<Object, students> List
         {
@@ -61,7 +80,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private Object selectedStudent;
+        private students selectedStudent;
         public object SelectedStudent
         {
             get
@@ -70,17 +89,11 @@ namespace StageManager.ViewModels
             }
             set
             {
+                selectedStudent = null;
                 if (value != null)
                 {
-                    selectedStudent = value;
-                    students s = null;
-                    list.TryGetValue(value, out s);
-                    Type t = value.GetType();
-                    System.Reflection.PropertyInfo p = t.GetProperty("MailTo");
-                    System.Reflection.MethodInfo m = p.GetMethod;
-                    bool ob = !(bool)m.Invoke(value, null);
-                    bool temp = !(bool)value.GetType().GetProperty("MailTo").GetMethod.Invoke(value, null);
-                    if (s != null)
+                    bool student = list.TryGetValue(value, out selectedStudent);
+                    if (student)
                     {
                         Object o = (Object)new
                         {
@@ -91,8 +104,17 @@ namespace StageManager.ViewModels
                             Stageopdracht = (String)value.GetType().GetProperty("Stageopdracht").GetMethod.Invoke(value, null),
                             Goedgekeurd = (String)value.GetType().GetProperty("Goedgekeurd").GetMethod.Invoke(value, null)
                         };
+                        if ((bool)o.GetType().GetProperty("MailTo").GetMethod.Invoke(o, null))
+                        {
+                            Amountselected++;
+                        }
+                        else
+                        {
+                            Amountselected--;
+                        }
+
                         list.Remove(value);
-                        list.Add(o, s);
+                        list.Add(o, selectedStudent);
                         List = list;
                     }
                 }
@@ -129,8 +151,10 @@ namespace StageManager.ViewModels
                     stagemanagerEntities smE = new stagemanagerEntities();
                     List<students> students = smE.students.ToList();
 
-                    foreach(students st in students){
-                        if(s.users.email == st.users.email){
+                    foreach (students st in students)
+                    {
+                        if (s.users.email == st.users.email)
+                        {
                             if (st.students_internships.Count > 0)
                             {
                                 st.students_internships.First().internships.approved = "2";
@@ -140,7 +164,7 @@ namespace StageManager.ViewModels
                     smE.SaveChanges();
                 }
             }
-            Main.ChangeButton("Mail", new List<object>() { mails , MailViewModel.mailType.beoordeling, stageData}, Clear.No);
+            Main.ChangeButton("Mail", new List<object>() { mails, MailViewModel.mailType.beoordeling, stageData }, Clear.No);
         }
 
         public ProcesOverzichtViewModel(MainViewModel main)
@@ -149,95 +173,31 @@ namespace StageManager.ViewModels
             stagemanagerEntities smE = new stagemanagerEntities();
             List<students> students = smE.students.ToList();
             List = new Dictionary<object, students>();
-            List<students> studenten = new List<students>();
-
-            for (int i = 0; i < students.Count; i++)
-            {
-                if (students[i].students_internships.ToList().Count == 0)
-                {
-                    List<students_internships> myList = new List<students_internships>();
-                    myList.Add(new students_internships
-                    {
-                        internships = new internships
-                                       {
-                                        description = "Geen stage",
-                                        approved = "Nee"
-                                        }
-                    });
-
-                    studenten.Add(new students
-                    {
-                        users = students[i].users,
-                        students_internships = myList
-                    });
-                }
-                else if (students[i].students_internships.First().internships.approved == "3")
-                {
-                    List<students_internships> myList = new List<students_internships>();
-                    myList.Add(new students_internships
-                    {
-                        internships = new internships
-                        {
-                            description = "Aanwezig",
-                            approved = "Nee"
-                        }
-                    });
-
-                    studenten.Add(new students
-                    {
-                        users = students[i].users,
-                        students_internships = myList
-                    });
-                }
-                else if (students[i].students_internships.First().internships.approved == "1")
-                {
-                    List<students_internships> myList = new List<students_internships>();
-                    myList.Add(new students_internships
-                    {
-                        internships = new internships
-                        {
-                            description = "Aanwezig",
-                            approved = "Ja"
-                        }
-                    });
-
-                    studenten.Add(new students
-                    {
-                        users = students[i].users,
-                        students_internships = myList
-                    });
-                }
-                else if (students[i].students_internships.First().internships.approved == "2")
-                {
-                    List<students_internships> myList = new List<students_internships>();
-                    myList.Add(new students_internships
-                    {
-                        internships = new internships
-                        {
-                            description = "Aanwezig",
-                            approved = "Word Behandeld"
-                        }
-                    });
-
-                    studenten.Add(new students
-                    {
-                        users = students[i].users,
-                        students_internships = myList
-                    });
-                }
-            }
-
-            List = studenten.ToDictionary(t => (Object)new
+            List = students.ToDictionary(t => (Object)new
             {
                 MailTo = false,
-                Email = t.users.email,
-                Student = t.users.name + " " + t.users.surname,
-                Gegevens = "Compleet",
-                Stageopdracht = t.students_internships.First().internships.description,
-                Goedgekeurd = t.students_internships.First().internships.approved
+                Email = t.users != null ? t.users.email : "student heeft geen gebruiker",
+                Student = t.users != null ? t.users.name + " " + t.users.surname : "student heeft geen gebruiker",
+                Gegevens = t.users != null || t.students_internships != null || t.students_internships.Count > 0 ? "Compleet" : "Niet compleet",
+                Stageopdracht = t.students_internships != null && t.students_internships.Count > 0 ? t.students_internships.First().internships.description : "niet ingeleverd",
+                Goedgekeurd = t.students_internships != null && t.students_internships.Count > 0 ?
+                    (t.students_internships.First().internships.approved == "0" ?
+                        "In afwachting" :
+                        (t.students_internships.First().internships.approved == "1" ?
+                            "Goedgekeurd" :
+                            (t.students_internships.First().internships.approved == "2" ?
+                                "Wordt nagekeken" :
+                                (t.students_internships.First().internships.approved == "3" ?
+                                    "Niet goedgekeurd" :
+                                    "fout in db"
+                                )
+                            )
+                        )
+                    ) :
+                    "niet van toepassing"
             }, t => t);
         }
-    
+
         public void btnExport_Click()
         {
             ExportExcel ee = new ExportExcel(this);
@@ -313,10 +273,30 @@ namespace StageManager.ViewModels
                     s.Value.students_internships.First().internships.approved
                 };
 
-                rows.AddLast(row); 
+                rows.AddLast(row);
             }
 
             ExcelHelper.MultipleRows(worksheet, columns, rows);
+        }
+
+        public void StageVerwerken()
+        {
+            students student = null;
+            for (int i = 0; i < List.Keys.Count; i++)
+            {
+                if ((bool)List.Keys.ElementAt(i).GetType().GetProperty("MailTo").GetMethod.Invoke(List.Keys.ElementAt(i), null))
+                {
+                    if (List.TryGetValue(List.Keys.ElementAt(i), out student))
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (list.Count > 0 && selectedStudent.students_internships.First() != null)
+            {
+                Main.ChangeButton("Stage", new List<object>() { student.students_internships.First().internships }, Clear.After);
+            }
         }
     }
 }

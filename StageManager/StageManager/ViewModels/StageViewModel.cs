@@ -27,7 +27,19 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Bedrijf);
                 NotifyOfPropertyChange(() => Bedrijfsbegeleider);
                 NotifyOfPropertyChange(() => isAfstudeerstage);
-                
+                NotifyOfPropertyChange(() => AddBedrijfsbegeleiderVisibility);
+                NotifyOfPropertyChange(() => AddBedrijfVisibility);
+                NotifyOfPropertyChange(() => AddStagebegeleiderVisibility);
+                NotifyOfPropertyChange(() => AddStudentVisibility);
+                NotifyOfPropertyChange(() => AddTweedeLezerVisibility);
+                NotifyOfPropertyChange(() => TweedeLezerVisibility);
+                NotifyOfPropertyChange(() => TweedeStudentVisibility);
+                NotifyOfPropertyChange(() => BedrijfsbegeleiderVisibility);
+                NotifyOfPropertyChange(() => BedrijfVisibility);
+                NotifyOfPropertyChange(() => EersteStudentVisibility);
+                NotifyOfPropertyChange(() => EindDatum);
+                NotifyOfPropertyChange(() => StagebegeleiderVisibility);
+                NotifyOfPropertyChange(() => StartDatum);
             }
         }
 
@@ -412,6 +424,16 @@ namespace StageManager.ViewModels
             rows.AddLast(row);
 
             ExcelHelper.MultipleRows(worksheet, columns, rows);
+        }
+
+        public override void update(object[] o)
+        {
+            try
+            {
+                Stage = (internships)o[1];
+            }
+            catch (Exception)
+            { }
         }
     }
 }
