@@ -308,7 +308,7 @@ namespace StageManager.ViewModels
             set { }
         }
 
-        public string BedrijfsbegeleidererVisibility
+        public string BedrijfsbegeleiderVisibility
         {
             get
             {
