@@ -12,6 +12,8 @@ namespace StageManager.ViewModels
     public class ZoekViewModel : PropertyChanged
     {
         private String searchString;
+        public enum SearchType { Docenten, Studenten }
+        private SearchType stype;
 
         public String SearchString
         {
@@ -47,18 +49,48 @@ namespace StageManager.ViewModels
             }
         }
 
-        private Dictionary<Object,internships> list;
-        public Dictionary<Object, internships> List
+        private Dictionary<Object,internships> stageList;
+        public Dictionary<Object, internships> StageList
         {
             get
             {
-                return list;
+                return stageList;
             }
             set
             {
-                list = value;
+                stageList = value;
                 GridContents = value.Keys.ToList();
-                NotifyOfPropertyChange(() => List);
+                NotifyOfPropertyChange(() => StageList);
+            }
+        }
+
+        private Dictionary<Object, teachers> docentList;
+        public Dictionary<Object, teachers> DocentList
+        {
+            get
+            {
+                return docentList;
+            }
+            set
+            {
+                docentList = value;
+                GridContents = value.Keys.ToList();
+                NotifyOfPropertyChange(() => DocentList);
+            }
+        }
+
+        private Dictionary<Object, students> studentList;
+        public Dictionary<Object, students> StudentList
+        {
+            get
+            {
+                return studentList;
+            }
+            set
+            {
+                studentList = value;
+                GridContents = value.Keys.ToList();
+                NotifyOfPropertyChange(() => StudentList);
             }
         }
 
@@ -91,7 +123,7 @@ namespace StageManager.ViewModels
             }
             set
             {
-                List.TryGetValue(value, out selectedStage);
+                StageList.TryGetValue(value, out selectedStage);
                 Main.ChangeButton("Koppel", new List<Object>() { selectedStage }, Services.Clear.No);
 
             }
@@ -106,13 +138,21 @@ namespace StageManager.ViewModels
             :base(main)
         {
             OpleidingStack = (from opleiding in new WStored().SearchOpleidingSet() select opleiding.name).ToList();
-            searchStage();
+            if (stype == SearchType.Docenten)
+            {
+                searchDocent();
+            }
+            else
+            {
+                searchStudent();
+            }
         }
 
-        public ZoekViewModel(MainViewModel main, String zoekString)
+        public ZoekViewModel(MainViewModel main, String zoekString, SearchType type)
             : this(main)
         {
             SearchString = zoekString;
+            stype = type;
         }
 
         public void searchStage()
@@ -136,6 +176,28 @@ namespace StageManager.ViewModels
 
             //}
             //    GridContents = list.Keys.ToList();
+        }
+
+        public void searchDocent()
+        {
+            docentList = new Dictionary<object, teachers>();
+            docentList = (new WStored().SearchDocentSet(searchString).ToDictionary(t => (Object)new
+            {
+                Voornaam = t.users.name,
+                Achternaam = t.users.surname
+
+            }, t => t));
+        }
+
+        public void searchStudent()
+        {
+            studentList = new Dictionary<object, students>();
+            studentList = (new WStored().SearchStudentSet(searchString, searchOpleiding).ToDictionary(t => (Object)new
+            {
+                Studentnummer = t.users.students.studentnumber,
+                Voornaam = t.users.name,
+                Achternaam = t.users.surname
+            }, t => t));
         }
 
         public override void update(object[] o)

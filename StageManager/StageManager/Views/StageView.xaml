@@ -46,7 +46,7 @@
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met studentnaam OnClick wordt de StudentView geopend -->
                                 <Button Content="{Binding EersteStudent}" Visibility="{Binding EersteStudentVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
-                                <Button Content="x" Visibility="{Binding EersteStudentVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
+                                <!--<Button Content="x" Visibility="{Binding EersteStudentVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>-->
                                 <Button Content="{Binding TweedeStudent}" Visibility="{Binding TweedeStudentVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <Button Content="x" Visibility="{Binding TweedeStudentVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen twee studenten zijn gekoppeld,
@@ -64,7 +64,7 @@
                                 <Button Visibility="{Binding AddStagebegeleiderVisibility}" Content="+" VerticalAlignment="Center" Margin="5" Padding="10,0,10,0"/>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding AfstudeerstageVisibility}">
                             <Label Content="Tweede lezer" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met tweede lezer naam OnClick wordt ZoekView geopend met lijst van docenten -->
@@ -97,7 +97,7 @@
                             <Label Content="Stage type" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto">
                                 <RadioButton GroupName="StageTypeRB">Stage</RadioButton>
-                                <RadioButton GroupName="StageTypeRB">Afstudeerstage</RadioButton>
+                                <RadioButton Name="Afstudeerstage" IsChecked="{Binding isAfstudeerstage}" GroupName="StageTypeRB">Afstudeerstage</RadioButton>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">

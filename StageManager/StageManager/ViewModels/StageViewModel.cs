@@ -26,6 +26,8 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => TweedeLezer);
                 NotifyOfPropertyChange(() => Bedrijf);
                 NotifyOfPropertyChange(() => Bedrijfsbegeleider);
+                NotifyOfPropertyChange(() => isAfstudeerstage);
+                
             }
         }
 
@@ -40,6 +42,30 @@ namespace StageManager.ViewModels
             Stage = stage;
         }
 
+        public bool isAfstudeerstage
+        {
+            get;
+            set;
+        }
+
+
+
+        public string AfstudeerstageVisibility
+        {
+            get
+            {
+                if (isAfstudeerstage)
+                {
+                    return "Visible";
+                }
+                else
+                {
+                    return "Collapsed";
+                }
+            }
+            set { }
+        }
+        
         public string EersteStudent
         {
             get
@@ -343,6 +369,8 @@ namespace StageManager.ViewModels
                 }
             }
         }
+
+
 
         public void showStageopdracht()
         {
