@@ -12,7 +12,7 @@ namespace StageManager.ViewModels
     class StageViewModel : PropertyChanged, IExcelAlgorithm
     {
         private static Random random = new Random();
-        private internships stage = new WStored().SearchStageSet()[random.Next(new WStored().SearchStageSet().Count)];
+        private internships stage;
 
         internal internships Stage
         {
@@ -36,7 +36,7 @@ namespace StageManager.ViewModels
         {
         }
 
-        public StageViewModel(MainViewModel main, students student)
+        public StageViewModel(MainViewModel main, internships stage)
             : this(main)
         {
             Stage = stage;
