@@ -1,11 +1,13 @@
 ﻿using Caliburn.Micro;
 using StageManager.Models;
 using StageManager.Services;
+using StageManager.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace StageManager.ViewModels
 {
@@ -60,8 +62,6 @@ namespace StageManager.ViewModels
             set;
         }
 
-
-
         public string AfstudeerstageVisibility
         {
             get
@@ -78,23 +78,16 @@ namespace StageManager.ViewModels
             set { }
         }
         
+        private string _eersteStudent;
         public string EersteStudent
         {
             get
             {
-                try
-                {
-                    return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.surname; //TODO juiste student
-                }
-                catch (Exception)
-                {              
-                    return "";
-                }
-                
+                return _eersteStudent;
             }
             set 
             {
-                
+                _eersteStudent = value;
             }
         }
 

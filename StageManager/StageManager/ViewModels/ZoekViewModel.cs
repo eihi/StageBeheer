@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace StageManager.ViewModels
 {
@@ -126,17 +129,28 @@ namespace StageManager.ViewModels
             set { selectedStage = value; }
         }
 
+        private object _selectedObject;
         public object SelectedObject
         {
             get
             {
-                return selectedStage;
+                return _selectedObject;
             }
             set
             {
-                StageList.TryGetValue(value, out selectedStage);
-                Main.ChangeButton("Koppel", new List<Object>() { selectedStage }, Services.Clear.No);
+                _selectedObject = value;
 
+                List<PropertyChanged> c = Main.Contents.ToList<PropertyChanged>();
+
+                foreach (PropertyChanged p in c)
+                {
+                    if (p.GetType().Name == "StageViewModel")
+                    {
+                        StageViewModel svm = (StageViewModel)p;
+                        svm.EersteStudent = "Your mom";
+                        MessageBox.Show(svm.EersteStudent);
+                    }
+                }
             }
         }
 

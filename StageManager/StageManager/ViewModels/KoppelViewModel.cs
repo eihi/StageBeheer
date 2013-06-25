@@ -123,7 +123,7 @@ namespace StageManager.ViewModels
 
             list = new Dictionary<object, DocentValue>();        
 
-            list = (new ImportanceChecker().checkImportance(1).ToDictionary(t => (Object)new
+            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
                     {
                         waarde = t.value,
                         naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname, 
@@ -133,6 +133,29 @@ namespace StageManager.ViewModels
                         tijdover = t.timeleftafter,                        
 
                     }, t => t));
+
+
+            GridContents = list.Keys.ToList();
+        }
+
+        public KoppelViewModel(MainViewModel main, String teacher)
+            : base(main)
+        {
+            Main = main;
+
+
+            list = new Dictionary<object, DocentValue>();
+
+            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
+            {
+                waarde = t.value,
+                naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname,
+                aantalkennis = t.numberOfKnowledge,
+                kennis = t.sameKnowledgeString,
+                afstand = t.distance,
+                tijdover = t.timeleftafter,
+
+            }, t => t));
 
 
             GridContents = list.Keys.ToList();
