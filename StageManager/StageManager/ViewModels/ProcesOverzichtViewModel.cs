@@ -155,7 +155,6 @@ namespace StageManager.ViewModels
             {
                 if (students[i].students_internships.ToList().Count == 0)
                 {
-                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " Heeft Geen Stage");
                     List<students_internships> myList = new List<students_internships>();
                     myList.Add(new students_internships
                     {
@@ -172,9 +171,8 @@ namespace StageManager.ViewModels
                         students_internships = myList
                     });
                 }
-                else if (students[i].students_internships.First().internships.approved == "0")
+                else if (students[i].students_internships.First().internships.approved == "3")
                 {
-                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " heeft geen stage feedback");
                     List<students_internships> myList = new List<students_internships>();
                     myList.Add(new students_internships
                     {
@@ -193,7 +191,6 @@ namespace StageManager.ViewModels
                 }
                 else if (students[i].students_internships.First().internships.approved == "1")
                 {
-                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " heeft geen stage feedback");
                     List<students_internships> myList = new List<students_internships>();
                     myList.Add(new students_internships
                     {
@@ -212,7 +209,6 @@ namespace StageManager.ViewModels
                 }
                 else if (students[i].students_internships.First().internships.approved == "2")
                 {
-                    System.Diagnostics.Debug.WriteLine(students[i].users.name + " heeft geen stage feedback");
                     List<students_internships> myList = new List<students_internships>();
                     myList.Add(new students_internships
                     {
@@ -240,74 +236,61 @@ namespace StageManager.ViewModels
                 Stageopdracht = t.students_internships.First().internships.description,
                 Goedgekeurd = t.students_internships.First().internships.approved
             }, t => t);
-
-
-            
-            
-            /*
-            selectedStudent = new Object();
-            List = new Dictionary<object, students>();
-            List<students> stages = new WStored().SearchStage("", "", false);
-
-            List<students> studenten = new List<students>();
-
-            for (int i = 0; i < stages.Count; i++)
-            {
-                if (stages[i].studentset != null)
-                {
-                    bool contains = false;
-                    for (int j = 0; j < studenten.Count; j++)
-                    {
-                        if (stages[i].studentset.getSet() == studenten[j].getSet())
-                        {
-                            contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!contains)
-                    {
-                        studenten.Add(stages[i].studentset);
-                    }
-                }
-                if (stages[i].studentset2 != null)
-                {
-                    bool contains = false;
-                    for (int j = 0; j < studenten.Count; j++)
-                    {
-                        if (stages[i].studentset2.getSet() == studenten[j].getSet())
-                        {
-                            contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!contains)
-                    {
-                        //studenten.Add(stages[i].studentset2); TODO!!!!!!
-                    }
-                }
-            }
-
-
-            List = studenten.ToDictionary(t => (Object)new
-                          {
-                              MailTo = false,
-                              Email = t.users.email,
-                              EmailURL = "mailto:" + t.users.email,
-                              StudentNaam = t.users.surname+ ", " + t.users.name,
-                              Gegevens = "Adres komt hier",
-                              Stageopdracht = true,
-                              Feedback = "Geen",
-                              Docent = "Docent"
-                          }, t => t);
-          */
         }
     
         public void btnExport_Click()
         {
             ExportExcel ee = new ExportExcel(this);
             ee.Export();
+        }
+
+        public void updateStageStatus()
+        {
+            stagemanagerEntities smE = new stagemanagerEntities();
+            List<students> students = smE.students.ToList();
+
+            for (int i = 0; i < List.Keys.Count; i++)
+            {
+
+                if ((bool)List.Keys.ElementAt(i).GetType().GetProperty("MailTo").GetMethod.Invoke(List.Keys.ElementAt(i), null))
+                {
+                    students s;
+                    List.TryGetValue(List.Keys.ElementAt(i), out s);
+                    switch (s.students_internships.First().internships.approved)
+                    {
+                        case "Nee" :
+                            s.students_internships.First().internships.approved = "1";
+                            
+                            System.Diagnostics.Debug.WriteLine("Ja");
+                            break;
+
+                        case "Ja":
+
+                            s.students_internships.First().internships.approved = "2";
+
+                            System.Diagnostics.Debug.WriteLine("Bewerkt");
+                            break;
+
+                        case "Word Behandeld":
+                            s.students_internships.First().internships.approved = "3";
+
+                            System.Diagnostics.Debug.WriteLine("Nee");
+                            break;
+                    }
+
+                    foreach (students st in students)
+                    {
+                        if (s.users.email == st.users.email)
+                        {
+                            if (st.students_internships.Count > 0)
+                            {
+                                st.students_internships.First().internships.approved = s.students_internships.First().internships.approved;
+                            }
+                        }
+                    }
+                }
+            }
+            smE.SaveChanges();
         }
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
