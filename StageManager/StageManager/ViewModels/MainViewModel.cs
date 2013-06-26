@@ -105,6 +105,11 @@ namespace StageManager.ViewModels
             Contents.Clear();
         }
 
+        public void Change(String name)
+        {
+            ChangeButton(name, null, new List<object>(), Clear.All);
+        }
+
         public void ChangeButton(string name)
         {
             ChangeButton(name, null);

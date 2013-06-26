@@ -102,11 +102,11 @@
                                 <Rectangle Canvas.Left="19" Canvas.Top="13" Height="14" Width="2" Fill="White"/>
                                 <Rectangle Canvas.Left="13" Canvas.Top="19" Height="2" Width="14" Fill="White"/>
                             </Canvas>
-                            <TextBlock>Studenten toevoegen</TextBlock>
+                            <TextBlock><Run Text="Studenten toevoegen"/></TextBlock>
                         </StackPanel>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <cal:ActionMessage MethodName="ChangeButton">
+                                <cal:ActionMessage MethodName="Change">
                                     <cal:Parameter Value="Mail" />
                                 </cal:ActionMessage>
                             </i:EventTrigger>
@@ -161,7 +161,7 @@
                                         <Button Content="Proces" Style="{StaticResource MenuButton}">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
-                                                    <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:ActionMessage MethodName="Change">
                                                         <cal:Parameter Value="ProcesOverzicht" />
                                                     </cal:ActionMessage>
                                                 </i:EventTrigger>
@@ -170,7 +170,7 @@
                                         <Button Content="Gegevens" Style="{StaticResource MenuButton}">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
-                                                    <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:ActionMessage MethodName="Change">
                                                         <cal:Parameter Value="GegevensOverzicht" />
                                                     </cal:ActionMessage>
                                                 </i:EventTrigger>
@@ -179,7 +179,7 @@
                                         <Button Content="Stages" Style="{StaticResource MenuButton}">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
-                                                    <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:ActionMessage MethodName="Change">
                                                         <cal:Parameter Value="StagesOverzicht" />
                                                     </cal:ActionMessage>
                                                 </i:EventTrigger>
@@ -188,7 +188,7 @@
                                         <Button Content="Studenten" Style="{StaticResource MenuButton}">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
-                                                    <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:ActionMessage MethodName="Change">
                                                         <cal:Parameter Value="StudentenOverzicht" />
                                                     </cal:ActionMessage>
                                                 </i:EventTrigger>
@@ -197,7 +197,7 @@
                                         <Button Content="Docenten" Style="{StaticResource MenuButton}">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
-                                                    <cal:ActionMessage MethodName="ChangeButton">
+                                                    <cal:ActionMessage MethodName="Change">
                                                         <cal:Parameter Value="DocentenOverzicht" />
                                                     </cal:ActionMessage>
                                                 </i:EventTrigger>
