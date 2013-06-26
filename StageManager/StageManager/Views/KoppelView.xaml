@@ -76,7 +76,7 @@
                     </Grid>
                     <!-- KoppelContent -->
                     <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" Margin="0,10,00,0">
-                        <DataGrid Name="GridContents" SelectedItem="{Binding SelectedDocent}" SelectionChanged="GridContents_SelectionChanged">
+                        <DataGrid Name="GridContents" SelectedItem="{Binding SelectedDocent}" SelectionChanged="GridContents_SelectionChanged" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding naam}" Header="Docent Naam" Width="auto" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding waarde}" Header="Score" Width="auto" IsReadOnly="True"/>
