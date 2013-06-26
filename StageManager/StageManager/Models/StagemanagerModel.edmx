@@ -39,6 +39,13 @@
       `db_teacher_knowledge`.`name`
       FROM `db_teacher_knowledge` AS `db_teacher_knowledge`</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="db_teacherhasinternship" EntityType="stagemanagerModel.Store.db_teacherhasinternship" store:Type="Views" store:Schema="stagemanager" store:Name="db_teacherhasinternship">
+            <DefiningQuery>SELECT
+      `db_teacherhasinternship`.`teacher_user_id`, 
+      `db_teacherhasinternship`.`name`, 
+      `db_teacherhasinternship`.`surname`
+      FROM `db_teacherhasinternship` AS `db_teacherhasinternship`</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.Store.dbstageview" store:Type="Views" store:Schema="stagemanager" store:Name="dbstageview">
             <DefiningQuery>SELECT
       `dbstageview`.`sr`, 
@@ -454,6 +461,18 @@
           <Property Name="teacher_user_id" Type="int" Nullable="false" />
           <Property Name="knowledge_id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.stagemanager.db_teacherhasinternship' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="db_teacherhasinternship">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+          </Key>
+          <Property Name="teacher_user_id" Type="int" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="surname" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'def.stagemanager.dbstageview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -973,6 +992,7 @@
           <EntitySet Name="webkeys" EntityType="stagemanagerModel.webkeys" />
           <EntitySet Name="db_internship_knowledge" EntityType="stagemanagerModel.db_internship_knowledge" />
           <EntitySet Name="db_teacher_knowledge" EntityType="stagemanagerModel.db_teacher_knowledge" />
+          <EntitySet Name="db_teacherhasinternship" EntityType="stagemanagerModel.db_teacherhasinternship" />
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.dbstageview" />
           <EntitySet Name="dbstageviewcomplete" EntityType="stagemanagerModel.dbstageviewcomplete" />
           <EntitySet Name="studentadress" EntityType="stagemanagerModel.studentadress" />
@@ -1269,6 +1289,15 @@
           <Property Name="teacher_user_id" Type="Int32" Nullable="false" />
           <Property Name="knowledge_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="db_teacherhasinternship">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="surname" />
+          </Key>
+          <Property Name="teacher_user_id" Type="Int32" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="dbstageview">
           <Key>
@@ -1845,6 +1874,15 @@
                 <ScalarProperty Name="teacher_user_id" ColumnName="teacher_user_id" />
                 <ScalarProperty Name="knowledge_id" ColumnName="knowledge_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_teacherhasinternship">
+            <EntityTypeMapping TypeName="stagemanagerModel.db_teacherhasinternship">
+              <MappingFragment StoreEntitySet="db_teacherhasinternship">
+                <ScalarProperty Name="teacher_user_id" ColumnName="teacher_user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
