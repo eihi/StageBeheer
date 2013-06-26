@@ -95,18 +95,15 @@
                         
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Stage type" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
-                            <StackPanel Margin="20,10,20,10" Width="auto" Height="auto">
-                                <RadioButton GroupName="StageTypeRB">Stage</RadioButton>
-                                <RadioButton Name="Afstudeerstage" IsChecked="{Binding isAfstudeerstage}" GroupName="StageTypeRB">Afstudeerstage</RadioButton>
-                            </StackPanel>
+                            <Label Content="{Binding StageType}" Margin="20,10,20,10" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Start datum" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
-                            <DatePicker Text="{Binding StartDatum}" Margin="20,10,20,10" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                            <Label Content="{Binding StartDatum}" Margin="20,10,20,10" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Eind datum" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
-                            <DatePicker Text="{Binding EindDatum}" Margin="20,10,20,10" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
+                            <Label Content="{Binding EindDatum}" Margin="20,10,20,10" Width="auto" Height="auto" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Stageopdracht" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>

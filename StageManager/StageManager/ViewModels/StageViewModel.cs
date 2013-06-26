@@ -327,6 +327,14 @@ namespace StageManager.ViewModels
             set { }
         }
 
+        public string StageType
+        {
+            get
+            {
+                return stage.type;
+            }
+        }
+
         public string BedrijfsbegeleiderVisibility
         {
             get
