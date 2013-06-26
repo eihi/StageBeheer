@@ -35,6 +35,7 @@ namespace StageManager.ViewModels
         public void btnSave()
         {
             WStored.PushToDB();
+            Last.update();
         }
 
         public String Voornaam

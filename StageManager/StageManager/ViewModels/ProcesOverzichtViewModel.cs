@@ -64,7 +64,7 @@ namespace StageManager.ViewModels
                         if ((bool)studenten[i].GetType().GetProperty("MailTo").GetMethod.Invoke(studenten[i], null))
                         {
                             students student;
-                            if (List.TryGetValue(studenten[i], out student) && student.students_internships.Count == 0 || student.students_internships.First() == null)
+                            if (List.TryGetValue(studenten[i], out student)  || student.students_internships.Count == 0 || student.students_internships.First() == null)
                             {
                                 can = false;
                                 break;
@@ -297,6 +297,10 @@ namespace StageManager.ViewModels
                 {
                     students s;
                     List.TryGetValue(List.Keys.ElementAt(i), out s);
+
+                    if (s == null)
+                        return;
+
                     switch (s.students_internships.First().internships.approved)
                     {
                         case "0":
