@@ -71,7 +71,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.name;
+                    return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.surname;
                 }
                 catch (NullReferenceException)
                 {
@@ -87,7 +87,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.students_internships.ElementAt(1).students.users.name + " " + stage.students_internships.ElementAt(1).students.users.name;
+                    return stage.students_internships.ElementAt(1).students.users.name + " " + stage.students_internships.ElementAt(1).students.users.surname;
                 }
                 catch (NullReferenceException)
                 {

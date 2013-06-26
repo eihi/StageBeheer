@@ -135,6 +135,14 @@ namespace StageManager.ViewModels
                     System.Diagnostics.Debug.WriteLine("error geen tweedestudent");
                 }
                 return temp;
+                if (stage.students_internships.ElementAtOrDefault(1) != null)
+                {
+                    return stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname;
+                }
+                else
+                {
+                    return "";
+                }
             }
             set
             {
@@ -157,6 +165,9 @@ namespace StageManager.ViewModels
                     return "Collapsed";
                 }
             }
+            set
+            {
+            }
         }
 
         public string AddStudentVisibility
@@ -174,20 +185,17 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string stagebegeleider;
         public string Stagebegeleider
         {
             get
             {
-                try
-                {
-                    return stage.teachers.users.name + " " + stage.teachers.users.surname;
-                }
-                catch (NullReferenceException)
-                {
-                    return "";
-                }
+                return stage.teachers1.users.name + " " + stage.teachers1.users.surname;
             }
-            set { }
+            set {
+                stagebegeleider = value;
+                NotifyOfPropertyChange(() => Stagebegeleider);
+            }
         }
 
         public string StagebegeleiderVisibility
@@ -273,7 +281,17 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return tweedeLezer;
+                try
+                {
+                    //(WStored.StageManagerEntities.teachers Where stage.secondReader == stage.teacher_user_id select );
+                    List<teachers> teacherlist = (from zoek in new WStored().SearchDocentSet("") where zoek.user_id == stage.secondReader select zoek).ToList();
+                    teachers teacher = teacherlist[0];
+                    return teacher.users.name + " " + teacher.users.surname;
+                }
+                catch (NullReferenceException)
+                {
+                    return "";
+                }
                 // TODO return WStored.StageManagerEntities.teachers.Where<WStored.StageManagerEntities.
             }
             set 
@@ -432,13 +450,23 @@ namespace StageManager.ViewModels
 
         public void btnStageopdracht_Click()
         {
-            Main.ChangeButton("Stageopdracht");
+            Main.ChangeButton("Stageopdracht", this, new List<object>() { stage}, Clear.No );
         }
 
         public void btnExport_Click()
         {
             ExportExcel ee = new ExportExcel(this);
             ee.Export();
+        }
+
+        public void btnBedrijf()
+        {
+            Main.ChangeButton("Bedrijf", this, new List<object>() {Stage.supervisor.companies }, Clear.No);
+        }
+
+        public void btnBedrijfsbegeleider()
+        {
+            Main.ChangeButton("Bedrijfsbegeleider", this, new List<object>() { Stage.supervisor}, Clear.No);
         }
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)

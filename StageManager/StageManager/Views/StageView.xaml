@@ -45,9 +45,9 @@
                             <Label Content="Student(en)" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met studentnaam OnClick wordt de StudentView geopend -->
-                                <Button Content="{Binding EersteStudent}" Visibility="{Binding EersteStudentVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
+                                <Button Name="btnEersteStudent" Content="{Binding EersteStudent}" Visibility="{Binding EersteStudentVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!--<Button Content="x" Visibility="{Binding EersteStudentVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>-->
-                                <Button Content="{Binding TweedeStudent}" Visibility="{Binding TweedeStudentVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
+                                <Button Name="btnTweedeStudent" Content="{Binding TweedeStudent}" Visibility="{Binding TweedeStudentVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <Button Content="x" Visibility="{Binding TweedeStudentVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen twee studenten zijn gekoppeld,
                                  OnClick wordt een ZoekView geopend met een lijst van Studenten -->
@@ -58,7 +58,7 @@
                             <Label Content="Stagebegeleider" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met docentnaam OnClick wordt de Docent KoppelView geopend -->
-                                <Button Content="{Binding Stagebegeleider}" Visibility="{Binding StagebegeleiderVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
+                                <Button Name="btnStagebegeleider" Content="{Binding Stagebegeleider}" Visibility="{Binding StagebegeleiderVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <Button Content="x" Visibility="{Binding StagebegeleiderVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen docent is gekoppeld -->
                                 <Button Name="btnStagebegeleider_Click" Visibility="{Binding AddStagebegeleiderVisibility}" Content="+" VerticalAlignment="Center" Margin="5" Padding="10,0,10,0"/>
@@ -78,7 +78,7 @@
                             <Label Content="Bedrijf" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met bedrijfsnaam OnClick wordt BedrijfView geopend -->
-                                <Button Content="{Binding Bedrijf}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding BedrijfVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
+                                <Button Name="btnBedrijf" Content="{Binding Bedrijf}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding BedrijfVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen bedrijf is gekoppeld -->
                                 <Button VerticalAlignment="Center" Margin="5" Visibility="{Binding AddBedrijfVisibility}" Padding="10,0,10,0">+</Button>
                             </StackPanel>
@@ -87,7 +87,7 @@
                             <Label Content="Bedrijfsbegeleider" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met bedrijfsbegeleider naam OnClick wordt BedrijfsbegeleiderView geopend -->
-                                <Button Content="{Binding Bedrijfsbegeleider}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding BedrijfsbegeleiderVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
+                                <Button Name="btnBedrijfsbegeleider" Content="{Binding Bedrijfsbegeleider}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding BedrijfsbegeleiderVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen bedrijfsbegeleider is gekoppeld -->
                                 <Button VerticalAlignment="Center" Margin="5" Visibility="{Binding AddBedrijfsbegeleiderVisibility}" Padding="10,0,10,0">+</Button>
                             </StackPanel>
