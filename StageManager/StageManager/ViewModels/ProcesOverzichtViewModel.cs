@@ -276,7 +276,14 @@ namespace StageManager.ViewModels
                         Gegevens = "niet van toepassing",
                         Goedgekeurd = "niet van toepassing"
                     };
-                    list.Add(o, null);
+                    try
+                    {
+                        list.Add(o, null);
+                    }
+                    catch (Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine("dubbele key wordt toegevoegt");
+                    }
                 }
             }
             List = List;
