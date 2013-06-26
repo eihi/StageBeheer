@@ -12,6 +12,18 @@ namespace StageManager.ViewModels
 {
     class MailViewModel :PropertyChanged
     {
+        private String error;
+        public String Error
+        {
+            get
+            {
+                return "In het bericht moet " + error + " voorkomen";
+            }
+            set
+            {
+                error = value;
+            }
+        }
         public enum mailType { leeg, beoordeling, herinnering, nieuw };
         private String to;
         private mailType type;
@@ -50,7 +62,7 @@ namespace StageManager.ViewModels
             set
             {
                 message = value;
-                if (message.Contains("%webkey%") || message.Contains("%stageData%"))
+                if (message.Contains(error))
                 {
                     Visible = false;
                 }
@@ -78,15 +90,29 @@ namespace StageManager.ViewModels
             }
         }
 
+        public MailViewModel(MainViewModel main, PropertyChanged last)
+            : this(main, last, mailType.nieuw)
+        {
+
+        }
+
         public MailViewModel(MainViewModel main, PropertyChanged last, mailType optie)
             :base(main,last)
         {
             type = optie;
 
             To = "";
+            SetMessage();
+
+        }
+
+        private void SetMessage()
+        {
             switch (type)
             {
                 case mailType.beoordeling:
+                    Error = "%stageData%";
+                    Subject = "Kijk deze stageopdracht na s.v.p.";
                     Message = "Beste docent,\n\n" +
                     "Met deze mail verplichten wij u vriendelijk om de stage geleverd via deze mail na te kijken.\n" +
                     "%stageData%\n\n\n" +
@@ -95,7 +121,9 @@ namespace StageManager.ViewModels
                     "Stagecoördinator AI&I\n" +
                     "Avans Hogeschool 's-Hertogenbosch";
                     break;
-                case mailType.nieuw :
+                case mailType.nieuw:
+                    Error = "%webkey%";
+                    Subject = "Uitnodiging voor in het systeem";
                     Message = "Beste student,\n\n" +
                     "Met deze mail vragen wij vriendelijk om je gegevens in te vullen in dit web formulier\n" +
                     "%webkey%\n\n\n" +
@@ -105,7 +133,6 @@ namespace StageManager.ViewModels
                     "Avans Hogeschool 's-Hertogenbosch";
                     break;
             }
-
         }
 
         public MailViewModel(MainViewModel main, PropertyChanged last, List<String> emails, mailType optie)
@@ -143,11 +170,13 @@ namespace StageManager.ViewModels
             try
             {
                 To="";
-                List<String> emails = (List<String>)o[1];
+                List<String> emails = (List<String>)o[2];
                 for (int i = 0; i < emails.Count; i++)
                 {
                     To += emails[i] + " ";
                 }
+                type = (mailType)o[3];
+                SetMessage();
             }
             catch (Exception)
             {

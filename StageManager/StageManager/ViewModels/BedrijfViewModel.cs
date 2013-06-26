@@ -141,7 +141,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Bedrijf = (companies)o[1];
+                Bedrijf = (companies)o[2];
             }
             catch (Exception)
             {

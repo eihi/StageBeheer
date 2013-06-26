@@ -68,7 +68,7 @@
                             <Label Content="Onderwerp:" Grid.Column="0" HorizontalContentAlignment="Right"/>
                             <TextBox Name="Subject" Grid.Column="1"/>
                         </Grid>
-                        <Label Background="Red" Grid.Row="2" Content="In het bericht moet %webkey% voorkomen" Foreground="White" HorizontalContentAlignment="Center" Margin="5" Focusable="{Binding Visible}" Height="0" MaxHeight="26">
+                        <Label Background="Red" Grid.Row="2" Name="Error" Foreground="White" HorizontalContentAlignment="Center" Margin="5" Focusable="{Binding Visible}" Height="0" MaxHeight="26">
                             <Label.Style>
                                 <Style TargetType="Label">
                                     <Style.Triggers>

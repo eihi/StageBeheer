@@ -261,7 +261,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                SearchString = (String)o[1];
+                SearchString = (String)o[2];
             }
             catch (Exception)
             {

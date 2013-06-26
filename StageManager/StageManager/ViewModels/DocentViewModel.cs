@@ -162,7 +162,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Docent = (teachers)o[1];
+                Docent = (teachers)o[2];
             }
             catch (Exception)
             {

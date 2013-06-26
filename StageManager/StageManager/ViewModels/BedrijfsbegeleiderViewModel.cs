@@ -135,7 +135,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Begeleider = (supervisor)o[1];
+                Begeleider = (supervisor)o[2];
             }
             catch (Exception)
             {

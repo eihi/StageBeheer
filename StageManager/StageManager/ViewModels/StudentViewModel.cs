@@ -137,7 +137,7 @@ namespace StageManager.ViewModels
         {
             try
             {
-                Student = (students)o[1];
+                Student = (students)o[2];
             }
             catch (Exception)
             {                
