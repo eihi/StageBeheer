@@ -19,6 +19,15 @@ namespace StageManager.ViewModels
             {
                 amountselected = value;
                 NotifyOfPropertyChange(() => CanStageVerwerken);
+                NotifyOfPropertyChange(() => CanMailSelectie);
+            }
+        }
+
+        public bool CanMailSelectie
+        {
+            get
+            {
+                return Amountselected > 0;
             }
         }
 
@@ -26,16 +35,10 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return Amountselected == 1;
+                return Amountselected == 1 && SelectedStudent != null && selectedStudent.students_internships.Count != 0;
             }
         }
-        public bool CanStageVerwerken2
-        {
-            get
-            {
-                return SelectedStudent == null;
-            }
-        }
+        
 
         public bool CanMailStageSelectie
         {
@@ -135,7 +138,7 @@ namespace StageManager.ViewModels
                         List = list;
                     }
                 }
-                NotifyOfPropertyChange(() => CanStageVerwerken2);
+                NotifyOfPropertyChange(() => CanStageVerwerken);
                 NotifyOfPropertyChange(() => CanMailStageSelectie);
                 
             }
