@@ -77,7 +77,7 @@ namespace StageManager.ViewModels
             }
             set { }
         }
-        
+
         private string _eersteStudent;
         public string EersteStudent
         {
@@ -85,9 +85,10 @@ namespace StageManager.ViewModels
             {
                 return _eersteStudent;
             }
-            set 
+            set
             {
                 _eersteStudent = value;
+                NotifyOfPropertyChange(() => EersteStudent);
             }
         }
 
@@ -107,21 +108,18 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string _tweedeStudent;
         public string TweedeStudent
         {
             get
             {
-                try
-                {
-                    return stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname; //TODO juiste student?
-                }
-                catch (NullReferenceException)
-                {
-                    return "";
-                }
-
+                return _tweedeStudent;
             }
-            set { }
+            set
+            {
+                _tweedeStudent = value;
+                NotifyOfPropertyChange(() => TweedeStudent);
+            }
         }
 
         public string TweedeStudentVisibility
@@ -144,17 +142,16 @@ namespace StageManager.ViewModels
         {
             get
             {
-                if (EersteStudent != "" & TweedeStudent != "")
-                {
-                    return "Collapsed";
-                }
-                else
-                {
-                    return "Visible";
-                }
+                //if (EersteStudent != ""  TweedeStudent != "")
+                // {
+                //  return "Collapsed";
+                //}
+                //else
+                //{
+                return "Visible";
+                //}
             }
         }
-
         public string Stagebegeleider
         {
             get

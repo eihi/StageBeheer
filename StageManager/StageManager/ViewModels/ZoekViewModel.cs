@@ -139,20 +139,19 @@ namespace StageManager.ViewModels
             set
             {
                 _selectedObject = value;
+                var firstName = _selectedObject.GetType().GetProperty("Voornaam");
+                var lastName = _selectedObject.GetType().GetProperty("Achternaam");
+                string fullName = firstName.GetValue(_selectedObject, null) + " " + lastName.GetValue(_selectedObject, null);
 
                 List<PropertyChanged> c = Main.Contents.ToList<PropertyChanged>();
-
                 foreach (PropertyChanged p in c)
                 {
                     if (p.GetType().Name == "StageViewModel")
                     {
                         StageViewModel svm = (StageViewModel)p;
-                        svm.EersteStudent = "Your mom";
-                        MessageBox.Show(svm.EersteStudent);
+                        svm.TweedeStudent = fullName;
                     }
                 }
-                StageList.TryGetValue(value, out selectedStage);
-                Main.ChangeButton("Koppel", new List<Object>() { selectedStage }, Services.Clear.No);
             }
         }
 
