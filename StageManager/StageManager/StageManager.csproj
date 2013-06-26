@@ -226,7 +226,7 @@
     <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\StudentenOverzichtViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
-    <Compile Include="ViewModels\TweedeLezerkoppel.cs" />
+    <Compile Include="ViewModels\TweedeLezerKoppelViewModel.cs" />
     <Compile Include="ViewModels\ZoekViewModel.cs" />
     <Compile Include="Views\BedrijfsbegeleiderView.xaml.cs">
       <DependentUpon>BedrijfsbegeleiderView.xaml</DependentUpon>
@@ -277,8 +277,8 @@
     <Compile Include="Views\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TweedeLezerkoppel.xaml.cs">
-      <DependentUpon>TweedeLezerkoppel.xaml</DependentUpon>
+    <Compile Include="Views\TweedeLezerKoppelView.xaml.cs">
+      <DependentUpon>TweedeLezerKoppelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ZoekView.xaml.cs">
       <DependentUpon>ZoekView.xaml</DependentUpon>
@@ -355,7 +355,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TweedeLezerkoppel.xaml">
+    <Page Include="Views\TweedeLezerKoppelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace StageManager.ViewModels
 {
-    class TweedeLezerkoppel : PropertyChanged
+    class TweedeLezerKoppelViewModel : PropertyChanged
     {
         private internships stage;
 
@@ -23,6 +23,18 @@ namespace StageManager.ViewModels
                 stage = value;
                 NotifyOfPropertyChange(() => CanTweedeLezer);
                 NotifyOfPropertyChange(() => KoppelStudentNaam);
+            }
+        }
+
+        public String Koppel
+        {
+            get
+            {
+                if (selectedDocent != null)
+                {
+                    return "Koppel student aan " + selectedDocent.name + " " + selectedDocent.surname;
+                }
+                return "Koppel student aan _____";
             }
         }
 
@@ -48,7 +60,7 @@ namespace StageManager.ViewModels
                 List.TryGetValue(value, out selectedDocent);
                 KoppelDocent = selectedDocent;
                 NotifyOfPropertyChange(() => SelectedDocent);
-                //NotifyOfPropertyChange(() => Koppel);
+                NotifyOfPropertyChange(() => Koppel);
             }
         }
 
@@ -116,7 +128,7 @@ namespace StageManager.ViewModels
 
 
 
-        public TweedeLezerkoppel(MainViewModel main, PropertyChanged last)
+        public TweedeLezerKoppelViewModel(MainViewModel main, PropertyChanged last)
             : base(main, last)
         {
             Main = main;
@@ -125,7 +137,7 @@ namespace StageManager.ViewModels
            
         }
 
-        public TweedeLezerkoppel(MainViewModel main, PropertyChanged last, String teacher)
+        public TweedeLezerKoppelViewModel(MainViewModel main, PropertyChanged last, String teacher)
             : base(main, last)
         {
             Main = main;
@@ -133,24 +145,31 @@ namespace StageManager.ViewModels
 
         }
 
-        public TweedeLezerkoppel(MainViewModel main, PropertyChanged last, internships stage)
+        public TweedeLezerKoppelViewModel(MainViewModel main, PropertyChanged last, internships stage)
             : this(main, last)
         {
 
-            list = new Dictionary<object, db_teacherhasinternship>();
-            int ID = unchecked((int)stage.id);
+            list = new Dictionary<object, db_teacherhasinternship>();            
             Stage = stage;
 
-             List = new WStored().Searchteacherasinternship().ToDictionary(t => (Object)new
+             List = new WStored().Searchteacherhasinternship().ToDictionary(t => (Object)new
             {            
-                naam = "zoiets",
-                aantalkeertweedelezer = "iets",
-
+                naam = t.name + " " + t.surname,
+                aantalkeertweedelezer = getStageCount(t.teacher_user_id.Value),
             }, t => t);
-
 
             GridContents = list.Keys.ToList();
         }
+
+
+        public int getStageCount(int teacher)
+        {
+            int count = 0;
+            List<internships> countlist = (from aantal in new WStored().SearchStageSet() where aantal.secondReader != null && aantal.secondReader == teacher select aantal).ToList();
+            count = countlist.Count;
+            return count;
+        }
+
 
         public override void update(object[] o)
         {
@@ -165,23 +184,15 @@ namespace StageManager.ViewModels
 
         public void Koppelen()
         {
-            /*  OLD CODE 
-            Stage.teachers = KoppelDocent;            
-            Wrapper myWrapper = new Wrapper();
-            myWrapper.forceSync();
-            Main.ChangeButton("Zoek", new List<Object>(), Services.Clear.All);
-             */
+     
             if (selectedDocent != null)
             {
-                
-             //   teachers henk = selectedDocent.TeacherInfo;
                 List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
                 internships myinternship = stages[0];
-             //   myinternship.teacher_user_id = selectedDocent.TeacherInfo.user_id;
-
-                
+                int selected = selectedDocent.teacher_user_id.Value;
+                myinternship.secondReader = selected;                
                 //pop up
-                MessageBox.Show(selectedDocent.name + " " + selectedDocent.surname + " is aan deze stage gekoppelt als tweede lezer, en de persoon die aan deze al zat is zijn tweedelezer geworden. mits deze nog niet gekoppelt was", "succes!");
+                MessageBox.Show(selectedDocent.name + " " + selectedDocent.surname + " is aan deze stage gekkoppelt als tweede lezer", "succes!");
                 //update vorig scherm
 
                 WStored.PushToDB();

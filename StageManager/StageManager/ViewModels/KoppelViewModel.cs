@@ -232,31 +232,24 @@ namespace StageManager.ViewModels
 
         public void Koppelen()
         {
-            /*  OLD CODE 
-            Stage.teachers = KoppelDocent;            
-            Wrapper myWrapper = new Wrapper();
-            myWrapper.forceSync();
-            Main.ChangeButton("Zoek", new List<Object>(), Services.Clear.All);
-             */
+
             if (selectedDocent != null)
             {
                 //stage.begeleider = selected
-                teachers henk = selectedDocent.TeacherInfo;
                 List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
                 internships myinternship = stages[0];
                 myinternship.teacher_user_id = selectedDocent.TeacherInfo.user_id;
 
-                //selected.volumehours.juisteblokken - tijd
-                selectedDocent.removeTime();
+                Stage = myinternship;
                 //pop up
                 MessageBox.Show(selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname + " is aan deze stage gekoppeld", "succes!");
-                //update vorig scherm
-                
+              
+                //update vorig scherm                
                 WStored.PushToDB();
                 Last.update();
                 //sluit scherm
                 this.Close();
-                //update stage scherm
+               
             }
             else
                 MessageBox.Show("Geen docent geselecteerd", "error");

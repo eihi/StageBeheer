@@ -573,8 +573,7 @@ namespace StageManager.ViewModels
 
         public void btnAddTweedeLezer()
         {
-            SearchFor = Search.TweedeLezer;
-            Main.ChangeButton("Zoek",this, new List<object>() { "", ZoekViewModel.SearchType.Docenten }, Clear.No);
+            Main.ChangeButton("TweedeLezerKoppel", this, new List<object> { Stage }, Clear.No);
         }
 
         public void btnStageopdracht()

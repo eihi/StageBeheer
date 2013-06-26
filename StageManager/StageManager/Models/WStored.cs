@@ -146,7 +146,7 @@ namespace StageManager.Models
             return (from student_internships in StageManagerEntities.students_internships.ToList() select student_internships).ToList();
         }
 
-        public List<db_teacherhasinternship> Searchteacherasinternship()
+        public List<db_teacherhasinternship> Searchteacherhasinternship()
         {
             return (from zoek in StageManagerEntities.db_teacherhasinternship.ToList() select zoek).ToList();
         }

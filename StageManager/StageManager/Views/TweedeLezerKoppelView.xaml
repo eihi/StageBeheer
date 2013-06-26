@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StageManager.Views.TweedeLezerkoppel"
+﻿<UserControl x:Class="StageManager.Views.TweedeLezerKoppelView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="600"
-             Loaded="UserControl_Loaded" Width="306.567">
+             Loaded="UserControl_Loaded" Width="414.03">
     <UserControl.Resources>
         <Style x:Key="TextBoxStyle" TargetType="TextBlock">
             <Setter Property="Padding" Value="10"/>
@@ -58,9 +58,10 @@
                 <DockPanel>
                     <!-- KoppelTitel -->
                     <!-- KoppelControls -->
+                    <Label Name="Koppel" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="20" FontWeight="Light"/>
                     <!-- KoppelContent -->
                     <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" Margin="0,10,00,0">
-                        <DataGrid Name="GridContents" SelectedItem="{Binding SelectedDocent}" AutoGenerateColumns="False" Width="539">
+                        <DataGrid Name="GridContents" SelectedItem="{Binding SelectedDocent}" AutoGenerateColumns="False" Width="330">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding naam}" Header="Docent Naam" Width="auto" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding aantalkeertweedelezer}" Header="#ingezet als tweede lezer" Width="auto" IsReadOnly="True"/>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace StageManager.Views
 {
     /// <summary>
-    /// Interaction logic for KoppelingView.xaml
+    /// Interaction logic for  TweedeLezerKoppelView.xaml
     /// </summary>
-    public partial class TweedeLezerkoppel : UserControl
+    public partial class TweedeLezerKoppelView : UserControl
     {
-        public TweedeLezerkoppel()
+        public TweedeLezerKoppelView()
         {
             InitializeComponent();
         }
