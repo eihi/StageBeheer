@@ -524,26 +524,51 @@ namespace StageManager.ViewModels
             }
         }
 
-        public void btnTweedeStudent_Click()
+        public void btnEersteStudent()
+        {
+            try
+            {
+                Main.ChangeButton("Student", this, new List<object>() { stage.students_internships.First().students }, Clear.No);
+            }
+            catch (Exception)
+            { }
+        }
+
+        public void btnTweedeStudent()
+        {
+            try
+            {
+                Main.ChangeButton("Student", this, new List<object>() { stage.students_internships.ElementAt(1).students }, Clear.No);
+            }
+            catch (Exception)
+            { }
+        }
+
+        public void btnAddTweedeStudent()
         {
             SearchFor = Search.TweedeStudent;
             Main.ChangeButton("Zoek", this, new List<object>() { "", ZoekViewModel.SearchType.Studenten }, Clear.No);
         }
 
-        public void btnStagebegeleider_Click()
+        public void btnAddStagebegeleider()
         {
             Main.ChangeButton("Koppel",this, new List<object> {Stage}, Clear.No);
         }
 
-        public void btnTweedeLezer_Click()
+        public void btnAddTweedeLezer()
         {
             SearchFor = Search.TweedeLezer;
             Main.ChangeButton("Zoek",this, new List<object>() { "", ZoekViewModel.SearchType.Docenten }, Clear.No);
         }
 
-        public void btnStageopdracht_Click()
+        public void btnStageopdracht()
         {
             Main.ChangeButton("Stageopdracht", this, new List<object>() { stage}, Clear.No );
+        }
+
+        public void btnStagebegeleider()
+        {
+            Main.ChangeButton("Docent", this, new List<object>() { stage.teachers1 }, Clear.No);
         }
 
         public void btnRemoveStagebegeleider()

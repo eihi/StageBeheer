@@ -35,22 +35,24 @@ namespace StageManager.ViewModels
             WStored.PushToDB();
         }
 
-        public DateTime StartDatum
+        private string startDatum;
+        public string StartDatum
         {
-            get { return stage.start_date; }
+            get { return stage.start_date.ToShortDateString(); }
             set
             {
-                stage.start_date = value;
+                startDatum = value;
                 NotifyOfPropertyChange(() => StartDatum);
             }
         }
 
-        public DateTime EindDatum
+        private string eindDatum;
+        public string EindDatum
         {
-            get { return stage.end_date; }
+            get { return stage.end_date.ToShortDateString(); }
             set
             {
-                stage.end_date = value;
+                eindDatum = value;
                 NotifyOfPropertyChange(() => EindDatum);
             }
         }
@@ -121,7 +123,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.teachers.users.name + " " + stage.teachers.users.surname;
+                    return stage.teachers1.users.name + " " + stage.teachers1.users.surname;
                 }
                 catch (NullReferenceException)
                 {
