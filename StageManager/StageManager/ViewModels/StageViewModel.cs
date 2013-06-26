@@ -589,6 +589,11 @@ namespace StageManager.ViewModels
         public void btnRemoveStagebegeleider()
         {
             // TODO
+            if (stage.teachers1 != null)
+            {
+                stage.teachers1 = null;
+            }
+            update();
         }
 
         public void btnRemoveTweedeLezer()
