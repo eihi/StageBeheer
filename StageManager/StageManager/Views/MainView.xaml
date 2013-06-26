@@ -72,7 +72,7 @@
                 <!-- NavControls -->
                 <StackPanel DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" Orientation="Horizontal">
 
-                    <Button Height="Auto" Foreground="White" VerticalAlignment="Stretch" Margin="0,0,20,0" BorderThickness="0" Background="Transparent">
+                    <Button Height="Auto" Foreground="White" VerticalAlignment="Stretch" Margin="0,0,20,0" BorderThickness="0" Background="Transparent" Visibility="Collapsed">
 
                         <StackPanel Orientation="Horizontal">
                             <Canvas Width="40" Height="auto" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Stretch">
@@ -205,12 +205,12 @@
                                         </Button>
                                     </StackPanel>
                                 </Expander>
-                                <Expander IsExpanded="true">
+                                <Expander IsExpanded="true" Visibility="Collapsed">
                                     <Expander.Header>
-                                        <TextBlock Text="Documenten" FontSize="20" Foreground="Black" FontWeight="Light"/>
+                                        <TextBlock Text="Documenten" FontSize="20" Foreground="Black" FontWeight="Light" Visibility="Collapsed"/>
                                     </Expander.Header>
                                     <StackPanel>
-                                        <Button Content="Contracten" Style="{StaticResource MenuButton}">
+                                        <Button Content="Contracten" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -221,12 +221,12 @@
                                         </Button>
                                     </StackPanel>
                                 </Expander>
-                                <Expander IsExpanded="true">
+                                <Expander IsExpanded="true" Visibility="Collapsed">
                                     <Expander.Header>
-                                        <TextBlock Text="Views (tijdelijk)" FontSize="20" Foreground="Black" FontWeight="Light"/>
+                                        <TextBlock Text="Views (tijdelijk)" FontSize="20" Foreground="Black" FontWeight="Light" Visibility="Collapsed"/>
                                     </Expander.Header>
                                     <StackPanel>
-                                        <Button Content="Stage" Style="{StaticResource MenuButton}">
+                                        <Button Content="Stage" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -235,7 +235,7 @@
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </Button>
-                                        <Button Content="Stageopdracht" Style="{StaticResource MenuButton}">
+                                        <Button Content="Stageopdracht" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -244,7 +244,7 @@
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </Button>
-                                        <Button Content="Docent" Style="{StaticResource MenuButton}">
+                                        <Button Content="Docent" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -253,7 +253,7 @@
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </Button>
-                                        <Button Content="Student" Style="{StaticResource MenuButton}">
+                                        <Button Content="Student" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -262,7 +262,7 @@
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </Button>
-                                        <Button Content="Bedrijf" Style="{StaticResource MenuButton}">
+                                        <Button Content="Bedrijf" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -271,7 +271,7 @@
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </Button>
-                                        <Button Content="Bedrijfsbegeleider" Style="{StaticResource MenuButton}">
+                                        <Button Content="Bedrijfsbegeleider" Style="{StaticResource MenuButton}" Visibility="Collapsed">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <cal:ActionMessage MethodName="ChangeButton">
@@ -327,9 +327,9 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-                
+
             </DockPanel>
             <ContentControl cal:View.Model="{Binding Error}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
-    
+
 </Window>
