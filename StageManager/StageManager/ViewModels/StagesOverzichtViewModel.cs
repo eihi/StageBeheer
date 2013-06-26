@@ -76,9 +76,16 @@ namespace StageManager.ViewModels
             get { return _selectedStage; }
             set
             {
-                dbstageviewcomplete complete;
-                List.TryGetValue(value, out complete);
-                _selectedStage = Wrapper.StageManagerEntities.internships.Find(complete.internshipID);
+                try
+                {
+                    dbstageviewcomplete complete;
+                    List.TryGetValue(value, out complete);
+                    _selectedStage = Wrapper.StageManagerEntities.internships.Find(complete.internshipID);
+                }
+                catch
+                {
+                    _selectedStage = null;
+                }
             }
         }
 
