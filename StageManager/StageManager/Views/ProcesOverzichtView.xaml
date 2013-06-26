@@ -52,10 +52,9 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
                             <Button Margin="0,10,5,0" Padding="5" Name="MailSelectie" Content="E-mail de student"/>
-                            <Button Content="Stage verwerken" Margin="0,10,5,0" Padding="5" Name="StageVerwerken"/>
                             <Button Content="Stageopdracht laten nakijken" Name="MailStageSelectie" Margin="0,10,5,0" Padding="5" />
                             <Button Content="Exporteer naar Excel" Name="btnExport_Click" Margin="0,10,5,0" Padding="5" />
-                            <Button Content="Stage Status" Name="updateStageStatus" Margin="0,10,5,0" Padding="5" />
+                            <Button Content="Stage verwerken" Margin="0,10,5,0" Padding="5" Name="StageVerwerken"/>
                         </StackPanel>
                         <ListView Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" Name="GridContents" SelectedItem="{Binding SelectedStudent}">
                             <ListView.View>

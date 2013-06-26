@@ -195,6 +195,10 @@ namespace StageManager.ViewModels
         public ProcesOverzichtViewModel(MainViewModel main)
             : base(main)
         {
+            refresh();
+        }
+
+        private void refresh(){
             stagemanagerEntities smE = new stagemanagerEntities();
             List<students> students = smE.students.ToList();
             List = new Dictionary<object, students>();
@@ -232,9 +236,9 @@ namespace StageManager.ViewModels
                         MailTo = false,
                         Email = w.email != null ? w.email : "student heeft geen gebruiker",
                         Student = "Nog niet ingevuld",
-                        Stageopdracht = "NVT",
-                        Gegevens = "NVT",
-                        Goedgekeurd = "NVT"
+                        Stageopdracht = "niet van toepassing",
+                        Gegevens = "niet van toepassing",
+                        Goedgekeurd = "niet van toepassing"
                     };
                     list.Add(o, null);
                 }
@@ -242,6 +246,7 @@ namespace StageManager.ViewModels
             List = List;
 
         }
+            
 
         public void btnExport_Click()
         {
@@ -263,23 +268,20 @@ namespace StageManager.ViewModels
                     List.TryGetValue(List.Keys.ElementAt(i), out s);
                     switch (s.students_internships.First().internships.approved)
                     {
-                        case "Nee" :
+                        case "0":
                             s.students_internships.First().internships.approved = "1";
-                            
-                            System.Diagnostics.Debug.WriteLine("Ja");
                             break;
 
-                        case "Ja":
-
+                        case "1":
                             s.students_internships.First().internships.approved = "2";
-
-                            System.Diagnostics.Debug.WriteLine("Bewerkt");
                             break;
 
-                        case "Word Behandeld":
+                        case "2":
                             s.students_internships.First().internships.approved = "3";
+                            break;
 
-                            System.Diagnostics.Debug.WriteLine("Nee");
+                        case "3":
+                            s.students_internships.First().internships.approved = "0";
                             break;
                     }
 
@@ -296,6 +298,7 @@ namespace StageManager.ViewModels
                 }
             }
             smE.SaveChanges();
+            refresh();
         }
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
