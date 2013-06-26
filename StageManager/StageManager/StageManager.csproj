@@ -122,6 +122,9 @@
     <Compile Include="Models\db_internship_knowledge.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\db_teacherhasinternship.cs">
+      <DependentUpon>StagemanagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\db_teacher_knowledge.cs">
       <DependentUpon>StagemanagerModel.tt</DependentUpon>
     </Compile>
@@ -223,6 +226,7 @@
     <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\StudentenOverzichtViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="ViewModels\TweedeLezerkoppel.cs" />
     <Compile Include="ViewModels\ZoekViewModel.cs" />
     <Compile Include="Views\BedrijfsbegeleiderView.xaml.cs">
       <DependentUpon>BedrijfsbegeleiderView.xaml</DependentUpon>
@@ -272,6 +276,9 @@
     <Compile Include="Views\StudentenOverzichtView.xaml.cs" />
     <Compile Include="Views\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TweedeLezerkoppel.xaml.cs">
+      <DependentUpon>TweedeLezerkoppel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ZoekView.xaml.cs">
       <DependentUpon>ZoekView.xaml</DependentUpon>
@@ -345,6 +352,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\StudentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TweedeLezerkoppel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
