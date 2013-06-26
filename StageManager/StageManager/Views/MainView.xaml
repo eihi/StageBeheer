@@ -94,7 +94,7 @@
                         </i:Interaction.Triggers>
                     </Button>
 
-                    <Button Height="Auto" Foreground="White" VerticalAlignment="Stretch" Margin="0" BorderThickness="0" Background="Transparent">
+                    <Button Height="Auto" Foreground="White" VerticalAlignment="Stretch" Padding="0,0,10,0" BorderThickness="0" Background="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <Canvas Width="40" Height="auto" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Stretch">
                                 <Ellipse HorizontalAlignment="Center"  Fill="White" Height="28" Width="28" Canvas.Left="6" Canvas.Top="6"/>
@@ -112,6 +112,26 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
+                    <Button Height="Auto" Foreground="White" VerticalAlignment="Stretch" Padding="0,0,10,0" BorderThickness="0" Background="Transparent">
+                        <StackPanel Orientation="Horizontal">
+                            <Canvas Width="40" Height="auto" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Stretch">
+                                <Ellipse HorizontalAlignment="Center"  Fill="White" Height="28" Width="28" Canvas.Left="6" Canvas.Top="6"/>
+                                <Ellipse HorizontalAlignment="Center"  Fill="#FF34BFB9" Height="24" Width="24" Canvas.Left="8" Canvas.Top="8"/>
+                                <Rectangle Canvas.Left="19" Canvas.Top="13" Height="14" Width="2" Fill="White"/>
+                                <Rectangle Canvas.Left="13" Canvas.Top="19" Height="2" Width="14" Fill="White"/>
+                            </Canvas>
+                            <TextBlock>Docenten toevoegen</TextBlock>
+                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <cal:ActionMessage MethodName="ChangeButton">
+                                    <cal:Parameter Value="Mail" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    
+                    
 
                 </StackPanel>
                 <!-- LoginButton -->
