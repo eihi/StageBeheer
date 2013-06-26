@@ -240,7 +240,6 @@ namespace StageManager.ViewModels
                 internships myinternship = stages[0];
                 myinternship.teacher_user_id = selectedDocent.TeacherInfo.user_id;
 
-                Stage = myinternship;
                 //pop up
                 MessageBox.Show(selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname + " is aan deze stage gekoppeld", "succes!");
               
