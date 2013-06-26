@@ -42,7 +42,6 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => TweedeLezer);
                 NotifyOfPropertyChange(() => Bedrijf);
                 NotifyOfPropertyChange(() => Bedrijfsbegeleider);
-                NotifyOfPropertyChange(() => isAfstudeerstage);
                 NotifyOfPropertyChange(() => AddBedrijfsbegeleiderVisibility);
                 NotifyOfPropertyChange(() => AddBedrijfVisibility);
                 NotifyOfPropertyChange(() => AddStagebegeleiderVisibility);
@@ -70,12 +69,7 @@ namespace StageManager.ViewModels
             Stage = stage;
         }
 
-        public bool isAfstudeerstage
-        {
-            get;
-            set;
-        }
-
+        private string afstudeerstageVisibility;
         public string AfstudeerstageVisibility
         {
             get
@@ -88,7 +82,10 @@ namespace StageManager.ViewModels
                 }
                     
             }
-            set { }
+            set {
+                afstudeerstageVisibility = value;
+                NotifyOfPropertyChange(() => AfstudeerstageVisibility);
+            }
         }
 
         private string _eersteStudent;
@@ -105,6 +102,7 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string eersteStudentVisibility;
         public string EersteStudentVisibility
         {
             get
@@ -118,6 +116,11 @@ namespace StageManager.ViewModels
                 {
                     return "Collapsed";
                 }
+            }
+            set
+            {
+                eersteStudentVisibility = value;
+                NotifyOfPropertyChange(() => EersteStudentVisibility);
             }
         }
 
@@ -151,6 +154,7 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string tweedeStudentVisibility;
         public string TweedeStudentVisibility
         {
             get
@@ -167,9 +171,12 @@ namespace StageManager.ViewModels
             }
             set
             {
+                tweedeStudentVisibility = value;
+                NotifyOfPropertyChange(() => tweedeStudentVisibility);
             }
         }
 
+        private string addStudentVisibility;
         public string AddStudentVisibility
         {
             get
@@ -182,6 +189,11 @@ namespace StageManager.ViewModels
                 {
                     return "Visible";
                 }
+            }
+            set
+            {
+                addStudentVisibility = value;
+                NotifyOfPropertyChange(() => AddStudentVisibility);
             }
         }
 
@@ -198,6 +210,7 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string stagebegeleiderVisibility;
         public string StagebegeleiderVisibility
         {
             get
@@ -212,8 +225,14 @@ namespace StageManager.ViewModels
                     return "Collapsed";
                 }
             }
+            set
+            {
+                stagebegeleiderVisibility = value;
+                NotifyOfPropertyChange(() => StagebegeleiderVisibility);
+            }
         }
 
+        private string addStagebegeleiderVisibility;
         public string AddStagebegeleiderVisibility
         {
             get
@@ -227,8 +246,14 @@ namespace StageManager.ViewModels
                     return "Visible";
                 }
             }
+            set
+            {
+                addStudentVisibility = value;
+                NotifyOfPropertyChange(() => addStudentVisibility);
+            }
         }
 
+        private string bedrijf;
         public string Bedrijf
         {
             get
@@ -242,9 +267,14 @@ namespace StageManager.ViewModels
                     return "";
                 }
             }
-            set { }
+            set 
+            {
+                bedrijf = value;
+                NotifyOfPropertyChange(() => Bedrijf);
+            }
         }
 
+        private string bedrijfVisibility;
         public string BedrijfVisibility
         {
             get
@@ -259,8 +289,14 @@ namespace StageManager.ViewModels
                     return "Collapsed";
                 }
             }
+            set
+            {
+                bedrijfVisibility = value;
+                NotifyOfPropertyChange(() => BedrijfVisibility);
+            }
         }
 
+        private string addBedrijfVisibility;
         public string AddBedrijfVisibility
         {
             get
@@ -273,6 +309,11 @@ namespace StageManager.ViewModels
                 {
                     return "Visible";
                 }
+            }
+            set
+            {
+                addBedrijfVisibility = value;
+                NotifyOfPropertyChange(() => AddBedrijfVisibility);
             }
         }
 
@@ -301,6 +342,7 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string tweedeLezerVisibility;
         public string TweedeLezerVisibility
         {
             get
@@ -315,8 +357,14 @@ namespace StageManager.ViewModels
                     return "Collapsed";
                 }
             }
+            set
+            {
+                tweedeLezerVisibility = value;
+                NotifyOfPropertyChange(() => TweedeLezerVisibility);
+            }
         }
 
+        private string addTweedelezerVisibility;
         public string AddTweedeLezerVisibility
         {
             get
@@ -330,6 +378,11 @@ namespace StageManager.ViewModels
                     return "Visible";
                 }
             }
+            set
+            {
+                addTweedelezerVisibility = value;
+                NotifyOfPropertyChange(() => AddTweedeLezerVisibility);
+            }
         }
 
         public void btnSave()
@@ -337,6 +390,7 @@ namespace StageManager.ViewModels
             WStored.PushToDB();
         }
 
+        private string bedrijfsbegeleider;
         public string Bedrijfsbegeleider
         {
             get
@@ -350,9 +404,14 @@ namespace StageManager.ViewModels
                     return "";
                 }
             }
-            set { }
+            set 
+            {
+                bedrijfsbegeleider = value;
+                NotifyOfPropertyChange(() => Bedrijfsbegeleider);
+            }
         }
 
+        private string stageType;
         public string StageType
         {
             get
@@ -367,8 +426,14 @@ namespace StageManager.ViewModels
                         return "";
                 }
             }
+            set
+            {
+                stageType = value;
+                NotifyOfPropertyChange(() => StageType);
+            }
         }
 
+        private string bedrijfsbegeleiderVisibility;
         public string BedrijfsbegeleiderVisibility
         {
             get
@@ -383,8 +448,14 @@ namespace StageManager.ViewModels
                     return "Collapsed";
                 }
             }
+            set
+            {
+                bedrijfsbegeleiderVisibility = value;
+                NotifyOfPropertyChange(() => BedrijfsbegeleiderVisibility);
+            }
         }
 
+        private string addBedrijfsbegeleiderVisibility;
         public string AddBedrijfsbegeleiderVisibility
         {
             get
@@ -398,10 +469,15 @@ namespace StageManager.ViewModels
                     return "Visible";
                 }
             }
+            set
+            {
+                addBedrijfsbegeleiderVisibility = value;
+                NotifyOfPropertyChange(() => AddBedrijfsbegeleiderVisibility);
+            }
         }
         
         // TODO public string StageType
-        
+        private string startDatum;
         public string StartDatum
         {
             get
@@ -415,7 +491,14 @@ namespace StageManager.ViewModels
                     return "";
                 }
             }
+            set
+            {
+                startDatum = value;
+                NotifyOfPropertyChange(() => StartDatum);
+            }
         }
+
+        private string eindDatum;
         public string EindDatum
         {
             get
@@ -428,6 +511,11 @@ namespace StageManager.ViewModels
                 {
                     return "";
                 }
+            }
+            set
+            {
+                eindDatum = value;
+                NotifyOfPropertyChange(() => EindDatum);
             }
         }
 

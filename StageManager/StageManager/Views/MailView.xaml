@@ -102,7 +102,7 @@
                         </Label>
                         <TextBox Name="Message" Grid.Row="3"  AcceptsReturn="True" Padding="10" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel Grid.Row="4" Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Name="SendAndGo" Padding="5,0,5,0" Content="Mail versturen &amp; naar Procesoverzicht"/>
+                            <!--<Button Name="SendAndGo" Padding="5,0,5,0" Content="Mail versturen &amp; naar Procesoverzicht"/>-->
                             <Button Name="Send" Padding="5,0,5,0" Margin="5,0,0,0" Content="Mail versturen"/>
                         </StackPanel>
                     </Grid>
