@@ -122,13 +122,13 @@ namespace StageManager.ViewModels
             }
         }
 
-        public StudentViewModel(MainViewModel main)
-            : base(main)
+        public StudentViewModel(MainViewModel main, PropertyChanged last)
+            : base(main, last)
         {
         }
 
-        public StudentViewModel(MainViewModel main, students student)
-            : this(main)
+        public StudentViewModel(MainViewModel main, PropertyChanged last, students student)
+            : this(main, last)
         {
             Student = student;
         }

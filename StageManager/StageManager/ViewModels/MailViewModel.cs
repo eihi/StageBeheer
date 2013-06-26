@@ -78,8 +78,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        public MailViewModel(MainViewModel main, mailType optie)
-            :base(main)
+        public MailViewModel(MainViewModel main, PropertyChanged last, mailType optie)
+            :base(main,last)
         {
             type = optie;
 
@@ -108,17 +108,18 @@ namespace StageManager.ViewModels
 
         }
 
-        public MailViewModel(MainViewModel main, List<String> emails, mailType optie)
-            :this(main, optie)
+        public MailViewModel(MainViewModel main, PropertyChanged last, List<String> emails, mailType optie)
+            : this(main, last, optie)
         {
             if (emails != null)
             {
                 for (int i = 0; i < emails.Count; i++)
                 {
-                    To += emails[i]+" ";
+                    To += emails[i] + " ";
                 }
             }
         }
+
         public void Send()
         {
             char[] c = { ',', ';', ' ', ':' };

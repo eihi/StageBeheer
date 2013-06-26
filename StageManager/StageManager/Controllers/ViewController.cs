@@ -38,8 +38,7 @@ namespace StageManager.Controllers
             {
                 MainArgs args = (MainArgs)eventArgs;
                 string objectName = mainViewModel.currentButton + "ViewModel";
-                List<Object> param = new List<object>();
-                param.Add(mainViewModel);
+                List<Object> param = new List<object>() { mainViewModel, args.Sender };
                 param.AddRange(args.param);
 
                 Assembly currAssembly = Assembly.GetExecutingAssembly();

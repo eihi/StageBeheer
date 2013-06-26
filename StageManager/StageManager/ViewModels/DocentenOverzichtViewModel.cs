@@ -57,8 +57,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        public DocentenOverzichtViewModel(MainViewModel main)
-            : base(main)
+        public DocentenOverzichtViewModel(MainViewModel main, PropertyChanged last)
+            : base(main, last)
         {
             TeacherList = new Dictionary<object, teachers>();
             TeacherList = new WStored().SearchDocentSet("").ToDictionary(t => (Object)new
@@ -113,7 +113,7 @@ namespace StageManager.ViewModels
 
         public void editDocent()
         {
-            Main.ChangeButton("Docent", new List<object>() { _selectedTeacher }, Clear.After, this);
+            Main.ChangeButton("Docent",this, new List<object>() { _selectedTeacher }, Clear.After);
         }
     }
 }

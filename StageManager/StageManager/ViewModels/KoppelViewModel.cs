@@ -150,8 +150,8 @@ namespace StageManager.ViewModels
 
 
 
-        public KoppelViewModel(MainViewModel main)
-            : base(main)
+        public KoppelViewModel(MainViewModel main, PropertyChanged last)
+            : base(main,last)
         {
             Main = main;
 
@@ -173,8 +173,31 @@ namespace StageManager.ViewModels
             GridContents = list.Keys.ToList();
         }
 
-        public KoppelViewModel(MainViewModel main, internships stage)
-            :this(main)
+        public KoppelViewModel(MainViewModel main,PropertyChanged last, String teacher)
+            : base(main,last)
+        {
+            Main = main;
+
+
+            list = new Dictionary<object, DocentValue>();
+
+            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
+            {
+                waarde = t.value,
+                naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname,
+                aantalkennis = t.numberOfKnowledge,
+                kennis = t.sameKnowledgeString,
+                afstand = t.distance,
+                tijdover = t.timeleftafter,
+
+            }, t => t));
+
+
+            GridContents = list.Keys.ToList();
+        }
+
+        public KoppelViewModel(MainViewModel main, PropertyChanged last, internships stage)
+            :this(main, last)
         {
             
             list = new Dictionary<object, DocentValue>();
@@ -218,18 +241,20 @@ namespace StageManager.ViewModels
             if (selectedDocent != null)
             {
                 //stage.begeleider = selected
-            //  Stage.teachers = selectedDocent.TeacherInfo;
+                Stage.teachers = selectedDocent.TeacherInfo;
                 //selected.volumehours.juisteblokken - tijd
-           //   selectedDocent.removeTime();
+                selectedDocent.removeTime();
                 //pop up
                 MessageBox.Show(selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname + " is aan deze stage gekoppeld", "succes!");
+                //update vorig scherm
+                Last.update();
                 //sluit scherm
                 this.Close();
                 //update stage scherm
             }
             else
                 MessageBox.Show("Geen docent geselecteerd", "error");
-  
+
         }
 
     }

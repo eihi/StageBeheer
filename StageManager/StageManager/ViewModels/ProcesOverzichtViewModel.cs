@@ -20,6 +20,10 @@ namespace StageManager.ViewModels
                 amountselected = value;
                 NotifyOfPropertyChange(() => CanStageVerwerken);
                 NotifyOfPropertyChange(() => CanMailSelectie);
+                NotifyOfPropertyChange(() => CanMailStageSelectie);
+                NotifyOfPropertyChange(() => CanupdateStageStatus);
+
+                update();
             }
         }
 
@@ -38,13 +42,37 @@ namespace StageManager.ViewModels
                 return Amountselected == 1 && SelectedStudent != null && selectedStudent.students_internships.Count != 0;
             }
         }
-        
+
+        public bool CanupdateStageStatus
+        {
+            get
+            {
+                return CanMailStageSelectie;
+            }
+        }
 
         public bool CanMailStageSelectie
         {
             get
             {
-                return SelectedStudent == null;
+                bool can = Amountselected > 0;
+                if (can)
+                {
+                    List<Object> studenten = List.Keys.ToList();
+                    for (int i = 0; i < studenten.Count; i++)
+                    {
+                        if ((bool)studenten[i].GetType().GetProperty("MailTo").GetMethod.Invoke(studenten[i], null))
+                        {
+                            students student;
+                            if (List.TryGetValue(studenten[i], out student) && student.students_internships.Count == 0 || student.students_internships.First() == null)
+                            {
+                                can = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                return can;
             }
         }
 
@@ -81,7 +109,7 @@ namespace StageManager.ViewModels
             set
             {
                 //List.TryGetValue(value, out selectedStudent);
-                Main.ChangeButton("Stage", new List<Object>() { selectedStudent }, Services.Clear.No);
+                Main.ChangeButton("Stage",this, new List<Object>() { selectedStudent }, Services.Clear.No);
 
             }
         }
@@ -161,7 +189,7 @@ namespace StageManager.ViewModels
                         mails.Add(s.users.email);
                 }
             }
-            Main.ChangeButton("Mail", new List<object>() { mails, MailViewModel.mailType.nieuw }, Clear.No);
+            Main.ChangeButton("Mail", this, new List<object>() { mails, MailViewModel.mailType.nieuw }, Clear.No);
         }
 
         public void MailStageSelectie()
@@ -192,11 +220,11 @@ namespace StageManager.ViewModels
                     smE.SaveChanges();
                 }
             }
-            Main.ChangeButton("Mail", new List<object>() { mails, MailViewModel.mailType.beoordeling, stageData }, Clear.No);
+            Main.ChangeButton("Mail",this, new List<object>() { mails, MailViewModel.mailType.beoordeling, stageData }, Clear.No);
         }
 
-        public ProcesOverzichtViewModel(MainViewModel main)
-            : base(main)
+        public ProcesOverzichtViewModel(MainViewModel main, PropertyChanged last)
+            : base(main, last)
         {
             refresh();
         }
@@ -394,7 +422,7 @@ namespace StageManager.ViewModels
 
             if (list.Count > 0 && selectedStudent.students_internships.First() != null)
             {
-                Main.ChangeButton("Stage", new List<object>() { student.students_internships.First().internships }, Clear.After);
+                Main.ChangeButton("Stage", this, new List<object>() { student.students_internships.First().internships }, Clear.After);
             }
         }
     }

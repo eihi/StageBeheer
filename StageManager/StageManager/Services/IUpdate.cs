@@ -9,5 +9,6 @@ namespace StageManager.Services
     interface IUpdate
     {
         void update(Object[] o);
+        void update();
     }
 }

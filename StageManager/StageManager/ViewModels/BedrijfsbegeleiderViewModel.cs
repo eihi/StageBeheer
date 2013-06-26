@@ -121,11 +121,12 @@ namespace StageManager.ViewModels
             }
         }
 
-        public BedrijfsbegeleiderViewModel(MainViewModel main)
-            : base(main)
+        public BedrijfsbegeleiderViewModel(MainViewModel main, PropertyChanged last)
+            : base(main,last)
         { }
-        public BedrijfsbegeleiderViewModel(MainViewModel main, supervisor bedrijfsbegeleider)
-            : this(main)
+
+        public BedrijfsbegeleiderViewModel(MainViewModel main,PropertyChanged last, supervisor bedrijfsbegeleider)
+            : this(main,last)
         {
             Begeleider = bedrijfsbegeleider;
         }

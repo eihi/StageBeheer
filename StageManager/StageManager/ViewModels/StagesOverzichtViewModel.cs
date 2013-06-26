@@ -97,8 +97,8 @@ namespace StageManager.ViewModels
         }
 
 
-        public StagesOverzichtViewModel(MainViewModel main)
-            : base(main)
+        public StagesOverzichtViewModel(MainViewModel main, PropertyChanged last)
+            : base(main, last)
         {
             LoadList();
             FilterAchiefFilter(false);
@@ -180,7 +180,7 @@ namespace StageManager.ViewModels
 
         public void editStage()
         {
-            Main.ChangeButton("Stage", new List<object>() { _selectedStage }, Clear.After, this);
+            Main.ChangeButton("Stage", this, new List<object>() { _selectedStage }, Clear.After);
         }
     }
 }

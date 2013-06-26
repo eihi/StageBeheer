@@ -130,13 +130,13 @@ namespace StageManager.ViewModels
             set { }
         }
 
-        public StageopdrachtViewModel(MainViewModel main)
-            :base(main)
+        public StageopdrachtViewModel(MainViewModel main,PropertyChanged last)
+            :base(main,last)
         {
         }
 
-        public StageopdrachtViewModel(MainViewModel main, internships stage)
-            : this(main)
+        public StageopdrachtViewModel(MainViewModel main,PropertyChanged last, internships stage)
+            : this(main,last)
         {
             Stage = stage;
         }

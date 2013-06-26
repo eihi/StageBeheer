@@ -59,13 +59,13 @@ namespace StageManager.ViewModels
             }
         }
 
-        public StageViewModel(MainViewModel main)
-            :base(main)
+        public StageViewModel(MainViewModel main, PropertyChanged last)
+            :base(main, last)
         {
         }
 
-        public StageViewModel(MainViewModel main, internships stage)
-            : this(main)
+        public StageViewModel(MainViewModel main, PropertyChanged last, internships stage)
+            : this(main, last)
         {
             Stage = stage;
         }
@@ -407,18 +407,18 @@ namespace StageManager.ViewModels
         public void btnTweedeStudent_Click()
         {
             SearchFor = Search.TweedeStudent;
-            Main.ChangeButton("Zoek", new List<object>() { "", ZoekViewModel.SearchType.Studenten }, Clear.No);
+            Main.ChangeButton("Zoek", this, new List<object>() { "", ZoekViewModel.SearchType.Studenten }, Clear.No);
         }
 
         public void btnStagebegeleider_Click()
         {
-            Main.ChangeButton("Koppel", new List<object> {Stage}, Clear.No);
+            Main.ChangeButton("Koppel",this, new List<object> {Stage}, Clear.No);
         }
 
         public void btnTweedeLezer_Click()
         {
             SearchFor = Search.TweedeLezer;
-            Main.ChangeButton("Zoek", new List<object>() { "", ZoekViewModel.SearchType.Docenten }, Clear.No);
+            Main.ChangeButton("Zoek",this, new List<object>() { "", ZoekViewModel.SearchType.Docenten }, Clear.No);
         }
 
         public void btnStageopdracht_Click()

@@ -57,8 +57,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        public StudentenOverzichtViewModel(MainViewModel main)
-            : base(main)
+        public StudentenOverzichtViewModel(MainViewModel main, PropertyChanged last)
+            : base(main,last)
         {
             List = new Dictionary<object, students>();
             List = new WStored().SearchStudentSet("", "").ToDictionary(t => (Object)new
@@ -126,7 +126,7 @@ namespace StageManager.ViewModels
 
         public void editStudent()
         {
-            Main.ChangeButton("Student", new List<object>() { SelectedStudent }, Clear.After, this);
+            Main.ChangeButton("Student", this, new List<object>() { SelectedStudent }, Clear.After);
         }
     }
 }

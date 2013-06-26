@@ -126,13 +126,13 @@ namespace StageManager.ViewModels
             }
         }
 
-        public BedrijfViewModel(MainViewModel main)
-            :base(main)
+        public BedrijfViewModel(MainViewModel main, PropertyChanged last)
+            :base(main,last)
         {
         }
 
-        public BedrijfViewModel(MainViewModel main, companies bedrijf)
-            : this(main)
+        public BedrijfViewModel(MainViewModel main,PropertyChanged last, companies bedrijf)
+            : this(main,last)
         {
             Bedrijf = bedrijf;
         }

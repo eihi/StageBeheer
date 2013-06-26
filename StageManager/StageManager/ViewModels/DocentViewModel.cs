@@ -148,11 +148,11 @@ namespace StageManager.ViewModels
             }
         }
 
-        public DocentViewModel(MainViewModel main)
-            : base(main)
+        public DocentViewModel(MainViewModel main, PropertyChanged last)
+            : base(main,last)
         { }
-        public DocentViewModel(MainViewModel main, teachers docent)
-            : this(main)
+        public DocentViewModel(MainViewModel main,PropertyChanged last, teachers docent)
+            : this(main,last)
         {
             Docent = docent;
         }

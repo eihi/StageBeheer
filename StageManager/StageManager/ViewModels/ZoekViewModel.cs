@@ -169,11 +169,11 @@ namespace StageManager.ViewModels
 
         public void Test(students student)
         {
-            Main.ChangeButton("Student", new List<object>() { student }, Clear.After, this);
+            Main.ChangeButton("Student",this, new List<object>() { student }, Clear.After);
         }
 
-        public ZoekViewModel(MainViewModel main)
-            :base(main)
+        public ZoekViewModel(MainViewModel main,PropertyChanged last)
+            :base(main,last)
         {
             OpleidingStack = (from opleiding in new WStored().SearchOpleidingSet() select opleiding.name).ToList();
             switch(stype)
@@ -187,8 +187,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        public ZoekViewModel(MainViewModel main, String zoekString, SearchType type)
-            : this(main)
+        public ZoekViewModel(MainViewModel main,PropertyChanged last, String zoekString, SearchType type)
+            : this(main, last)
         {
             stype = type;
             SearchString = zoekString;

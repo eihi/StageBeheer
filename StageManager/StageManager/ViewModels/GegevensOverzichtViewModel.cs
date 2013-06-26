@@ -99,8 +99,8 @@ namespace StageManager.ViewModels
             }
         }
 
-        public GegevensOverzichtViewModel(MainViewModel main)
-            :base(main)
+        public GegevensOverzichtViewModel(MainViewModel main, PropertyChanged last)
+            : base(main, last)
         {
             stagemanagerEntities smE = new stagemanagerEntities();
             List<students> students = smE.students.ToList();

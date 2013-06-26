@@ -52,7 +52,7 @@ namespace StageManager.ViewModels
             {
                 search = value;
                 NotifyOfPropertyChange(() => Search);
-                ChangeButton("Zoek", new List<object>() { value, ZoekViewModel.SearchType.Studenten }, Clear.All);
+                ChangeButton("Zoek", null, new List<object>() { value, ZoekViewModel.SearchType.Studenten }, Clear.All);
             }
         }
 
@@ -107,20 +107,20 @@ namespace StageManager.ViewModels
 
         public void ChangeButton(string name)
         {
-            ChangeButton(name, new List<Object>());
+            ChangeButton(name, null);
         }
 
-        public void ChangeButton(string name, List<Object> o)
+        public void ChangeButton(string name, PropertyChanged sender)
         {
-            ChangeButton(name, o, Clear.No);
+            ChangeButton(name, sender, new List<object>());
         }
 
-        public void ChangeButton(string name, List<Object> o, Clear c)
+        public void ChangeButton(string name,PropertyChanged sender, List<Object> o)
         {
-            ChangeButton(name, o, c, null);
+            ChangeButton(name,sender, o, Clear.No);
         }
 
-        public void ChangeButton(string name, List<Object> o, Clear c, PropertyChanged sender)
+        public void ChangeButton(string name, PropertyChanged sender, List<Object> o, Clear c)
         {
             currentButton = name;
             Clear clear = c;
