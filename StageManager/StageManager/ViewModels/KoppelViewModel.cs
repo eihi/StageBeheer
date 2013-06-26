@@ -241,12 +241,18 @@ namespace StageManager.ViewModels
             if (selectedDocent != null)
             {
                 //stage.begeleider = selected
-                Stage.teachers = selectedDocent.TeacherInfo;
+                teachers henk = selectedDocent.TeacherInfo;
+                List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
+                internships myinternship = stages[0];
+                myinternship.teacher_user_id = selectedDocent.TeacherInfo.user_id;
+
                 //selected.volumehours.juisteblokken - tijd
                 selectedDocent.removeTime();
                 //pop up
                 MessageBox.Show(selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname + " is aan deze stage gekoppeld", "succes!");
                 //update vorig scherm
+                
+                WStored.PushToDB();
                 Last.update();
                 //sluit scherm
                 this.Close();

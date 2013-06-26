@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
 
 namespace StageManager.Models
 {
@@ -13,7 +14,7 @@ namespace StageManager.Models
 
         public static void PushToDB()
         {
-            WStored.StageManagerEntities.SaveChanges();
+            int i = WStored.StageManagerEntities.SaveChanges();
         }
 
         public List<students> SearchStudentSet(String searchString, String searchOpleiding)

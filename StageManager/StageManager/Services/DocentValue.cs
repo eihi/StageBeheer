@@ -282,7 +282,6 @@ namespace StageManager.Services
                         break;
                 }
                 timeRemoved = true;
-                //WStored.PushToDB();
             }
             else
                 System.Diagnostics.Debug.WriteLine("removeTime wordt meerdere keren aangeroepen !");

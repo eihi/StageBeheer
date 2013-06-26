@@ -301,23 +301,32 @@ namespace StageManager.ViewModels
                     if (s == null)
                         return;
 
-                    switch (s.students_internships.First().internships.approved)
+                    try
                     {
-                        case "0":
-                            s.students_internships.First().internships.approved = "1";
-                            break;
+                        switch (s.students_internships.First().internships.approved)
+                        {
+                            case "0":
+                                s.students_internships.First().internships.approved = "1";
+                                break;
 
-                        case "1":
-                            s.students_internships.First().internships.approved = "2";
-                            break;
+                            case "1":
+                                s.students_internships.First().internships.approved = "2";
+                                break;
 
-                        case "2":
-                            s.students_internships.First().internships.approved = "3";
-                            break;
+                            case "2":
+                                s.students_internships.First().internships.approved = "3";
+                                break;
 
-                        case "3":
-                            s.students_internships.First().internships.approved = "0";
-                            break;
+                            case "3":
+                                s.students_internships.First().internships.approved = "0";
+                                break;
+
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Kan niet");
                     }
 
                     foreach (students st in students)
