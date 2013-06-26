@@ -17,6 +17,7 @@ namespace StageManager.Services
         public int numberOfKnowledge { get; set; }
         public List<String> sameKnowledge { get; set; }
         public String sameKnowledgeString { get; set; }
+        public String stageKnowledge { get; set; }
         public int timeNeeded { get; set; }
         public String blokken { get; set; }
 
@@ -83,6 +84,7 @@ namespace StageManager.Services
                 String currentKennis = docentKennis[o].name;
                 for (int i = 0; i < kennis.Count; i++)
                 {
+                    
                     if(kennis[i].name.Equals(currentKennis))
                     {
                         i = kennis.Count;
@@ -92,6 +94,7 @@ namespace StageManager.Services
                 }
             }
 
+
             for (int i = 0; i < sameKnowledge.Count; i++)
             {
                 if (i > 0)
@@ -99,7 +102,15 @@ namespace StageManager.Services
                     sameKnowledgeString += ", ";
                 }
                 sameKnowledgeString += sameKnowledge[i];
+            }
 
+            for (int i = 0; i < kennis.Count; i++)
+            {
+                if (i > 0)
+                {
+                    stageKnowledge += ", ";
+                }
+                stageKnowledge += kennis[i].name;
             }
         }
 

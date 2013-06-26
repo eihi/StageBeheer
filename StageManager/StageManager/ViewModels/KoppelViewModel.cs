@@ -33,9 +33,11 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return "STAGE INFO \n Kennis nodig voor deze stage" + " <kennis>" +
+                return "STAGE INFO \n Kennis nodig voor deze stage " + list.First().Value.stageKnowledge +
                      "\n Benodigde tijd: " + list.First().Value.timeNeeded +
-                     "\n Begin jaar: " + list.First().Value.Year + "Blokken: " + list.First().Value.blokken;
+                     "\n School jaar: " + list.First().Value.Year +  "-" + (list.First().Value.Year + 1) +
+                     "\n Blokken: " + list.First().Value.blokken.Substring(0, 1) + "," + list.First().Value.blokken.Substring(1, 1) +
+                     "\n Locatie: " + Stage.supervisor.companies.adresses.place + ", " + Stage.supervisor.companies.adresses.street + " " + Stage.supervisor.companies.adresses.housenumber; 
             }
         }
 
@@ -175,6 +177,7 @@ namespace StageManager.ViewModels
                 kennis = t.sameKnowledgeString,
                 afstand = t.distance,
                 tijdover = t.timeleftafter,
+                vervoer = t.TeacherInfo.transport.name,
 
             }, t => t));
 
