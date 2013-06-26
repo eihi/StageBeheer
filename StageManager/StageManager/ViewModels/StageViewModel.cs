@@ -15,6 +15,20 @@ namespace StageManager.ViewModels
     {
         private static Random random = new Random();
         private internships stage;
+        public enum Search { TweedeStudent, TweedeLezer };
+        
+        private Search _searchFor;
+        public Search SearchFor 
+        {
+            get
+            {
+                return _searchFor;
+            }
+            set
+            {
+                _searchFor = value;
+            }
+        }
 
         internal internships Stage
         {
@@ -73,7 +87,7 @@ namespace StageManager.ViewModels
                 else
                 {
                     return "Collapsed";
-                }
+              }
             }
             set { }
         }
@@ -142,16 +156,17 @@ namespace StageManager.ViewModels
         {
             get
             {
-                //if (EersteStudent != ""  TweedeStudent != "")
-                // {
-                //  return "Collapsed";
-                //}
-                //else
-                //{
-                return "Visible";
-                //}
+                if (EersteStudent != "" && TweedeStudent != "")
+                {
+                    return "Collapsed";
+                }
+                else
+                {
+                    return "Visible";
+                }
             }
         }
+
         public string Stagebegeleider
         {
             get
@@ -246,21 +261,18 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string _tweedeLezer;
         public string TweedeLezer
         {
             get
             {
-                try
-                {
-                    //return stage.teachers.users.name + " " + stage.teachers.users.surname;
-                    return "";
-                }
-                catch (NullReferenceException)
-                {
-                    return "";
-                }
+                return _tweedeLezer;
             }
-            set { }
+            set 
+            {
+                _tweedeLezer = value;
+                NotifyOfPropertyChange(() => TweedeLezer);
+            }
         }
 
         public string TweedeLezerVisibility
@@ -379,6 +391,7 @@ namespace StageManager.ViewModels
 
         public void btnTweedeStudent_Click()
         {
+            SearchFor = Search.TweedeStudent;
             Main.ChangeButton("Zoek", new List<object>() { "", ZoekViewModel.SearchType.Studenten }, Clear.No);
         }
 
@@ -389,6 +402,7 @@ namespace StageManager.ViewModels
 
         public void btnTweedeLezer_Click()
         {
+            SearchFor = Search.TweedeLezer;
             Main.ChangeButton("Zoek", new List<object>() { "", ZoekViewModel.SearchType.Docenten }, Clear.No);
         }
 

@@ -139,17 +139,29 @@ namespace StageManager.ViewModels
             set
             {
                 _selectedObject = value;
-                var firstName = _selectedObject.GetType().GetProperty("Voornaam");
-                var lastName = _selectedObject.GetType().GetProperty("Achternaam");
-                string fullName = firstName.GetValue(_selectedObject, null) + " " + lastName.GetValue(_selectedObject, null);
+                
+                if(_selectedObject != null && _selectedObject.GetType().GetProperty("Voornaam") != null) {
+                    var firstName = _selectedObject.GetType().GetProperty("Voornaam");
+                    var lastName = _selectedObject.GetType().GetProperty("Achternaam");
+                    string fullName = firstName.GetValue(_selectedObject, null) + " " + lastName.GetValue(_selectedObject, null);
 
-                List<PropertyChanged> c = Main.Contents.ToList<PropertyChanged>();
-                foreach (PropertyChanged p in c)
-                {
-                    if (p.GetType().Name == "StageViewModel")
+                    List<PropertyChanged> c = Main.Contents.ToList<PropertyChanged>();
+                    foreach (PropertyChanged p in c)
                     {
-                        StageViewModel svm = (StageViewModel)p;
-                        svm.TweedeStudent = fullName;
+                        if (p.GetType().Name == "StageViewModel")
+                        {
+                            StageViewModel svm = (StageViewModel)p;
+
+                            switch (svm.SearchFor)
+                            {
+                                case StageViewModel.Search.TweedeStudent:
+                                    svm.TweedeStudent = fullName;
+                                    break;
+                                case StageViewModel.Search.TweedeLezer:
+                                    svm.TweedeLezer = fullName;
+                                    break;
+                            }
+                        }
                     }
                 }
             }
