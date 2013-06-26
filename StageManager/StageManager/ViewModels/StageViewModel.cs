@@ -194,7 +194,16 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return stage.teachers1.users.name + " " + stage.teachers1.users.surname;
+                String teruggave = "";
+                try
+                {
+                    teruggave = stage.teachers1.users.name + " " + stage.teachers1.users.surname;
+                }
+                catch (Exception e)
+                {
+                    teruggave = "";
+                }
+                return teruggave;
             }
             set {
                 stagebegeleider = value;
