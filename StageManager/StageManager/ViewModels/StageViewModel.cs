@@ -555,6 +555,17 @@ namespace StageManager.ViewModels
             Main.ChangeButton("Koppel",this, new List<object> {Stage}, Clear.No);
         }
 
+        public void btnTweedeLezer()
+        {
+            teachers teacher = null;
+            List<teachers> teacherlist = (from zoek in new WStored().SearchDocentSet("") where zoek.user_id == stage.secondReader select zoek).ToList();
+            if (teacherlist.Count > 0)
+            {
+                teacher = teacherlist[0];
+            }
+            Main.ChangeButton("Docent", this, new List<object>() { teacher }, Clear.No);
+        }
+
         public void btnAddTweedeLezer()
         {
             SearchFor = Search.TweedeLezer;

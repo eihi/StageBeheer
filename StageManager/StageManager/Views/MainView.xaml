@@ -67,7 +67,7 @@
                 <!-- Logo -->
                 <StackPanel DockPanel.Dock="Left" Width="220" Orientation="Horizontal">
                     <Image />
-                    <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Light" Padding="10" Foreground="White" FontSize="20">Stagebeheerder</TextBlock>
+                    <TextBlock Height="Auto" VerticalAlignment="Center" FontWeight="Light" Padding="10" Foreground="White" FontSize="20">Stage Manager</TextBlock>
                 </StackPanel>
                 <!-- NavControls -->
                 <StackPanel DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" Orientation="Horizontal">
