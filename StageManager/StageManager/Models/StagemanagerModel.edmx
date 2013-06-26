@@ -15,7 +15,6 @@
           <EntitySet Name="internships" EntityType="stagemanagerModel.Store.internships" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="internships_knowledge" EntityType="stagemanagerModel.Store.internships_knowledge" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="knowledge" EntityType="stagemanagerModel.Store.knowledge" store:Type="Tables" Schema="stagemanager" />
-          <EntitySet Name="second_readers" EntityType="stagemanagerModel.Store.second_readers" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="students" EntityType="stagemanagerModel.Store.students" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="students_internships" EntityType="stagemanagerModel.Store.students_internships" store:Type="Tables" Schema="stagemanager" />
           <EntitySet Name="supervisor" EntityType="stagemanagerModel.Store.supervisor" store:Type="Tables" Schema="stagemanager" />
@@ -42,6 +41,7 @@
           </EntitySet>
           <EntitySet Name="dbstageview" EntityType="stagemanagerModel.Store.dbstageview" store:Type="Views" store:Schema="stagemanager" store:Name="dbstageview">
             <DefiningQuery>SELECT
+      `dbstageview`.`sr`, 
       `dbstageview`.`internshipID`, 
       `dbstageview`.`description`, 
       `dbstageview`.`start_date`, 
@@ -76,6 +76,7 @@
           </EntitySet>
           <EntitySet Name="dbstageviewcomplete" EntityType="stagemanagerModel.Store.dbstageviewcomplete" store:Type="Views" store:Schema="stagemanager" store:Name="dbstageviewcomplete">
             <DefiningQuery>SELECT
+      `dbstageviewcomplete`.`sr`, 
       `dbstageviewcomplete`.`internshipID`, 
       `dbstageviewcomplete`.`description`, 
       `dbstageviewcomplete`.`start_date`, 
@@ -172,6 +173,10 @@
             <End Role="academics" EntitySet="academics" />
             <End Role="education" EntitySet="education" />
           </AssociationSet>
+          <AssociationSet Name="FK_internship_secondReader" Association="stagemanagerModel.Store.FK_internship_secondReader">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="internships" EntitySet="internships" />
+          </AssociationSet>
           <AssociationSet Name="FK_internships_knowledge_internships" Association="stagemanagerModel.Store.FK_internships_knowledge_internships">
             <End Role="internships" EntitySet="internships" />
             <End Role="internships_knowledge" EntitySet="internships_knowledge" />
@@ -187,14 +192,6 @@
           <AssociationSet Name="FK_internships_teachers" Association="stagemanagerModel.Store.FK_internships_teachers">
             <End Role="teachers" EntitySet="teachers" />
             <End Role="internships" EntitySet="internships" />
-          </AssociationSet>
-          <AssociationSet Name="FK_second_readers_internships" Association="stagemanagerModel.Store.FK_second_readers_internships">
-            <End Role="internships" EntitySet="internships" />
-            <End Role="second_readers" EntitySet="second_readers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_second_readers_teachers" Association="stagemanagerModel.Store.FK_second_readers_teachers">
-            <End Role="teachers" EntitySet="teachers" />
-            <End Role="second_readers" EntitySet="second_readers" />
           </AssociationSet>
           <AssociationSet Name="FK_students_adresses" Association="stagemanagerModel.Store.FK_students_adresses">
             <End Role="adresses" EntitySet="adresses" />
@@ -325,6 +322,7 @@
           <Property Name="type" Type="enum" Nullable="false" />
           <Property Name="feedback" Type="text" />
           <Property Name="approved" Type="enum" />
+          <Property Name="secondReader" Type="int" />
         </EntityType>
         <EntityType Name="internships_knowledge">
           <Key>
@@ -340,14 +338,6 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="second_readers">
-          <Key>
-            <PropertyRef Name="teacher_user_id" />
-            <PropertyRef Name="internships_id" />
-          </Key>
-          <Property Name="teacher_user_id" Type="int" Nullable="false" />
-          <Property Name="internships_id" Type="uint" Nullable="false" />
         </EntityType>
         <EntityType Name="students">
           <Key>
@@ -487,6 +477,7 @@
             <PropertyRef Name="company_name" />
             <PropertyRef Name="address_id" />
           </Key>
+          <Property Name="sr" Type="int" />
           <Property Name="internshipID" Type="uint" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="start_date" Type="date" Nullable="false" />
@@ -540,6 +531,7 @@
             <PropertyRef Name="company_name" />
             <PropertyRef Name="address_id" />
           </Key>
+          <Property Name="sr" Type="int" />
           <Property Name="internshipID" Type="uint" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="start_date" Type="date" Nullable="false" />
@@ -706,6 +698,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_internship_secondReader">
+          <End Role="teachers" Type="stagemanagerModel.Store.teachers" Multiplicity="0..1" />
+          <End Role="internships" Type="stagemanagerModel.Store.internships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="internships">
+              <PropertyRef Name="secondReader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_internships_knowledge_internships">
           <End Role="internships" Type="stagemanagerModel.Store.internships" Multiplicity="1" />
           <End Role="internships_knowledge" Type="stagemanagerModel.Store.internships_knowledge" Multiplicity="*" />
@@ -750,30 +754,6 @@
               <PropertyRef Name="user_id" />
             </Principal>
             <Dependent Role="internships">
-              <PropertyRef Name="teacher_user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_second_readers_internships">
-          <End Role="internships" Type="stagemanagerModel.Store.internships" Multiplicity="1" />
-          <End Role="second_readers" Type="stagemanagerModel.Store.second_readers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="internships">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="second_readers">
-              <PropertyRef Name="internships_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_second_readers_teachers">
-          <End Role="teachers" Type="stagemanagerModel.Store.teachers" Multiplicity="1" />
-          <End Role="second_readers" Type="stagemanagerModel.Store.second_readers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="teachers">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="second_readers">
               <PropertyRef Name="teacher_user_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1026,6 +1006,10 @@
             <End Role="education" EntitySet="education" />
             <End Role="students" EntitySet="students" />
           </AssociationSet>
+          <AssociationSet Name="FK_internship_secondReader" Association="stagemanagerModel.FK_internship_secondReader">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="internships" EntitySet="internships" />
+          </AssociationSet>
           <AssociationSet Name="FK_internships_supervisor" Association="stagemanagerModel.FK_internships_supervisor">
             <End Role="supervisor" EntitySet="supervisor" />
             <End Role="internships" EntitySet="internships" />
@@ -1073,10 +1057,6 @@
           <AssociationSet Name="internships_knowledge" Association="stagemanagerModel.internships_knowledge">
             <End Role="internships" EntitySet="internships" />
             <End Role="knowledge" EntitySet="knowledge" />
-          </AssociationSet>
-          <AssociationSet Name="second_readers" Association="stagemanagerModel.second_readers">
-            <End Role="internships" EntitySet="internships" />
-            <End Role="teachers" EntitySet="teachers" />
           </AssociationSet>
           <AssociationSet Name="teachers_education" Association="stagemanagerModel.teachers_education">
             <End Role="education" EntitySet="education" />
@@ -1155,11 +1135,12 @@
           <Property Name="type" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
           <Property Name="feedback" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
           <Property Name="approved" Type="String" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="secondReader" Type="Int32" />
+          <NavigationProperty Name="teachers" Relationship="stagemanagerModel.FK_internship_secondReader" FromRole="internships" ToRole="teachers" />
           <NavigationProperty Name="supervisor" Relationship="stagemanagerModel.FK_internships_supervisor" FromRole="internships" ToRole="supervisor" />
-          <NavigationProperty Name="teachers" Relationship="stagemanagerModel.FK_internships_teachers" FromRole="internships" ToRole="teachers" />
+          <NavigationProperty Name="teachers1" Relationship="stagemanagerModel.FK_internships_teachers" FromRole="internships" ToRole="teachers" />
           <NavigationProperty Name="students_internships" Relationship="stagemanagerModel.FK_students_internships_internships" FromRole="internships" ToRole="students_internships" />
           <NavigationProperty Name="knowledge" Relationship="stagemanagerModel.internships_knowledge" FromRole="internships" ToRole="knowledge" />
-          <NavigationProperty Name="teachers1" Relationship="stagemanagerModel.second_readers" FromRole="internships" ToRole="teachers" />
         </EntityType>
         <EntityType Name="knowledge">
           <Key>
@@ -1217,11 +1198,11 @@
           <Property Name="transport_id" Type="Int32" Nullable="false" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="adresses" Relationship="stagemanagerModel.FK_teachers_adresses" FromRole="teachers" ToRole="adresses" />
-          <NavigationProperty Name="internships" Relationship="stagemanagerModel.FK_internships_teachers" FromRole="teachers" ToRole="internships" />
+          <NavigationProperty Name="internships" Relationship="stagemanagerModel.FK_internship_secondReader" FromRole="teachers" ToRole="internships" />
+          <NavigationProperty Name="internships1" Relationship="stagemanagerModel.FK_internships_teachers" FromRole="teachers" ToRole="internships" />
           <NavigationProperty Name="transport" Relationship="stagemanagerModel.FK_teachers_transport" FromRole="teachers" ToRole="transport" />
           <NavigationProperty Name="users" Relationship="stagemanagerModel.FK_teachers_users" FromRole="teachers" ToRole="users" />
           <NavigationProperty Name="volumehours" Relationship="stagemanagerModel.FK_volumehours_teachers" FromRole="teachers" ToRole="volumehours" />
-          <NavigationProperty Name="internships1" Relationship="stagemanagerModel.second_readers" FromRole="teachers" ToRole="internships" />
           <NavigationProperty Name="education" Relationship="stagemanagerModel.teachers_education" FromRole="teachers" ToRole="education" />
           <NavigationProperty Name="knowledge" Relationship="stagemanagerModel.teachers_knowledge" FromRole="teachers" ToRole="knowledge" />
         </EntityType>
@@ -1308,6 +1289,7 @@
             <PropertyRef Name="company_name" />
             <PropertyRef Name="address_id" />
           </Key>
+          <Property Name="sr" Type="Int32" />
           <Property Name="internshipID" Type="Int64" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
           <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
@@ -1358,6 +1340,7 @@
             <PropertyRef Name="company_name" />
             <PropertyRef Name="address_id" />
           </Key>
+          <Property Name="sr" Type="Int32" />
           <Property Name="internshipID" Type="Int64" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
           <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
@@ -1539,6 +1522,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_internship_secondReader">
+          <End Role="teachers" Type="stagemanagerModel.teachers" Multiplicity="0..1" />
+          <End Role="internships" Type="stagemanagerModel.internships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="internships">
+              <PropertyRef Name="secondReader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_internships_supervisor">
           <End Role="supervisor" Type="stagemanagerModel.supervisor" Multiplicity="0..1" />
           <End Role="internships" Type="stagemanagerModel.internships" Multiplicity="*" />
@@ -1667,10 +1662,6 @@
           <End Role="internships" Type="stagemanagerModel.internships" Multiplicity="*" />
           <End Role="knowledge" Type="stagemanagerModel.knowledge" Multiplicity="*" />
         </Association>
-        <Association Name="second_readers">
-          <End Role="internships" Type="stagemanagerModel.internships" Multiplicity="*" />
-          <End Role="teachers" Type="stagemanagerModel.teachers" Multiplicity="*" />
-        </Association>
         <Association Name="teachers_education">
           <End Role="education" Type="stagemanagerModel.education" Multiplicity="*" />
           <End Role="teachers" Type="stagemanagerModel.teachers" Multiplicity="*" />
@@ -1745,6 +1736,7 @@
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="feedback" ColumnName="feedback" />
                 <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="secondReader" ColumnName="secondReader" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1859,6 +1851,7 @@
           <EntitySetMapping Name="dbstageview">
             <EntityTypeMapping TypeName="stagemanagerModel.dbstageview">
               <MappingFragment StoreEntitySet="dbstageview">
+                <ScalarProperty Name="sr" ColumnName="sr" />
                 <ScalarProperty Name="internshipID" ColumnName="internshipID" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="start_date" ColumnName="start_date" />
@@ -1895,6 +1888,7 @@
           <EntitySetMapping Name="dbstageviewcomplete">
             <EntityTypeMapping TypeName="stagemanagerModel.dbstageviewcomplete">
               <MappingFragment StoreEntitySet="dbstageviewcomplete">
+                <ScalarProperty Name="sr" ColumnName="sr" />
                 <ScalarProperty Name="internshipID" ColumnName="internshipID" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="start_date" ColumnName="start_date" />
@@ -1992,14 +1986,6 @@
             </EndProperty>
             <EndProperty Name="knowledge">
               <ScalarProperty Name="id" ColumnName="knowledge_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="second_readers" TypeName="stagemanagerModel.second_readers" StoreEntitySet="second_readers">
-            <EndProperty Name="internships">
-              <ScalarProperty Name="id" ColumnName="internships_id" />
-            </EndProperty>
-            <EndProperty Name="teachers">
-              <ScalarProperty Name="user_id" ColumnName="teacher_user_id" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="teachers_education" TypeName="stagemanagerModel.teachers_education" StoreEntitySet="teachers_education">

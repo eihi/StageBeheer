@@ -14,6 +14,7 @@ namespace StageManager.Models
     
     public partial class dbstageview
     {
+        public Nullable<int> sr { get; set; }
         public long internshipID { get; set; }
         public string description { get; set; }
         public System.DateTime start_date { get; set; }

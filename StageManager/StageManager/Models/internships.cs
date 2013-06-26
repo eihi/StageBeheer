@@ -18,7 +18,6 @@ namespace StageManager.Models
         {
             this.students_internships = new HashSet<students_internships>();
             this.knowledge = new HashSet<knowledge>();
-            this.teachers1 = new HashSet<teachers>();
         }
     
         public long id { get; set; }
@@ -31,11 +30,12 @@ namespace StageManager.Models
         public string type { get; set; }
         public string feedback { get; set; }
         public string approved { get; set; }
+        public Nullable<int> secondReader { get; set; }
     
-        public virtual supervisor supervisor { get; set; }
         public virtual teachers teachers { get; set; }
+        public virtual supervisor supervisor { get; set; }
+        public virtual teachers teachers1 { get; set; }
         public virtual ICollection<students_internships> students_internships { get; set; }
         public virtual ICollection<knowledge> knowledge { get; set; }
-        public virtual ICollection<teachers> teachers1 { get; set; }
     }
 }
