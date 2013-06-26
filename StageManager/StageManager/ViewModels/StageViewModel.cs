@@ -599,11 +599,21 @@ namespace StageManager.ViewModels
         public void btnRemoveTweedeLezer()
         {
             // TODO
+            if (stage.secondReader != null)
+            {
+                stage.secondReader = null;
+            }
+            update();
         }
 
         public void btnRemoveTweedeStudent()
         {
             // TODO
+            if (stage.students_internships.ElementAt(1).students != null)
+            {
+                stage.students_internships.ElementAt(1).students = null;
+            }
+            update();
         }
 
         public void btnExport_Click()
