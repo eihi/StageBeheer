@@ -192,7 +192,7 @@ namespace StageManager.ViewModels
                 int selected = selectedDocent.teacher_user_id.Value;
                 myinternship.secondReader = selected;                
                 //pop up
-                MessageBox.Show(selectedDocent.name + " " + selectedDocent.surname + " is aan deze stage gekkoppelt als tweede lezer", "succes!");
+                MessageBox.Show(selectedDocent.name + " " + selectedDocent.surname + " is aan deze stage gekkoppeld als tweede lezer", "succes!");
                 //update vorig scherm
 
                 WStored.PushToDB();
