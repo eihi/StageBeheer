@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace StageManager.ViewModels
 {
@@ -14,11 +15,24 @@ namespace StageManager.ViewModels
     {
         private internships stage;
 
+        private String koppel;
+
+        public String Koppel
+        {
+            get
+            {
+                if (selectedDocent != null)
+                {
+                    return "Koppel student aan " + selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname;
+                }
+                return "Koppel student aan _____";
+            }
+        }
+
         public internships Stage
         {
             get { return stage; }
-            set { stage = value;
-            //KoppelStudentNaam = stage.studentset.Voornaam + " " + stage.studentset.Achternaam;        TODO!!!!!!!!!!
+            set { stage = value;            
             NotifyOfPropertyChange(()=>  CanTweedeLezer);
             NotifyOfPropertyChange(() => KoppelStudentNaam);
             }
@@ -36,16 +50,17 @@ namespace StageManager.ViewModels
             }
         }
 
-        private teachers selectedDocent;
+        private DocentValue selectedDocent;
         public Object SelectedDocent
         {
 
             get { return selectedDocent; }
             set
             {
-                selectedDocent = new WStored().SearchDocentSet(value.GetType().GetProperty("Voornaam").GetMethod.Invoke(value, null).ToString()).First();
-                KoppelDocent = selectedDocent;
+                List.TryGetValue(value, out selectedDocent);
+                KoppelDocent = selectedDocent.TeacherInfo;
                 NotifyOfPropertyChange(() => SelectedDocent);
+                NotifyOfPropertyChange(() => Koppel);
             }
         }
 
@@ -123,7 +138,7 @@ namespace StageManager.ViewModels
 
             list = new Dictionary<object, DocentValue>();        
 
-            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
+            List = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
                     {
                         waarde = t.value,
                         naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname, 
@@ -164,7 +179,23 @@ namespace StageManager.ViewModels
         public KoppelViewModel(MainViewModel main, internships stage)
             :this(main)
         {
+            
+            list = new Dictionary<object, DocentValue>();
+            int ID = unchecked((int)stage.id);
             Stage = stage;
+            list = (new ImportanceChecker().checkImportance(ID).ToDictionary(t => (Object)new
+            {
+                waarde = t.value,
+                naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname,
+                aantalkennis = t.numberOfKnowledge,
+                kennis = t.sameKnowledgeString,
+                afstand = t.distance,
+                tijdover = t.timeleftafter,
+
+            }, t => t));
+
+
+            GridContents = list.Keys.ToList();
         }
 
         public override void update(object[] o)
@@ -180,10 +211,27 @@ namespace StageManager.ViewModels
 
         public void Koppelen()
         {
+            /*  OLD CODE 
             Stage.teachers = KoppelDocent;            
             Wrapper myWrapper = new Wrapper();
             myWrapper.forceSync();
             Main.ChangeButton("Zoek", new List<Object>(), Services.Clear.All);
+             */
+            if (selectedDocent != null)
+            {
+                //stage.begeleider = selected
+            //  Stage.teachers = selectedDocent.TeacherInfo;
+                //selected.volumehours.juisteblokken - tijd
+           //   selectedDocent.removeTime();
+                //pop up
+                MessageBox.Show(selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname + " is aan deze stage gekoppeld", "succes!");
+                //sluit scherm
+                this.Close();
+                //update stage scherm
+            }
+            else
+                MessageBox.Show("Geen docent geselecteerd", "error");
+  
         }
 
     }

@@ -387,7 +387,7 @@ namespace StageManager.ViewModels
 
         public void btnStagebegeleider_Click()
         {
-            Main.ChangeButton("Koppel", new List<object> { }, Clear.No);
+            Main.ChangeButton("Koppel", new List<object> {Stage}, Clear.No);
         }
 
         public void btnTweedeLezer_Click()

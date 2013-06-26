@@ -215,5 +215,10 @@ namespace StageManager.Services
             }
 
         }
+
+        internal void removeTime()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
