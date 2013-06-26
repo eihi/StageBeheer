@@ -11,6 +11,11 @@ namespace StageManager.Models
     {
         private Random r = new Random();
 
+        public static void PushToDB()
+        {
+            WStored.StageManagerEntities.SaveChanges();
+        }
+
         public List<students> SearchStudentSet(String searchString, String searchOpleiding)
         {
             if (searchString == null && searchOpleiding == null)

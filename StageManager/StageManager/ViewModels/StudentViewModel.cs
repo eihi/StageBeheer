@@ -145,6 +145,11 @@ namespace StageManager.ViewModels
             }
         }
 
+        public void btnSave()
+        {
+           WStored.PushToDB();
+        }
+
         public void btnExport_Click()
         {
             ExportExcel ee = new ExportExcel(this);

@@ -32,6 +32,11 @@ namespace StageManager.ViewModels
             }
         }
 
+        public void btnSave()
+        {
+            WStored.PushToDB();
+        }
+
         public String Voornaam
         {
             get

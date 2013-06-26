@@ -151,6 +151,8 @@ namespace StageManager.ViewModels
                         MessageBox.Show(svm.EersteStudent);
                     }
                 }
+                StageList.TryGetValue(value, out selectedStage);
+                Main.ChangeButton("Koppel", new List<Object>() { selectedStage }, Services.Clear.No);
             }
         }
 

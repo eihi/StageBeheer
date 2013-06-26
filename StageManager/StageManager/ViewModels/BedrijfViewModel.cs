@@ -31,6 +31,12 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Website);
             }
         }
+
+        public void btnSave()
+        {
+            WStored.PushToDB();
+        }
+
         public String Naam
         {
             get

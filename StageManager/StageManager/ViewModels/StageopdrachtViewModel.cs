@@ -30,6 +30,11 @@ namespace StageManager.ViewModels
             }
         }
 
+        public void btnSave()
+        {
+            WStored.PushToDB();
+        }
+
         public DateTime StartDatum
         {
             get { return stage.start_date; }
