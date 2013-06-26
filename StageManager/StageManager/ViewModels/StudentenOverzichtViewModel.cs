@@ -40,7 +40,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private Object selectedStudent;
+        private students selectedStudent;
         public object SelectedStudent
         {
             get
@@ -49,37 +49,10 @@ namespace StageManager.ViewModels
             }
             set
             {
+                selectedStudent = null;
                 if (value != null)
                 {
-                    selectedStudent = value;
-                    students s = null;
-                    list.TryGetValue(value, out s);
-                    Type t = value.GetType();
-                    System.Reflection.PropertyInfo p = t.GetProperty("MailTo");
-                    System.Reflection.MethodInfo m = p.GetMethod;
-                    bool ob = !(bool)m.Invoke(value, null);
-                    bool temp = !(bool)value.GetType().GetProperty("MailTo").GetMethod.Invoke(value, null);
-                    if (s != null)
-                    {
-                        Object o = (Object)new
-                        {
-                            Studentnummer = (String)value.GetType().GetProperty("Studentnummer").GetMethod.Invoke(value, null),
-                            Achternaam = (String)value.GetType().GetProperty("Achternaam").GetMethod.Invoke(value, null),
-                            Voorvoegsels = (String)value.GetType().GetProperty("Voorvoegsels").GetMethod.Invoke(value, null),
-                            Roepnaam = (String)value.GetType().GetProperty("Roepnaam").GetMethod.Invoke(value, null),
-                            Email = (String)value.GetType().GetProperty("Email").GetMethod.Invoke(value, null),
-                            EmailURL = (String)value.GetType().GetProperty("EmailURL").GetMethod.Invoke(value, null),
-                            Straatnaam = (String)value.GetType().GetProperty("Straatnaam").GetMethod.Invoke(value, null),
-                            Nummer = (String)value.GetType().GetProperty("Nummer").GetMethod.Invoke(value, null),
-                            Toevoeging = (String)value.GetType().GetProperty("Toevoeging").GetMethod.Invoke(value, null),
-                            Postcode = (String)value.GetType().GetProperty("Postcode").GetMethod.Invoke(value, null),
-                            Plaats = (String)value.GetType().GetProperty("Plaats").GetMethod.Invoke(value, null),
-                            Telefoonnummer = (String)value.GetType().GetProperty("Telefoonnummer").GetMethod.Invoke(value, null),
-                        };
-                        list.Remove(value);
-                        list.Add(o, s);
-                        List = list;
-                    }
+                    list.TryGetValue(value, out selectedStudent);
                 }
             }
         }
@@ -149,6 +122,11 @@ namespace StageManager.ViewModels
             }
 
             ExcelHelper.MultipleRows(worksheet, columns, rows);
+        }
+
+        public void editStudent()
+        {
+            Main.ChangeButton("Student", new List<object>() { SelectedStudent }, Clear.After, this);
         }
     }
 }

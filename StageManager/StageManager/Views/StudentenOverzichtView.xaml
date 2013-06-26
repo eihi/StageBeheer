@@ -62,7 +62,18 @@
                                           CanUserAddRows="False"
                                           CanUserDeleteRows="False"
                                           CanUserResizeRows="False"
-                                          SelectedItem="{Binding Path=SelectedStudenten}">
+                                          SelectedItem="{Binding Path=SelectedStudent}">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Pas student aan">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="editStudent"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Studentnummer}" Header="Studentnummer" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" Width="auto" IsReadOnly="True"/>

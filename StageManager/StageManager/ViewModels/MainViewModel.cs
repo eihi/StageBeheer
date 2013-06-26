@@ -119,14 +119,14 @@ namespace StageManager.ViewModels
             ChangeButton(name, o, c, null);
         }
 
-        public void ChangeButton(string name, List<Object> o, Clear c, PropertyChanged p)
+        public void ChangeButton(string name, List<Object> o, Clear c, PropertyChanged sender)
         {
             currentButton = name;
             Clear clear = c;
             EventHandler handler = SomethingHappened;
             if (handler != null)
             {
-                handler(this, new MainArgs(o, clear, p));
+                handler(this, new MainArgs(o, clear, sender));
             }
         }
     }

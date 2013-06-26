@@ -61,7 +61,18 @@
                                           CanUserAddRows="False"
                                           CanUserDeleteRows="False"
                                           CanUserResizeRows="False"
-                                          SelectedItem="{Binding Path=SelectedStages}">
+                                          SelectedItem="{Binding Path=SelectedStage}">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Pas stage aan">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="editStage"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Stagetype}" Header="Stage type" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Eerstestudent}" Header="Student 1" Width="auto" IsReadOnly="True"/>

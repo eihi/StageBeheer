@@ -26,6 +26,18 @@ namespace StageManager.ViewModels
             }
         }
 
+        private internships _selectedStage;
+        public Object SelectedStage
+        {
+            get { return _selectedStage; }
+            set
+            {
+                dbstageviewcomplete complete;
+                List.TryGetValue(value, out complete);
+                _selectedStage = Wrapper.StageManagerEntities.internships.Find(complete.internshipID);
+            }
+        }
+
         private List<Object> gridContents;
         public List<object> GridContents
         {
@@ -113,6 +125,11 @@ namespace StageManager.ViewModels
             }
 
             ExcelHelper.MultipleRows(worksheet, columns, rows);
+        }
+
+        public void editStage()
+        {
+            Main.ChangeButton("Stage", new List<object>() { _selectedStage }, Clear.After, this);
         }
     }
 }

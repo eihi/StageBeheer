@@ -40,7 +40,7 @@ namespace StageManager.ViewModels
             }
         }
 
-        private object _selectedTeacher;
+        private teachers _selectedTeacher;
         public object SelectedTeacher
         {
             get
@@ -49,31 +49,10 @@ namespace StageManager.ViewModels
             }
             set
             {
+                _selectedTeacher = null;
                 if (value != null)
                 {
-                    _selectedTeacher = value;
-                    teachers t = null;
-                    _teacherList.TryGetValue(value, out t);
-
-                    if (t != null)
-                    {
-                        Object o = (Object)new
-                        {
-                            Voornaam = (string)value.GetType().GetProperty("Voornaam").GetMethod.Invoke(value, null),
-                            Achternaam = (string)value.GetType().GetProperty("Achternaam").GetMethod.Invoke(value, null),
-                            Opleiding = (string)value.GetType().GetProperty("Opleiding").GetMethod.Invoke(value, null),
-                            Straatnaam = (string)value.GetType().GetProperty("Straatnaam").GetMethod.Invoke(value, null),
-                            Huisnummer = (string)value.GetType().GetProperty("Huisnummer").GetMethod.Invoke(value, null),
-                            Woonplaats = (string)value.GetType().GetProperty("Woonplaats").GetMethod.Invoke(value, null),
-                            Telefoonnummer = (string)value.GetType().GetProperty("Telefoonnummer").GetMethod.Invoke(value, null),
-                            Email = (string)value.GetType().GetProperty("Email").GetMethod.Invoke(value, null),
-                            Website = (string)value.GetType().GetProperty("Website").GetMethod.Invoke(value, null)
-                        };
-
-                        _teacherList.Remove(value);
-                        _teacherList.Add(o, t);
-                        TeacherList = _teacherList;
-                    }
+                    _teacherList.TryGetValue(value, out _selectedTeacher);
                 }
             }
         }
@@ -130,6 +109,11 @@ namespace StageManager.ViewModels
             }
 
             ExcelHelper.MultipleRows(worksheet, columns, rows);
+        }
+
+        public void editDocent()
+        {
+            Main.ChangeButton("Docent", new List<object>() { _selectedTeacher }, Clear.After, this);
         }
     }
 }
