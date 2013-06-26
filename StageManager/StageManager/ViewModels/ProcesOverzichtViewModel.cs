@@ -64,10 +64,16 @@ namespace StageManager.ViewModels
                         if ((bool)studenten[i].GetType().GetProperty("MailTo").GetMethod.Invoke(studenten[i], null))
                         {
                             students student;
-                            if (List.TryGetValue(studenten[i], out student)  || student.students_internships.Count == 0 || student.students_internships.First() == null)
+                            if (List.TryGetValue(studenten[i], out student))
                             {
-                                can = false;
-                                break;
+                                if (student != null)
+                                {
+                                    if (student.students_internships.Count == 0 || student.students_internships.First() == null)
+                                    {
+                                        can = false;
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }
@@ -152,6 +158,9 @@ namespace StageManager.ViewModels
                             Stageopdracht = (String)value.GetType().GetProperty("Stageopdracht").GetMethod.Invoke(value, null),
                             Goedgekeurd = (String)value.GetType().GetProperty("Goedgekeurd").GetMethod.Invoke(value, null)
                         };
+                        list.Remove(value);
+                        list.Add(o, selectedStudent);
+                        List = list;
                         if ((bool)o.GetType().GetProperty("MailTo").GetMethod.Invoke(o, null))
                         {
                             Amountselected++;
@@ -160,10 +169,6 @@ namespace StageManager.ViewModels
                         {
                             Amountselected--;
                         }
-
-                        list.Remove(value);
-                        list.Add(o, selectedStudent);
-                        List = list;
                     }
                 }
                 NotifyOfPropertyChange(() => CanStageVerwerken);
