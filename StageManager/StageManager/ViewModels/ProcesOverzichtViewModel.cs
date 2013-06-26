@@ -29,6 +29,23 @@ namespace StageManager.ViewModels
                 return Amountselected == 1;
             }
         }
+        public bool CanStageVerwerken2
+        {
+            get
+            {
+                return SelectedStudent == null;
+            }
+        }
+
+        public bool CanMailStageSelectie
+        {
+            get
+            {
+                return SelectedStudent == null;
+            }
+        }
+
+
 
         private Dictionary<Object, students> list;
         Dictionary<Object, students> List
@@ -118,6 +135,9 @@ namespace StageManager.ViewModels
                         List = list;
                     }
                 }
+                NotifyOfPropertyChange(() => CanStageVerwerken2);
+                NotifyOfPropertyChange(() => CanMailStageSelectie);
+                
             }
         }
 
@@ -130,7 +150,12 @@ namespace StageManager.ViewModels
                 {
                     students s;
                     List.TryGetValue(List.Keys.ElementAt(i), out s);
-                    mails.Add(s.users.email);
+                    if (s == null)
+                    {
+                         mails.Add((String)List.Keys.ElementAt(i).GetType().GetProperty("Email").GetMethod.Invoke(List.Keys.ElementAt(i), null));
+                    }
+                    else
+                        mails.Add(s.users.email);
                 }
             }
             Main.ChangeButton("Mail", new List<object>() { mails, MailViewModel.mailType.nieuw }, Clear.No);
@@ -196,6 +221,26 @@ namespace StageManager.ViewModels
                     ) :
                     "niet van toepassing"
             }, t => t);
+
+            // Haal ook alle lege webkeys mee
+            foreach (webkeys w in new WStored().SearchWebkeys())
+            {
+                if (w.user_id == null)
+                {
+                    Object o = (Object)new
+                    {
+                        MailTo = false,
+                        Email = w.email != null ? w.email : "student heeft geen gebruiker",
+                        Student = "Nog niet ingevuld",
+                        Stageopdracht = "NVT",
+                        Gegevens = "NVT",
+                        Goedgekeurd = "NVT"
+                    };
+                    list.Add(o, null);
+                }
+            }
+            List = List;
+
         }
 
         public void btnExport_Click()
@@ -263,17 +308,65 @@ namespace StageManager.ViewModels
                 "Stageopdracht",
                 "Goedgekeurd"
             };
-
+            int i = 0;
             foreach (KeyValuePair<Object, students> s in List)
             {
-                object[] row = {
+
+                if (s.Value == null)
+                {
+                    
+
+                    object[] row = {
+                    "Niet bekend",
+                    (String)List.Keys.ElementAt(i).GetType().GetProperty("Email").GetMethod.Invoke(List.Keys.ElementAt(i), null),
+                    "Geen stageopdracht",
+                    "NVT"
+                    };
+
+                    rows.AddLast(row);
+
+                }
+                else if (s.Value.students_internships.Count > 0)
+                {
+                    string approved = "";
+                    switch (int.Parse(s.Value.students_internships.First().internships.approved))
+                    {
+                        case 1:
+                            approved = "Goedgekeurd";
+                            break;
+                        case 2:
+                            approved = "Wordt nagekeken";
+                            break;
+                        case 3:
+                            approved = "goedgekeurd";
+                            break;
+                        default:
+                            approved = "In afwachting";
+                            break;
+                    }
+
+
+                    object[] row = {
                     s.Value.users.name + " " + s.Value.users.surname,
                     s.Value.users.email,
                     s.Value.students_internships.First().internships.description,
-                    s.Value.students_internships.First().internships.approved
-                };
+                    approved
+                    };
 
-                rows.AddLast(row);
+                    rows.AddLast(row);
+                }
+                else
+                {
+                    object[] row = {
+                    s.Value.users.name + " " + s.Value.users.surname,
+                    s.Value.users.email,
+                    "Nog geen stage",
+                    "Niet van toepassing"
+                    };
+
+                    rows.AddLast(row);
+                }
+                i++;        
             }
 
             ExcelHelper.MultipleRows(worksheet, columns, rows);

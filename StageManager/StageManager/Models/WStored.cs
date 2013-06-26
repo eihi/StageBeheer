@@ -272,5 +272,10 @@ namespace StageManager.Models
             }
             return key;
         }
+
+        internal List<webkeys> SearchWebkeys()
+        {
+            return StageManagerEntities.webkeys.ToList();
+        }
     }
 }
