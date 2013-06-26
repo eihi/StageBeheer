@@ -260,16 +260,17 @@ namespace StageManager.ViewModels
             }
         }
 
-        private string _tweedeLezer;
+        private string tweedeLezer;
         public string TweedeLezer
         {
             get
             {
-                return _tweedeLezer;
+                return tweedeLezer;
+                // TODO return WStored.StageManagerEntities.teachers.Where<WStored.StageManagerEntities.
             }
             set 
             {
-                _tweedeLezer = value;
+                tweedeLezer = value;
                 NotifyOfPropertyChange(() => TweedeLezer);
             }
         }
@@ -381,7 +382,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.start_date.ToString();
+                    return stage.start_date.ToShortDateString();
                 }
                 catch (NullReferenceException)
                 {
@@ -395,7 +396,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return stage.end_date.ToString();
+                    return stage.end_date.ToShortDateString();
                 }
                 catch (NullReferenceException)
                 {
