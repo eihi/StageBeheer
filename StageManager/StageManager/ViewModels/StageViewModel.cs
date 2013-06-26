@@ -331,7 +331,16 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return stage.type;
+                switch (stage.type)
+                {
+                    case "0":
+                        return "Stage";
+                    case "1":
+                        return "Afstudeerstage";
+                    default:
+                        return "";
+                }
+                
             }
         }
 
