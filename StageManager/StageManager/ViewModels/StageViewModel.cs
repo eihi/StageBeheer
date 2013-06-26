@@ -537,6 +537,21 @@ namespace StageManager.ViewModels
             Main.ChangeButton("Stageopdracht", this, new List<object>() { stage}, Clear.No );
         }
 
+        public void btnRemoveStagebegeleider()
+        {
+            // TODO
+        }
+
+        public void btnRemoveTweedeLezer()
+        {
+            // TODO
+        }
+
+        public void btnRemoveTweedeStudent()
+        {
+            // TODO
+        }
+
         public void btnExport_Click()
         {
             ExportExcel ee = new ExportExcel(this);
