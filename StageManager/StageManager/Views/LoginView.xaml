@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="StageManager.Views.LoginView"
+﻿<Window x:Class="StageManager.Views.LoginView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:my="clr-namespace:StageManager.Services"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="225" d:DesignWidth="300" Background="White">
+             Height="225" Width="300" Background="White" Visibility="{Binding WVisible}" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
 
     <DockPanel Margin="0,0,0,-10">
 
@@ -83,4 +83,4 @@
             </ScrollViewer>
         </Grid>
     </DockPanel>
-</UserControl>
+</Window>

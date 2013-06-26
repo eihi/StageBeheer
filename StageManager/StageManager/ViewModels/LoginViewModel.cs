@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using StageManager.Models;
 using StageManager.Services;
 using StageManager.Controllers;
+using System.Windows;
 
 namespace StageManager.ViewModels
 {
     public class LoginViewModel : PropertyChangedBase
     {
 
-        private String username = "remcovanderheijden@hotmail.com";
+        private String username = "k.janssen2@avans.nl";
         public String Username
         {
             get { return username; }
@@ -28,6 +29,17 @@ namespace StageManager.ViewModels
                     username = value;
                 }
                 NotifyOfPropertyChange(() => Username);
+            }
+        }
+
+        private Visibility Wvisible;
+        public Visibility WVisible
+        {
+            get { return Wvisible; }
+            set
+            {
+                Wvisible = value;
+                NotifyOfPropertyChange(() => WVisible);
             }
         }
 
@@ -78,6 +90,7 @@ namespace StageManager.ViewModels
                 WindowManager windowManager = new WindowManager();
                 mainViewModel.ChangeButton(decideWindowState());
                 windowManager.ShowWindow(mainViewModel);
+                WVisible = Visibility.Hidden;
             }
             else
             {
