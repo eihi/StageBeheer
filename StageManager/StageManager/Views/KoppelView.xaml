@@ -57,6 +57,7 @@
                 <DockPanel>
                     <!-- KoppelTitel -->
                     <Label Name="Koppel" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="24" FontWeight="Light"/>
+                    <Label Name="Info" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="10" FontWeight="Light"/>
                     <!-- KoppelControls -->
                     
                     <!-- KoppelContent -->

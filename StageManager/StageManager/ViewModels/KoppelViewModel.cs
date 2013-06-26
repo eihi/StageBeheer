@@ -15,7 +15,7 @@ namespace StageManager.ViewModels
     {
         private internships stage;
 
-        private String koppel;
+        
 
         public String Koppel
         {
@@ -26,6 +26,16 @@ namespace StageManager.ViewModels
                     return "Koppel student aan " + selectedDocent.TeacherInfo.users.name + " " + selectedDocent.TeacherInfo.users.surname;
                 }
                 return "Koppel student aan _____";
+            }
+        }
+
+        public String Info
+        {
+            get
+            {
+                return "STAGE INFO \n Kennis nodig voor deze stage" + " <kennis>" +
+                     "\n Benodigde tijd: " + list.First().Value.timeNeeded +
+                     "\n Begin jaar: " + list.First().Value.Year + "Blokken: " + list.First().Value.blokken;
             }
         }
 
@@ -125,10 +135,6 @@ namespace StageManager.ViewModels
 
 
 
-        public void TweedeLezer()
-        {
-            Main.ChangeButton("");//TODO!!
-        }
 
         public KoppelViewModel(MainViewModel main)
             : base(main)

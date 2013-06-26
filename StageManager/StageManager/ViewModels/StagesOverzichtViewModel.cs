@@ -82,6 +82,7 @@ namespace StageManager.ViewModels
                 };
                 List.Add(o, tempList[i]);
                 List = List;
+                             
             }
         }
 

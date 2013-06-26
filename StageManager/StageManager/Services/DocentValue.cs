@@ -17,6 +17,13 @@ namespace StageManager.Services
         public int numberOfKnowledge { get; set; }
         public List<String> sameKnowledge { get; set; }
         public String sameKnowledgeString { get; set; }
+        public int timeNeeded { get; set; }
+        public String blokken { get; set; }
+
+        private Boolean timeRemoved;
+        private volumehours jaaruren;
+        
+        
 
         static int stage = 7;
         static int duoStage = 14;
@@ -59,6 +66,7 @@ namespace StageManager.Services
             distance = 0;
             numberOfKnowledge = 0;
             Year = DateTime.Now.Year;
+            timeRemoved = false;
         }
 
         
@@ -103,7 +111,7 @@ namespace StageManager.Services
 
         internal void checkTime(string stagetype, Boolean duo, DateTime start, DateTime end)
         {
-            int timeNeeded = 0;
+            timeNeeded = 0;
             int timeLeft = 0;
 
             //kijk hoeveel tijd het kost om deze stage te doen.
@@ -124,7 +132,7 @@ namespace StageManager.Services
 
             //kijk de tijd die beschikbaar is.
             Boolean processed = false;
-            String blokken = "";
+            blokken = "";
             while (!processed) //kijk welk jaar en welke blokken deze stage zich afspeeld.
             {
                 if (start > blok1)
@@ -157,7 +165,7 @@ namespace StageManager.Services
                 }
             }
 
-            volumehours jaaruren = null;
+            jaaruren = null;
             List<volumehours> jarenUren = (from uren in new WStored().SearchVolumehours() where uren.teacher_user_id == TeacherInfo.user_id select uren).ToList();
             if (jarenUren.Count > 0)
             {
@@ -218,7 +226,35 @@ namespace StageManager.Services
 
         internal void removeTime()
         {
-            throw new NotImplementedException();
+            if (!timeRemoved)
+            {
+                int timeforEach = (timeNeeded / 2);
+                switch (blokken)
+                {
+                    case "12":
+                        jaaruren.remaining_hours1 -= timeforEach;
+                        jaaruren.remaining_hours2 -= timeforEach;
+                        break;
+
+                    case "23":
+                        jaaruren.remaining_hours2 -= timeforEach;
+                        jaaruren.remaining_hours3 -= timeforEach;
+                        break;
+
+                    case "34":
+                        jaaruren.remaining_hours3 -= timeforEach;
+                        jaaruren.remaining_hours4 -= timeforEach;
+                        break;
+
+                    case "41":
+                        System.Diagnostics.Debug.WriteLine("blok 4 en 1 is niet toegestaan");
+                        break;
+                }
+                timeRemoved = true;
+                WStored.PushToDB();
+            }
+            else
+                System.Diagnostics.Debug.WriteLine("removeTime wordt meerdere keren aangeroepen !");
         }
     }
 }
