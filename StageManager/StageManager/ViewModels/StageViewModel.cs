@@ -137,15 +137,7 @@ namespace StageManager.ViewModels
                {
                     System.Diagnostics.Debug.WriteLine("error geen tweedestudent");
                 }
-                return temp;
-                if (stage.students_internships.ElementAtOrDefault(1) != null)
-                {
-                    return stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname;
-                }
-                else
-                {
-                    return "";
-                }
+                return temp;   
             }
             set
             {
@@ -325,8 +317,12 @@ namespace StageManager.ViewModels
                 try
                 {
                     //(WStored.StageManagerEntities.teachers Where stage.secondReader == stage.teacher_user_id select );
+                    teachers teacher = null;
                     List<teachers> teacherlist = (from zoek in new WStored().SearchDocentSet("") where zoek.user_id == stage.secondReader select zoek).ToList();
-                    teachers teacher = teacherlist[0];
+                    if(teacherlist.Count > 0)
+                    {
+                    teacher = teacherlist[0];
+                    }
                     return teacher.users.name + " " + teacher.users.surname;
                 }
                 catch (NullReferenceException)
