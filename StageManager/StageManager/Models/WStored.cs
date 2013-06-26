@@ -136,6 +136,22 @@ namespace StageManager.Models
             }
         }
 
+        public List<teachers> SearchDocentSet(String voornaam, String achternaam)
+        {
+            if (voornaam == null || achternaam == null)
+            {
+                return (from docent in StageManagerEntities.teachers.ToList() select docent).ToList();
+            }
+            else
+            {
+                return (from docent
+                            in StageManagerEntities.teachers.ToList()
+                        where (docent.users.name.ToLower().Contains(voornaam.ToLower()) ||
+                        docent.users.surname.ToLower().Contains(achternaam.ToLower()))
+                        select docent).ToList();
+            }
+        }
+
         public List<dbstageview> SearchDBStageView()
         {
             return (from viewstage in StageManagerEntities.dbstageview.ToList() select viewstage).ToList();

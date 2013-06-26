@@ -150,14 +150,19 @@ namespace StageManager.ViewModels
                 switch (svm.SearchFor)
                 {
                     case StageViewModel.Search.TweedeStudent:
-
+                        var studentnummer = _selectedObject.GetType().GetProperty("Studentnummer");
+                        students student = new WStored().SearchStudentSet(studentnummer.GetValue(_selectedObject, null).ToString(), "")[0];
+                        //internship.students_internships.ElementAtOrDefault(1).students.user_id = student.user_id;
                         break;
                     case StageViewModel.Search.TweedeLezer:
-
+                        var voornaam = _selectedObject.GetType().GetProperty("Voornaam");
+                        var achternaam = _selectedObject.GetType().GetProperty("Achternaam");
+                        teachers teacher = new WStored().SearchDocentSet(voornaam.GetValue(_selectedObject, null).ToString(), achternaam.GetValue(_selectedObject, null).ToString())[0];
+                        internship.teacher_user_id = teacher.user_id;
                         break;
                 }
 
-                WStored.PushToDB();
+                //WStored.PushToDB();
                 Last.update();
                 this.Close();
             }
