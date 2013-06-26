@@ -85,9 +85,9 @@
                                     <DataGridTextColumn Binding="{Binding Eind}" Header="Eind Datum" Width="auto" IsReadOnly="True"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                        </ScrollViewer>
-
+                        </ScrollViewer>                        
                         <Button Content="Exporteer naar Excel" cal:Message.Attach="btnExport_Click" Margin="0,10,5,0" Grid.Column="0" Grid.Row="0" Height="30" Width="120" HorizontalAlignment="Left"/>
+                        <CheckBox Content="Archief" IsChecked="{Binding StageArchief}" Grid.Column="0" Grid.Row="0" Margin="135,20,5,5" />
                     </Grid>
                 </DockPanel>
             </ScrollViewer>

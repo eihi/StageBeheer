@@ -11,6 +11,17 @@ namespace StageManager.ViewModels
 {
     class StagesOverzichtViewModel : PropertyChanged, IExcelAlgorithm
     {
+        private Boolean stageArchief;
+
+        public Boolean StageArchief
+        {
+            get { return stageArchief; }
+            set { stageArchief = value;
+            NotifyOfPropertyChange(() => StageArchief);
+                System.Diagnostics.Debug.WriteLine(value);
+            }
+        }
+
         private Dictionary<Object, dbstageviewcomplete> list;
         Dictionary<Object, dbstageviewcomplete> List
         {
@@ -91,6 +102,7 @@ namespace StageManager.ViewModels
             ExportExcel ee = new ExportExcel(this);
             ee.Export();
         }
+
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
