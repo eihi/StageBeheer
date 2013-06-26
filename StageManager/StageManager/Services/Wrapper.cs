@@ -33,6 +33,7 @@ namespace StageManager.Services
             if (stageManagerEntities == null)
             {
                 stageManagerEntities = new stagemanagerEntities();
+                stageManagerEntities.Configuration.LazyLoadingEnabled = false;
             }
         }
 

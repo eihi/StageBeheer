@@ -234,7 +234,8 @@ namespace StageManager.ViewModels
             refresh();
         }
 
-        private void refresh(){
+        private void refresh()
+        {
             stagemanagerEntities smE = new stagemanagerEntities();
             List<students> students = smE.students.ToList();
             List = new Dictionary<object, students>();
@@ -280,14 +281,11 @@ namespace StageManager.ViewModels
                     {
                         list.Add(o, null);
                     }
-                    catch (Exception e)
-                    {
-                        System.Diagnostics.Debug.WriteLine("dubbele key wordt toegevoegt");
-                    }
+                    catch (Exception)
+                    { }
                 }
             }
             List = List;
-
         }
             
 
