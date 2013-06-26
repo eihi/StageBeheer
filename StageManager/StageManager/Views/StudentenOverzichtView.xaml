@@ -81,7 +81,7 @@
                                     <DataGridTextColumn Binding="{Binding Achternaam}" Header="Achternaam" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Opleiding}" Header="Opleiding" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer" Width="auto" IsReadOnly="True"/>
-                                    <DataGridTextColumn Binding="{Binding Voldoet}" Header="Voldoet aan norm" Width="auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Voldoet}" Header="Toestemming Ex. Comm." Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Straatnaam}" Header="Straatnaam" Width="auto" IsReadOnly="True"/>
                                     <DataGridTextColumn Binding="{Binding Huisnummer}" Header="Huisnummer" Width="auto" IsReadOnly="True"/>
