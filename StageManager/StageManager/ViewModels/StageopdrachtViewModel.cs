@@ -71,7 +71,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return null;// stage.studentset2.Voornaam + " " + stage.studentset2.Achternaam; TODO!
+                    return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.name;
                 }
                 catch (NullReferenceException)
                 {
@@ -87,7 +87,7 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    return null;//stage.studentset.Voornaam + " " + stage.studentset.Achternaam; TODO!!!!
+                    return stage.students_internships.ElementAt(1).students.users.name + " " + stage.students_internships.ElementAt(1).students.users.name;
                 }
                 catch (NullReferenceException)
                 {
@@ -103,13 +103,12 @@ namespace StageManager.ViewModels
             {
                 try
                 {
-                    //return stage.bedrijfsbegeleiderset.Voornaam + " " + stage.bedrijfsbegeleiderset.Achternaam;
+                    return stage.supervisor.users.name + " " + stage.supervisor.users.surname;
                 }
                 catch (NullReferenceException)
                 {
-                    return "";
+                    return "Geen BedrijfsBegeleider gekoppeld";
                 }
-                return "Geen BedrijfsBegeleider gekoppeld";
             }
             set { }
         }

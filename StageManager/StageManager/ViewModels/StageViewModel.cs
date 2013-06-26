@@ -96,7 +96,7 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return _eersteStudent;
+                return stage.students_internships.First().students.users.name + " " + stage.students_internships.First().students.users.surname;
             }
             set
             {
@@ -126,7 +126,7 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return _tweedeStudent;
+                return stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname;
             }
             set
             {
