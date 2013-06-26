@@ -106,8 +106,7 @@
                         </StackPanel>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <cal:ActionMessage MethodName="Change">
-                                    <cal:Parameter Value="Mail" />
+                                <cal:ActionMessage MethodName="MailStudenten">
                                 </cal:ActionMessage>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
@@ -124,8 +123,7 @@
                         </StackPanel>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <cal:ActionMessage MethodName="ChangeButton">
-                                    <cal:Parameter Value="Mail" />
+                                <cal:ActionMessage MethodName="MailDocenten">
                                 </cal:ActionMessage>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>

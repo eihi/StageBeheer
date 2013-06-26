@@ -194,7 +194,7 @@ namespace StageManager.ViewModels
                         mails.Add(s.users.email);
                 }
             }
-            Main.ChangeButton("Mail", this, new List<object>() { mails, MailViewModel.mailType.nieuw }, Clear.No);
+            Main.ChangeButton("Mail", this, new List<object>() { mails, MailViewModel.mailType.student }, Clear.No);
         }
 
         public void MailStageSelectie()

@@ -24,7 +24,7 @@ namespace StageManager.ViewModels
                 error = value;
             }
         }
-        public enum mailType { leeg, beoordeling, herinnering, nieuw };
+        public enum mailType { leeg, beoordeling, herinnering, docent, student };
         private String to;
         private mailType type;
         public String To
@@ -91,7 +91,7 @@ namespace StageManager.ViewModels
         }
 
         public MailViewModel(MainViewModel main, PropertyChanged last)
-            : this(main, last, mailType.nieuw)
+            : this(main, last, mailType.student)
         {
 
         }
@@ -121,10 +121,21 @@ namespace StageManager.ViewModels
                     "Stagecoördinator AI&I\n" +
                     "Avans Hogeschool 's-Hertogenbosch";
                     break;
-                case mailType.nieuw:
+                case mailType.student:
                     Error = "%webkey%";
                     Subject = "Uitnodiging voor in het systeem";
                     Message = "Beste student,\n\n" +
+                    "Met deze mail vragen wij vriendelijk om je gegevens in te vullen in dit web formulier\n" +
+                    "%webkey%\n\n\n" +
+                    "Met vriendelijke groeten,\n" +
+                    "Katinka Janssen\n" +
+                    "Stagecoördinator AI&I\n" +
+                    "Avans Hogeschool 's-Hertogenbosch";
+                    break;
+                case mailType.docent:
+                    Error = "%webkey%";
+                    Subject = "Uitnodiging voor in het systeem";
+                    Message = "Beste docent,\n\n" +
                     "Met deze mail vragen wij vriendelijk om je gegevens in te vullen in dit web formulier\n" +
                     "%webkey%\n\n\n" +
                     "Met vriendelijke groeten,\n" +
@@ -158,11 +169,16 @@ namespace StageManager.ViewModels
                     case mailType.beoordeling:
                         Mailer.SendBeoordeling(to[i].Trim(), Message, Subject, StageData,  new ListDictionary());
                         break;
-                    case mailType.nieuw:
-                        Mailer.SendNew(to[i].Trim(), Message, Subject, new ListDictionary());
+                    case mailType.student:
+                        Mailer.SendNew(to[i].Trim(), Message, Subject, "student", new ListDictionary());
+                        break;
+                    case mailType.docent:
+                        Mailer.SendNew(to[i].Trim(), Message, Subject, "docent", new ListDictionary());
                         break;
                 }
             }
+
+            MessageBoxResult result = MessageBox.Show("Verstuurd!", "Confirmation");
         }
 
         public override void update(object[] o)

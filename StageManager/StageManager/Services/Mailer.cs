@@ -94,30 +94,36 @@ namespace StageManager.Services
             }
         }
 
-        public static void SendNew(String to, String body, String Subject, IDictionary replacements = null)
+        public static void SendNew(String to, String body, String Subject, String hetType, IDictionary replacements = null)
         {
             init();
             if (replacements.Contains("%webkey%"))
             {
                 replacements.Remove("%webkey%");
             }
+
+            // Webkey aanmaken
             String key;
             key = stored.NewWebkey(to);
-            webkeys webkey = new webkeys() { webkey = key };
-            //TODO ADDING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+            // In database is het leraar, in de webview docent (freakytime aanpassing)
+            String webkeyType = "student";
+            if (hetType.Equals("docent"))
+            {
+                webkeyType = "leraar";
+            }
 
-            System.Reflection.Assembly thisExe = System.Reflection.Assembly.GetExecutingAssembly();
-            string path = thisExe.Location;
-            DirectoryInfo dirinfo = new DirectoryInfo(path);
-            string folderName = dirinfo.Parent.FullName;
-            path = folderName + "\\Config.txt";
-            Uri uri = new Uri(path);
-            String s = File.ReadAllText(uri.AbsolutePath);
-            String[] split = { "server: " };
-            String[] server = s.Split(split, StringSplitOptions.RemoveEmptyEntries);
-            key = server[0] + webkey.webkey;
+            webkeys webkey = new webkeys() { webkey = key, type = webkeyType, email = to };
+
+            // Webkey opslaan in database
+            WStored.StageManagerEntities.webkeys.Add(webkey);
+            WStored.PushToDB();
+
+            // construct URL
+            key = "http://stagemanager.modupro.nl/" + hetType + "/" + webkey.webkey;
             replacements.Add("%webkey%", "<a href='" + key + "'>" + key + "</a>");
+
+            // Send
             Send(to, body, Subject, replacements);
         }
 

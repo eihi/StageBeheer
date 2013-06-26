@@ -100,6 +100,16 @@ namespace StageManager.ViewModels
             }
         }
 
+        public void MailStudenten()
+        {
+            ChangeButton("Mail", null, new List<object>() { MailViewModel.mailType.student }, Clear.All);
+        }
+
+        public void MailDocenten()
+        {
+            ChangeButton("Mail", null, new List<object>() { MailViewModel.mailType.docent }, Clear.All);
+        }
+
         public void CloseAll()
         {
             Contents.Clear();
