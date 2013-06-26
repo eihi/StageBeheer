@@ -126,7 +126,15 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname;
+                String temp = "";
+                try{
+                    temp = stage.students_internships.ElementAtOrDefault(1).students.users.name + " " + stage.students_internships.ElementAtOrDefault(1).students.users.surname; 
+                }
+                catch (Exception e) 
+               {
+                    System.Diagnostics.Debug.WriteLine("error geen tweedestudent");
+                }
+                return temp;
             }
             set
             {
