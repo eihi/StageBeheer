@@ -23,7 +23,6 @@ namespace StageManager.Views
         public StageView()
         {
             InitializeComponent();
-            RequestBringIntoView += true;
         }
     }
 }
