@@ -291,56 +291,7 @@ namespace StageManager.ViewModels
                 BPlaats = t.students_internships.First().internships.supervisor.companies.adresses.place,
                 Bedrijfsbegeleider = t.students_internships.First().internships.supervisor.users.name + " " + t.students_internships.First().internships.supervisor.users.surname,
                 BegTelefoon = t.students_internships.First().internships.supervisor.users.phonenumber
-                // Zoeken naar Extra info
-                //ECs = t., // TODO: DB EC's
             }, t => t);
-
-            /*
-Student
-	Studentnummer
-	Achternaam
-	Voorvoegsels
-	Roepnaam
-	E-mail
-	Straatnaam
-	Nummer
-	Toevoeging
-	Postcode
-	Plaats
-	Telefoonnummer
-
-Info + Docent
-	SLB6-1
-	SLB6-2
-	SLB6-3
-	SLB6-T
-	SLB7-1
-	SLB7-2
-	SLB7-T
-	EC's
-	P
-	EPS
-	Form. Goedkeuring
-	Toestemming Ex. Comm.
-	Stagecontract
-	Begeleidend Docent
-	Bijzonderheden
-
-Bedrijf + Bedrijfsbegeleider
-	Bedrijf
-	Branche
-	Straat
-	Nummer
-	Toevoeging
-	Postcode
-	Plaats
-	Land
-	Bedrijfsbegeleider
-	E-mail
-	Tel. nr Bedrijf
-	Tel. nr Bedrijfsbegeleider
-	Website
-             */
         }
 
         public void btnExport_Click()
@@ -358,7 +309,21 @@ Bedrijf + Bedrijfsbegeleider
                 "Voornaam",
                 "Achternaam",
                 "E-mailadres",
-                "Telefoonnummer"
+                "Telefoonnummer",
+                "Toestemming Ex. Comm.",
+                "Straatnaam",
+                "Nummer",
+                "Postcode",
+                "Plaats",
+                "Bedrijf",
+                "Tel. nr Bedrijf",
+                "Website",
+                "Straat",
+                "Nr.",
+                "Postcode",
+                "Plaats",
+                "Bedrijfsbegeleider",
+                "Tel. nr Begeleider"
             };
 
             foreach (KeyValuePair<Object, students> s in List)
@@ -368,7 +333,21 @@ Bedrijf + Bedrijfsbegeleider
                     s.Value.users.name,
                     s.Value.users.surname,
                     s.Value.users.email,
-                    s.Value.users.phonenumber
+                    s.Value.users.phonenumber,
+                    s.Value.meets,
+                    s.Value.adresses.street,
+                    s.Value.adresses.housenumber,
+                    s.Value.adresses.zipcode,
+                    s.Value.adresses.place,
+                    s.Value.students_internships.First().internships.supervisor.companies.name,
+                    s.Value.students_internships.First().internships.supervisor.companies.phonenumber,
+                    s.Value.students_internships.First().internships.supervisor.companies.website,
+                    s.Value.students_internships.First().internships.supervisor.companies.adresses.street,
+                    s.Value.students_internships.First().internships.supervisor.companies.adresses.housenumber,
+                    s.Value.students_internships.First().internships.supervisor.companies.adresses.zipcode,
+                    s.Value.students_internships.First().internships.supervisor.companies.adresses.place,
+                    s.Value.students_internships.First().internships.supervisor.users.name + " " + s.Value.students_internships.First().internships.supervisor.users.surname,
+                    s.Value.students_internships.First().internships.supervisor.users.phonenumber
                 };
 
                 rows.AddLast(row); 

@@ -347,6 +347,10 @@ namespace StageManager.ViewModels
 
         public void createWorksheet(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
+            /*
+                  Gegevens = (String)value.GetType().GetProperty("Gegevens").GetMethod.Invoke(value, null),
+             */
+
             LinkedList<object[]> rows = new LinkedList<object[]>();
 
             string[] columns = { 

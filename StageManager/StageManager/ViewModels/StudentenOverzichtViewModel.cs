@@ -94,7 +94,7 @@ namespace StageManager.ViewModels
                 "Achternaam",
                 "Opleiding",
                 "Telefoonnummer",
-                "Voldoet",
+                "Toestemming. Ex. Comm.",
                 "Email",
                 "Straatnaam",
                 "Huisnummer",

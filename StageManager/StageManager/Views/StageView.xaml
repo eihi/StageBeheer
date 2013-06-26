@@ -123,7 +123,7 @@
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right">
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="Exporteer naar Excel" Margin="0,0,10,0" Grid.Column="0" Grid.Row="0" Height="30" Width="120" HorizontalAlignment="Right"/>
+                            <Button Content="Exporteer naar Excel" Name="btnExport_Click" Margin="0,0,10,0" Grid.Column="0" Grid.Row="0" Height="30" Width="120" HorizontalAlignment="Right"/>
                             <Button Content="Wijzigingen opslaan" Name="btnSave" Padding="5"/>
                         </StackPanel>
                     </StackPanel>
