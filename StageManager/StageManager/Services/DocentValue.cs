@@ -86,7 +86,12 @@ namespace StageManager.Services
 
             for (int i = 0; i < sameKnowledge.Count; i++)
             {
-                sameKnowledgeString += sameKnowledge[i] + ", ";
+                if (i > 0)
+                {
+                    sameKnowledgeString += ", ";
+                }
+                sameKnowledgeString += sameKnowledge[i];
+
             }
         }
 
