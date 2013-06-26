@@ -51,7 +51,7 @@
                                 <Button Name="btnRemoveTweedeStudent" Content="x" Visibility="{Binding TweedeStudentVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen twee studenten zijn gekoppeld,
                                  OnClick wordt een ZoekView geopend met een lijst van Studenten -->
-                                <Button Name="btnTweedeStudent_Click" Content="+" VerticalAlignment="Center" Visibility="{Binding AddStudentVisibility}" VerticalContentAlignment="Center" Margin="5" Padding="10,0,10,0"/>
+                                <Button Name="btnAddTweedeStudent" Content="+" VerticalAlignment="Center" Visibility="{Binding AddStudentVisibility}" VerticalContentAlignment="Center" Margin="5" Padding="10,0,10,0"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -61,7 +61,7 @@
                                 <Button Name="btnStagebegeleider" Content="{Binding Stagebegeleider}" Visibility="{Binding StagebegeleiderVisibility}" VerticalAlignment="Center" Margin="5,5,0,5" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <Button Name="btnRemoveStagebegeleider" Content="x" Visibility="{Binding StagebegeleiderVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen docent is gekoppeld -->
-                                <Button Name="btnStagebegeleider_Click" Visibility="{Binding AddStagebegeleiderVisibility}" Content="+" VerticalAlignment="Center" Margin="5" Padding="10,0,10,0"/>
+                                <Button Name="btnAddStagebegeleider" Visibility="{Binding AddStagebegeleiderVisibility}" Content="+" VerticalAlignment="Center" Margin="5" Padding="10,0,10,0"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Visibility="{Binding AfstudeerstageVisibility}">
@@ -71,7 +71,7 @@
                                 <Button Content="{Binding TweedeLezer}" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="{Binding TweedeLezerVisibility}" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <Button Name="btnRemoveTweedeLezer" Content="x" Visibility="{Binding TweedeLezerVisibility}" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,5,5,5" Background="#FFC31414" Padding="5,0,5,0" Foreground="White" BorderBrush="{x:Null}"/>
                                 <!-- Toevoegen knop wordt weergegeven als er nog geen tweede lezer is gekoppeld -->
-                                <Button Name="btnTweedeLezer_Click" VerticalAlignment="Center" Margin="5" Content="+" Visibility="{Binding AddTweedeLezerVisibility}" Padding="10,0,10,0"/>
+                                <Button Name="btnAddTweedeLezer" VerticalAlignment="Center" Margin="5" Content="+" Visibility="{Binding AddTweedeLezerVisibility}" Padding="10,0,10,0"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -109,7 +109,7 @@
                             <Label Content="Stageopdracht" Margin="0,10,10,10" Width="150" Height="auto" HorizontalContentAlignment="Right"/>
                             <StackPanel Margin="20,10,20,10" Width="auto" Height="auto" Orientation="Horizontal">
                                 <!-- Knop met stageopdracht OnClick wordt StageopdrachtView geopend -->
-                                <Button Name="btnStageopdracht_Click" Content="Stageopdracht" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="Visible" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}">
+                                <Button Name="btnStageopdracht" Content="Stageopdracht" VerticalAlignment="Center" Margin="5,5,0,5" Visibility="Visible" Background="#FF149BC3" Padding="10,0,10,0" Foreground="White" BorderBrush="{x:Null}">
                                     <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <cal:ActionMessage MethodName="showStageopdracht">
