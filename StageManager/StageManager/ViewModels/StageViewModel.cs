@@ -80,14 +80,13 @@ namespace StageManager.ViewModels
         {
             get
             {
-                if (isAfstudeerstage)
-                {
-                    return "Visible";
+                switch(stage.type){
+                    case "1":
+                        return "Visible";
+                    default:
+                        return "Collapsed";
                 }
-                else
-                {
-                    return "Collapsed";
-              }
+                    
             }
             set { }
         }
@@ -340,7 +339,6 @@ namespace StageManager.ViewModels
                     default:
                         return "";
                 }
-                
             }
         }
 
