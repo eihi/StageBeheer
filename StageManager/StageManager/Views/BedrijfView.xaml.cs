@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StageManager.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace StageManager.Views
         public BedrijfView()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BringIntoView();
         }
     }
 }

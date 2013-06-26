@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             Height="225" Width="300" Background="White" Visibility="{Binding WVisible}" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+             Height="225" Width="300" Background="White" Visibility="{Binding WVisible}" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+             Loaded="UserControl_Loaded">
 
     <DockPanel Margin="0,0,0,-10">
 

@@ -6,7 +6,8 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="500">
+             d:DesignHeight="600" d:DesignWidth="500"
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style x:Key="Style" TargetType="TextBlock"></Style>
         <Style TargetType="TextBox"></Style>

@@ -8,6 +8,7 @@ using StageManager.Models;
 using StageManager.Services;
 using StageManager.Controllers;
 using System.Windows;
+using StageManager.Views;
 
 namespace StageManager.ViewModels
 {

@@ -229,6 +229,9 @@
     <Compile Include="Views\BedrijfView.xaml.cs">
       <DependentUpon>BedrijfView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DocentenOverzichtView.xaml.cs">
+      <DependentUpon>DocentenOverzichtView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DocentView.xaml.cs">
       <DependentUpon>DocentView.xaml</DependentUpon>
     </Compile>
@@ -255,6 +258,9 @@
     </Compile>
     <Compile Include="Views\ProcesOverzichtView.xaml.cs">
       <DependentUpon>ProcesOverzichtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StagesOverzichtView.xaml.cs">
+      <DependentUpon>StagesOverzichtView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StageView.xaml.cs">
       <DependentUpon>StageView.xaml</DependentUpon>

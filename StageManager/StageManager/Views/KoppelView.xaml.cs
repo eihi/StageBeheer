@@ -25,9 +25,9 @@ namespace StageManager.Views
             InitializeComponent();
         }
 
-        private void GridContents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            BringIntoView();
         }
     }
 }

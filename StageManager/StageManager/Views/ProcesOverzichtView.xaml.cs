@@ -32,5 +32,10 @@ namespace StageManager.Views
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BringIntoView();
+        }
     }
 }

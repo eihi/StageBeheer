@@ -24,5 +24,10 @@ namespace StageManager.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BringIntoView();
+        }
     }
 }

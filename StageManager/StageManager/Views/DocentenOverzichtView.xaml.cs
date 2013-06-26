@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace StageManager.Views
 {
@@ -10,6 +11,11 @@ namespace StageManager.Views
         public DocentenOverzichtView()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BringIntoView();
         }
     }
 }
