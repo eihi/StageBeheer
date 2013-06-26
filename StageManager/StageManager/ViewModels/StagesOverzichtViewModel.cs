@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace StageManager.ViewModels
 {
@@ -18,7 +19,8 @@ namespace StageManager.ViewModels
             get { return stageArchief; }
             set { stageArchief = value;
             NotifyOfPropertyChange(() => StageArchief);
-                System.Diagnostics.Debug.WriteLine(value);
+                //System.Diagnostics.Debug.WriteLine(value);
+                FilterAchiefFilter(value);
             }
         }
 
@@ -34,6 +36,37 @@ namespace StageManager.ViewModels
                 list = value;
                 GridContents = value.Keys.ToList();
                 NotifyOfPropertyChange(() => List);
+            }
+        }
+
+        // Filter die shit
+        public void FilterAchiefFilter(bool filterTrue)
+        {
+            if (filterTrue == false)
+            {
+                Dictionary<object, dbstageviewcomplete> NewList = new Dictionary<object, dbstageviewcomplete>();
+                for (int i = 0; List.Count() > i; i++)
+                {
+                    string startDate = (String)List.Keys.ElementAt(i).GetType().GetProperty("Begin").GetMethod.Invoke(List.Keys.ElementAt(i), null);
+
+                    DateTime parsedDate = DateTime.Parse(startDate);
+                    DateTime now = DateTime.Now;
+
+                    TimeSpan tSpan;
+                    tSpan = parsedDate - now;
+
+                    //System.Diagnostics.Debug.WriteLine(tSpan.TotalSeconds);
+
+                    if (tSpan.TotalSeconds > 0)
+                    {
+                        NewList.Add(List.Keys.ElementAt(i), List.Values.ElementAt(i));
+                    }
+                }
+                List = NewList;
+            }
+            else
+            {
+                this.LoadList();
             }
         }
 
@@ -67,7 +100,12 @@ namespace StageManager.ViewModels
         public StagesOverzichtViewModel(MainViewModel main)
             : base(main)
         {
+            LoadList();
+            FilterAchiefFilter(false);
+        }
 
+        public void LoadList()
+        {
             List = new Dictionary<object, dbstageviewcomplete>();
             List<dbstageviewcomplete> tempList = (from stage in new WStored().SearchDBStageViewComplete() select stage).ToList();
 
@@ -80,7 +118,7 @@ namespace StageManager.ViewModels
                     i++;
                 }
                 object o = (Object)new
-                {                   
+                {
                     Stagetype = tempList[i].type == "0" ? "Stage" : "Eindstage",
                     Eerstestudent = tempList[i].name + " " + tempList[i].surname,
                     Tweedestudent = tweedeStudent,
@@ -93,9 +131,9 @@ namespace StageManager.ViewModels
                 };
                 List.Add(o, tempList[i]);
                 List = List;
-                             
             }
         }
+
 
         public void btnExport_Click()
         {
