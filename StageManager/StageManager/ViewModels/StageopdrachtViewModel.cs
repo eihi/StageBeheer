@@ -85,14 +85,16 @@ namespace StageManager.ViewModels
         {
             get 
             {
+                string teruggave = "";
                 try
                 {
-                    return stage.students_internships.ElementAt(1).students.users.name + " " + stage.students_internships.ElementAt(1).students.users.surname;
+                      teruggave = stage.students_internships.ElementAt(1).students.users.name + " " + stage.students_internships.ElementAt(1).students.users.surname; 
                 }
-                catch (NullReferenceException)
+                catch (Exception e)
                 {
-                    return "";
+                    teruggave = "";
                 }
+                return teruggave;
             }
             set { }
         }

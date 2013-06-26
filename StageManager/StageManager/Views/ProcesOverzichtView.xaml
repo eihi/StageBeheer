@@ -68,14 +68,14 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
+                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student}" />
                                     <GridViewColumn Header="E-mail" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Path=Email}" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student}" />
+                                    </GridViewColumn>                                    
                                     <GridViewColumn Header="Gegevens" DisplayMemberBinding="{Binding Gegevens}" />
                                     <GridViewColumn Header="Stage Opdracht" DisplayMemberBinding="{Binding Stageopdracht}" />
                                     <!-- <GridViewColumn Header="Docent" DisplayMemberBinding="{Binding Docent}" /> -->
