@@ -58,7 +58,8 @@
                 <DockPanel>
                     <!-- KoppelTitel -->
                     <Label Name="Koppel" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="24" FontWeight="Light"/>
-                    <Label Name="Info" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="15" FontWeight="Light"/>
+                    <Label Name="Info" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="14" FontWeight="Light"/>
+                    <Label Name="berekeningInfo" DockPanel.Dock="Top" BorderBrush="#FFA0A0A0" BorderThickness="0,0,0,1" FontSize="14" FontWeight="Light"/>
                     <!-- KoppelControls -->
                     
                     <!-- KoppelContent -->
@@ -71,8 +72,7 @@
                                 <DataGridTextColumn Binding="{Binding kennis}" Header="Kennis gebieden" Width="auto" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding afstand}" Header="Afstand" Width="auto" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding vervoer}" Header="Vervoers middel" Width="auto" IsReadOnly="True"/>
-                                <DataGridTextColumn Binding="{Binding tijdover}" Header="Tijd over na koppelen" Width="auto" IsReadOnly="True"/>
-                                
+                                <DataGridTextColumn Binding="{Binding tijdover}" Header="Tijd over na koppelen" Width="auto" IsReadOnly="True"/>                                
                             </DataGrid.Columns>
                         </DataGrid>
 

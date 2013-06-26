@@ -31,12 +31,32 @@ namespace StageManager.Services
         static int eindstage = 18;
         static int duoEindstage = 26;
 
-        static int hasTime = 50;
-        static int hasKnowledge = 5;
-        static int hasDistance = -1;
-        static double RelevantDistance = 50;
+        private int hasTime = 50;
+        private int hasKnowledge = 5;
+        private int hasDistance =  1;
+        private double relevantDistance = 50;        
 
         private int year;
+
+        public double RelevantDistance
+        {
+            get { return relevantDistance; }
+            set { relevantDistance = value; }
+        }
+
+        public int HasTime
+        {
+            get { return hasTime; }
+        }
+        public int HasKnowledge
+        {
+            get { return hasKnowledge; }
+        }
+        public int HasDistance
+        {
+            get { return hasDistance; }
+            set { hasDistance = value; }
+        }
 
         public int Year
         {
@@ -229,8 +249,8 @@ namespace StageManager.Services
             double distanceCalc = 5;
             while (distanceCalc < distance)
             {
-                distanceCalc += RelevantDistance;
-                value += hasDistance;
+                distanceCalc += relevantDistance;
+                value -= hasDistance;
             }
 
         }

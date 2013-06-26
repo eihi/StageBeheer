@@ -33,7 +33,8 @@ namespace StageManager.ViewModels
         {
             get
             {
-                return "STAGE INFO \n Kennis nodig voor deze stage " + list.First().Value.stageKnowledge +
+                return "STAGE INFO" +
+                    " \n Kennis nodig voor deze stage: " + list.First().Value.stageKnowledge +
                      "\n Benodigde tijd: " + list.First().Value.timeNeeded +
                      "\n School jaar: " + list.First().Value.Year +  "-" + (list.First().Value.Year + 1) +
                      "\n Blokken: " + list.First().Value.blokken.Substring(0, 1) + "," + list.First().Value.blokken.Substring(1, 1) +
@@ -41,6 +42,17 @@ namespace StageManager.ViewModels
             }
         }
 
+
+        public String berekeningInfo
+        {
+            get
+            {
+                return "BEREKENING" +
+                    "\n Als de docent genoeg tijd heeft " + list.First().Value.HasTime + " punten waard." +
+                    "\n Elk kennis gebied die overeenkomt is " + list.First().Value.HasKnowledge + " punten waard." +
+                    "\n per " + List.First().Value.RelevantDistance + "km afstand gaat er " + list.First().Value.HasDistance + " punt af.";                     
+            }
+        }
         public internships Stage
         {
             get { return stage; }
@@ -142,44 +154,20 @@ namespace StageManager.ViewModels
             : base(main)
         {
             Main = main;
-            
-
-            list = new Dictionary<object, DocentValue>();        
-
-            List = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
-                    {
-                        waarde = t.value,
-                        naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname, 
-                        aantalkennis = t.numberOfKnowledge,
-                        kennis = t.sameKnowledgeString,
-                        afstand = t.distance,
-                        tijdover = t.timeleftafter,                        
-
-                    }, t => t));
-
-
-            GridContents = list.Keys.ToList();
-        }
-
-        public KoppelViewModel(MainViewModel main, String teacher)
-            : base(main)
-        {
-            Main = main;
 
 
             list = new Dictionary<object, DocentValue>();
 
-            list = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
-            {
-                waarde = t.value,
-                naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname,
-                aantalkennis = t.numberOfKnowledge,
-                kennis = t.sameKnowledgeString,
-                afstand = t.distance,
-                tijdover = t.timeleftafter,
-                vervoer = t.TeacherInfo.transport.name,
+            List = (new ImportanceChecker().checkImportance(2).ToDictionary(t => (Object)new
+                    {
+                        waarde = t.value,
+                        naam = t.TeacherInfo.users.name + " " + t.TeacherInfo.users.surname,
+                        aantalkennis = t.numberOfKnowledge,
+                        kennis = t.sameKnowledgeString,
+                        afstand = t.distance,
+                        tijdover = t.timeleftafter,
 
-            }, t => t));
+                    }, t => t));
 
 
             GridContents = list.Keys.ToList();
@@ -199,6 +187,7 @@ namespace StageManager.ViewModels
                 aantalkennis = t.numberOfKnowledge,
                 kennis = t.sameKnowledgeString,
                 afstand = t.distance,
+                vervoer = t.TeacherInfo.transport.name,
                 tijdover = t.timeleftafter,
 
             }, t => t));
