@@ -139,31 +139,27 @@ namespace StageManager.ViewModels
             set
             {
                 _selectedObject = value;
-                
-                if(_selectedObject != null && _selectedObject.GetType().GetProperty("Voornaam") != null) {
-                    var firstName = _selectedObject.GetType().GetProperty("Voornaam");
-                    var lastName = _selectedObject.GetType().GetProperty("Achternaam");
-                    string fullName = firstName.GetValue(_selectedObject, null) + " " + lastName.GetValue(_selectedObject, null);
 
-                    List<PropertyChanged> c = Main.Contents.ToList<PropertyChanged>();
-                    foreach (PropertyChanged p in c)
-                    {
-                        if (p.GetType().Name == "StageViewModel")
-                        {
-                            StageViewModel svm = (StageViewModel)p;
+                StageViewModel svm = (StageViewModel)Last;
 
-                            switch (svm.SearchFor)
-                            {
-                                case StageViewModel.Search.TweedeStudent:
-                                    svm.TweedeStudent = fullName;
-                                    break;
-                                case StageViewModel.Search.TweedeLezer:
-                                    svm.TweedeLezer = fullName;
-                                    break;
-                            }
-                        }
-                    }
+                List<internships> internships = (from myStage in new WStored().SearchStage("", "", true)
+                                                 where myStage.id == svm.StageId()
+                                                 select myStage).ToList();
+                internships internship = internships[0];
+
+                switch (svm.SearchFor)
+                {
+                    case StageViewModel.Search.TweedeStudent:
+
+                        break;
+                    case StageViewModel.Search.TweedeLezer:
+
+                        break;
                 }
+
+                WStored.PushToDB();
+                Last.update();
+                this.Close();
             }
         }
 

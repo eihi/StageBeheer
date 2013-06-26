@@ -58,6 +58,11 @@ namespace StageManager.ViewModels
             }
         }
 
+        public int StageId()
+        {
+            return (int)stage.id;
+        }
+
         public StageViewModel(MainViewModel main, PropertyChanged last)
             :base(main, last)
         {
