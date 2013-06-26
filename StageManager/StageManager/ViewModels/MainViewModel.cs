@@ -26,6 +26,7 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => UserName);
             }
         }
+
         public event EventHandler SomethingHappened;
         public string currentButton { get; set; }
 
