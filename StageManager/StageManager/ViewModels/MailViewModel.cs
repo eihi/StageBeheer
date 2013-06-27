@@ -107,6 +107,18 @@ namespace StageManager.ViewModels
             SetMessage();
         }
 
+        public MailViewModel(MainViewModel main, PropertyChanged last, List<String> emails, mailType optie)
+            : this(main, last, optie)
+        {
+            if (emails != null)
+            {
+                for (int i = 0; i < emails.Count; i++)
+                {
+                    To += emails[i] + " ";
+                }
+            }
+        }
+
         public MailViewModel(MainViewModel main, PropertyChanged last, List<String> emails, mailType optie, String input)
             : this(main, last, optie)
         {
