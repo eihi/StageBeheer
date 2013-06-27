@@ -190,6 +190,8 @@ namespace StageManager.ViewModels
                 List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
                 internships myinternship = stages[0];
                 int selected = selectedDocent.teacher_user_id.Value;
+                stage.secondReader = selected;
+               // stage.students_internships.ElementAt(1).students = null
                 myinternship.secondReader = selected;                
                 //pop up
                 MessageBox.Show(selectedDocent.name + " " + selectedDocent.surname + " is aan deze stage gekkoppeld als tweede lezer", "succes!");

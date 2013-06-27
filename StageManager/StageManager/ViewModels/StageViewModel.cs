@@ -588,9 +588,13 @@ namespace StageManager.ViewModels
 
         public void btnRemoveStagebegeleider()
         {
-            // TODO
+            
             if (stage.teachers1 != null)
             {
+                List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
+                internships myinternship = stages[0];
+                myinternship.teachers1 = null;
+
                 stage.teachers1 = null;
             }
             update();
@@ -598,9 +602,13 @@ namespace StageManager.ViewModels
 
         public void btnRemoveTweedeLezer()
         {
-            // TODO
+           
             if (stage.secondReader != null)
             {
+                List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
+                internships myinternship = stages[0];
+                myinternship.secondReader = null;
+
                 stage.secondReader = null;
             }
             update();
@@ -608,9 +616,13 @@ namespace StageManager.ViewModels
 
         public void btnRemoveTweedeStudent()
         {
-            // TODO
+            
             if (stage.students_internships.ElementAt(1).students != null)
             {
+                List<students_internships> stages = (from myStage in new WStored().SearchStudents_internships() where myStage.intership_id == Stage.id select myStage).ToList();
+                students_internships myinternship = stages[1];
+                myinternship = null;
+
                 stage.students_internships.ElementAt(1).students = null;
             }
             update();

@@ -154,6 +154,8 @@ namespace StageManager.ViewModels
                         students student = new WStored().SearchStudentSet(studentnummer.GetValue(_selectedObject, null).ToString(), "")[0];
                         //internship.students_internships.ElementAtOrDefault(1).students.user_id = student.user_id;
                         break;
+
+                        //Deze case is niet meer relevant. wordt al gedaan met een tweedelezerkoppelview + viewmodel.
                     case StageViewModel.Search.TweedeLezer:
                         var voornaam = _selectedObject.GetType().GetProperty("Voornaam");
                         var achternaam = _selectedObject.GetType().GetProperty("Achternaam");
@@ -161,9 +163,13 @@ namespace StageManager.ViewModels
                         internship.teacher_user_id = teacher.user_id;
                         break;
                 }
+                
+                /*
+                 *voeg row aan table toe. kijken met sjors hoe dit gaat via entityframework 
+                 */
 
-                //WStored.PushToDB();
-                Last.update();
+                WStored.PushToDB();
+                Last.update();                
                 this.Close();
             }
         }
