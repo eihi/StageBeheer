@@ -182,7 +182,7 @@ namespace StageManager.ViewModels
                 s.students_internships.Add(insert);
                 
                 WStored.PushToDB();
-                Last.update();                
+                update();                
                 MessageBox.Show(student.users.name + " " + student.users.surname + " is aan deze stage gekoppeld", "succes!");
                 this.Close();
             }

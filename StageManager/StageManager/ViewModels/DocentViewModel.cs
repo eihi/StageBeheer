@@ -36,7 +36,7 @@ namespace StageManager.ViewModels
         public void btnSave()
         {
             WStored.PushToDB();
-            Last.update();
+            update();
             MessageBox.Show("Wijziging is opgeslagen!", "succes!");
         }
 

@@ -198,7 +198,7 @@ namespace StageManager.ViewModels
                 //update vorig scherm
 
                 WStored.PushToDB();
-                Last.update();
+                update();
                 //sluit scherm
                 this.Close();
                 //update stage scherm
