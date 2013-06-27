@@ -25,16 +25,21 @@ namespace StageManager.Services
         }
 
         public virtual void update()
-        { 
-            PropertyInfo[] propperties =  this.GetType().GetProperties();
+        {
+            PropertyInfo[] propperties = this.GetType().GetProperties();
             for (int i = 0; i < propperties.Length; i++)
             {
                 NotifyOfPropertyChange(propperties[i].Name);
+            }
+            if (Last != null)
+            {
+                Last.update();
             }
         }
 
         public void Close()
         {
+            Main.removeContentAfter(this);
             Main.removeContent(this);
         }
 
