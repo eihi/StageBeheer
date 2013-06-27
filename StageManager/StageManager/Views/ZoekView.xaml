@@ -49,13 +49,15 @@
                         <!-- FilterPanel -->
                         <ScrollViewer VerticalAlignment="Stretch" MinWidth="200" Height="auto" VerticalScrollBarVisibility="Auto" Margin="0">
                             <DockPanel>
-                                <TextBox DockPanel.Dock="Top" Name="SearchString" Text="Trefwoord(en)"  HorizontalAlignment="Stretch" Margin="0,10,0,10" VerticalAlignment="Stretch" Height="30" Width="auto" VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+                                <TextBox DockPanel.Dock="Top" Name="SearchString" Text="Trefwoord(en)" HorizontalAlignment="Stretch" Margin="0,10,0,10" VerticalAlignment="Top" Height="30" Width="auto" VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+                                <!--
                                 <Expander DockPanel.Dock="Top" Header="Opleiding" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Margin="0,10,0,10" Width="auto">
                                     <ListBox SelectionMode="Single" ItemsSource="{Binding OpleidingStack}" Height="auto" BorderThickness="0" SelectedItem="{Binding Path=SearchOpleiding}"/>
                                 </Expander>
                                 <Expander DockPanel.Dock="Top" Header="Plaats" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Margin="0,10,0,10" Width="auto">
                                     <StackPanel Name="Plaatsen"  Background="#FFE5E5E5" Height="200"/>
                                 </Expander>
+                                -->
                             </DockPanel>
                         </ScrollViewer>
                         <!-- LijstPanel -->

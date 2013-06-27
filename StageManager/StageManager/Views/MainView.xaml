@@ -170,7 +170,7 @@
                         <!-- MenuContent -->
                         <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" Width="auto" Margin="0" VerticalScrollBarVisibility="Auto">
                             <StackPanel>
-                                <TextBox Name="Search" Text="Zoek" Style="{StaticResource SearchStyle}" />
+                                <!-- <TextBox Name="Search" Text="Zoek" Style="{StaticResource SearchStyle}" /> -->
                                 <Expander IsExpanded="true">
                                     <Expander.Header>
                                         <TextBlock Text="Overzichten" FontSize="20" Foreground="Black" FontWeight="Light"/>
