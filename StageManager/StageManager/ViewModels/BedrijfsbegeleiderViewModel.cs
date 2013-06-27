@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using StageManager.Models;
 using Caliburn.Micro;
 using StageManager.Services;
+using System.Windows;
 
 namespace StageManager.ViewModels
 {
@@ -33,6 +34,8 @@ namespace StageManager.ViewModels
         public void btnSave()
         {
             WStored.PushToDB();
+            Last.update();
+            MessageBox.Show("Wijziging is opgeslagen!", "succes!");
         }
 
         public String Voornaam

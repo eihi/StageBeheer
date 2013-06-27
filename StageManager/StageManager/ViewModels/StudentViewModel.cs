@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace StageManager.ViewModels
 {
@@ -165,7 +166,9 @@ namespace StageManager.ViewModels
 
         public void btnSave()
         {
-           WStored.PushToDB();
+            WStored.PushToDB();
+            Last.update();
+            MessageBox.Show("Wijziging is opgeslagen!", "succes!");
         }
 
         public void btnExport_Click()

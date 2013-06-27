@@ -398,6 +398,8 @@ namespace StageManager.ViewModels
         public void btnSave()
         {
             WStored.PushToDB();
+            Last.update();
+            MessageBox.Show("Wijziging is opgeslagen!", "succes!");
         }
 
         private string bedrijfsbegeleider;
@@ -552,7 +554,7 @@ namespace StageManager.ViewModels
         public void btnAddTweedeStudent()
         {
             SearchFor = Search.TweedeStudent;
-            Main.ChangeButton("Zoek", this, new List<object>() { "", ZoekViewModel.SearchType.Studenten }, Clear.No);
+            Main.ChangeButton("Zoek", this, new List<object>() { "", Stage }, Clear.No);
         }
 
         public void btnAddStagebegeleider()
@@ -619,12 +621,14 @@ namespace StageManager.ViewModels
             
             if (stage.students_internships.ElementAt(1).students != null)
             {
-                List<students_internships> stages = (from myStage in new WStored().SearchStudents_internships() where myStage.intership_id == Stage.id select myStage).ToList();
-                students_internships remove = stages[1];
+                students_internships remove = WStored.StageManagerEntities.students_internships.Find(new object[] { stage.id, stage.students_internships.ElementAt(1).students.user_id });
                 
                 WStored.StageManagerEntities.students_internships.Remove(remove);
 
-                stage.students_internships.ElementAt(1).students = null;
+                //if (stage.students_internships.ElementAt(1) != null)
+                //{
+                //    stage.students_internships.ElementAt(1).students = null;
+                //}
             }
             update();
         }

@@ -17,6 +17,7 @@ namespace StageManager.ViewModels
         private String searchString;
         public enum SearchType { Docenten, Studenten }
         private SearchType stype = SearchType.Studenten;
+        private internships s;
 
         public String SearchString
         {
@@ -178,7 +179,7 @@ namespace StageManager.ViewModels
                 /*
                  * TODO <_----------- stageview iets updaten 
                  */
-                WStored.StageManagerEntities.students_internships.Add(insert);
+                s.students_internships.Add(insert);
                 
                 WStored.PushToDB();
                 Last.update();                
@@ -207,10 +208,25 @@ namespace StageManager.ViewModels
             }
         }
 
-        public ZoekViewModel(MainViewModel main,PropertyChanged last, String zoekString, SearchType type)
+        public ZoekViewModel(MainViewModel main, PropertyChanged last, String zoekString, SearchType type)
             : this(main, last)
         {
             stype = type;
+            SearchString = zoekString;
+        }
+
+        public ZoekViewModel(MainViewModel main, PropertyChanged last, String zoekString, Object o)
+            : this(main, last)
+        {
+            try
+            {
+                s = (internships)o;
+            }
+            catch(Exception e)
+            {
+                // Gaat fout
+            }
+            //stype = type;
             SearchString = zoekString;
         }
 
