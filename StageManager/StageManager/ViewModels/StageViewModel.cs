@@ -591,9 +591,9 @@ namespace StageManager.ViewModels
             
             if (stage.teachers1 != null)
             {
-                List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
-                internships myinternship = stages[0];
-                myinternship.teachers1 = null;
+                //List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
+                //internships myinternship = stages[0];
+                //myinternship.teachers1 = null;
 
                 stage.teachers1 = null;
             }
