@@ -5,7 +5,7 @@
         xmlns:vm="clr-namespace:StageManager.ViewModels"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:cal="http://www.caliburnproject.org"
-        Title="Stage Manager" WindowState="Maximized">
+        Title="Stage Manager" WindowState="Maximized" Background="#FF34BFB9">
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Header="Close All Open Panels">
@@ -305,12 +305,12 @@
                     </StackPanel>
                 </Expander>
                 <!-- MainContent -->
-                <ScrollViewer PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" x:Name="ScrollBar" DockPanel.Dock="Left"  Height="auto" Width="auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0">
+                <ScrollViewer PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" x:Name="ScrollBar"  DockPanel.Dock="Left"  Height="auto" Width="auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0">
                     <ScrollViewer.Background>
-                        <ImageBrush ImageSource="..\Img\smlogo.fw.png"/>
+                        <ImageBrush ImageSource="..\Img\smlogo.fw.png" Stretch="None"/>
                     </ScrollViewer.Background>
 
-                    <ItemsControl ItemsSource="{Binding Contents}">
+                    <ItemsControl ItemsSource="{Binding Contents}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal">
