@@ -21,7 +21,7 @@ namespace StageManager.ViewModels
             get { return bedrijf; }
             set
             {
-                bedrijf = value;
+                bedrijf = WStored.StageManagerEntities.companies.Find(value.id);
                 NotifyOfPropertyChange(() => Naam);
                 NotifyOfPropertyChange(() => Straat);
                 NotifyOfPropertyChange(() => Huisnummer);

@@ -19,14 +19,14 @@ namespace StageManager.ViewModels
             get { return docent; }
             set
             {
-                docent = value;
+                docent = WStored.StageManagerEntities.teachers.Find(value.user_id);
                 NotifyOfPropertyChange(() => Voornaam);
                 NotifyOfPropertyChange(() => Achternaam);
                 NotifyOfPropertyChange(() => Straat);
                 NotifyOfPropertyChange(() => Huisnummer);
                 NotifyOfPropertyChange(() => Postcode);
                 NotifyOfPropertyChange(() => Woonplaats);
-                NotifyOfPropertyChange(() => Telefoon);
+                NotifyOfPropertyChange(() => Telefoonnummer);
                 NotifyOfPropertyChange(() => Kennisgebied);
                 NotifyOfPropertyChange(() => EMail);
             }
@@ -124,7 +124,7 @@ namespace StageManager.ViewModels
                 NotifyOfPropertyChange(() => Woonplaats);
             }
         }
-        public String Telefoon
+        public String Telefoonnummer
         {
             get
             {
@@ -133,7 +133,7 @@ namespace StageManager.ViewModels
             set
             {
                 docent.users.phonenumber = value;
-                NotifyOfPropertyChange(() => Telefoon);
+                NotifyOfPropertyChange(() => Telefoonnummer);
             }
         }
         public String EMail
@@ -189,7 +189,7 @@ namespace StageManager.ViewModels
             worksheet.Cells[1, 5] = "Woonplaats";
             worksheet.Cells[2, 5] = Woonplaats;
             worksheet.Cells[1, 6] = "Telefoon";
-            worksheet.Cells[2, 6] = Telefoon;
+            worksheet.Cells[2, 6] = Telefoonnummer;
             worksheet.Cells[1, 7] = "E-mail";
             worksheet.Cells[2, 7] = EMail;
         }

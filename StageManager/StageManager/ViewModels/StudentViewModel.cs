@@ -57,7 +57,6 @@ namespace StageManager.ViewModels
             get { return student.adresses.place; }
             set
             {
-                //student.adresses = WStored.StageManagerEntities.adresses.Find(student.addresss_id);
                 student.adresses.place = value;
                 NotifyOfPropertyChange(() => Plaats);
             }

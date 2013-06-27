@@ -14,9 +14,10 @@ namespace StageManager.Models
 
         public static void PushToDB()
         {
+            int i;
             try
             {
-                int i = WStored.StageManagerEntities.SaveChanges();
+                i = WStored.StageManagerEntities.SaveChanges();
             }
             catch (Exception)
             { }

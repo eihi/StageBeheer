@@ -19,7 +19,7 @@ namespace StageManager.ViewModels
             get { return begeleider; }
             set
             {
-                begeleider = value;
+                begeleider = WStored.StageManagerEntities.supervisor.Find(value.user_id);
                 NotifyOfPropertyChange(() => Functie);
                 NotifyOfPropertyChange(() => Opleiding);
                 NotifyOfPropertyChange(() => BegeleidingUren);

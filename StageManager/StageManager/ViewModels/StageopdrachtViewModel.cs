@@ -19,7 +19,7 @@ namespace StageManager.ViewModels
             get { return stage; }
             set
             {
-                stage = value;
+                stage = WStored.StageManagerEntities.internships.Find(value.id);
                 NotifyOfPropertyChange(() => StartDatum);
                 NotifyOfPropertyChange(() => Bedrijfsbegeleider);
                 NotifyOfPropertyChange(() => Docent);
