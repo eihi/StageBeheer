@@ -146,12 +146,12 @@ namespace StageManager.ViewModels
                                                  where myStage.id == svm.StageId()
                                                  select myStage).ToList();
                 internships internship = internships[0];
-
+                students student = null;
                 switch (svm.SearchFor)
                 {
                     case StageViewModel.Search.TweedeStudent:
                         var studentnummer = _selectedObject.GetType().GetProperty("Studentnummer");
-                        students student = new WStored().SearchStudentSet(studentnummer.GetValue(_selectedObject, null).ToString(), "")[0];
+                        student = new WStored().SearchStudentSet(studentnummer.GetValue(_selectedObject, null).ToString(), "")[0];
                         //internship.students_internships.ElementAtOrDefault(1).students.user_id = student.user_id;
                         break;
 
@@ -164,12 +164,20 @@ namespace StageManager.ViewModels
                         break;
                 }
                 
-                /*
-                 *voeg row aan table toe. kijken met sjors hoe dit gaat via entityframework 
-                 */
+                
+                students_internships insert = new students_internships();
+                insert.intership_id = internship.id;
+                insert.student_user_id = student.user_id;
+                insert.achieved = "0";
 
+                /*
+                 * TODO <_----------- stageview iets updaten 
+                 */
+                WStored.StageManagerEntities.students_internships.Add(insert);
+                
                 WStored.PushToDB();
                 Last.update();                
+                MessageBox.Show(student.users.name + " " + student.users.surname + " is aan deze stage gekoppeld", "succes!");
                 this.Close();
             }
         }

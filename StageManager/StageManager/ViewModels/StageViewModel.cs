@@ -608,7 +608,7 @@ namespace StageManager.ViewModels
                 List<internships> stages = (from myStage in new WStored().SearchStage("", "", true) where myStage.id == Stage.id select myStage).ToList();
                 internships myinternship = stages[0];
                 myinternship.secondReader = null;
-
+                
                 stage.secondReader = null;
             }
             update();
@@ -620,8 +620,9 @@ namespace StageManager.ViewModels
             if (stage.students_internships.ElementAt(1).students != null)
             {
                 List<students_internships> stages = (from myStage in new WStored().SearchStudents_internships() where myStage.intership_id == Stage.id select myStage).ToList();
-                students_internships myinternship = stages[1];
-                myinternship = null;
+                students_internships remove = stages[1];
+                
+                WStored.StageManagerEntities.students_internships.Remove(remove);
 
                 stage.students_internships.ElementAt(1).students = null;
             }
