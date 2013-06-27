@@ -317,15 +317,15 @@ namespace StageManager.ViewModels
                         switch (s.students_internships.First().internships.approved)
                         {
                             case "0":
-                                s.students_internships.First().internships.approved = "1";
-                                break;
-
-                            case "1":
                                 s.students_internships.First().internships.approved = "2";
                                 break;
 
-                            case "2":
+                            case "1":
                                 s.students_internships.First().internships.approved = "3";
+                                break;
+
+                            case "2":
+                                s.students_internships.First().internships.approved = "1";
                                 break;
 
                             case "3":
