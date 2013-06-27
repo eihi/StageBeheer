@@ -127,10 +127,9 @@ namespace StageManager.Services
             Send(to, body, Subject, replacements);
         }
 
-        public static void SendBeoordeling(String to, String body, String Subject, String stageInfo, IDictionary replacements = null)
+        public static void SendBeoordeling(String to, String body, String Subject, IDictionary replacements = null)
         {
             init();
-            replacements.Add("%stageData%", stageInfo);
             Send(to, body, Subject, replacements);
         }
     }

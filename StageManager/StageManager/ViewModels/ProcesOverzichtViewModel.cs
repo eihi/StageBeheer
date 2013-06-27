@@ -207,7 +207,7 @@ namespace StageManager.ViewModels
                 {
                     students s;
                     List.TryGetValue(List.Keys.ElementAt(i), out s);
-                    stageData = s.students_internships.First().internships.description + "\n Van" + s.students_internships.First().internships.start_date + " Tot " + s.students_internships.First().internships.end_date;
+                    stageData = s.students_internships.First().internships.description + "\n Van " + s.students_internships.First().internships.start_date + " Tot " + s.students_internships.First().internships.end_date;
 
                     stagemanagerEntities smE = new stagemanagerEntities();
                     List<students> students = smE.students.ToList();
@@ -225,7 +225,8 @@ namespace StageManager.ViewModels
                     smE.SaveChanges();
                 }
             }
-            Main.ChangeButton("Mail",this, new List<object>() { mails, MailViewModel.mailType.beoordeling, stageData }, Clear.No);
+
+            Main.ChangeButton("Mail", this, new List<object>() { mails, MailViewModel.mailType.beoordeling, stageData }, Clear.No);
         }
 
         public ProcesOverzichtViewModel(MainViewModel main, PropertyChanged last)

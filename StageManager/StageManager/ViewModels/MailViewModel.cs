@@ -74,6 +74,8 @@ namespace StageManager.ViewModels
             }
         }
 
+        private String messageBeoordeling = "";
+
         public String Subject { get; set; }
         public String StageData { get; set; }
         private bool visible;
@@ -103,7 +105,21 @@ namespace StageManager.ViewModels
 
             To = "";
             SetMessage();
+        }
 
+        public MailViewModel(MainViewModel main, PropertyChanged last, List<String> emails, mailType optie, String input)
+            : this(main, last, optie)
+        {
+            if (emails != null)
+            {
+                for (int i = 0; i < emails.Count; i++)
+                {
+                    To += emails[i] + " ";
+                }
+            }
+
+            messageBeoordeling = input;
+            SetMessage();
         }
 
         private void SetMessage()
@@ -111,11 +127,11 @@ namespace StageManager.ViewModels
             switch (type)
             {
                 case mailType.beoordeling:
-                    Error = "%stageData%";
+                    Error = "";
                     Subject = "Kijk deze stageopdracht na s.v.p.";
                     Message = "Beste docent,\n\n" +
-                    "Met deze mail verplichten wij u vriendelijk om de stage geleverd via deze mail na te kijken.\n" +
-                    "%stageData%\n\n\n" +
+                    "Met deze mail verplichten wij u vriendelijk om de stage geleverd via deze mail na te kijken.\n\n\n" +
+                    messageBeoordeling + "\n\n\n" +
                     "Met vriendelijke groeten,\n" +
                     "Katinka Janssen\n" +
                     "Stagecoördinator AI&I\n" +
@@ -146,18 +162,6 @@ namespace StageManager.ViewModels
             }
         }
 
-        public MailViewModel(MainViewModel main, PropertyChanged last, List<String> emails, mailType optie)
-            : this(main, last, optie)
-        {
-            if (emails != null)
-            {
-                for (int i = 0; i < emails.Count; i++)
-                {
-                    To += emails[i] + " ";
-                }
-            }
-        }
-
         public void Send()
         {
             char[] c = { ',', ';', ' ', ':' };
@@ -167,7 +171,7 @@ namespace StageManager.ViewModels
                 switch (type)
                 {
                     case mailType.beoordeling:
-                        Mailer.SendBeoordeling(to[i].Trim(), Message, Subject, StageData,  new ListDictionary());
+                        Mailer.SendBeoordeling(to[i].Trim(), Message, Subject, new ListDictionary());
                         break;
                     case mailType.student:
                         Mailer.SendNew(to[i].Trim(), Message, Subject, "student", new ListDictionary());
