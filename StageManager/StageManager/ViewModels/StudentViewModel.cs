@@ -42,6 +42,34 @@ namespace StageManager.ViewModels
             }
         }
 
+        public string Voldoet
+        {
+            get
+            {
+                return student.meets;
+            }
+            set
+            {
+                switch (value)
+                {
+                    case "Ja":
+                        student.meets = value;
+                        break;
+                    case "Nee":
+                        student.meets = value;
+                        break;
+                    case "Nog mogelijk":
+                        student.meets = value;
+                        break;
+                    default:
+                        // TODO popup met mogelijke invoer
+                        break;
+                }
+                
+                NotifyOfPropertyChange(() => Voldoet);
+            }
+        }
+
         public string Postcode
         {
             get { return student.adresses.zipcode; }
@@ -59,16 +87,6 @@ namespace StageManager.ViewModels
             {
                 student.adresses.place = value;
                 NotifyOfPropertyChange(() => Plaats);
-            }
-        }
-
-        public string Voldoet
-        {
-            get { return student.users.name; }
-            set
-            {
-                student.users.name = value;
-                NotifyOfPropertyChange(() => Voornaam);
             }
         }
 
