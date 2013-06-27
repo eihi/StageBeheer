@@ -11,39 +11,45 @@ namespace StageManager.Services
     {
         public administrators Connect(String username, String password)
         {
-            if (username != null && password != null)
+            try
             {
-                System.Diagnostics.Debug.WriteLine("Connect");
-                stagemanagerEntities smE = new stagemanagerEntities();
-                administrators user = null;
-
-                List<administrators> admins = smE.administrators.ToList();
-                for (int i = 0; i < admins.Count; i++)
+                if (username != null && password != null)
                 {
-                    if (admins[i].users.email == username && admins[i].password == password)
+                    System.Diagnostics.Debug.WriteLine("Connect");
+                    stagemanagerEntities smE = new stagemanagerEntities();
+                    administrators user = null;
+
+                    List<administrators> admins = smE.administrators.ToList();
+                    for (int i = 0; i < admins.Count; i++)
                     {
-                        user = admins[i];
+                        if (admins[i].users.email == username && admins[i].password == password)
+                        {
+                            user = admins[i];
+                        }
                     }
-                }
 
-                if (user!=null)
-                {
-                    System.Diagnostics.Debug.WriteLine("Logged in as " + user.users.name + " " + user.users.surname);
-                    return user;
+                    if (user != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Logged in as " + user.users.name + " " + user.users.surname);
+                        return user;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Invalid Username or Password");
+                        return null;
+                    }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("Invalid Username or Password");
+                    System.Diagnostics.Debug.WriteLine("Invalid Stuff");
                     return null;
                 }
             }
-            else
+            catch (Exception)
             {
-                System.Diagnostics.Debug.WriteLine("Invalid Stuff");
                 return null;
             }
         }
-
     }
 }
 
