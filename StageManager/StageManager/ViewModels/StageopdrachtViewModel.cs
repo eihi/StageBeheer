@@ -57,6 +57,43 @@ namespace StageManager.ViewModels
             }
         }
 
+        private string feedback;
+        public string Feedback
+        {
+            get { return stage.feedback; }
+            set
+            {
+                feedback = value;
+                NotifyOfPropertyChange(() => Feedback);
+            }
+        }
+
+        private string goedgekeurd;
+        public string Goedgekeurd
+        {
+            get 
+            {
+                switch (stage.approved)
+                {
+                    case "0":
+                        return "In afwachting";
+                    case "1":
+                        return "Goedgekeurd";
+                    case "2":
+                        return "Wordt nagekeken";
+                    case "3":
+                        return "Niet goedgekeurd";
+                    default:
+                        return "Niet nagekeken";
+                }
+            }
+            set
+            {
+                goedgekeurd = value;
+                NotifyOfPropertyChange(() => Goedgekeurd);
+            }
+        }
+
         public string Omschrijving
         {
             get {  return stage.description; }
