@@ -142,6 +142,11 @@ namespace StageManager.ViewModels
 
                 StageViewModel svm = (StageViewModel)Last;
 
+                if (svm == null)
+                {
+                    return;
+                }
+
                 List<internships> internships = (from myStage in new WStored().SearchStage("", "", true)
                                                  where myStage.id == svm.StageId()
                                                  select myStage).ToList();
