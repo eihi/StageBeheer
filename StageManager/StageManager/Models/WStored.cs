@@ -14,7 +14,12 @@ namespace StageManager.Models
 
         public static void PushToDB()
         {
-            int i = WStored.StageManagerEntities.SaveChanges();
+            try
+            {
+                int i = WStored.StageManagerEntities.SaveChanges();
+            }
+            catch (Exception)
+            { }
         }
 
         public List<students> SearchStudentSet(String searchString, String searchOpleiding)

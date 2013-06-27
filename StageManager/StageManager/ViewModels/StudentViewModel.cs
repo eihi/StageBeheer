@@ -19,7 +19,7 @@ namespace StageManager.ViewModels
             get { return student; }
             set
             {
-                student = value;
+                student = WStored.StageManagerEntities.students.Find(value.user_id);
                 NotifyOfPropertyChange(() => Voornaam);
                 NotifyOfPropertyChange(() => Achternaam);
                 NotifyOfPropertyChange(() => Studentnummer);
@@ -57,7 +57,7 @@ namespace StageManager.ViewModels
             get { return student.adresses.place; }
             set
             {
-                student.adresses = WStored.StageManagerEntities.adresses.Find(student.addresss_id);
+                //student.adresses = WStored.StageManagerEntities.adresses.Find(student.addresss_id);
                 student.adresses.place = value;
                 NotifyOfPropertyChange(() => Plaats);
             }
